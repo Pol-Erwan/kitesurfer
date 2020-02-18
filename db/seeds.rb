@@ -70,6 +70,11 @@ variable = 0
 
 	product << Product.create(name: surfboard_name[variable], brand: brand[variable], category: category[2], domain: "freestyle", description: kite_description[0], favorite: "son pads", testsize: "6'4", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(500..1000), year: "2020")
 
+	article << Article.create(title:"freestyle session", title2:"pures conditions", author:"Hugo", link:"assets/article/article.jpg" )
+
+	technic << Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5), control: rand(0..5), progression: rand(0..5),courbes: rand(0..5),wind: rand(0..5),sideshore: rand(0..5),onshore: rand(0..5), strap: rand(0..5),strapless: rand(0..5), transitions: rand(0..5), wing: rand(1200..1800), pad: rand(0..5))
+
+	option << Option.create(detail:"section detail", size:"7 / 9 / 11 /13", bridle: "no poulies", fin: "3,5cm", width: rand(33..38),stance: "62cm / 65cm / 68cm",champs: "HRD", weigh: rand(3.2..4.8), carene: "channel", flex:"medium", length: rand(150..180), maitrebau: rand(40..50), thickness:rand(5.5..6.8), volum:rand(22..26), trim:"sangle", twist:"devrilleur",line: rand(20..27), v: "V", velcros: rand(1..4), box:"futures fins", strut: rand(0..5))
 
 variable = variable + 1
 

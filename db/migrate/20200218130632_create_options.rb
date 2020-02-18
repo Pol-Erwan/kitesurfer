@@ -19,7 +19,7 @@ class CreateOptions < ActiveRecord::Migration[5.2]
       t.string :twist
       t.string :line
       t.string :v
-      t.string :velcros
+      t.integer :velcros
       t.string :box
       t.integer :strut
       t.timestamps

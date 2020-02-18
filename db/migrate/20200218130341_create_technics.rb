@@ -16,7 +16,6 @@ class CreateTechnics < ActiveRecord::Migration[5.2]
       t.integer :strap
       t.integer :strapless
       t.integer :transitions
-      t.integer :courbes
       t.integer :wing
       t.integer :pad
       t.timestamps

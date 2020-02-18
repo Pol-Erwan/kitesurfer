@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_130632) do
     t.string "twist"
     t.string "line"
     t.string "v"
-    t.string "velcros"
+    t.integer "velcros"
     t.string "box"
     t.integer "strut"
     t.datetime "created_at", null: false
