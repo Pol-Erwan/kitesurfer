@@ -69,7 +69,7 @@
 		<%end%>
             </li>
 	    <li class="nav-item">
-              <%= link_to board_index_path(anchor: "board"), class:"nav-link" do %>
+              <%= link_to kite_index_path(anchor: "board"), class:"nav-link" do %>
 		<i class="text-center text-warning fas fa-chevron-right"></i>
 		<h6 class="text-center text-warning">Tous les Twin-Tips</h6>
 		<%end%>
@@ -118,10 +118,10 @@ $(document).ready(function() {
                     <h6><i class="fas fa-heart"></i>  Son point fort : <%= @kite.favorite %></h6>
                     <h6>Domain : <%= @kite.domain %></h6>
                     <h6>Taille testé : <%= @kite.testsize %>m</h6>
-                    <h6>Tailles disponible : <%= @kite.wind %></h6>
+                    <h6>Tailles disponible : <%= @option.size %></h6>
                     <h6>Prix en shop : <%= @kite.price %>€ pour une <%= @kite.testsize %>m nue</h6>
-		    <h6>nombre de lattes : <%= @kite.strut %></h6>
-		    <h6>type de bridage : <%= @kite.bridle %></h6>
+		    <h6>nombre de lattes : <%= @option.strut %></h6>
+		    <h6>type de bridage : <%= @option.bridle %></h6>
 		    <h6>millésime : <%= @kite.year %></h6>
 		    <a class="btn btn-success" href="<%= @kite.link %>" target="blank_">more details</a>
 		  </div>
@@ -237,33 +237,33 @@ $(document).ready(function() {
 <div class="m-3 d-flex flex-row">
 
 <div class="card m-3 p-3" style="width:60%">
-<h6>Wave : <%= @kite.wave %>/5</h6>
+<h6>Wave : <%= @technic.wave %>/5</h6>
 <div class="progress">
-  <div class="progress-bar bg-primary" role="progressbar" style="width: <%= @kite.wave*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><h5 class="row text-start">WAVE <%= @kite.wave %>/5</h5></div>
+  <div class="progress-bar bg-primary" role="progressbar" style="width: <%= @technic.wave*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><h5 class="row text-start">WAVE <%= @technic.wave %>/5</h5></div>
 </div>
 <div class="progress" style="height: 2px">
-  <div class="progress-bar bg-primary" role="progressbar" style="width: <%= @kite.wave*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-primary" role="progressbar" style="width: <%= @technic.wave*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
-<h6>Big Air: <%= @kite.bigair %>/5</h6>
+<h6>Big Air: <%= @technic.bigair %>/5</h6>
 <div class="progress">
-  <div class="progress-bar bg-success" role="progressbar" style="width: <%= @kite.bigair*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Big air</div>
+  <div class="progress-bar bg-success" role="progressbar" style="width: <%= @technic.bigair*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Big air</div>
 </div>
-<h6>Freeride: <%= @kite.freeride %>/5</h6>
+<h6>Freeride: <%= @technic.freeride %>/5</h6>
 <div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: <%= @kite.freeride*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-info" role="progressbar" style="width: <%= @technic.freeride*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Freestyle: <%= @kite.freestyle %>/5</h6>
+<h6>Freestyle: <%= @technic.freestyle %>/5</h6>
 <div class="progress">
-  <div class="progress-bar bg-warning" role="progressbar" style="width: <%= @kite.freestyle*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Freestyle</div>
+  <div class="progress-bar bg-warning" role="progressbar" style="width: <%= @technic.freestyle*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Freestyle</div>
 </div>
-<h6>Maniability: <%= @kite.maniability %>/5</h6>
+<h6>Maniability: <%= @technic.maniability %>/5</h6>
 <div class="progress">
-  <div class="progress-bar bg-danger" role="progressbar" style="width: <%= @kite.maniability*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-danger" role="progressbar" style="width: <%= @technic.maniability*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Feeling: <%= @kite.feeling %>/5</h6>
+<h6>Feeling: <%= @technic.feeling %>/5</h6>
 <div class="progress">
-  <div class="progress-bar bg-rose" role="progressbar" style="width: <%= @kite.feeling*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-rose" role="progressbar" style="width: <%= @technic.feeling*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 </div>
 
@@ -276,7 +276,7 @@ var birdsCanvas = document.getElementById("birdsChart");
 var birdsData = {
   labels: ["Wave","Big Air","Freeride","Freestyle","Maniability","Feeling"],
   datasets: [{
-    data: [<%= @kite.wave %>,<%= @kite.bigair %>, <%= @kite.freeride %>, <%= @kite.freestyle %>, <%= @kite.maniability %>, <%= @kite.feeling %>],
+    data: [<%= @technic.wave %>,<%= @technic.bigair %>, <%= @technic.freeride %>, <%= @technic.freestyle %>, <%= @technic.maniability %>, <%= @technic.feeling %>],
     backgroundColor: [
       "rgba(255, 0, 0, 0.5)",
       "#cde9ce",
