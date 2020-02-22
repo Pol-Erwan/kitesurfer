@@ -12,6 +12,8 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :youtube
       t.string :link
+
+      t.belongs_to :user, index: true #cette ligne rajoute la référence à la table users
       t.timestamps
     end
   end

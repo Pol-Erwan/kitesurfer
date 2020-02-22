@@ -27,11 +27,14 @@ ActiveRecord::Schema.define(version: 2020_02_18_130632) do
     t.string "description"
     t.string "youtube"
     t.string "link"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "options", force: :cascade do |t|
+    t.bigint "product_id"
     t.string "detail"
     t.string "size"
     t.string "bridle"
@@ -55,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_130632) do
     t.integer "strut"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_options_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -74,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_130632) do
   end
 
   create_table "technics", force: :cascade do |t|
+    t.bigint "product_id"
     t.integer "wave"
     t.integer "bigair"
     t.integer "freeride"
@@ -93,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_130632) do
     t.integer "pad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_technics_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|

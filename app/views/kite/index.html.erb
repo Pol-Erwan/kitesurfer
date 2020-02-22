@@ -1,0 +1,623 @@
+
+
+<body class="index-page sidebar-collapse">
+  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('./assets/background/kite.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand">
+            <h1>Les kites</h1>
+                <a class="carousel-control-prev" href="<%= article_index_path %>" role="button" data-slide="prev">
+                  <i class="fas fa-caret-square-left" style="font-size:50px"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="<%= article_index_path %>" role="button" data-slide="next">
+		  <i class="fas fa-caret-square-right" style="font-size:50px"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main main-raised">
+
+  <nav id='nav_bar'>
+    <ul class='nav_links d-flex justify-content-center'>
+            <li class="active nav-item mx-3">
+            <%= link_to "menu", kite_index_path(anchor: "menu"), class:" nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+            <%= link_to "introduction", kite_index_path(anchor: "intro"), class:" nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+            <%= link_to "Tous les kites", kite_index_path(anchor: "kite"), class:" nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+            <%= link_to "presentation", kite_index_path(anchor: "presentation"), class:" nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+            <%= link_to "comparer", kite_index_path(anchor: "compare"), class:" nav-link"%>
+            </li>      
+    </ul>
+  </nav>
+<script>
+$(document).ready(function() {
+  
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the 
+      //nav bar to stick.  
+      console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 280) {
+      $('#nav_bar').addClass('navbar-fixed');
+    }
+    if ($(window).scrollTop() < 281) {
+      $('#nav_bar').removeClass('navbar-fixed');
+    }
+  });
+});
+</script>
+
+
+    <div class="navbar navbar-expand-lg bg-info">
+      <div class="container">
+        <div class="collapse navbar-collapse d-flex justify-content-around">
+          <ul class="navbar-nav">
+            <li class="active nav-item mx-3">
+            <%= link_to "menu", kite_index_path(anchor: "menu"), class:" nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+            <%= link_to "introduction", kite_index_path(anchor: "intro"), class:" nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+            <%= link_to "Tous les kites", kite_index_path(anchor: "kite"), class:" nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+            <%= link_to "presentation", kite_index_path(anchor: "presentation"), class:" nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+            <%= link_to "compare", kite_index_path(anchor: "comparer"), class:" nav-link"%>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <section id="intro">
+    <br><br><br>
+      <div class="jumbotron" style="background-image: url(/assets/introtest2.jpg); background-size: 100%;">
+        <div class="container for-about">
+        <h1>Comment sont fait nos tests</h1>
+        </div>
+      </div>
+
+      <div class="container tim-container m-3">
+        <h1 class="m-5">Kite</h1>                              
+        <h2><small class="subtitle">Les ailes au bout des lignes</small></h2>
+          <div class="row">
+            <div class="col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1">
+              <div class="text-center">
+                <img src="assets/tangle.jpg" alt="Rounded Image" class="card img-rounded img-responsive img-dog" style="width:100%">
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-12">
+              <p>NOTULES
+		<br>Pas de révolution en vue sur le marché des ailes de kite qui se
+		compose à 95% d’ailes 4 lignes SLE (Supported Leading Edge).
+		<br>Les ailes en C sont dédiées au wakestyle exclusivement. Nous ne les
+		testons pas car la demande est quasi nulle ou réservée à des riders
+		très expérimentés. Elles sont montées en 4 lignes, avec une 5e ligne
+		supplémentaire qui fait office de sécurité mais qui maintient également
+		le bord d’attaque en son centre et le profil de l’aile, on s'en sert aussi
+		pour redécoller. Ce sont des ailes qui offrent un excellent timing dans
+		la navigation déhookée. Tu auras un effet "pop" prononcé et précis au
+		moment où tu crantes pour obtenir le "coup de mou" (ou slack) dans
+		les lignes qui te permet de passer la barre. 
+		<br>Les C-shapes sont donc plus
+		techniques à utiliser, moins confortables et moins sécurisantes mais sont
+		ce qu’il y a de plus performant dans la discipline du wakestyle.
+		Les hybrides englobent toutes les ailes au bord d’attaque suspenté,
+		quelle que soit leur forme (Delta shape, Delta C-shape…)
+            </div>
+              <img src="assets/introtest.jpg" alt="Rounded Image" class="card img-rounded img-responsive img-dog" style="width:100%">
+		<br>Ce sont des ailes 4 lignes SLE qui représentent quasiment tout le marché du
+		kite. Le profil est maintenu grâce au bridage, l’aile se régule presque toute
+		seule pour accepter les rafales de vent. La navigation est plus confortable
+		et sécurisante, la plage d’utulisation accrue. Ces ailes sont bonnes à
+		tout faire, même du wakestyle, car certaines ont cette tendance au
+		programme ; d’autres seront plus performantes en sustentation ou alors
+		dans les vagues. On leur donne le programme freeride-freestyle.</p>
+          </div>
+        </div>
+      <div class="container tim-container m-3">
+        <div class="d-flex flex-row">
+          <div class="card m-3 p-3">
+            <p>Savoir lire entre les lignes
+	      <br>Toutes sont équipées du "One Pump" qui permet de gonfler ton aile
+		depuis un unique point de gonflage.
+		Certaines barres permettent de se déhooker en mode "sucide leash",
+		tout en bénéficiant de la sécurité : si tu lâches la barre, ton aile reste
+		accrochée au leash sans basculer dans la sécurité, l’aile tracte toujours ;
+		en cas de problème hooké tu peux quand même déclencher le largueur
+		et la puissance de ton aile sera neutralisée; C’est la nouvelle tendance
+		pour donner plus de liberté à ceux qui veulent tenter des figures sans pour
+		autant larguer tout le temps leur kite en cas de "bonne gamelle".
+		Certaines ailes disposent de plusieurs réglages qui permettent de les
+		customiser en fonction de ce que tu veux faire. Tu rendras ton aile plus
+		vive ou plus calée en fenêtre, plus présente en barre ou plus légère. Nous
+		avons cette année testé le réglage dit "d’usine" ainsi que les differentes
+		options pour affiner le choix.
+		Poulies ou non sur le bridage ? Les poulies sont prévues d’origine pour
+		moduler l’angle d’incidence de l’aile dans les rafales de vent. Ton aile
+		est plus tolérante, plus progressive. Elles accentuent aussi la réactivité de
+		l’aile hybride qui est ralentie à la base par le bridage ; à la différence de
+		l’aile en C aux connexions et au pilotage directs. Tu trouveras dans les
+		tests un logo indiquant la présence ou non de poulies sur le bridage.
+		Les valves sur le bord d’attaque : toutes les marques ont adopté la Big
+		Valve de gonflage et dégonflage mais certaines proposent un système
+		exclusif. Veillez à avoir le bon embout pour gonflez votre kite.</p>
+          </div>
+          <div class="p-3">
+            <img src="assets/testkite/bandit ride.jpg" alt="Rounded Image" class="card">
+          </div>
+        </div>    
+
+        <div class="m-3 d-flex flex-row">
+
+          <div class="card m-3 p-3" style="width:60%">
+	    <h6>Wave : 4/5</h6>
+	    <div class="progress">
+	      <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>Big Air: 2/5</h6>
+	    <div class="progress">
+  	      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>Freeride: 3/5</h6>
+	    <div class="progress">
+  	      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>Freestyle: 5/5</h6>
+	    <div class="progress">
+  	      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>Maniability: 1/5</h6>
+	    <div class="progress">
+	      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>Feeling: 4/5</h6>
+	    <div class="progress">
+  	      <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	  </div>
+
+	  <div class="card m-3 p-3">
+	    <canvas id="birdsChart" width="300px" height="200px"></canvas>
+	    <script>
+		var birdsCanvas = document.getElementById("birdsChart");
+		var birdsData = {
+		  labels: ["Wave","Big Air","Freeride","Freestyle","Maniability","Feeling"],
+		  datasets: [{
+		    data: [ 4, 2, 3, 5, 1, 4],
+		    backgroundColor: [
+		      "rgba(255, 0, 0, 0.5)",
+		      "#cde9ce",
+ 		      "rgba(200, 50, 255, 0.5)",
+ 		      "rgba(0, 100, 255, 0.5)",
+		      "rgba(255, 0, 0, 0.5)",
+		      "rgba(100, 255, 0, 0.5)"
+		    ]
+		  }]
+		};
+
+		var polarAreaChart = new Chart(birdsCanvas, {
+		  type: 'polarArea',
+		  data: birdsData
+		});
+	    </script>
+	  </div>
+
+	</div>
+
+	<div class="d-flex flex-row">
+	  <div class="card m-2">
+  	    <div class="card-body">
+    	      <h5 class="card-title">Feeling en barre</h5>
+    	      <h6 class="card-subtitle mb-2 text-muted">Léger - Présent</h6>
+    	      <p class="card-text">La présence en barre correspond au feeling que tu as en pilotant l’aile,
+		c’est-à-dire si tu la ressens légère, sans trop de pression, juste présente
+		pour bien la situer dans les airs, ou au contraire, présente dans le sens
+		bien pêchue, voire assez physique et donc avec beaucoup de ressenti !</p>
+	    </div>
+	  </div>
+	  <div class="card m-2">
+  	  <div class="card-body">
+            <h5 class="card-title">Maniabilité</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Maniable - Vif</h6>
+            <p class="card-text">Une aile maniable se placera là où on le souhaite, mais elle restera ensuite
+		bien calée en fenêtre pour réaliser par exemple des figures de wakestyle
+		en déhooké. Une aile rapide sera très maniable. Enfin une aile vive (dans
+		le sens très rapide) pivotera très rapidement sur l’oreille, valeur sûre dans
+		les vagues par exemple.</p>
+  	  </div>
+	</div>
+	<div class="card m-2">
+  	  <div class="card-body">
+	    <h5 class="card-title">Drift</h5>
+	    <h6 class="card-subtitle mb-2 text-muted">How - Ligh</h6>
+	    <p class="card-text">Nous avons conservé "le drift" uniquement pour les ailes de vagues
+		destinées au surf et au strapless. Le drift, c’est la capacité de l’aile "à
+		déraper" pendant que l’on surfe. Une aile qui a du drift ne décroche pas
+		mais au contraire continue de suivre le rider sans tomber.</p>
+  	  </div>
+	</div>
+	<div class="card m-2">
+	  <div class="card-body">
+	    <h5 class="card-title">Big Air</h5>
+	    <h6 class="card-subtitle mb-2 text-muted"></h6>
+	    <p class="card-text">Nous avons introduit la notion de Big Air qui donne une info sur le hang
+		time et la sustentation de l'aile. Cette discipline revient en force, elle a
+		donc sa place aux côtés du freeride - new school ou waveriding.</p>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <a href="#navtest" class="p-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+
+  </section>
+
+
+  <section id="kite">
+  <br><br><br>
+    <div class="jumbotron" style="background-image: url(/assets/introtest3.jpg); background-size: 100%;">
+      <div class="container for-about">
+      <h1>kite</h1>
+      </div>
+    </div>
+
+    <h2 class="ml-2 fas fa-chevron-circle-right"> Kite Mono latte</h2>
+    <div class="row">
+      <% @products.each do |t, index| %>
+      <% if t.category === "kite" %>
+      <div class="card-deck m-3">
+        <div class="row mx-3">  
+          <div class="card m-3 p-2" style="max-width: 200px;">
+            <a href="<%= kite_path(t) %>">
+	    <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
+            <h3 class="card-title"><%= t.brand %></h3><h4> <%= t.name %> <%= t.testsize %>m</h4>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <%end%>
+      <%end%>
+    </div>
+    <h2 class="ml-2 fas fa-chevron-circle-right"> kite wave</h2>
+    <div class="row">
+      <% @products.each do |t, index| %>
+      <% if t.category === "board" %>
+        <div class="card-deck m-3">
+          <div class="row mx-3">  
+            <div class="card m-3 p-2" style="max-width: 200px;">
+              <a href="<%= kite_path(t) %>">
+	      <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
+              <h3 class="card-title"><%= t.brand %></h3><h4> <%= t.name %> <%= t.testsize %>m</h4>
+	    </div>
+	  </div>
+	</div>
+      <%else%>
+      <%end%>
+      <%end%>
+    </div>
+    <h2 class="ml-2 fas fa-chevron-circle-right"> kite freeride/freestyle</h2>
+    <div class="row">
+      <% @products.each do |t, index| %>
+      <% if t.category === "surfboard" %>
+      <div class="card-deck m-3">
+        <div class="row mx-3">  
+          <div class="card m-3 p-2" style="max-width: 200px;">
+            <a href="<%= kite_path(t) %>">
+	    <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
+            <h3 class="card-title"><%= t.brand %></h3><h4> <%= t.name %> <%= t.testsize %>m</h4>
+          </div>
+        </div>
+      </div>
+      <%else%>
+      <%end%>
+      <%end%>
+    </div>
+    <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+
+  </section>
+
+  <section id="presentation">
+  <br><br><br>
+    <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+      <div class="container for-about">
+        <h1>Ils ont testé pour vous</h1>
+      </div>
+    </div>
+
+    <div class="team">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="team-player">
+            <div class="card card-plain">
+              <div class="col-md-6 ml-auto mr-auto">
+                <img src="/assets/Hugo.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+              </div>
+              <h4 class="card-title">Hugo
+              <br>
+              <small class="card-description text-muted">Model</small>
+              </h4>
+              <div class="card-body">
+                <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-4">
+            <div class="team-player">
+              <div class="card card-plain">
+                <div class="col-md-6 ml-auto mr-auto">
+                  <img src="/assets/Greg.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                </div>
+                <h4 class="card-title">Greg
+                <br>
+                <small class="card-description text-muted">Designer</small>
+                </h4>
+                <div class="card-body">
+                  <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                  <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-player">
+              <div class="card card-plain">
+                <div class="col-md-6 ml-auto mr-auto">
+                  <img src="/assets/Marvin.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                </div>
+                <h4 class="card-title">Marvin
+                <br>
+                <small class="card-description text-muted">Model</small>
+                </h4>
+                <div class="card-body">
+                  <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                  <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+  </section>
+
+  <section id="compare">
+  <br><br><br>
+  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+    <div class="container for-about">
+    <h1>comparer kite</h1>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-12">
+    <div class="m-5 row">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-pills-icons flex-column" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" href="#dashboard-2" role="tab" data-toggle="tab">
+            <i class="fas fa-umbrella-beach"></i> Mono latte
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#schedule-2" role="tab" data-toggle="tab">
+            <i class="fas fa-water"></i> Wave
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#schedule-3" role="tab" data-toggle="tab">
+            <i class="fas fa-snowboarding"></i> Freestyle
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content">
+          <div class="tab-pane" id="schedule-3">
+                      Ceci est un tableau comparatif des kites testés freeride / freestyle, pour avoir une idée plus précise, merci de bien lire le test de la voile en détail.
+          <br>
+
+<table class="table table-striped text-center p-2">
+  <thead>
+    <tr>
+      <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+      <th scope="col"><%= t.name %></th>
+<%end%>
+<%end%>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+      <td><img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Marque</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+      <td><%= t.brand %></td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">taille testé</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+      <td><%= t.testsize %>m</td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Wave</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+      <td><%= t.name %><% while @wave < @technics(t).wave %>
+	    <i class="fas fa-star"></i>
+	    <% @wave = @wave + 1 %>
+	  <%end%>
+	  <% @wave = 0 %>
+      </td>
+<%end%>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Big Air</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+<% @technics.each do |u, index| %>
+      <td>bg<% while @bigair < u.bigair %>
+	    <i class="fas fa-star"></i>
+	    <% @bigair = @bigair + 1 %>
+	  <%end%>
+	  <% @bigair = 0 %>
+      </td>
+<%end%>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Freeride</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+<% @technics.each do |u, index| %>
+      <td>free<% while @freeride < u.freeride %>
+	    <i class="fas fa-star"></i>
+	    <% @freeride = @freeride + 1 %>
+	  <%end%>
+	  <% @freeride = 0 %>
+      </td>
+<%end%>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Freestyle</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+<% @technics.each do |u, index| %>
+      <td>style<% while @freestyle < u.freestyle %>
+	    <i class="fas fa-star"></i>
+	    <% @freestyle = @freestyle + 1 %>
+	  <%end%>
+	  <% @freestyle = 0 %>
+      </td>
+<%end%>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Maniability</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+<% @technics.each do |u, index| %>
+      <td>mania<% while @maniability < u.maniability %>
+	    <i class="fas fa-star"></i>
+	    <% @maniability = @maniability + 1 %>
+	  <%end%>
+	  <% @maniability = 0 %>
+      </td>
+<%end%>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Feeling</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+<% @technics.each do |u, index| %>
+      <td>feel<% while @feeling < u.feeling %>
+	    <i class="fas fa-star"></i>
+	    <% @feeling = @feeling + 1 %>
+	  <%end%>
+	  <% @feeling = 0 %>
+      </td>
+<%end%>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Tailles disponibles</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+<% @options.each do |u, index| %>
+      <td>size<%= u.size %></td>
+<%end%>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Bridage</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+<% @options.each do |u, index| %>
+      <td><%= u.bridle %></td>
+<%end%>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Prix</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+      <td><%= t.price %> €</td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" %>
+      <td><a href="<%= kite_path(t) %>" class="scrollup btn btn-success">Détails</a>
+</td>
+<%end%>
+<%end%>
+    </tr>
+
+  </tbody>
+</table>
+
+                    </div>
+
+                   <div class="tab-pane" id="schedule-2">
+                      Ceci est un tableau comparatif des kites testés vague, pour avoir une idée plus précise, merci de bien lire le test de la voile en détail.                      <br>
+
+                   <div class="tab-pane active" id="dashboard-2">
+                      Ceci est un tableau comparatif des kites testés mono latte, pour avoir une idée plus précise, merci de bien lire le test de la voile en détail.                      <br>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a href="#navtest" class="scrollup d-flex justify-content-end align-items-end"><i class="m-3 btn-sm btn-primary fa fa-caret-square-up"></i></a>
+  </section>
+<br>
+<br>
+<br>
+    <%= yield %>
+
+  </body>
+</html>

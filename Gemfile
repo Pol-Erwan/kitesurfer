@@ -9,6 +9,7 @@ gem 'faker'
 gem 'table_print'
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem 'colorize'
 
 gem 'letter_opener', :group => :development
 

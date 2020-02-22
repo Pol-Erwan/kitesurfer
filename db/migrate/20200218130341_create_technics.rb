@@ -1,6 +1,8 @@
 class CreateTechnics < ActiveRecord::Migration[5.2]
   def change
     create_table :technics do |t|
+      t.belongs_to :product, index: true
+
       t.integer :wave
       t.integer :bigair
       t.integer :freeride

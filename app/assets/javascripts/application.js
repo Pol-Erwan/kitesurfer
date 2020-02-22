@@ -13,4 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require jquery.min
+//= require popper.min
+//= require bootstrap-material-design.min
+//= require moment.min
+//= require bootstrap-datetimepicker
+//= require nouislider.min
+//= require material-kit

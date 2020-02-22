@@ -62,19 +62,47 @@ variable = 0
 
 10.times do
 
-	user << User.create(first_name: user_first_name[variable], last_name: user_last_name[0],email: user_email[variable], password: user_password[variable], is_admin: user_is_admin[variable])
+	my_user = User.create(first_name: user_first_name[variable], last_name: user_last_name[0],email: user_email[variable], password: user_password[variable], is_admin: user_is_admin[variable])
 
-	product << Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: "freestyle", description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
+my_article = Article.new(title:"freestyle session", title2:"pures conditions", author:"Hugo", link:"assets/article/article.jpg" )
+my_article.user = my_user
+my_article.save
+print my_user.first_name .yellow
+print " "
+print my_article.title .yellow
+print " Id n°" .yellow
+puts my_user.id
 
-	product << Product.create(name: board_name[variable], brand: brand[variable], category: category[1], domain: "freestyle", description: kite_description[0], favorite: "pop", testsize: "135x42", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(400..800), year: "2020")
 
-	product << Product.create(name: surfboard_name[variable], brand: brand[variable], category: category[2], domain: "freestyle", description: kite_description[0], favorite: "son pads", testsize: "6'4", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(500..1000), year: "2020")
+my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: "freestyle", description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
+my_technic = Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5))
+my_option = Option.create(detail:"section detail", size:"7 / 9 / 11 /13", bridle: "no poulies", trim:"sangle", twist:"devrilleur",line: rand(20..27), v: "V", strut: rand(0..5))
+my_kite.technic = my_technic
+my_kite.option = my_option
+my_kite.save
+print my_kite.name .green
+print " Id n°" .green
+puts my_kite.id 
 
-	article << Article.create(title:"freestyle session", title2:"pures conditions", author:"Hugo", link:"assets/article/article.jpg" )
+my_board = Product.create(name: board_name[variable], brand: brand[variable], category: category[1], domain: "freestyle", description: kite_description[0], favorite: "pop", testsize: "135x42", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(400..800), year: "2020")
+my_technic = Technic.create(freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), control: rand(0..5), progression: rand(0..5))
+my_option = Option.create(detail:"section detail", fin: "3,5cm",stance: "62cm / 65cm / 68cm",champs: "HRD", weigh: rand(3.2..4.8), carene: "channel", flex:"medium", velcros: rand(1..4))
+my_board.technic = my_technic
+my_board.option = my_option
+my_board.save
+print my_board.name .red
+print " ID n°" .red
+puts my_board.id
 
-	technic << Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5), control: rand(0..5), progression: rand(0..5),courbes: rand(0..5),wind: rand(0..5),sideshore: rand(0..5),onshore: rand(0..5), strap: rand(0..5),strapless: rand(0..5), transitions: rand(0..5), wing: rand(1200..1800), pad: rand(0..5))
-
-	option << Option.create(detail:"section detail", size:"7 / 9 / 11 /13", bridle: "no poulies", fin: "3,5cm", width: rand(33..38),stance: "62cm / 65cm / 68cm",champs: "HRD", weigh: rand(3.2..4.8), carene: "channel", flex:"medium", length: rand(150..180), maitrebau: rand(40..50), thickness:rand(5.5..6.8), volum:rand(22..26), trim:"sangle", twist:"devrilleur",line: rand(20..27), v: "V", velcros: rand(1..4), box:"futures fins", strut: rand(0..5))
+my_surf = Product.create(name: surfboard_name[variable], brand: brand[variable], category: category[2], domain: "freestyle", description: kite_description[0], favorite: "son pads", testsize: "6'4", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(500..1000), year: "2020")
+my_technic = Technic.create(wave: rand(0..5),freestyle: rand(0..5), courbes: rand(0..5),wind: rand(0..5),sideshore: rand(0..5),onshore: rand(0..5), strap: rand(0..5),strapless: rand(0..5), transitions: rand(0..5))
+my_option = Option.create(detail:"section detail", fin: "3,5cm", width: rand(33..38),champs: "HRD", weigh: rand(3.2..4.8), length: rand(150..180), maitrebau: rand(40..50), thickness:rand(5.5..6.8), volum:rand(22..26), box:"futures fins")
+my_surf.technic = my_technic
+my_surf.option = my_option
+my_surf.save
+print my_surf.name .blue
+print " Id n°" .blue
+puts my_surf.id
 
 variable = variable + 1
 
