@@ -42,9 +42,7 @@
                   <%= text_field_tag 'favorite', @kite.favorite, class: "form-control" %>
                 </div>
               </div>
-	<%end%>
 
-            <%= form_tag url_for(action: 'create'), method: 'post' do %>
         <h3 class="title text-center"> Compétences</h3>
               <div class="row">
                 <div class="col-2">
@@ -72,11 +70,21 @@
               <%= text_field_tag 'feeling', @technic.feeling, class: "form-control"%>
 		</div>
 		</div>
-	<%end%>
-            <%= form_tag url_for(action: 'create'), method: 'post' do %>
 
         <h3 class="title text-center"> Caractérisques</h3>
               <div class="row">
+                <div class="col-2">
+              <%= label_tag 'taille disponible' %>
+              <%= text_field_tag 'size', @option.size, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'bridage' %>
+              <%= text_field_tag 'bridle', @option.bridle, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'strut' %>
+              <%= text_field_tag 'strut', @option.strut, class: "form-control"%>
+		</div>
                 <div class="col-2">
               <%= label_tag 'taille testé' %>
               <%= text_field_tag 'testsize', @kite.testsize, class: "form-control"%>

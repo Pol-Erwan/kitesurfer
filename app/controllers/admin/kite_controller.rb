@@ -8,18 +8,21 @@ class Admin::KiteController < Admin::BasesController
 
   def new
     @kite = Product.new
-    @technic = Technic.all
-    @option = Option.all
+    @technic = Technic.new
+    @option = Option.new
   end
 
   def create
       @kite = Product.new(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
-      @technic = Technic.new(wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
+      @technic = Technic.new( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
 
       @option = Option.new(size: params[:size], bridle: params[:bridle], strut: params[:strut])
 
-      if @kite.save
+      @kite.technic = @technic
+      @kite.option = @option
+
+      if @kite.save && @technic.save && @option.save
         flash[:success] = "Le kite a bien été ajouté !"
         redirect_to admin_kite_index_path
       else
@@ -28,16 +31,19 @@ class Admin::KiteController < Admin::BasesController
   end
 
   def edit
-      @kite = Product.find(params[:id])
-      @technic = Technic.find(params[:id])
-      @option = Option.find(params[:id])
+    @kite = Product.find(params[:id])
+    @technic = Technic.find_by(product_id: @kite.id)
+    @option = Option.find_by(product_id: @kite.id)
   end
 
   def destroy
-      @kite = Product.find(params[:id])
-      @technic = Technic.find(params[:id])
-      @option = Option.find(params[:id])
-      @kite.delete
+    @kite = Product.find(params[:id])
+    @technic = Technic.find_by(product_id: @kite.id)
+    @option = Option.find_by(product_id: @kite.id)
+    @kite.delete
+    @technic.delete
+    @option.delete
+
       flash[:sucess] = "Le kite a bien été supprimé !"
 
       redirect_to admin_kite_index_path

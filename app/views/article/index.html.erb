@@ -1,4 +1,8 @@
-
+<% if user_signed_in? && current_user.is_admin == true%>
+<%= render"layouts/navbaradmin" %>
+<%else%>
+<%= render"layouts/navbar" %>
+<%end%>
 <body class="index-page sidebar-collapse">
   <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('assets/background/paul.jpg');">
     <div class="container">

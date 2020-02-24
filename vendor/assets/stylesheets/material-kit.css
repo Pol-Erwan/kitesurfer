@@ -17548,7 +17548,7 @@ footer .pull-center {
   .navbar-collapse .dropdown-toggle:after {
     position: absolute;
     right: 16px;
-    margin-top: 8px;
+    margin-top: 0px;
   }
   .navbar-collapse .navbar-nav {
     position: relative;
