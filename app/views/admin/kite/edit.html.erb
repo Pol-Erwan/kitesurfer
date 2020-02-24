@@ -1,10 +1,10 @@
 <body style="background-image: url('/assets/background/admin.jpg')">
 
-  <% if @kite.errors.any? %>
+  <% if @product.errors.any? %>
   <div class="alert alert-danger" role="alert">
             <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
             <ul>
-              <% @kite.errors.full_messages.each do |message| %>
+              <% @product.errors.full_messages.each do |message| %>
                 <li class="li_errors"><%= message %></li>
               <% end %>
             </ul>
@@ -15,7 +15,7 @@
     <%= link_to " ", admin_kite_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
 </div>
 <br>
-        <h2 class="title text-white"> Modifier le kite <%= @kite.name %></h2>      
+        <h2 class="title text-white"> Modifier le kite <%= @product.name %> n°<%= @product.id %></h2>      
 <div class="container card card-body p-5" >
         <h3 class="title text-center"> Infos principales</h3>
   <div class="row">
@@ -24,19 +24,19 @@
               <div class="row">
                 <div class="col-3">
                   <%= label_tag 'modèle' %>
-                  <%= text_field_tag 'name', @kite.name, class: "form-control" %>
+                  <%= text_field_tag 'name', @product.name, class: "form-control" %>
                 </div>
                 <div class="col-3">
                   <%= label_tag 'Marque' %>
-                  <%= text_field_tag 'brand', @kite.brand, class: "form-control" %>
+                  <%= text_field_tag 'brand', @product.brand, class: "form-control" %>
                 </div>
                 <div class="col-3">
                   <%= label_tag 'Domaine' %>
-                  <%= text_field_tag 'domain', @kite.domain, class: "form-control" %>
+                  <%= text_field_tag 'domain', @product.domain, class: "form-control" %>
                 </div>
                 <div class="col-3">
                   <%= label_tag 'favoris' %>
-                  <%= text_field_tag 'favorite', @kite.favorite, class: "form-control" %>
+                  <%= text_field_tag 'favorite', @product.favorite, class: "form-control" %>
                 </div>
               </div>
         <h3 class="title text-center"> Compétences</h3>
@@ -82,28 +82,58 @@
 		</div>
                 <div class="col-2">
               <%= label_tag 'taille testé' %>
-              <%= text_field_tag 'testsize', @kite.testsize, class: "form-control"%>
+              <%= text_field_tag 'testsize', @product.testsize, class: "form-control"%>
 		</div>
                 <div class="col-2">
               <%= label_tag 'prix' %>
-              <%= text_field_tag 'price', @kite.price, class: "form-control"%>
+              <%= text_field_tag 'price', @product.price, class: "form-control"%>
 		</div>
                 <div class="col-2">
               <%= label_tag 'millésime' %>
-              <%= text_field_tag 'year', @kite.year, class: "form-control"%>
+              <%= text_field_tag 'year', @product.year, class: "form-control"%>
 		</div>
                 <div class="col-6">
               <%= label_tag 'lien youtube' %>
-              <%= text_field_tag 'youtube', @kite.youtube, class: "form-control"%>
+              <%= text_field_tag 'youtube', @product.youtube, class: "form-control"%>
 		</div>
                 <div class="col-12">
               <%= label_tag 'description' %>
-              <%= text_field_tag 'description', @kite.description, class: "form-control"%>
+              <%= text_field_tag 'description', @product.description, class: "form-control"%>
 		</div>
                 </div>
 
+
+
+
             <center><%= submit_tag "Modifier le kite", class:"m-4 btn btn-outline-primary" %></center>
           <% end %>
+
+<h1>Picture</h1>
+
+
+<h3>picture actuelle</h3>
+<%if @product.picture.attached?%>
+
+<% @product.picture.each do |t, index| %>
+  <div class="col-sm-2">
+  <%= image_tag t, alt: 'kite picture', style:"width:200px" %>
+</div>
+<%end%>
+
+<%else%>
+  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+<%end%>
+
+<h3>Changer les photos ?</h3>
+<br>
+<h3>photo 1</h3>
+
+<%= form_tag admin_kite_picture_index_path(@product), multipart: true do %>
+ <%= file_field_tag :picture, required: true %>
+ <%= submit_tag "mettre à jour" %>
+
+<% end %>
+
       </div>
     </div>
 </body>
