@@ -75,10 +75,10 @@ $(document).ready(function() {
       //.log to determine when you want the 
       //nav bar to stick.  
       console.log($(window).scrollTop())
-    if ($(window).scrollTop() > 280) {
+    if ($(window).scrollTop() > 450) {
       $('#nav_bar').addClass('navbar-fixed');
     }
-    if ($(window).scrollTop() < 281) {
+    if ($(window).scrollTop() < 451) {
       $('#nav_bar').removeClass('navbar-fixed');
     }
   });
@@ -281,14 +281,14 @@ $(document).ready(function() {
 
     <h2 class="ml-2 fas fa-chevron-circle-right"> Kite Mono latte</h2>
     <div class="row">
-      <% @options.each do |t, index| %>
-      <% if t.strut === 1 %>
+      <% @products.each do |t, index| %>
+      <% if t.domain === "foil" && t.category === "kite" %>
       <div class="card-deck m-3">
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
-            <a href="<%= kite_path(t.product_id) %>">
+            <a href="<%= kite_path(t) %>">
 	    <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
-            <h3 class="card-title"> <%= @products.find(t.product_id).brand %>  </h3><h4> <%= @products.find(t.product_id).name %> <%= @products.find(t.product_id).testsize %> m</h4>
+            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %> <%= t.testsize %> m</h4>
           </div>
         </div>
       </div>
@@ -298,14 +298,14 @@ $(document).ready(function() {
     </div>
     <h2 class="ml-2 fas fa-chevron-circle-right"> kite wave</h2>
     <div class="row">
-      <% @technics.each do |t, index| %>
-      <% if t.wave != nil && t.wave >= 4 && @products.find(t.product_id).category === "kite" %>
+      <% @products.each do |t, index| %>
+      <% if t.domain === "wave" && t.category === "kite" %>
         <div class="card-deck m-3">
           <div class="row mx-3">  
             <div class="card m-3 p-2" style="max-width: 200px;">
-              <a href="<%= kite_path(t.product_id) %>">
+              <a href="<%= kite_path(t) %>">
 	      <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
-            <h3 class="card-title"> <%= @products.find(t.product_id).brand %>  </h3><h4> <%= @products.find(t.product_id).name %> <%= @products.find(t.product_id).testsize %> m</h4>
+            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %> <%= t.testsize %> m</h4>
 	    </div>
 	  </div>
 	</div>
@@ -315,14 +315,18 @@ $(document).ready(function() {
     </div>
     <h2 class="ml-2 fas fa-chevron-circle-right"> kite freeride/freestyle</h2>
     <div class="row">
-      <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" && t.wave < 4 %>
+      <% @products.each do |t, index| %>
+      <% if t.category === "kite" && t.domain === "freestyle" %>
       <div class="card-deck m-3">
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
-            <a href="<%= kite_path(t.product_id) %>">
+            <a href="<%= kite_path(t) %>">
+		<% if t.picture.attached? %>
+  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid" %>
+		<% else %>
 	    <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
-            <h3 class="card-title"> <%= @products.find(t.product_id).brand %>  </h3><h4> <%= @products.find(t.product_id).name %> <%= @products.find(t.product_id).testsize %> m</h4>
+		<% end %>
+            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %> <%= t.testsize %> m</h4>
           </div>
         </div>
       </div>
@@ -554,8 +558,8 @@ $(document).ready(function() {
     <tr>
       <th scope="row">Tailles disponibles</th>
 <% @options.each do |t, index| %>
-<% if t.size != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" %>
-      <td><%= t.size %></td>
+<% if t.range != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" %>
+      <td><%= t.range %></td>
 <%end%>
 <%end%>
     </tr>
@@ -710,8 +714,8 @@ $(document).ready(function() {
     <tr>
       <th scope="row">Tailles disponibles</th>
 <% @options.each do |t, index| %>
-<% if t.size != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "wave" %>
-      <td><%= t.size %></td>
+<% if t.range != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "wave" %>
+      <td><%= t.range %></td>
 <%end%>
 <%end%>
     </tr>
@@ -743,9 +747,160 @@ $(document).ready(function() {
 
   </tbody>
 </table>
-
+</div>
                    <div class="tab-pane active" id="dashboard-2">
                       Ceci est un tableau comparatif des kites testés mono latte, pour avoir une idée plus précise, merci de bien lire le test de la voile en détail.                      <br>
+<table class="table table-striped text-center p-2">
+  <thead>
+    <tr>
+      <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" && t.domain === "foil" %>
+
+      <th scope="col"><%= t.name %></th>
+<%end%>
+<%end%>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" && t.domain === "foil" %>
+      <td><img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Marque</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" && t.domain === "foil" %>
+      <td><%= t.brand %></td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">taille testé</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" && t.domain === "foil" %>
+      <td><%= t.testsize %>m</td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Wave</th>
+<% @technics.each do |t, index| %>
+<% if t.wave != nil && @products.find(t.product_id).category === "kite"  && @products.find(t.product_id).domain === "foil" %>
+      <td><% while @wave < t.wave %>
+	    <i class="fas fa-star"></i>
+	    <% @wave = @wave + 1 %>
+	  <%end%>
+	  <% @wave = 0 %>
+      </td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Big Air</th>
+<% @technics.each do |t, index| %>
+<% if t.bigair != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "foil" %>
+      <td><% while @bigair < t.bigair %>
+	    <i class="fas fa-star"></i>
+	    <% @bigair = @bigair + 1 %>
+	  <%end%>
+	  <% @bigair = 0 %>
+      </td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Freeride</th>
+<% @technics.each do |t, index| %>
+<% if t.freeride != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "foil" %>
+      <td><% while @freeride < t.freeride %>
+	    <i class="fas fa-star"></i>
+	    <% @freeride = @freeride + 1 %>
+	  <%end%>
+	  <% @freeride = 0 %>
+      </td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Freestyle</th>
+<% @technics.each do |t, index| %>
+<% if t.freestyle != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "foil" %>
+      <td><% while @freestyle < t.freestyle %>
+	    <i class="fas fa-star"></i>
+	    <% @freestyle = @freestyle + 1 %>
+	  <%end%>
+	  <% @freestyle = 0 %>
+      </td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Maniability</th>
+<% @technics.each do |t, index| %>
+<% if t.maniability != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "foil" %>
+      <td><% while @maniability < t.maniability %>
+	    <i class="fas fa-star"></i>
+	    <% @maniability = @maniability + 1 %>
+	  <%end%>
+	  <% @maniability = 0 %>
+      </td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Feeling</th>
+<% @technics.each do |t, index| %>
+<% if t.feeling != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "foil" %>
+      <td><% while @feeling < t.feeling %>
+	    <i class="fas fa-star"></i>
+	    <% @feeling = @feeling + 1 %>
+	  <%end%>
+	  <% @feeling = 0 %>
+      </td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Tailles disponibles</th>
+<% @options.each do |t, index| %>
+<% if t.range != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "foil" %>
+      <td><%= t.range %></td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Bridage</th>
+<% @options.each do |t, index| %>
+<% if t.bridle != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "foil" %>
+      <td><%= t.bridle %></td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Prix</th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" && t.domain === "foil" %>
+      <td><%= t.price %> €</td>
+<%end%>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+<% @products.each do |t, index| %>
+<% if t.category === "kite" && t.domain === "foil" %>
+      <td><a href="<%= kite_path(t) %>" class="scrollup btn btn-success">Détails</a>
+</td>
+<%end%>
+<%end%>
+    </tr>
+
+  </tbody>
+</table>
 
               </div>
             </div>

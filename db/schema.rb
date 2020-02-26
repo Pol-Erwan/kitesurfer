@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_111305) do
   create_table "options", force: :cascade do |t|
     t.bigint "product_id"
     t.string "detail"
-    t.string "size"
+    t.string "range"
     t.string "bridle"
     t.string "fin"
     t.string "width"

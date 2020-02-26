@@ -17,7 +17,7 @@ class Admin::KiteController < Admin::BasesController
 
       @technic = Technic.new( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
 
-      @option = Option.new(size: params[:size], bridle: params[:bridle], strut: params[:strut])
+      @option = Option.new(detail: params[:detail], range: params[:range], bridle: params[:bridle], strut: params[:strut])
 
       @product.technic = @technic
       @product.option = @option
@@ -44,15 +44,14 @@ class Admin::KiteController < Admin::BasesController
 
     if @product.update(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
-    if @technic.update( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
+      if @technic.update( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
 
-    if @option.update(size: params[:size], bridle: params[:bridle], strut: params[:strut])
- 
-       redirect_to admin_kite_index_path
-      else
-        render :edit
+        if @option.update(detail: params[:detail], range: params[:range], bridle: params[:bridle], strut: params[:strut])
+          redirect_to admin_kite_index_path
+        else
+          render :edit
+        end
       end
-	end
     end
   end
 

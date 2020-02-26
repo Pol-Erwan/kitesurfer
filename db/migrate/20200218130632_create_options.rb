@@ -4,7 +4,7 @@ class CreateOptions < ActiveRecord::Migration[5.2]
       t.belongs_to :product, index: true
 
       t.string :detail
-      t.string :size
+      t.string :range
       t.string :bridle
       t.string :fin
       t.string :width
