@@ -20,7 +20,7 @@
         <h3 class="title text-center"> Infos principales</h3>
   <div class="row">
 
-            <%= form_tag url_for(action: 'create'), method: 'post' do %>
+            <%= form_tag url_for(action: 'update'), method: 'put' do %>
               <div class="row">
                 <div class="col-3">
                   <%= label_tag 'modèle' %>
@@ -33,6 +33,10 @@
                 <div class="col-3">
                   <%= label_tag 'Domaine' %>
                   <%= text_field_tag 'domain', @product.domain, class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= label_tag 'Categorie' %>
+                  <%= text_field_tag 'category', @product.category, class: "form-control" %>
                 </div>
                 <div class="col-3">
                   <%= label_tag 'favoris' %>
@@ -95,6 +99,10 @@
                 <div class="col-6">
               <%= label_tag 'lien youtube' %>
               <%= text_field_tag 'youtube', @product.youtube, class: "form-control"%>
+		</div>
+                <div class="col-6">
+              <%= label_tag 'lien site constructeur' %>
+              <%= text_field_tag 'link', @product.link, class: "form-control"%>
 		</div>
                 <div class="col-12">
               <%= label_tag 'description' %>

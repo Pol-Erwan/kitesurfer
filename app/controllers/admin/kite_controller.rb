@@ -34,9 +34,26 @@ class Admin::KiteController < Admin::BasesController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
-    @size = 1
-    @name = ["test","profil","bridage","poulie","valve","id card","zoom 1","zoom 2","zoom 3"]
 
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @technic = Technic.find_by(product_id: @product.id)
+    @option = Option.find_by(product_id: @product.id)
+
+    if @product.update(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
+
+    if @technic.update( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
+
+    if @option.update(size: params[:size], bridle: params[:bridle], strut: params[:strut])
+ 
+       redirect_to admin_kite_index_path
+      else
+        render :edit
+      end
+	end
+    end
   end
 
   def destroy
@@ -50,16 +67,6 @@ class Admin::KiteController < Admin::BasesController
       flash[:sucess] = "Le kite a bien été supprimé !"
 
       redirect_to admin_kite_index_path
-  end
-
-  def photo
-
-    @product = Product.find(params[:id])
-    @technic = Technic.find_by(product_id: @product.id)
-    @option = Option.find_by(product_id: @product.id)
-    @size = 1
-    @name = ["test","profil","bridage","poulie","valve","id card","zoom 1","zoom 2","zoom 3"]
-
   end
 
 end
