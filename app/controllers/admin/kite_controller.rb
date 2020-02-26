@@ -34,6 +34,9 @@ class Admin::KiteController < Admin::BasesController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
+    @size = 1
+    @name = ["test","profil","bridage","poulie","valve","id card","zoom 1","zoom 2","zoom 3"]
+
   end
 
   def destroy
@@ -47,6 +50,16 @@ class Admin::KiteController < Admin::BasesController
       flash[:sucess] = "Le kite a bien été supprimé !"
 
       redirect_to admin_kite_index_path
-    end
+  end
+
+  def photo
+
+    @product = Product.find(params[:id])
+    @technic = Technic.find_by(product_id: @product.id)
+    @option = Option.find_by(product_id: @product.id)
+    @size = 1
+    @name = ["test","profil","bridage","poulie","valve","id card","zoom 1","zoom 2","zoom 3"]
+
+  end
 
 end

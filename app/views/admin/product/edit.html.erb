@@ -1,0 +1,68 @@
+<body style="background-image: url('/assets/background/admin.jpg')">
+
+  <% if @product.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+            <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
+            <ul>
+              <% @product.errors.full_messages.each do |message| %>
+                <li class="li_errors"><%= message %></li>
+              <% end %>
+            </ul>
+    </div>
+      <% end %>
+
+<div class="m-2">
+    <%= link_to " ", admin_product_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+</div>
+        <h2 class="title text-white"> Modifier les photos <%= @product.name %> n°<%= @product.id %></h2>
+<div class="container card card-body p-5" >
+
+
+<section id="picture">
+
+<h1>Photos</h1>
+<%if @product.picture.attached?%>
+
+<div class="row">
+<% @product.picture.each do |t, index| %>
+      <div class="card-deck m-3">
+        <div class="row mx-3">  
+          <div class="card m-3" style="max-width: 200px;">
+<h4 class="text-center">photo <%= @name[@size] %></h4>
+  <%= image_tag t, alt: 'kite picture', style:"width:200px" %>
+  <% @size = @size + 1 %>
+</div>
+</div>
+</div>
+
+<%end%>
+
+</div>
+
+<h3>supprimer la dernière photo (<%= @name[@size - 1] %>) ? </h3>
+      <td><%= link_to "Supprimer", admin_product_picture_path(@product.picture), class:"btn-sm btn-danger", method: :delete %></td>
+
+<%else%>
+  <p>=== Il n'y a pas encore de photos lié à ce produit ===</p>
+<%end%>
+
+<% if @product.picture.size < 9 %>
+<h3>Ajouter la photo <%= @name[@size] %></h3>
+<%= form_tag admin_product_picture_index_path(@product), multipart: true do %>
+ <%= file_field_tag :picture, required: true %>
+ <%= submit_tag "mettre à jour", class:"btn-sm btn-success" %>
+<% end %>
+
+
+<% end %>
+
+
+</section>
+
+</div>
+<div class="m-2">
+    <%= link_to " ", admin_product_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+</div>
+
+    </div>
+</body>

@@ -12,9 +12,9 @@ class KiteController < ApplicationController
   end
 
   def show
-    @kite = Product.find(params[:id])
-    @technic = Technic.find_by(product_id: @kite.id)
-    @option = Option.find_by(product_id: @kite.id)
+    @product = Product.find(params[:id])
+    @technic = Technic.find_by(product_id: @product.id)
+    @option = Option.find_by(product_id: @product.id)
     @wave = 0
     @bigair = 0
     @freeride = 0

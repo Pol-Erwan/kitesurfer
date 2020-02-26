@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :user, only: [:show] do
-    resources :avatar, only: [:create]
+    resources :avatar, only: [:create,:destroy]
   end
 
-  resources :kite, only:[:index,:show] 
+  resources :kite, only:[:index,:show]
   resources :board, only:[:index,:show]
   resources :surfboard, only:[:index,:show]
 
@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     root 'admins#index'
     resources :admins
     resources :users
-    resources :kite do
-      resources :picture, only: [:create]
+    resources :kite
+    resources :product do
+      resources :picture, only: [:create,:destroy]
     end
     resources :article
   end

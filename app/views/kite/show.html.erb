@@ -7,10 +7,18 @@
           <div class="col-md-12 ml-auto mr-auto">
             <div class="profile">
               <div class="avatar">
+<%if @product.picture.attached?%>
+  <%= image_tag @product.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:400px" %>
+  <%= image_tag @product.picture.second, alt: 'kite picture', class:"img-raised rounded img-fluid m-4", style:"width:100px" %>
+  <%= image_tag @product.picture.third, alt: 'kite picture', class:"img-raised rounded img-fluid m-4", style:"width:100px" %>
+  <%= image_tag @product.picture.fourth, alt: 'kite picture', class:"img-raised rounded img-fluid m-4", style:"width:100px" %>
+
+<% else %>
                 <img src="/assets/testkite/bandit.png" alt="Circle Image" class="img-raised rounded img-fluid">
                 <img src="/assets/testkite/bridage bandit.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
                 <img src="/assets/testkite/valve bandit.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
                 <img src="/assets/testkite/poulie bandit.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
+<% end %>
               </div>
 	    </div>
 	  </div>
@@ -18,8 +26,8 @@
       </div>
     </div>
 
-    <h1 class="title" id="navshow"> <%= @kite.name %></h1>
-	<h3 class="ml-4"> by <%= @kite.brand %></h3>
+    <h1 class="title" id="navshow"> <%= @product.name %></h1>
+	<h3 class="ml-4"> by <%= @product.brand %></h3>
 
   <nav id='nav_bar'>
     <div class="row">
@@ -110,20 +118,20 @@ $(document).ready(function() {
 	        <div class="row">
 		  <div class="col-md-5 col-md-offset-0 col-sm-10 col-sm-offset-1">
                     <div class="text-center">
-                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @kite.name %></h2>
+                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @product.name %></h2>
                       <img src="/assets/testkite/bandit ride.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:200px">
                     </div>
                   </div>
                   <div class="mt-5 col-md-5 col-sm-12">
-                    <h6><i class="fas fa-heart"></i>  Son point fort : <%= @kite.favorite %></h6>
-                    <h6>Domain : <%= @kite.domain %></h6>
-                    <h6>Taille testé : <%= @kite.testsize %>m</h6>
+                    <h6><i class="fas fa-heart"></i>  Son point fort : <%= @product.favorite %></h6>
+                    <h6>Domain : <%= @product.domain %></h6>
+                    <h6>Taille testé : <%= @product.testsize %>m</h6>
                     <h6>Tailles disponible : <%= @option.size %></h6>
-                    <h6>Prix en shop : <%= @kite.price %>€ pour une <%= @kite.testsize %>m nue</h6>
+                    <h6>Prix en shop : <%= @product.price %>€ pour une <%= @product.testsize %>m nue</h6>
 		    <h6>nombre de lattes : <%= @option.strut %></h6>
 		    <h6>type de bridage : <%= @option.bridle %></h6>
-		    <h6>millésime : <%= @kite.year %></h6>
-		    <a class="btn btn-success" href="<%= @kite.link %>" target="blank_">more details</a>
+		    <h6>millésime : <%= @product.year %></h6>
+		    <a class="btn btn-success" href="<%= @product.link %>" target="blank_">more details</a>
 		  </div>
                 </div>
   		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
@@ -147,7 +155,7 @@ $(document).ready(function() {
               </div>
               <div class="col-md-8">
                 <div class="tab-content">
-		  <p><%= @kite.description %></p>
+		  <p><%= @product.description %></p>
                 </div>
               </div>
             </div>
@@ -307,7 +315,7 @@ var polarAreaChart = new Chart(birdsCanvas, {
 	<div class="d-flex justify-content-center">
             <div class="card row m-3 p-3 col-lg-8">
               <div class="d-flex justify-content-center">
-		<iframe width="560" height="315" src="<%= @kite.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="<%= @product.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	      </div>
   		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
             </div>
