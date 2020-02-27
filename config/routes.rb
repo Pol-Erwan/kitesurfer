@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :accessory, only:[:index,:show]
 
   resources :article, only:[:index,:show]
+  resources :portfolio, only:[:index,:show]
 
   namespace :admin do
     root 'admins#index'
@@ -25,7 +26,10 @@ Rails.application.routes.draw do
     resources :product do
       resources :picture, only: [:create,:destroy]
     end
-    resources :article
+    resources :article do
+      resources :image, only: [:create, :destroy]
+    end
+    resources :portfolio
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,4 +1,4 @@
-class ArticleController < ApplicationController
+class PortfolioController < ApplicationController
 
   def index
     @articles = Article.all

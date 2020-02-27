@@ -69,7 +69,7 @@ variable = 0
 
 	my_user = User.create(first_name: user_first_name[variable], last_name: user_last_name[0],email: user_email[variable], password: user_password[variable], is_admin: user_is_admin[variable])
 
-my_article = Article.new(title:"freestyle session", title2:"pures conditions", link:"assets/article/article.jpg" )
+my_article = Article.new(title:"freestyle session", title2:"pures conditions", link:"assets/article/article.jpg", domain: "news")
 my_article.user = my_user
 my_article.save
 print my_user.first_name .yellow
@@ -77,6 +77,13 @@ print " "
 print my_article.title .yellow
 print " Id n°" .yellow
 puts my_user.id
+
+my_portfolio = Article.create(title: user_first_name[variable], title2:"portfolio",domain: "portfolio",title3: "Spot: plage sud", author: "Hugo", link:"assets/article/article.jpg" )
+my_portfolio.user = my_user
+my_portfolio.save
+print my_portfolio.title2 .yellow
+print " Id n°" .yellow
+puts my_article.id
 
 
 my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: "freestyle", description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
