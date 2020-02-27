@@ -15,9 +15,9 @@
  		  <%= image_tag @product.picture.fourth, alt: 'kite picture', class:"img-raised rounded img-fluid m-4", style:"width:100px" %>
 		<% else %>
                   <img src="/assets/testaccessory/bar2.png" alt="Circle Image" class="img-raised rounded img-fluid">
-                  <img src="/assets/testkite/bridage bandit.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
-                  <img src="/assets/testkite/valve bandit.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
-                  <img src="/assets/testkite/poulie bandit.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
+                  <img src="/assets/testaccessory/bar.png" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
+                  <img src="/assets/testaccessory/chickenloop.png" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
+                  <img src="/assets/testaccessory/chickenloop.png" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:100px">
 		<% end %>
               </div>
 	    </div>
@@ -65,9 +65,9 @@
 		<%end%>
             </li>
 	    <li class="nav-item">
-              <%= link_to kite_path(anchor: "barre"), class:"nav-link disabled" do %>
-              <i class="text-center text-warning fas fa-gamepad"></i>
-		<h6 class="text-center text-warning">Barre</h6>
+              <%= link_to kite_path(anchor: "kite"), class:"nav-link" do %>
+              <i class="text-center text-warning fas fa-plus"></i>
+		<h6 class="text-center text-warning">kite conseillé</h6>
 		<%end%>
             </li>
 	    <li class="nav-item">
@@ -87,37 +87,94 @@
 
 
 	<section id="idcard">
+<% if @product.domain === "bar" %>
           <h2 class="ml-5 fas fa-id-card"> Id Card</h2>
 	<div class="d-flex justify-content-center">
-          <div class="col-md-8">
+          <div class="col-md-10">
             <div class="name">
 	      <div class="card pb-4">
 	        <div class="row">
-		  <div class="col-md-5 col-md-offset-0 col-sm-10 col-sm-offset-1">
+		  <div class="col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1">
                     <div class="text-center">
                       <h2 class=""><i class="fas fa-id-badge"></i> <%= @product.name %></h2>
-                      <img src="/assets/testkite/bandit ride.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:200px">
+                      <img src="/assets/testaccessory/bar2.png" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:200px">
                     </div>
                   </div>
-                  <div class="mt-5 col-md-5 col-sm-12">
-                    <h6><i class="fas fa-heart"></i>  Son point fort : <%= @product.favorite %></h6>
-                    <h6>Domain : <%= @product.domain %></h6>
+                  <div class="mt-5 col-md-4 col-sm-12">
+                    <h3><i class="fas fa-heart"></i>  On a aimé : <%= @product.favorite %></h3>
                     <h6>Taille testé : <%= @product.testsize %>m</h6>
                     <h6>Tailles disponible : <%= @option.range %></h6>
-                    <h6>Prix en shop : <%= @product.price %>€ pour une <%= @product.testsize %>m nue</h6>
-		    <h6>grip : <%= @technic.grip %></h6>
-		    <h6>product id : <%= @product.id %></h6>
-		    <h6>option id : <%= @option.id %></h6>
-		    <h6>technic id : <%= @technic.id %></h6>
-		    <h6>millésime : <%= @product.year %></h6>
+                    <h6>Prix en shop : <%= @product.price %>€</h6>
+		    <h6>grip : mou<% while @grip < @technic.grip %>
+	    		<i class="fas fa-circle"></i>
+	    		<% @grip = @grip + 1 %>
+	  		<%end%>
+			<% while @grip < 6 %>
+	    		<i class="far fa-circle"></i>
+			<% @grip = @grip + 1 %>
+			<% end %>
+	  		<% @grip = 0 %>
+		    dur</h6>
+			<div class="card p-1">
+			<h6>details : <%= @option.detail %></h6>
+			</div>
+
+		  </div>
+                  <div class="mt-5 col-md-4 col-sm-12">
+                    <h3><i class="fas fa-wrench"></i>  Caractéristique :</h3>
+                    <h6><i class="fab fa-steam-symbol"></i> Longueur de ligne : <%= @option.line %>m</h6>
+                    <h6><i class="fab fa-steam-symbol"></i> Trim : <%= @option.trim %></h6>
+                    <h6><i class="fab fa-steam-symbol"></i> Dévrilleur ? : <%= @option.twist %></h6>
+                    <h6><i class="fab fa-steam-symbol"></i> Avant avec V ou Y ?: <%= @option.v %></h6>
 		    <a class="btn btn-success" href="<%= @product.link %>" target="blank_">more details</a>
 		  </div>
+                 
                 </div>
   		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
               </div>
             </div>
           </div>
 	</div>
+<%end%>
+
+<% if @product.domain === "wetsuit" %>
+          <h2 class="ml-5 fas fa-id-card"> Id Card</h2>
+	<div class="d-flex justify-content-center">
+          <div class="col-md-8">
+            <div class="name">
+	      <div class="card pb-4">
+	        <div class="row">
+		  <div class="col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1">
+                    <div class="text-center">
+                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @product.name %></h2>
+                      <img src="/assets/testaccessory/wetsuit.png" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:200px">
+                    </div>
+                  </div>
+                  <div class="mt-5 col-md-4 col-sm-12">
+                    <h3><i class="fas fa-heart"></i>  On a aimé : <%= @product.favorite %></h3>
+                    <h6>Taille testé : <%= @product.testsize %>m</h6>
+                    <h6>Tailles disponible : <%= @option.range %></h6>
+                    <h6>Epaisseur disponible : <%= @option.thickness %></h6>
+                    <h6>Prix en shop : <%= @product.price %>€</h6>
+                    <h3><i class="fas fa-wrench"></i>  Caractéristique :</h3>
+                    <h6><i class="fab fa-steam-symbol"></i> scratch pieds : <%= @option.velcros %>m</h6>
+                    <h6><i class="fab fa-steam-symbol"></i> Zip : <%= @option.zip %></h6>
+		    <h6>souple / rigide : <%= @option.flex %></h6>
+			<div class="card p-1">
+			<h6>details : <%= @option.detail %></h6>
+			</div>
+
+		    <a class="btn btn-success" href="<%= @product.link %>" target="blank_">more details</a>
+		  </div>
+                 
+                </div>
+  		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+              </div>
+            </div>
+          </div>
+	</div>
+<%end%>
+
 	</section>
 
 	<section id="resume">
@@ -230,16 +287,30 @@
 	</div>
         </section>
 
-	<section id="barre">
-	          <h2 class="ml-5 fas fa-gamepad"> barre</h2>
-	<div class="d-flex justify-content-center">
-	  <div class="card col-lg-8 m-3">
-            <div class="row">
-              <div class="col-md-3">
-                <img src="/assets/testkite/bandit.png" class="rounded m-1" style="width:100px"> flysurf
-                <img src="/assets/testkite/bandit.png" class="rounded m-1" style="width:100px"> vague et vent
-                <img src="/assets/testkite/bandit.png" class="rounded m-1" style="width:100px"> corner chop
-              </div>
+	<section id="kite">
+	          <h2 class="ml-5 fas fa-plus"> Elements conseillés</h2>
+	  <div class="card col-lg-10 m-3">
+            <div class="row d-flex justify-content-center">
+	      <div class="card mx-3" style="width:200px">
+  		<img class="card-img-top" src="/assets/testkite/bandit.png" alt="Card image cap">
+  	        <div class="card-body">
+    		  <h5 class="card-title">Card title</h5>
+    		  <a href="#" class="btn btn-primary">Go somewhere</a>
+     	        </div>
+	      </div>
+	      <div class="card mx-3" style="width:200px">
+  		<img class="card-img-top" src="/assets/testkite/bandit.png" alt="Card image cap">
+  		<div class="card-body">
+    		  <h5 class="card-title">Card title</h5>
+    		  <a href="#" class="btn btn-primary">Go somewhere</a>
+  		</div>
+	      </div>		
+	    <div class="card mx-3" style="width:200px">
+  	      <img class="card-img-top" src="/assets/testkite/bandit.png" alt="Card image cap">
+  	      <div class="card-body">
+    		<h5 class="card-title">Card title</h5>
+    		<a href="#" class="btn btn-primary">Go somewhere</a>
+	      </div>
             </div>
   		<a href="#header" class="scrollup d-flex justify-content-end align-items-end m-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
 	  </div>

@@ -76,6 +76,18 @@
       <h1>Barres</h1>
       </div>
     </div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+	<p class="card-text m-1 mb-5">Toutes les barres 4 lignes passe en théorie sur des ailes mais nous conseillons d'utiliser la barre de la même marque et année de l'aile pour des performances optimales. La longueur des lignes, le positionnement du V des avants et la taille du BC joue énormément sur le comportement du kite.</p>
+	    <img src="assets/testaccessory/bar.png" class="img-raised rounded img-fluid" alt="..."></a>
+	    <img src="assets/testaccessory/chickenloop.png" class="mt-5 img-raised rounded img-fluid" alt="..."></a>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">liste des barres testées</h5>
 
 <table class="table table-striped">
   <thead>
@@ -85,6 +97,7 @@
       <th scope="col">marque</th>
       <th scope="col">taille</th>
       <th scope="col">prix</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -92,7 +105,7 @@
       <% if t.domain === "bar" && t.category === "accessory" %>
     <tr>
      <th scope="row">
-	    <img src="assets/testaccessory/bar2.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></a>
+	    <img src="assets/testaccessory/bar2.png" class="img-raised rounded img-fluid" alt="..." style="width:70px">
 </th>
       <td><h3><%= t.name %></h3></td>
       <td><%= t.brand %></td>
@@ -105,17 +118,36 @@
   </tbody>
 </table>
 
+      </div>
+    </div>
+  </div>
+</div>
 
-    <h2 class="ml-2 fas fa-chevron-circle-right"> Toutes les barres</h2>
+    <h2 class="ml-2 fas fa-chevron-circle-right"> Toutes les combis</h2>
+<div class="row">
+  <div class="col-sm-2">
+      <div class="card-body">
+	    <img src="assets/testaccessory/wetsuit.png" class="img-fluid" alt="..."></a>
+      </div>
+  </div>
+  <div class="col-sm-8">
+      <div class="card-body">
+        <h5 class="card-title">Comment avons-nous testé les combinaisons</h5>
+        <p class="card-text">bla bla bla Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+  </div>
+</div>
+
     <div class="row">
       <% @products.each do |t, index| %>
-      <% if t.domain === "bar" && t.category === "accessory" %>
+      <% if t.domain === "wetsuit" && t.category === "accessory" %>
       <div class="card-deck m-3">
         <div class="row mx-3">  
-          <div class="card m-3 p-2" style="max-width: 100px;">
+          <div class="card m-3 p-2" style="max-width: 150px;">
             <a href="<%= accessory_path(t) %>">
-	    <img src="assets/testaccessory/bar.png" class="img-raised rounded img-fluid" alt="..."></a>
-            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %></h4>
+	    <img src="assets/testaccessory/wetsuit.png" class="img-fluid" alt="..."></a>
+            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %> <%= t.price %>€</h4>
           </div>
         </div>
       </div>

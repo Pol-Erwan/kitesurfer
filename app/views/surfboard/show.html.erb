@@ -19,8 +19,8 @@
       </div>
     </div>
 
-    <h1 class="title" id="navshow"> <%= @surfboard.name %></h1>
-	<h3 class="ml-4"> by <%= @surfboard.brand %></h3>
+    <h1 class="title" id="navshow"> <%= @product.name %></h1>
+	<h3 class="ml-4"> by <%= @product.brand %></h3>
 
    <div class="row">
       <div class="col-md-10 ml-auto mr-auto">
@@ -69,7 +69,7 @@
 		<%end%>
             </li>
 	    <li class="nav-item">
-              <%= link_to foil_index_path(anchor: "foil"), class:"nav-link" do %>
+              <%= link_to accessory_index_path(anchor: "accessoires"), class:"nav-link" do %>
 		<i class="text-center text-warning fas fa-chevron-right"></i>
 		<h6 class="text-center text-warning">Tous les foils</h6>
 		<%end%>
@@ -89,18 +89,18 @@
 	        <div class="row">
 		  <div class="col-md-5 col-md-offset-0 col-sm-10 col-sm-offset-1">
                     <div class="text-center">
-                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @surfboard.name %></h2>
+                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @product.name %></h2>
                       <img src="/assets/testsurfboard/surfboardride.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:200px">
                     </div>
                   </div>
                   <div class="mt-5 col-md-5 col-sm-12">
-                    <h6><i class="fas fa-heart"></i>  Son point fort : <%= @surfboard.favorite %></h6>
-                    <h6>Domain : <%= @surfboard.domain %></h6>
-                    <h6>Taille testé : <%= @surfboard.testsize %>m</h6>
-                    <h6>Tailles disponible : <%= @surfboard.size %></h6>
-                    <h6>Prix en shop : <%= @surfboard.price %>€ pour une <%= @surfboard.testsize %>m nue</h6>
-		    <h6>millésime : <%= @surfboard.year %></h6>
-		    <a class="btn btn-success" href="<%= @surfboard.link %>" target="blank_">more details</a>
+                    <h6><i class="fas fa-heart"></i>  Son point fort : <%= @product.favorite %></h6>
+                    <h6>Domain : <%= @product.domain %></h6>
+                    <h6>Taille testé : <%= @product.testsize %></h6>
+                    <h6>Tailles disponible : <%= @option.range %></h6>
+                    <h6>Prix en shop : <%= @product.price %>€ pour une <%= @product.testsize %></h6>
+		    <h6>millésime : <%= @product.year %></h6>
+		    <a class="btn btn-success" href="<%= @product.link %>" target="blank_">more details</a>
 		  </div>
                 </div>
   		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
@@ -124,7 +124,7 @@
               </div>
               <div class="col-md-8">
                 <div class="tab-content">
-		  <p><%= @surfboard.description %></p>
+		  <p><%= @product.description %></p>
                 </div>
               </div>
             </div>
@@ -158,41 +158,41 @@
 <div class="m-3 d-flex flex-row">
 
 <div class="card m-3 p-3" style="width:60%">
-<h6>Transitions : <%= @surfboard.transitions %>/5</h6>
+<h6>Transitions : <%= @technic.transitions %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: <%= @surfboard.transitions*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: <%= @technic.transitions*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Courbes: <%= @surfboard.courbes %>/5</h6>
+<h6>Courbes: <%= @technic.courbes %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%= @surfboard.courbes*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%= @technic.courbes*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Wind: <%= @surfboard.wind %>/5</h6>
+<h6>Wind: <%= @technic.wind %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: <%= @surfboard.wind*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: <%= @technic.wind*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Side-shore: <%= @surfboard.sideshore %>/5</h6>
+<h6>Side-shore: <%= @technic.sideshore %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%= @surfboard.sideshore*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%= @technic.sideshore*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>On-shore: <%= @surfboard.onshore %>/5</h6>
+<h6>On-shore: <%= @technic.onshore %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%= @surfboard.onshore*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%= @technic.onshore*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Wave: <%= @surfboard.wave %>/5</h6>
+<h6>Wave: <%= @technic.wave %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: <%= @surfboard.wave*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: <%= @technic.wave*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Freestyle: <%= @surfboard.freestyle %>/5</h6>
+<h6>Freestyle: <%= @technic.freestyle %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: <%= @surfboard.freestyle*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: <%= @technic.freestyle*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Straps: <%= @surfboard.straps %>/5</h6>
+<h6>Straps: <%= @technic.strap %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: <%= @surfboard.straps*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: <%= @technic.strap*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<h6>Strapless: <%= @surfboard.strapless %>/5</h6>
+<h6>Strapless: <%= @technic.strapless %>/5</h6>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: <%= @surfboard.strapless*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: <%= @technic.strapless*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
 </div>
@@ -206,7 +206,7 @@ var birdsCanvas = document.getElementById("birdsChart");
 var birdsData = {
   labels: ["Transitions","Courbes","Wind","Side-Shore","On-Shore","Wave","Freestyle","Straps","Strapless"],
   datasets: [{
-    data: [<%= @surfboard.transitions %>,<%= @surfboard.courbes %>, <%= @surfboard.wind %>, <%= @surfboard.sideshore %>, <%= @surfboard.onshore %>, <%= @surfboard.wave %>, <%= @surfboard.freestyle %>, <%= @surfboard.straps %>, <%= @surfboard.strapless %>],
+    data: [<%= @technic.transitions %>,<%= @technic.courbes %>, <%= @technic.wind %>, <%= @technic.sideshore %>, <%= @technic.onshore %>, <%= @technic.wave %>, <%= @technic.freestyle %>, <%= @technic.strap %>, <%= @technic.strapless %>],
     backgroundColor: [
       "rgba(255, 0, 0, 0.5)",
       "#cde9ce",
@@ -239,7 +239,7 @@ var polarAreaChart = new Chart(birdsCanvas, {
 	<div class="d-flex justify-content-center">
             <div class="card row m-3 p-3 col-lg-8">
               <div class="d-flex justify-content-center">
-		<iframe width="560" height="315" src="<%= @surfboard.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="<%= @product.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	      </div>
   		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
             </div>

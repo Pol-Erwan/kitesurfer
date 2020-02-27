@@ -24,6 +24,8 @@
     <%= link_to "  ", admin_root_path, class:"pull-left btn btn-danger btn-just-icon fas fa-arrow-left fa-2x" %>
   </div>
 <br>
+<h2 class="text-warning">total produit testé en ligne <%= @products.size %></h2>
+<br>
 <table class="table table-striped table-dark">
   <thead>
     <tr>
@@ -39,9 +41,9 @@
 <%  @products.each_with_index do |t,index| %>
 <% if t.category === "kite" %>
     <tr>
-      <th scope="row"><%= t.id %></th>
+      <th scope="row">n° <%= t.id %></th>
 <%if t.picture.size > 5 %>
-      <td><%= t.name %></td>
+      <td><i class="fas fa-check text-success"></i> <%= t.name %></td>
       <td><%= t.category %></td>
       <td><%= t.created_at %></td>
       <td><%= link_to "voir", kite_path(t.id), class:"btn-sm btn-success" %></td>
@@ -73,9 +75,9 @@
 <%  @products.each_with_index do |t,index| %>
 <% if t.category === "board" %>
     <tr>
-      <th scope="row"><%= t.id %></th>
+      <th scope="row">n° <%= t.id %></th>
 <%if t.picture.size > 5 %>
-      <td><%= t.name %></td>
+      <td><i class="fas fa-check"></i> <%= t.name %></td>
       <td><%= t.category %></td>
       <td><%= t.created_at %></td>
       <td><%= link_to "voir", board_path(t.id), class:"btn-sm btn-success" %></td>
@@ -109,9 +111,9 @@
 <%  @products.each_with_index do |t,index| %>
 <% if t.category === "surfboard" %>
     <tr>
-      <th scope="row"><%= t.id %></th>
+      <th scope="row">n° <%= t.id %></th>
 <%if t.picture.size > 5 %>
-      <td><%= t.name %></td>
+      <td><i class="fas fa-check"></i> <%= t.name %></td>
       <td><%= t.category %></td>
       <td><%= t.created_at %></td>
       <td><%= link_to "voir", surfboard_path(t.id), class:"btn-sm btn-success" %></td>
@@ -145,9 +147,9 @@
 <%  @products.each_with_index do |t,index| %>
 <% if t.category === "accessory" && t.domain === "bar" %>
     <tr>
-      <th scope="row"><%= t.id %></th>
+      <th scope="row">n° <%= t.id %></th>
 <%if t.picture.size > 5 %>
-      <td><%= t.name %></td>
+      <td><i class="fas fa-check"></i> <%= t.name %></td>
       <td><%= t.category %></td>
       <td><%= t.created_at %></td>
       <td><%= link_to "voir", accessory_path(t.id), class:"btn-sm btn-success" %></td>
@@ -180,9 +182,81 @@
 <%  @products.each_with_index do |t,index| %>
 <% if t.category === "accessory" && t.domain === "pads" %>
     <tr>
-      <th scope="row"><%= t.id %></th>
+      <th scope="row">n° <%= t.id %></th>
 <%if t.picture.size > 5 %>
-      <td><%= t.name %></td>
+      <td><i class="fas fa-check"></i> <%= t.name %></td>
+      <td><%= t.category %></td>
+      <td><%= t.created_at %></td>
+      <td><%= link_to "voir", accessory_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= link_to "modifier photos", edit_admin_accessory_path(t), class:"btn-sm btn-primary" %></td>
+<%else%>
+      <td><i class="fas fa-exclamation-triangle text-warning"></i> <%= t.name %></td>
+      <td><%= t.category %></td>
+      <td><%= t.created_at %></td>
+      <td><%= link_to "voir", accessory_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= link_to "Ajouter photos", edit_admin_accessory_path(t), class:"btn-sm btn-warning" %></td>
+<% end %>
+    </tr>
+<% end %>
+
+<% end %>
+
+  </tbody>
+
+  <thead>
+    <tr>
+      <th scope="col"><h3><i class="far fa-hand-point-right fa-2x"></i> Harnais</h3></th>
+      <th scope="col">modèle</th>
+      <th scope="col">categorie</th>
+      <th scope="col">Date de création</th>
+      <th scope="col">voir en ligne</th>
+      <th scope="col">photos</th>
+    </tr>
+  </thead>
+
+<tbody>
+<%  @products.each_with_index do |t,index| %>
+<% if t.category === "accessory" && t.domain === "harness" %>
+    <tr>
+      <th scope="row">n° <%= t.id %></th>
+<%if t.picture.size > 5 %>
+      <td><i class="fas fa-check"></i> <%= t.name %></td>
+      <td><%= t.category %></td>
+      <td><%= t.created_at %></td>
+      <td><%= link_to "voir", accessory_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= link_to "modifier photos", edit_admin_accessory_path(t), class:"btn-sm btn-primary" %></td>
+<%else%>
+      <td><i class="fas fa-exclamation-triangle text-warning"></i> <%= t.name %></td>
+      <td><%= t.category %></td>
+      <td><%= t.created_at %></td>
+      <td><%= link_to "voir", accessory_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= link_to "Ajouter photos", edit_admin_accessory_path(t), class:"btn-sm btn-warning" %></td>
+<% end %>
+    </tr>
+<% end %>
+
+<% end %>
+
+  </tbody>
+
+  <thead>
+    <tr>
+      <th scope="col"><h3><i class="far fa-hand-point-right fa-2x"></i> Combinaisons</h3></th>
+      <th scope="col">modèle</th>
+      <th scope="col">categorie</th>
+      <th scope="col">Date de création</th>
+      <th scope="col">voir en ligne</th>
+      <th scope="col">photos</th>
+    </tr>
+  </thead>
+
+<tbody>
+<%  @products.each_with_index do |t,index| %>
+<% if t.category === "accessory" && t.domain === "wetsuit" %>
+    <tr>
+      <th scope="row">n° <%= t.id %></th>
+<%if t.picture.size > 5 %>
+      <td><i class="fas fa-check"></i> <%= t.name %></td>
       <td><%= t.category %></td>
       <td><%= t.created_at %></td>
       <td><%= link_to "voir", accessory_path(t.id), class:"btn-sm btn-success" %></td>

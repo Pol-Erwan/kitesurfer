@@ -160,7 +160,7 @@ print " Id n°" .white
 puts my_wetsuit.id
 
 my_harness = Product.create(name: harness_name[variable], brand: harness_brand[variable], category: category[3], domain: "harness", description: "maintient bien le dos", favorite: "sa boucle", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(120..400), year: "2020")
-my_option = Option.create(detail:"section detail", range:"S / M / XL / XXL", bar: "adaptable vague", flex: rand(1..5), velcros:"yes", zip: "ceinture", trim: "à clip")
+my_option = Option.create(detail:"section detail", range:"S / M / XL / XXL", bar: "adaptable vague", flex: "medium", velcros:"yes", zip: "ceinture", trim: "à clip")
 my_harness.option = my_option
 my_harness.save
 my_option.product = my_wetsuit
