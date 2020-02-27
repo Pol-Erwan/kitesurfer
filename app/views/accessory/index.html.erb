@@ -1,0 +1,203 @@
+<%= render"layouts/navbartest" %>
+
+<body class="index-page sidebar-collapse">
+  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('./assets/background/accessory.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand">
+            <h1>Les Accessoires</h1>
+                <a class="carousel-control-prev" href="<%= surfboard_index_path %>" role="button" data-slide="prev">
+                  <i class="fas fa-caret-square-left" style="font-size:50px"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="<%= kite_index_path %>" role="button" data-slide="next">
+		  <i class="fas fa-caret-square-right" style="font-size:50px"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main main-raised">
+
+  <nav id='nav_bar'>
+    <ul class='nav_links d-flex justify-content-center'>
+            <li class="active nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "bar"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Les barres</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>
+            <li class="active nav-item my-1 mx-5">
+              <%= link_to kite_index_path(anchor: "pads"), class:"nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Les pads / straps</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "wetsuit"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Les combinaisons</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "harness"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Les harnais</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "presentation"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Equipe Test</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>      
+    </ul>
+  </nav>
+
+
+  <section id="bar">
+  <br><br><br>
+    <div class="jumbotron" style="background-image: url(/assets/introtest3.jpg); background-size: 100%;">
+      <div class="container for-about">
+      <h1>Barres</h1>
+      </div>
+    </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Barres</th>
+      <th scope="col">Modèle</th>
+      <th scope="col">marque</th>
+      <th scope="col">taille</th>
+      <th scope="col">prix</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @products.each do |t, index| %>
+      <% if t.domain === "bar" && t.category === "accessory" %>
+    <tr>
+     <th scope="row">
+	    <img src="assets/testaccessory/bar2.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></a>
+</th>
+      <td><h3><%= t.name %></h3></td>
+      <td><%= t.brand %></td>
+      <td><%= @options.find(t.option_id).range %></td>
+      <td><%= t.price %>€</td>
+      <td><a href="<%= accessory_path(t) %>" class="scrollup btn btn-success">Voir</a>
+    </tr>
+<% end %>
+<% end %>
+  </tbody>
+</table>
+
+
+    <h2 class="ml-2 fas fa-chevron-circle-right"> Toutes les barres</h2>
+    <div class="row">
+      <% @products.each do |t, index| %>
+      <% if t.domain === "bar" && t.category === "accessory" %>
+      <div class="card-deck m-3">
+        <div class="row mx-3">  
+          <div class="card m-3 p-2" style="max-width: 100px;">
+            <a href="<%= accessory_path(t) %>">
+	    <img src="assets/testaccessory/bar.png" class="img-raised rounded img-fluid" alt="..."></a>
+            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %></h4>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <%end%>
+      <%end%>
+    </div>
+    <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+
+  </section>
+
+  <section id="presentation">
+  <br><br><br>
+    <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+      <div class="container for-about">
+        <h1>Ils ont testé pour vous</h1>
+      </div>
+    </div>
+
+    <div class="team">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="team-player">
+            <div class="card card-plain">
+              <div class="col-md-6 ml-auto mr-auto">
+                <img src="/assets/Hugo.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+              </div>
+              <h4 class="card-title">Hugo
+              <br>
+              <small class="card-description text-muted">Model</small>
+              </h4>
+              <div class="card-body">
+                <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-4">
+            <div class="team-player">
+              <div class="card card-plain">
+                <div class="col-md-6 ml-auto mr-auto">
+                  <img src="/assets/Greg.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                </div>
+                <h4 class="card-title">Greg
+                <br>
+                <small class="card-description text-muted">Designer</small>
+                </h4>
+                <div class="card-body">
+                  <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                  <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-player">
+              <div class="card card-plain">
+                <div class="col-md-6 ml-auto mr-auto">
+                  <img src="/assets/Marvin.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                </div>
+                <h4 class="card-title">Marvin
+                <br>
+                <small class="card-description text-muted">Model</small>
+                </h4>
+                <div class="card-body">
+                  <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                  <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+  </section>
+
+ </div>
+<br>
+<br>
+<br>
+    <%= yield %>
+
+  </body>
+</html>

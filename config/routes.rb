@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :kite, only:[:index,:show]
   resources :board, only:[:index,:show]
   resources :surfboard, only:[:index,:show]
+  resources :accessory, only:[:index,:show]
 
   resources :article, only:[:index,:show]
 
@@ -18,6 +19,9 @@ Rails.application.routes.draw do
     resources :admins
     resources :users
     resources :kite
+    resources :board
+    resources :surfboard
+    resources :accessory
     resources :product do
       resources :picture, only: [:create,:destroy]
     end

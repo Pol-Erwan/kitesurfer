@@ -20,6 +20,7 @@ class CreateTechnics < ActiveRecord::Migration[5.2]
       t.integer :transitions
       t.integer :wing
       t.integer :pad
+      t.integer :grip
       t.timestamps
     end
   end

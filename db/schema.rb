@@ -77,12 +77,16 @@ ActiveRecord::Schema.define(version: 2020_02_24_111305) do
     t.integer "velcros"
     t.string "box"
     t.integer "strut"
+    t.string "zip"
+    t.string "bar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_options_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
+    t.bigint "option_id"
+    t.bigint "technic_id"
     t.string "name"
     t.string "brand"
     t.string "category"
@@ -96,6 +100,8 @@ ActiveRecord::Schema.define(version: 2020_02_24_111305) do
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["option_id"], name: "index_products_on_option_id"
+    t.index ["technic_id"], name: "index_products_on_technic_id"
   end
 
   create_table "technics", force: :cascade do |t|
@@ -117,6 +123,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_111305) do
     t.integer "transitions"
     t.integer "wing"
     t.integer "pad"
+    t.integer "grip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_technics_on_product_id"

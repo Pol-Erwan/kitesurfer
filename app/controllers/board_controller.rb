@@ -12,9 +12,9 @@ class BoardController < ApplicationController
   end
 
   def show
-    @board = Product.find(params[:id])
-    @technic = Technic.find(params[:id])
-    @option = Option.find(params[:id])
+    @product = Product.find(params[:id])
+    @technic = Technic.find_by(product_id: @product.id)
+    @option = Option.find_by(product_id: @product.id)
     @control = 0
     @progression = 0
     @freeride = 0

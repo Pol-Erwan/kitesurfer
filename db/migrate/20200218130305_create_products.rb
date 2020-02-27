@@ -1,6 +1,8 @@
 class CreateProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :products do |t|
+      t.belongs_to :option, index: true
+      t.belongs_to :technic, index: true
       t.string :name
       t.string :brand
       t.string :category

@@ -24,6 +24,9 @@ class CreateOptions < ActiveRecord::Migration[5.2]
       t.integer :velcros
       t.string :box
       t.integer :strut
+      t.string :zip
+      t.string :bar
+
       t.timestamps
     end
   end

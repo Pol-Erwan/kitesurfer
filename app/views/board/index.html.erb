@@ -1,0 +1,543 @@
+<%= render"layouts/navbartest" %>
+<body class="index-page sidebar-collapse">
+  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('./assets/background/board.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand">
+            <h1>Les boards</h1>
+                <a class="carousel-control-prev" href="<%= kite_index_path %>" role="button" data-slide="prev">
+                  <i class="fas fa-caret-square-left" style="font-size:50px"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="<%= surfboard_index_path %>" role="button" data-slide="next">
+		  <i class="fas fa-caret-square-right" style="font-size:50px"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-raised">
+
+  <nav id='nav_bar'>
+    <ul class='nav_links d-flex justify-content-center'>
+            <li class="active nav-item my-1 mx-5">
+            <%= link_to board_index_path(anchor: "intro"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Intro</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>
+            <li class="active nav-item my-1 mx-5">
+              <%= link_to board_index_path(anchor: "performance"), class:"nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Performances</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-1">
+            <%= link_to board_index_path(anchor: "board"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Tous les twin-tips</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-1">
+            <%= link_to board_index_path(anchor: "compare"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Comparer les modèles</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-1">
+            <%= link_to board_index_path(anchor: "presentation"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Equipe Test</h4>
+			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		</div>
+		<%end%>
+            </li>      
+    </ul>
+  </nav>
+<script>
+$(document).ready(function() {
+  
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the 
+      //nav bar to stick.  
+      console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 450) {
+      $('#nav_bar').addClass('navbar-fixed');
+    }
+    if ($(window).scrollTop() < 451) {
+      $('#nav_bar').removeClass('navbar-fixed');
+    }
+  });
+});
+</script>
+
+    <section id="intro">
+    <br><br><br>
+      <div class="jumbotron" style="background-image: url(/assets/introtest2.jpg); background-size: 100%;">
+        <div class="container for-about">
+        <h1>Comment sont fait nos tests</h1>
+        </div>
+      </div>
+
+      <div class="container tim-container mt-3">
+        <h1 class="m-5">Twin-Tip</h1>                              
+        <h2><small class="subtitle">La board du kitesurfer</small></h2>
+          <div class="row">
+            <div class="col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1">
+              <div class="text-center">
+                <img src="assets/introtestboard.jpg" alt="Rounded Image" class="card img-rounded img-responsive img-dog" style="width:100%">
+              </div>
+            </div>
+            <div class="mt-5 col-md-5 col-sm-12">
+              <p>
+	C’est à 99 % la planche avec laquelle on a tous débuté le
+kitesurf. Ce sera même peut-être la seule et unique board
+que vous utiliserez tout au long de votre «carrière» de rider.
+Ce n’est donc pas un invetsissement à prendre à la légère
+et chaque détail compte pour que l’ensemble réponde à
+vos attentes.
+Les marques ont développé une planche d’un côté et un
+équipement de l’autre afin d’avoir le plus de confort et
+de performances réunies nadaptés à vos besoins. Sachez
+qu’aujourdh’ui, le twin tip peut s’acheter nu donc sans son
+équipement pads straps pour vous laisser le choix car souvent
+les majors proposent 2 gammes d’accessoires : entrée de
+gamme (moins cher) et premium (quasi le double du prix).
+Vous pouvez également conserver votre TT et l’équiper avec
+un ensemble pads-straps d’une autre marque. Dans ce cas
+là, vérifiez bien en amont que les platines s’adaptent bien
+à votre planche, l’entraxe doit être identique. Bien sur, il est
+conseillé d’acheter planche et accessoires de la même
+marque car tout sera pensé et optimisé pour votre confort.
+            </div>
+       <h2><small class="subtitle"># Twin-Tip</small></h2>
+          </div>
+        </div>
+<div class="d-flex flex-row justify-content-around">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Contrôle: slashy - rail</h5>
+        <p class="card-text">Toutes les boards ont désormais une bon contrôle mais on différencie
+deux comportements.
+D’un côté, un TT qui va avoir tendance à déraper. Il va falloir un
+bon niveau technique pour l’exploiter. On parle d’une tendance
+slashy qui sera appréciée pour certaines manoeuvres. Il ne s’agit
+pas du tout d’un défaut, c’est une question de style. En revanche,
+on classera un TT “rail” quand on sera calé comme sur un rail dans
+toutes les conditions, avec beaucoup d’accroche. Il aura alors
+souvent moins de maniabilité.</p>
+       </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Maniabilité: maniable - joueur</h5>
+        <p class="card-text">Cette fois, on a voulu faire ressortir le côté “skate” d’une board.
+Tous les TT sont maniables puisque l’on peut sans souci passer en
+frontside facilement. Mais certains seront plus joueurs que d’autres,
+souvent grâce au scoop tendu ou non. Encore une fois, ce sont des
+sensations et non pas des points positifs ou négatifs, à toi de voir
+comment tu aimes ton twin tip !</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="performance">
+       <h2><small class="subtitle">Quel est ton programme ?</small></h2>
+
+        <div class="m-3 d-flex flex-row">
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Freeride / Freestyle</h5>
+        <p class="card-text">C’est clairement le TT qui convient le mieux à quasiment tout le
+monde. Il est polyvalent, tu peux aller vite et te dépasser en freeride
+tout en ayant un bon contrôle et du pop pour enchaîner les sauts
+aile haute. C’est souvent le fer de lance de chaque marque. Tu vas
+privilégier le confort dans la clapot, la facilité au cap et surtout la
+polyvalence.</p>
+       </div>
+    </div>
+  </div>
+
+
+          <div class="card m-3 p-3" style="width:60%">
+	    <h6>Maniabilité: 1/5</h6>
+	    <div class="progress">
+	      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>New-School : 4/5</h6>
+	    <div class="progress">
+	      <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>Freeride / Freestyle: 2/5</h6>
+	    <div class="progress">
+  	      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>Progression: 3/5</h6>
+	    <div class="progress">
+  	      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	    <h6>Contrôle: 5/5</h6>
+	    <div class="progress">
+  	      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
+	  </div>
+
+
+
+
+	</div>
+
+ <div class="d-flex flex-row">
+
+    <div class="card m-3 p-3">
+         <h5 class="card-title">New School Wakestyle</h5>
+        <p class="card-text">On rentre dans la catégorie qui représente pour beaucoup le graal.
+Il faut savoir que ces TT son accessibles même s’ils restent plutôt
+“rigides” en navigation et demandent d’avoir un bon bagage
+technique et une condition physique pour en tirer le meilleur parti.
+Ils sont optimisés pour le blocage, pour délivrer du pop et tutoyer
+les tricks aile basse et autres passages de bâton. Ces TT sont
+également pour la plupart étudiés pour recevoir des chausses, voire
+pour aller enchaîner des sessions de câble en cas de pétole. Ne
+vous étonnez pas de trouver dans notre sélection beaucoup de nos
+coups de coeur car ces boards sont de plus en plus accessibles et
+polyvalentes.</p>
+      </div>
+
+
+	  <div class="card m-3 p-3">
+	    <canvas id="birdsChart" width="300px" height="200px"></canvas>
+	    <script>
+		var birdsCanvas = document.getElementById("birdsChart");
+		var birdsData = {
+		  labels: ["Maniabilité","New-School","Freeride / Freestyle","Progression","Contrôle"],
+		  datasets: [{
+		    data: [ 4, 2, 3, 5, 1, 4],
+		    backgroundColor: [
+		      "rgba(255, 0, 0, 0.5)",
+		      "#cde9ce",
+ 		      "rgba(200, 50, 255, 0.5)",
+ 		      "rgba(0, 100, 255, 0.5)",
+		      "rgba(255, 0, 0, 0.5)"
+		    ]
+		  }]
+		};
+
+		var polarAreaChart = new Chart(birdsCanvas, {
+		  type: 'polarArea',
+		  data: birdsData
+		});
+	    </script>
+	  </div>
+
+  </div>
+
+    <a href="#navtest" class="p-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+  </section>
+
+<section id="board">
+<div class="jumbotron" style="background-image: url(/assets/introtestkite.jpg); background-size: 100%;">
+   <div class="container for-about">
+   <h1>Twin-tip</h1>
+   </div>
+</div>
+
+<div class="row">
+
+<% @products.each do |t, index| %>
+      <% if t.category === "board" %>
+      <div class="card-deck m-3">
+        <div class="row mx-3">  
+          <div class="card m-3 p-2" style="max-width: 200px;">
+            <a href="<%= board_path(t) %>">
+	    <img src="assets/testboard/board2.png" class="img-raised rounded img-fluid" alt="..."></a>
+            <h3 class="card-title"><%= t.name %></h3><h4><i class="far fa-arrow-alt-circle-right"></i> <%= t.domain %> </h4> <h4>By <%= t.brand %></h4>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <%end%>
+    </div>
+
+</section>
+
+  <section id="compare">
+  <br><br><br>
+  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+    <div class="container for-about">
+    <h1>comparer Twin-Tips</h1>
+    </div>
+  </div>
+
+
+<table class="table table-striped text-center p-2">
+  <thead>
+    <tr>
+      <th scope="col">Twin-tip <i class="fas fa-chevron-circle-right"></i></th>
+<% @products.each do |t, index| %>
+      <% if t.category === "board" %>
+      <th scope="col"><%= t.name %></th>
+<%end%>
+<% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
+<% @products.each do |t, index| %>
+      <% if t.category === "board" %>
+      <td><img src="assets/testboard/board2.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Marque</th>
+<% @products.each do |t, index| %>
+      <% if t.category === "board" %>
+      <td><%= t.brand %></td>
+<% end %>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">taille testé</th>
+<% @products.each do |t, index| %>
+      <% if t.category === "board" %>
+      <td><%= t.testsize %></td>
+<% end %>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Control</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><% while @control < t.control %>
+	    <i class="fas fa-star"></i>
+	    <% @control = @control + 1 %>
+	  <%end%>
+	  <% @control = 0 %>
+      </td>
+<% end %>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Progression</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><% while @progression < t.progression %>
+	    <i class="fas fa-star"></i>
+	    <% @progression = @progression + 1 %>
+	  <%end%>
+	  <% @progression = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Freeride / Freestyle</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><% while @freeride < t.freeride %>
+	    <i class="fas fa-star"></i>
+	    <% @freeride = @freeride + 1 %>
+	  <%end%>
+	  <% @freeride = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">New-School</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><% while @freestyle < t.freestyle %>
+	    <i class="fas fa-star"></i>
+	    <% @freestyle = @freestyle + 1 %>
+	  <%end%>
+	  <% @freestyle = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Maniabilité</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><% while @maniability < t.maniability %>
+	    <i class="fas fa-star"></i>
+	    <% @maniability = @maniability + 1 %>
+	  <%end%>
+	  <% @maniability = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+
+    <tr>
+      <th scope="row">Tailles disponibles</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><%= t.range %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Ailerons</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><%= t.fin %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Stance</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><%= t.stance %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Largeur</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><%= t.width %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Poids</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><%= t.weigh %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Carène</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><%= t.carene %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Flex</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" %>
+      <td><%= t.flex %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Prix</th>
+<% @products.each do |t, index| %>
+      <% if t.category === "board" %>
+      <td><%= t.price %> €</td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+<% @products.each do |t, index| %>
+      <td><a href="<%= board_path(t) %>" class="scrollup btn btn-success">Détails</a>
+</td>
+<%end%>
+    </tr>
+
+  </tbody>
+</table>
+    <a href="#navtest" class="scrollup d-flex justify-content-end align-items-end"><i class="m-3 btn-sm btn-primary fa fa-caret-square-up"></i></a>
+  </section>
+
+<section id="presentation">
+<div class="jumbotron" style="background-image: url(/assets/introtestkite.jpg); background-size: 100%;">
+   <div class="container for-about">
+   <h1>Ils ont testé pour vous</h1>
+   </div>
+</div>
+
+        <div class="team">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <img src="/assets/Hugo.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title text-center">Hugo
+                    <br>
+                    <small class="card-description text-muted">Model</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                      <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <img src="/assets/Greg.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title text-center">Greg
+                    <br>
+                    <small class="card-description text-muted">Designer</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                      <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <img src="/assets/Marvin.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title text-center">Marvin
+                    <br>
+                    <small class="card-description text-muted">Model</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                      <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+   </section>
+
+<br>
+<br>
+<br>
+    <%= yield %>
+</div>
+
+  </body>
+</html>
+
