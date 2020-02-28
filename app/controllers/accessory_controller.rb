@@ -14,7 +14,7 @@ class AccessoryController < ApplicationController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
-    @pads = 0
+    @pad = 0
     @strap = 0
     @flex = 0
     @grip = 0

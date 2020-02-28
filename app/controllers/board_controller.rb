@@ -12,6 +12,9 @@ class BoardController < ApplicationController
   end
 
   def show
+    @products = Product.all
+    @technics = Technic.all
+    @options = Option.all
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
@@ -20,6 +23,8 @@ class BoardController < ApplicationController
     @freeride = 0
     @freestyle = 0
     @maniability = 0  
+    @pad = 0
+    @strap = 0
   end
 
 end

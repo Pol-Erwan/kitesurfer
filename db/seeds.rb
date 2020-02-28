@@ -62,7 +62,7 @@ wetsuit_name = ["meteor","magma","E-Bomb","cypher","hammer","meteor","magma","E-
 wetsuit_brand = ["Manera","Manera","Rip Curl","Quiksilver","O'neill","Manera","Manera","Rip Curl","Quiksilver","O'neill"]
 harness_name = ["Eclipse","union","exo","hadlow pro","Kl pro","Eclipse","union","exo","hadlow pro","Kl pro"]
 harness_brand = ["Manera","Manera","Manera","Pro-Limit","naish","ride Engine","Manera","Manera","Pro-Limit","naish"]
-
+kitedomain = ["freestyle","wave","foil","freestyle","wave","foil","freestyle","wave","foil","freestyle","wave","foil"]
 variable = 0
 
 10.times do
@@ -86,7 +86,7 @@ print " Id n°" .yellow
 puts my_article.id
 
 
-my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: "freestyle", description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
+my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: kitedomain[variable], description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
 my_technic = Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5))
 my_option = Option.create(detail:"section detail", range:"7 / 9 / 11 /13", bridle: "no poulies", trim:"sangle", twist:"devrilleur",line: rand(20..27), v: "V", strut: rand(0..5))
 my_kite.technic = my_technic
@@ -170,7 +170,7 @@ my_harness = Product.create(name: harness_name[variable], brand: harness_brand[v
 my_option = Option.create(detail:"section detail", range:"S / M / XL / XXL", bar: "adaptable vague", flex: "medium", velcros:"yes", zip: "ceinture", trim: "à clip")
 my_harness.option = my_option
 my_harness.save
-my_option.product = my_wetsuit
+my_option.product = my_harness
 my_option.save
 print my_harness.name .white
 print " Id n°" .white
