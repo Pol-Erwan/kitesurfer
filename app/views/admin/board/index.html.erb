@@ -1,14 +1,14 @@
-<%= render "layouts/navbar" %>
+<%= render"layouts/navbaradmin" %>
   <div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/background/admin.jpg')">
     <div class="container">
       <div class="row">
         <div class="col-md-10">
-          <h1 class="title text-center">Liste des kites on-line</h1>
-                <a class="carousel-control-prev" href="<%= admin_bar_index_path %>" role="button" data-slide="prev">
+          <h1 class="title text-center">Liste des Twin-tips on-line</h1>
+                <a class="carousel-control-prev" href="<%= admin_kite_index_path %>" role="button" data-slide="prev">
                   <i class="fas fa-caret-square-left" style="font-size:50px"></i>
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="<%= admin_board_index_path %>" role="button" data-slide="next">
+                <a class="carousel-control-next" href="<%= admin_surfboard_index_path %>" role="button" data-slide="next">
 		  <i class="fas fa-caret-square-right" style="font-size:50px"></i>
                   <span class="sr-only">Next</span>
                 </a>
@@ -25,7 +25,7 @@
     <%= link_to "  ", admin_root_path, class:"pull-left btn btn-danger btn-just-icon fas fa-arrow-left fa-2x" %>
   </div>
 <div class="text-center">
-  <%= link_to "Nouveau kite", new_admin_kite_path, class:"pull-right btn btn-success" %>
+  <%= link_to "Nouveau Twin-tip", new_admin_board_path, class:"pull-right btn btn-success" %>
 </div>
 <br>
 
@@ -34,22 +34,35 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">modèle</th>
-      <th scope="col">Date de création</th>
+      <th scope="col">Dernière modification</th>
       <th scope="col">voir en ligne</th>
       <th scope="col">modifier</th>
       <th scope="col">supprimer</th>
+      <th scope="col">photos</th>
     </tr>
   </thead>
   <tbody>
-<%  @kites.each_with_index do |t,index| %>
+<%  @products.each_with_index do |t,index| %>
+<% if t.category === "board" %>
     <tr>
       <th scope="row"><%= t.id %></th>
+<%if t.picture.size > 5 %>
       <td><%= t.name %></td>
-      <td><%= t.created_at %></td>
-      <td><%= link_to "voir", kite_path(t.id), class:"btn-sm btn-success" %></td>
-      <td><%= link_to "Modifier", edit_admin_kite_path(t), class:"btn-sm btn-primary" %></td>
-      <td><%= link_to "Supprimer", admin_kite_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= link_to "voir", board_path(t.id), class:"btn-sm btn-success", target:"blank_" %></td>
+      <td><%= link_to "Modifier", edit_admin_board_path(t), class:"btn-sm btn-primary" %></td>
+      <td><%= link_to "Supprimer", admin_board_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
+      <td><%= link_to "modifier photos", edit_admin_product_path(t), class:"btn-sm btn-primary" %></td>
+<%else%>
+      <td><i class="fas fa-exclamation-triangle text-warning"></i> <%= t.name %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= link_to "voir", board_path(t.id), class:"btn-sm btn-success", target:"blank_" %></td>
+      <td><%= link_to "Modifier", edit_admin_board_path(t), class:"btn-sm btn-primary" %></td>
+      <td><%= link_to "Supprimer", admin_board_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
+      <td><%= link_to "Ajouter photos", edit_admin_product_path(t), class:"btn-sm btn-warning" %></td>
+<% end %>
     </tr>
+<%end%>
 <%end%>
   </tbody>
 </table>

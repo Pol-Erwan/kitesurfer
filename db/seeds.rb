@@ -63,6 +63,8 @@ wetsuit_brand = ["Manera","Manera","Rip Curl","Quiksilver","O'neill","Manera","M
 harness_name = ["Eclipse","union","exo","hadlow pro","Kl pro","Eclipse","union","exo","hadlow pro","Kl pro"]
 harness_brand = ["Manera","Manera","Manera","Pro-Limit","naish","ride Engine","Manera","Manera","Pro-Limit","naish"]
 kitedomain = ["freestyle","wave","foil","freestyle","wave","foil","freestyle","wave","foil","freestyle","wave","foil"]
+surfdomain = ["freestyle","wave","freestyle","wave","freestyle","wave","freestyle","wave","freestyle","wave"]
+
 variable = 0
 
 10.times do
@@ -88,7 +90,7 @@ puts my_article.id
 
 my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: kitedomain[variable], description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
 my_technic = Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5))
-my_option = Option.create(detail:"section detail", range:"7 / 9 / 11 /13", bridle: "no poulies", trim:"sangle", twist:"devrilleur",line: rand(20..27), v: "V", strut: rand(0..5))
+my_option = Option.create(detail:"spi quad-tex super costaud", range:"5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 14", bridle: "no poulies", strut: rand(0..5))
 my_kite.technic = my_technic
 my_kite.option = my_option
 my_kite.save
@@ -102,7 +104,7 @@ puts my_kite.id
 
 my_bar = Product.create(name: bar_name[variable], brand: brand[variable], category: category[3], domain: "bar", description: "des barres de rire cette barre", favorite: "#son grip", testsize: "40-45", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(400..600), year: "2020")
 my_technic = Technic.create(grip: rand(1..5))
-my_option = Option.create(detail:"section detail", range:"40-45 / 45-50", trim:"sangle", twist:"devrilleur",line: rand(20..27), v: "V")
+my_option = Option.create(detail:"secu réenclenchable automatiquement", range:"40-45 / 45-50", trim:"sangle", twist:"automatique et sur le chicken",line: rand(20..27), v: "V")
 my_bar.option = my_option
 my_bar.save
 my_option.product = my_bar
@@ -115,7 +117,7 @@ puts my_bar.id
 
 my_board = Product.create(name: board_name[variable], brand: brand[variable], category: category[1], domain: "freestyle", description: kite_description[0], favorite: "pop", testsize: "135x42", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(400..800), year: "2020")
 my_technic = Technic.create(freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), control: rand(0..5), progression: rand(0..5))
-my_option = Option.create(detail:"section detail", range:"134x41 / 136x42 / 138x43", fin: "3,5cm",width: rand(38..45), stance: "62cm / 65cm / 68cm",champs: "HRD", weigh: rand(3..5), carene: "channel", flex:"medium", velcros: rand(1..4))
+my_option = Option.create(detail:"noyau bois", range:"134x41 / 136x42 / 138x43", fin: "3,5cm",width: rand(38..45), stance: "62cm / 65cm / 68cm",champs: "HRD", weigh: rand(3..5), carene: "channel", flex:"medium", velcros: rand(1..4))
 my_board.technic = my_technic
 my_board.option = my_option
 my_board.save
@@ -130,7 +132,7 @@ puts my_board.id
 
 my_pads = Product.create(name: pads_name[variable], brand: brand[variable], category: category[3], domain: "pads", description: "une bonne grosse pantoufle", favorite: "les scratchs", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(140..300), year: "2020")
 my_technic = Technic.create(pad: rand(1..5), strap: rand(1..5))
-my_option = Option.create(detail:"section detail", weigh: rand(3..5),velcros: rand(1..4))
+my_option = Option.create(detail:"top pour les petits pieds", weigh: rand(3..5),velcros: rand(1..4))
 my_pads.technic = my_technic
 my_pads.option = my_option
 my_pads.save
@@ -142,9 +144,9 @@ print my_pads.name .red
 print " ID n°" .red
 puts my_pads.id
 
-my_surf = Product.create(name: surfboard_name[variable], brand: brand[variable], category: category[2], domain: "freestyle", description: kite_description[0], favorite: "son pads", testsize: "6'4", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(500..1000), year: "2020")
+my_surf = Product.create(name: surfboard_name[variable], brand: brand[variable], category: category[2], domain: surfdomain[variable], description: kite_description[0], favorite: "son pads", testsize: "6'4", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(500..1000), year: "2020")
 my_technic = Technic.create(wave: rand(0..5),freestyle: rand(0..5), courbes: rand(0..5),wind: rand(0..5),sideshore: rand(0..5),onshore: rand(0..5), strap: rand(0..5),strapless: rand(0..5), transitions: rand(0..5))
-my_option = Option.create(detail:"section detail", range:"6'2 / 6'4 / 7'2", fin: "3,5cm", width: rand(33..38),champs: "HRD", weigh: rand(3.2..4.8), length: rand(150..180), maitrebau: rand(40..50), thickness:rand(5.5..6.8), volum:rand(22..26), box:"futures fins")
+my_option = Option.create(detail:"construction bambou", range:"6'2 / 6'4 / 7'2", fin: "3,5cm", width: rand(33..38),champs: "HRD", weigh: rand(3.2..4.8), length: rand(150..180), maitrebau: rand(40..50), thickness:rand(5.5..6.8), volum:rand(22..26), box:"futures fins")
 my_surf.technic = my_technic
 my_surf.option = my_option
 my_surf.save
@@ -157,7 +159,7 @@ print " Id n°" .blue
 puts my_surf.id
 
 my_wetsuit = Product.create(name: wetsuit_name[variable], brand: wetsuit_brand[variable], category: category[3], domain: "wetsuit", description: "souple et chaud", favorite: "son front-zip", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(300..600), year: "2020")
-my_option = Option.create(detail:"section detail", range:"S / M / XL / XXL", thickness: "3/2 - 4/3 - 5/4", flex: rand(1..5), velcros:"yes", zip: "front")
+my_option = Option.create(detail:"neoprene vraiment souple", range:"S / M / XL / XXL", thickness: "3/2 - 4/3 - 5/4", flex: "stretch", velcros:"yes", zip: "front")
 my_wetsuit.option = my_option
 my_wetsuit.save
 my_option.product = my_wetsuit
@@ -167,7 +169,7 @@ print " Id n°" .white
 puts my_wetsuit.id
 
 my_harness = Product.create(name: harness_name[variable], brand: harness_brand[variable], category: category[3], domain: "harness", description: "maintient bien le dos", favorite: "sa boucle", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(120..400), year: "2020")
-my_option = Option.create(detail:"section detail", range:"S / M / XL / XXL", bar: "adaptable vague", flex: "medium", velcros:"yes", zip: "ceinture", trim: "à clip")
+my_option = Option.create(detail:"attache leash à l'avant", range:"S / M / XL / XXL", bar: "vague / foil / freestyle", flex: "medium", velcros:"2", zip: "ceinture", trim: "à clip")
 my_harness.option = my_option
 my_harness.save
 my_option.product = my_harness

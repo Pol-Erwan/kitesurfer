@@ -123,9 +123,9 @@
                   <div class="mt-5 col-md-4 col-sm-12">
                     <h3><i class="fas fa-wrench"></i>  Caractéristique :</h3>
                     <h6><i class="fab fa-steam-symbol"></i> Longueur de ligne : <%= @option.line %>m</h6>
-                    <h6><i class="fab fa-steam-symbol"></i> Trim : <%= @option.trim %></h6>
+                    <h6><i class="fab fa-steam-symbol"></i> Type de trim : <%= @option.trim %></h6>
                     <h6><i class="fab fa-steam-symbol"></i> Dévrilleur ? : <%= @option.twist %></h6>
-                    <h6><i class="fab fa-steam-symbol"></i> Avant avec V ou Y ?: <%= @option.v %></h6>
+                    <h6><i class="fab fa-steam-symbol"></i> configuration des avants : <%= @option.v %></h6>
 		    <a class="btn btn-success" href="<%= @product.link %>" target="blank_">more details</a>
 		  </div>
                  
@@ -150,16 +150,15 @@
                       <img src="/assets/testaccessory/wetsuit.png" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:200px">
                     </div>
                   </div>
-                  <div class="mt-5 col-md-4 col-sm-12">
+                  <div class="mt-5 col-md-6 col-sm-12">
                     <h3><i class="fas fa-heart"></i>  On a aimé : <%= @product.favorite %></h3>
-                    <h6>Taille testé : <%= @product.testsize %>m</h6>
                     <h6>Tailles disponible : <%= @option.range %></h6>
                     <h6>Epaisseur disponible : <%= @option.thickness %></h6>
                     <h6>Prix en shop : <%= @product.price %>€</h6>
-                    <h3><i class="fas fa-wrench"></i>  Caractéristique :</h3>
-                    <h6><i class="fab fa-steam-symbol"></i> scratch pieds : <%= @option.velcros %>m</h6>
+                    <h3><i class="fas fa-cog"></i>  Caractéristique :</h3>
+                    <h6><i class="fab fa-steam-symbol"></i> scratch pieds : <%= @option.velcros %></h6>
                     <h6><i class="fab fa-steam-symbol"></i> Zip : <%= @option.zip %></h6>
-		    <h6>souple / rigide : <%= @option.flex %></h6>
+		    <h6><i class="fab fa-steam-symbol"></i> Néoprène : <%= @option.flex %></h6>
 			<div class="card p-1">
 			<h6>details : <%= @option.detail %></h6>
 			</div>
@@ -228,7 +227,7 @@
                   <div class="mt-5 col-md-4 col-sm-12">
                     <h3><i class="fas fa-heart"></i>  On a aimé : <%= @product.favorite %></h3>	
                     <h6>Prix en shop : <%= @product.price %>€</h6>
-		    <h5>Pads : soft <% while @pad < @technic.pad %>
+		    <h6>Pads : soft <% while @pad < @technic.pad %>
 	    		<i class="fas fa-circle"></i>
 	    		<% @pad = @pad + 1 %>
 	  		<%end%>
@@ -237,8 +236,8 @@
 			<% @pad = @pad + 1 %>
 			<% end %>
 	  		<% @pad = 0 %>
-		    hard</h5>
-		    <h4>Strap : souple<% while @strap < @technic.strap %>
+		    hard</h6>
+		    <h6>Strap : souple<% while @strap < @technic.strap %>
 	    		<i class="fas fa-circle"></i>
 	    		<% @strap = @strap + 1 %>
 	  		<%end%>
@@ -247,7 +246,7 @@
 			<% @strap = @strap + 1 %>
 			<% end %>
 	  		<% @strap = 0 %>
-		    rigide</h4>
+		    rigide</h6>
 
 			<div class="card p-1">
 			<h6>details : <%= @option.detail %></h6>
@@ -383,100 +382,77 @@
 
 	<section id="product">
 	          <h2 class="ml-5 fas fa-plus"> Produits associés</h2>
-
+<div class="row">
+  <div class="col-sm-4">
+      <div class="card-body">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-	  <div class="col-lg-10 m-3">
-            <div class="row d-flex justify-content-around">
-	      <div class="card mx-5" style="width:20%">
-  		<img class="card-img-top" src="/assets/testkite/bandit.png" alt="Card image cap">
-  	        <div class="card-body">
-    		  <a href="#" class="btn btn-primary">Go somewhere</a>
-     	        </div>
-	      </div>
-	      <div class="card mx-5" style="width:20%">
-  		<img class="card-img-top" src="/assets/testkite/wtf.png" alt="Card image cap">
-  		<div class="card-body">
-    		  <a href="#" class="btn btn-primary">Go somewhere</a>
-  		</div>
-	      </div>		
-	    <div class="card mx-5" style="width:20%">
-  	      <img class="card-img-top" src="/assets/testkite/wtf2.png" alt="Card image cap">
-  	      <div class="card-body">
-    		<a href="#" class="btn btn-primary">Go somewhere</a>
-	      </div>
-            </div>
-	  </div>
-	</div>
+	<h5 class="text-dark">Autres tests</h5>
+    <a href="<%= accessory_index_path %>" class="btn btn-success">Autres tests</a>
+      <img class="d-block w-100" src="/assets/testaccessory/strap.png" alt="First slide">
     </div>
+      <% @products.each do |t, index| %>
+<% if t.category === "accessory" && t.domain === @product.domain && t.picture.attached? && t.id != @product.id %>
     <div class="carousel-item">
-	  <div class="col-lg-10 m-3">
-            <div class="row d-flex justify-content-center">
-	      <div class="card mx-3" style="width:200px">
-  		<img class="card-img-top" src="/assets/testkite/bandit.png" alt="Card image cap">
-  	        <div class="card-body">
-    		  <a href="#" class="btn btn-primary">Go somewhere</a>
-     	        </div>
-	      </div>
-	      <div class="card mx-3" style="width:200px">
-  		<img class="card-img-top" src="/assets/testkite/wtf.png" alt="Card image cap">
-  		<div class="card-body">
-    		  <a href="#" class="btn btn-primary">Go somewhere</a>
-  		</div>
-	      </div>		
-	    <div class="card mx-3" style="width:200px">
-  	      <img class="card-img-top" src="/assets/testkite/wtf2.png" alt="Card image cap">
-  	      <div class="card-body">
-    		<a href="#" class="btn btn-primary">Go somewhere</a>
-	      </div>
-            </div>
-	  </div>
-	</div>
+	<h3 class="text-dark"><%= t.brand %> <%= t.name %></h3>
+    <a href="<%= accessory_path(t) %>" class="btn btn-success">Voir le test</a>
+      <%= image_tag t.picture.first, class:"d-block w-100" %>
     </div>
-    <div class="carousel-item">
-	  <div class="col-lg-10 m-3">
-            <div class="row d-flex justify-content-center">
-	      <div class="card mx-3" style="width:200px">
-  		<img class="card-img-top" src="/assets/testkite/bandit.png" alt="Card image cap">
-  	        <div class="card-body">
-    		  <a href="#" class="btn btn-primary">Go somewhere</a>
-     	        </div>
-	      </div>
-	      <div class="card mx-3" style="width:200px">
-  		<img class="card-img-top" src="/assets/testkite/wtf.png" alt="Card image cap">
-  		<div class="card-body">
-    		  <a href="#" class="btn btn-primary">Go somewhere</a>
-  		</div>
-	      </div>		
-	    <div class="card mx-3" style="width:200px">
-  	      <img class="card-img-top" src="/assets/testkite/wtf2.png" alt="Card image cap">
-  	      <div class="card-body">
-    		<a href="#" class="btn btn-primary">Go somewhere</a>
-	      </div>
-            </div>
-	  </div>
-	</div>
-    </div>
+<% end %>
+<% end %>
+
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
+      </div>
+  </div>
+  <div class="col-sm-4">
+      <div class="card-body">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+	<h5 class="text-dark">kites </h5>
+    <a href="<%= kite_index_path %>" class="btn btn-success">Autres tests</a>
+      <img class="d-block w-100" src="/assets/testkite/bandit.png" alt="First slide">
+    </div>
+      <% @products.each do |t, index| %>
+<% if t.category === "kite" && t.picture.attached? %>
+    <div class="carousel-item">
+	<h3 class="text-dark"><%= t.brand %> <%= t.name %></h3>
+    <a href="<%= kite_path(t) %>" class="btn btn-success">Voir le test</a>
+      <%= image_tag t.picture.first, class:"d-block w-100" %>
+    </div>
+<% end %>
+<% end %>
+  </div>
+</div>
+      </div>
+  </div>
+  <div class="col-sm-4">
+      <div class="card-body">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+	<h5 class="text-dark">boards</h5>
+    <a href="<%= board_index_path %>" class="btn btn-success">Autres tests</a>
+      <img class="d-block w-100" src="/assets/testaccessory/harness.png" alt="First slide">
+    </div>
+      <% @products.each do |t, index| %>
+<% if t.category === "accessory" && t.domain != @product.domain && t.picture.attached? %>
+    <div class="carousel-item">
+	<h3 class="text-dark"><%= t.brand %> <%= t.name %></h3>
+    <a href="<%= accessory_path(t) %>" class="btn btn-success">Voir le test</a>
+      <%= image_tag t.picture.first, class:"d-block w-100" %>
+    </div>
+<% end %>
+<% end %>
 
-
-  		<a href="#header" class="scrollup d-flex justify-content-end align-items-end m-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
-	</section>
+  </div>
+</div>
+      </div>
+  </div>
+</div>
+</section>
 
 	<div class="d-flex justify-content-end">
               <a class="btn-primary btn-sm" href="<%= accessory_index_path %>"><i class="fas fa-caret-square-left"></i>  Retour accessoires</a>

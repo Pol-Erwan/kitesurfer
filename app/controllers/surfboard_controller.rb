@@ -15,6 +15,9 @@ class SurfboardController < ApplicationController
   end
 
   def show
+    @products = Product.all
+    @technics = Technic.all
+    @options = Option.all
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)

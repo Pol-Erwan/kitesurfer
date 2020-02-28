@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'admins#index'
     resources :admins
-    resources :users
+    resources :user
     resources :kite
     resources :board
     resources :surfboard

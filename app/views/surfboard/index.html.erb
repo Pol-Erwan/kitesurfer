@@ -139,25 +139,40 @@ modèle dédié au strapless et orienté "freestyle".</p>
    <h1>Directionnelles</h1>
    </div>
 </div>
-
+<h2>Les surfkite</h2>
 <div class="row">
 <% @products.each do |t, index| %>
-<% if t.category === "surfboard" %>
-<div class="card-deck m-3">
-  <div class="row mx-3">  
-    <div style="max-width: 600px;">
-        <a href="<%= surfboard_path(t) %>">
-	<div class="img-raised rounded img-fluid p-2">
-	<img src="assets/testsurfboard/surfboard.jpg">
-	<img src="assets/testsurfboard/surfboardcarre.jpg">
-          <h3 class="card-title"><%= t.name %></h3><h4> <%= t.brand %></h4>
-	</div>
-    </div></a>
-  </div>
-</div>
-<%end%>
-<% end %>
-</div>
+<% if t.category === "surfboard" && t.domain === "wave" %>
+      <div class="card-deck m-3">
+        <div class="row mx-1">  
+          <div class="card" style="max-width: 200px;">
+            <a href="<%= surfboard_path(t) %>">
+	    <img src="assets/testsurfboard/surfboard2.png" class="img-raised rounded img-fluid" alt="..."></a>
+            <h3 class="card-title p-1"><%= t.name %></h3> <h4>By <%= t.brand %></h4>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <%end%>
+    </div>
+
+<h2>Les noseless</h2>
+<div class="row">
+<% @products.each do |t, index| %>
+<% if t.category === "surfboard" && t.domain === "freestyle" %>
+      <div class="card-deck m-3">
+        <div class="row mx-1">  
+          <div class="card" style="max-width: 200px;">
+            <a href="<%= surfboard_path(t) %>">
+	    <img src="assets/testsurfboard/surfboard2.png" class="img-raised rounded img-fluid" alt="..."></a>
+            <h3 class="card-title p-1"><%= t.name %></h3> <h4>By <%= t.brand %></h4>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <%end%>
+    </div>
+
 </section>
 
 
@@ -169,13 +184,35 @@ modèle dédié au strapless et orienté "freestyle".</p>
    </div>
 </div>
 
+  <div class="col-lg-6 col-md-12">
+    <div class="m-5 row">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-pills-icons flex-column" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" href="#dashboard-2" role="tab" data-toggle="tab">
+            <i class="fas fa-umbrella-beach"></i> Surf
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#schedule-2" role="tab" data-toggle="tab">
+            <i class="fas fa-water"></i> Noseless
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-8">
+        <div class="tab-content">
+          <div class="tab-pane active" id="dashboard-2">
+                      Ceci est un tableau comparatif des surf testés freeride / freestyle, pour avoir une idée plus précise, merci de bien lire le test du surf en détail.
+          <br>
 
 <table class="table table-striped text-center p-2">
   <thead>
     <tr>
       <th scope="col">surf <i class="fas fa-chevron-circle-right"></i></th>
 <% @products.each do |t, index| %>
-      <% if t.category === "surfboard" %>
+<% if t.category === "surfboard" && t.domain === "wave" %>
       <th scope="col"><%= t.name %></th>
 <%end%>
 <% end %>
@@ -185,7 +222,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @products.each do |t, index| %>
-      <% if t.category === "surfboard" %>
+<% if t.category === "surfboard" && t.domain === "wave" %>
       <td><img src="assets/testsurfboard/surfboard2.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></td>
 <%end%>
 <% end %>
@@ -193,7 +230,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Marque</th>
 <% @products.each do |t, index| %>
-      <% if t.category === "surfboard" %>
+<% if t.category === "surfboard" && t.domain === "wave" %>
       <td><%= t.brand %></td>
 <% end %>
 <%end%>
@@ -201,7 +238,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">taille testé</th>
 <% @products.each do |t, index| %>
-      <% if t.category === "surfboard" %>
+<% if t.category === "surfboard" && t.domain === "wave" %>
       <td><%= t.testsize %></td>
 <% end %>
 <%end%>
@@ -209,7 +246,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Courbes</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>
       <td><% while @courbes < t.courbes %>
 	    <i class="fas fa-star"></i>
 	    <% @courbes = @courbes + 1 %>
@@ -222,7 +259,236 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Wind</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><% while @wind < t.wind %>
+	    <i class="fas fa-star"></i>
+	    <% @wind = @wind + 1 %>
+	  <%end%>
+	  <% @wind = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Side-Shore</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><% while @sideshore < t.sideshore %>
+	    <i class="fas fa-star"></i>
+	    <% @sideshore = @sideshore + 1 %>
+	  <%end%>
+	  <% @sideshore = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">On-Shore</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><% while @onshore < t.onshore %>
+	    <i class="fas fa-star"></i>
+	    <% @onshore = @onshore + 1 %>
+	  <%end%>
+	  <% @onshore = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">wave</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><% while @wave < t.wave %>
+	    <i class="fas fa-star"></i>
+	    <% @wave = @wave + 1 %>
+	  <%end%>
+	  <% @wave = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Freestyle</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><% while @freestyle < t.freestyle %>
+	    <i class="fas fa-star"></i>
+	    <% @freestyle = @freestyle + 1 %>
+	  <%end%>
+	  <% @freestyle = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>    <tr>
+      <th scope="row">Strap</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><% while @strap < t.strap %>
+	    <i class="fas fa-star"></i>
+	    <% @strap = @strap + 1 %>
+	  <%end%>
+	  <% @strap = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Strapless</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><% while @strapless < t.strapless %>
+	    <i class="fas fa-star"></i>
+	    <% @strapless = @strapless + 1 %>
+	  <%end%>
+	  <% @strapless = 0 %>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+
+    <tr>
+      <th scope="row">Tailles disponibles</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.range %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Ailerons</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.fin %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">champs</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.champs %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Largeur</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.width %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Poids</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.weigh %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">longueur</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.length %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">maitrebau</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.maitrebau %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Epaisseur</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.thickness %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Volume</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.volum %></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">boitier</th>
+<% @options.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "wave"  %>      <td><%= t.box %></td>
+<%end%>
+<% end %>
+    </tr>
+
+    <tr>
+      <th scope="row">Prix</th>
+<% @products.each do |t, index| %>
+<% if t.category === "surfboard" && t.domain === "wave" %>
+      <td><%= t.price %> €</td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+<% @products.each do |t, index| %>
+<% if t.category === "surfboard" && t.domain === "wave" %>
+
+      <td><a href="<%= surfboard_path(t) %>" class="scrollup btn btn-success">Détails</a>
+</td>
+<% end %>
+<%end%>
+    </tr>
+
+  </tbody>
+</table> 
+</div>
+
+                   <div class="tab-pane" id="schedule-2">
+                      Ceci est un tableau comparatif des kites testés vague, pour avoir une idée plus précise, merci de bien lire le test de la voile en détail.                      <br>
+<table class="table table-striped text-center p-2">
+  <thead>
+    <tr>
+      <th scope="col">Noseless <i class="fas fa-chevron-circle-right"></i></th>
+<% @products.each do |t, index| %>
+<% if t.category === "surfboard" && t.domain === "freestyle" %>
+      <th scope="col"><%= t.name %></th>
+<%end%>
+<% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
+<% @products.each do |t, index| %>
+<% if t.category === "surfboard" && t.domain === "freestyle" %>
+      <td><img src="assets/testsurfboard/surfboard2.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row">Marque</th>
+<% @products.each do |t, index| %>
+<% if t.category === "surfboard" && t.domain === "freestyle" %>
+      <td><%= t.brand %></td>
+<% end %>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">taille testé</th>
+<% @products.each do |t, index| %>
+<% if t.category === "surfboard" && t.domain === "freestyle" %>
+      <td><%= t.testsize %></td>
+<% end %>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Courbes</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
+      <td><% while @courbes < t.courbes %>
+	    <i class="fas fa-star"></i>
+	    <% @courbes = @courbes + 1 %>
+	  <%end%>
+	  <% @courbes = 0 %>
+      </td>
+<% end %>
+<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Wind</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><% while @wind < t.wind %>
 	    <i class="fas fa-star"></i>
 	    <% @wind = @wind + 1 %>
@@ -235,7 +501,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Side-Shore</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><% while @sideshore < t.sideshore %>
 	    <i class="fas fa-star"></i>
 	    <% @sideshore = @sideshore + 1 %>
@@ -248,7 +514,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">On-Shore</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><% while @onshore < t.onshore %>
 	    <i class="fas fa-star"></i>
 	    <% @onshore = @onshore + 1 %>
@@ -261,7 +527,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">wave</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><% while @wave < t.wave %>
 	    <i class="fas fa-star"></i>
 	    <% @wave = @wave + 1 %>
@@ -274,7 +540,8 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Freestyle</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
+
       <td><% while @freestyle < t.freestyle %>
 	    <i class="fas fa-star"></i>
 	    <% @freestyle = @freestyle + 1 %>
@@ -286,7 +553,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     </tr>    <tr>
       <th scope="row">Strap</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><% while @strap < t.strap %>
 	    <i class="fas fa-star"></i>
 	    <% @strap = @strap + 1 %>
@@ -299,7 +566,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Strapless</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><% while @strapless < t.strapless %>
 	    <i class="fas fa-star"></i>
 	    <% @strapless = @strapless + 1 %>
@@ -313,7 +580,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Tailles disponibles</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.range %></td>
 <%end%>
 <% end %>
@@ -321,7 +588,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Ailerons</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.fin %></td>
 <%end%>
 <% end %>
@@ -329,7 +596,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">champs</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.champs %></td>
 <%end%>
 <% end %>
@@ -337,7 +604,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Largeur</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.width %></td>
 <%end%>
 <% end %>
@@ -345,7 +612,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Poids</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.weigh %></td>
 <%end%>
 <% end %>
@@ -353,7 +620,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">longueur</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.length %></td>
 <%end%>
 <% end %>
@@ -361,7 +628,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">maitrebau</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.maitrebau %></td>
 <%end%>
 <% end %>
@@ -369,7 +636,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Epaisseur</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.thickness %></td>
 <%end%>
 <% end %>
@@ -377,7 +644,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Volume</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.volum %></td>
 <%end%>
 <% end %>
@@ -385,7 +652,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">boitier</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "surfboard" %>
+      <% if @products.find(t.product_id).category === "surfboard" && @products.find(t.product_id).domain === "freestyle"  %>
       <td><%= t.box %></td>
 <%end%>
 <% end %>
@@ -394,7 +661,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row">Prix</th>
 <% @products.each do |t, index| %>
-      <% if t.category === "board" %>
+<% if t.category === "surfboard" && t.domain === "freestyle" %>
       <td><%= t.price %> €</td>
 <%end%>
 <% end %>
@@ -402,7 +669,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
     <tr>
       <th scope="row"></th>
 <% @products.each do |t, index| %>
-      <% if t.category === "board" %>
+<% if t.category === "surfboard" && t.domain === "freestyle" %>
 
       <td><a href="<%= surfboard_path(t) %>" class="scrollup btn btn-success">Détails</a>
 </td>
@@ -412,6 +679,7 @@ modèle dédié au strapless et orienté "freestyle".</p>
 
   </tbody>
 </table> 
+</div>
 </section>
 
 <section id="presentation">

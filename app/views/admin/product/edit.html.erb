@@ -45,8 +45,8 @@
 <%else%>
   <p>=== Il n'y a pas encore de photos lié à ce produit ===</p>
 <%end%>
-
-<% if @product.picture.size < 9 %>
+<section id="picture">
+<% if @product.picture.size < 12 %>
 <h3>Ajouter la photo <%= @name[@size] %></h3>
 <%= form_tag admin_product_picture_index_path(@product), multipart: true do %>
  <%= file_field_tag :picture, required: true %>
@@ -55,8 +55,12 @@
 
 
 <% end %>
-
-
+</section>
+<% if @product.category === "kite" %>
+<div class="m-2">
+    <%= link_to "Aperçu", kite_path(@product.id), class:"pull-left btn btn-primary" %>
+</div>
+<%end%>
 </section>
 
 </div>
