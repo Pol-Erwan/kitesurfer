@@ -1,0 +1,46 @@
+<body style="background-image: url('/assets/background/admin.jpg')">
+
+  <% if @product.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+            <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
+            <ul>
+              <% @product.errors.full_messages.each do |message| %>
+                <li class="li_errors"><%= message %></li>
+              <% end %>
+            </ul>
+    </div>
+      <% end %>
+<div class="m-2">
+    <%= link_to " ", admin_accessory_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+</div>
+<br>
+        <h2 class="title text-white"> Créer un accessoire</h2>      
+<div class="container card card-body p-5" >
+        <h3 class="title text-center"> Infos principales</h3>
+  <div class="row">
+
+            <%= form_tag url_for(action: 'create'), method: 'post' do %>
+              <div class="row">
+                <div class="col-3">
+                  <%= label_tag 'modèle' %>
+                  <%= text_field_tag 'name', @product.name, class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= label_tag 'Marque' %>
+                  <%= text_field_tag 'brand', @product.brand, class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= label_tag 'Domaine' %>
+                  <%= text_field_tag 'domain', @product.domain, class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= label_tag 'favoris' %>
+                  <%= text_field_tag 'favorite', @product.favorite, class: "form-control" %>
+                </div>
+              </div>
+
+              <center><%= submit_tag "Créer l'accessoire", class:"m-4 btn btn-outline-primary" %></center>
+            <% end %>
+        </div>
+      </div>
+</body>

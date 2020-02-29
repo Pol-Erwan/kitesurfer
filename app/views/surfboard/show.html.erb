@@ -97,7 +97,7 @@
                     </div>
                   </div>
                   <div class="mt-5 col-md-4 col-sm-12">
-                    <h3><i class="fas fa-heart fa-2x"></i> <%= @product.favorite %></h3>
+                    <h3><i class="fas fa-heart fa-2x"></i> On a aimé : <%= @product.favorite %></h3>
                     <h6>Domain : <%= @product.domain %></h6>
                     <h6>Taille testé : <%= @product.testsize %>m</h6>
                     <h6>Tailles disponible : <%= @option.range %></h6>
@@ -339,8 +339,8 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-	<h5 class="text-dark">Autres twin-tips <%= @product.domain %></h5>
-    <a href="<%= board_index_path %>" class="btn btn-success">Autres tests</a>
+	<h5 class="text-dark">Autres surf <%= @product.domain %></h5>
+    <a href="<%= surfboard_index_path %>" class="btn btn-success">Autres tests</a>
       <img class="d-block w-100" src="/assets/testboard/board2.png" alt="First slide">
     </div>
       <% @products.each do |t, index| %>

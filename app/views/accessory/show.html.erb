@@ -109,7 +109,7 @@
 	    		<i class="fas fa-circle"></i>
 	    		<% @grip = @grip + 1 %>
 	  		<%end%>
-			<% while @grip < 6 %>
+			<% while @grip < 5 %>
 	    		<i class="far fa-circle"></i>
 			<% @grip = @grip + 1 %>
 			<% end %>
@@ -124,7 +124,7 @@
                     <h3><i class="fas fa-wrench"></i>  Caractéristique :</h3>
                     <h6><i class="fab fa-steam-symbol"></i> Longueur de ligne : <%= @option.line %>m</h6>
                     <h6><i class="fab fa-steam-symbol"></i> Type de trim : <%= @option.trim %></h6>
-                    <h6><i class="fab fa-steam-symbol"></i> Dévrilleur ? : <%= @option.twist %></h6>
+                    <h6><i class="fab fa-steam-symbol"></i> Type de dévrilleur ? : <%= @option.twist %></h6>
                     <h6><i class="fab fa-steam-symbol"></i> configuration des avants : <%= @option.v %></h6>
 		    <a class="btn btn-success" href="<%= @product.link %>" target="blank_">more details</a>
 		  </div>

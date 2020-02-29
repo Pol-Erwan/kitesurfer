@@ -1,0 +1,284 @@
+<body style="background-image: url('/assets/background/admin.jpg')">
+
+  <% if @product.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+            <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
+            <ul>
+              <% @product.errors.full_messages.each do |message| %>
+                <li class="li_errors"><%= message %></li>
+              <% end %>
+            </ul>
+    </div>
+      <% end %>
+<div class="m-2">
+    <%= link_to " ", admin_accessory_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+</div>
+<br>
+
+        <h2 class="title text-white"> <%= @product.name %> n°<%= @product.id %></h2>      
+<div class="container card card-body p-5" >
+
+            <%= form_tag url_for(action: 'update'), method: 'put' do %>
+<% if @product.category != "newaccessory" %>
+        <h3 class="title text-center"> Infos principales</h3>
+
+              <div class="row">
+                <div class="col-3">
+                  <%= label_tag 'modèle' %>
+                  <%= text_field_tag 'name', @product.name, class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= label_tag 'Marque' %>
+                  <%= text_field_tag 'brand', @product.brand, class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= label_tag 'Domaine' %>
+                  <%= text_field_tag 'domain', @product.domain, class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= label_tag 'favoris' %>
+                  <%= text_field_tag 'favorite', @product.favorite, class: "form-control" %>
+                </div>
+              </div>
+
+        <h3 class="title text-center"> Compétences</h3>
+
+  <% if @product.domain === "bar" %>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'Grip' %>
+              <%= text_field_tag 'grip', @technic.grip, class: "form-control"%>
+		</div>
+	      </div>
+  <% end %>
+  <% if @product.domain === "pads" %>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'Pads' %>
+              <%= text_field_tag 'pad', @technic.pad, class: "form-control"%>
+		</div>
+	      </div>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'Straps' %>
+              <%= text_field_tag 'strap', @technic.strap, class: "form-control"%>
+		</div>
+	      </div>
+  <% end %>
+
+        <h3 class="title text-center"> Caractérisques</h3>
+
+  <% if @product.domain === "bar" %>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'details' %>
+              <%= text_field_tag 'detail', @option.detail, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'taille disponible' %>
+              <%= text_field_tag 'range', @option.range, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'type de trim' %>
+              <%= text_field_tag 'trim', @option.trim, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'type de dévrilleur :' %>
+              <%= text_field_tag 'twist', @option.twist, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Longueur de ligne' %>
+              <%= text_field_tag 'line', @option.line, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Configuration des avants' %>
+              <%= text_field_tag 'v', @option.v, class: "form-control"%>
+		</div>
+                <div class="col-2">
+  <% end %>
+  <% if @product.domain === "pads" %>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'details' %>
+              <%= text_field_tag 'detail', @option.detail, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Nombre de scratch' %>
+              <%= text_field_tag 'velcros', @option.velcros, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'poids' %>
+              <%= text_field_tag 'weigh', @option.weigh, class: "form-control"%>
+		</div>
+
+  <% end %>
+              <%= label_tag 'taille testé' %>
+              <%= text_field_tag 'testsize', @product.testsize, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'prix' %>
+              <%= text_field_tag 'price', @product.price, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'millésime' %>
+              <%= text_field_tag 'year', @product.year, class: "form-control"%>
+		</div>
+                <div class="col-6">
+              <%= label_tag 'lien youtube' %>
+              <%= text_field_tag 'youtube', @product.youtube, class: "form-control"%>
+		</div>
+                <div class="col-6">
+              <%= label_tag 'lien site constructeur' %>
+              <%= text_field_tag 'link', @product.link, class: "form-control"%>
+		</div>
+                <div class="col-12">
+              <%= label_tag 'description' %>
+              <%= text_field_tag 'description', @product.description, class: "form-control"%>
+		</div>
+                </div>
+<% else %>
+
+  <% if @product.domain === "bar" %>
+        <h3 class="title text-center"> Compétences</h3>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'Grip' %>
+              <%= text_field_tag 'grip', @technic.grip, class: "form-control" %>
+		</div>
+	      </div>
+  <% end %>
+  <% if @product.domain === "pads" %>
+        <h3 class="title text-center"> Compétences</h3>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'Pads' %>
+              <%= text_field_tag 'pad', @technic.pad, class: "form-control"%>
+		</div>
+	      </div>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'Straps' %>
+              <%= text_field_tag 'strap', @technic.strap, class: "form-control"%>
+		</div>
+	      </div>
+  <% end %>
+
+        <h3 class="title text-center"> Caractérisques</h3>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'details' %>
+              <%= text_field_tag 'detail', @option.detail, class: "form-control"%>
+		</div>
+
+  <% if @product.domain === "bar" %>
+                <div class="col-2">
+              <%= label_tag 'taille disponible' %>
+              <%= text_field_tag 'range', @option.range, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'type de trim' %>
+              <%= text_field_tag 'trim', @option.trim, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'type de dévrilleur :' %>
+              <%= text_field_tag 'twist', @option.twist, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Longueur de ligne' %>
+              <%= text_field_tag 'line', @option.line, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Configuration des avants' %>
+              <%= text_field_tag 'v', @option.v, class: "form-control"%>
+		</div>
+  <% end %>
+  <% if @product.domain === "pads" %>
+                <div class="col-2">
+              <%= label_tag 'Nombre de scratch' %>
+              <%= text_field_tag 'velcros', @option.velcros, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'poids' %>
+              <%= text_field_tag 'weigh', @option.weigh, class: "form-control"%>
+		</div>
+  <% end %>
+  <% if @product.domain === "harness" %>
+                <div class="col-2">
+              <%= label_tag 'taille disponible' %>
+              <%= text_field_tag 'range', @option.range, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'type de trim' %>
+              <%= text_field_tag 'trim', @option.trim, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Type de crochet' %>
+              <%= text_field_tag 'bar', @option.bar, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Maintien du dos / confort' %>
+              <%= text_field_tag 'flex', @option.flex, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Nombre de scratch' %>
+              <%= text_field_tag 'velcros', @option.velcros, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'ceinture ou culotte' %>
+              <%= text_field_tag 'zip', @option.zip, class: "form-control"%>
+		</div>
+  <% end %>
+  <% if @product.domain === "wetsuit" %>
+                <div class="col-2">
+              <%= label_tag 'taille disponible' %>
+              <%= text_field_tag 'range', @option.range, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Epaisseur' %>
+              <%= text_field_tag 'thickness', @option.thickness, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Stretch' %>
+              <%= text_field_tag 'flex', @option.flex, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'scratch pieds' %>
+              <%= text_field_tag 'velcros', @option.velcros, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Back-zip / front-zip' %>
+              <%= text_field_tag 'zip', @option.zip, class: "form-control"%>
+		</div>
+  <% end %>
+                <div class="col-2">
+              <%= label_tag 'taille testé' %>
+              <%= text_field_tag 'testsize', @product.testsize, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'prix' %>
+              <%= text_field_tag 'price', @product.price, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'millésime' %>
+              <%= text_field_tag 'year', @product.year, class: "form-control"%>
+		</div>
+                <div class="col-6">
+              <%= label_tag 'lien youtube' %>
+              <%= text_field_tag 'youtube', @product.youtube, class: "form-control"%>
+		</div>
+                <div class="col-6">
+              <%= label_tag 'lien site constructeur' %>
+              <%= text_field_tag 'link', @product.link, class: "form-control"%>
+		</div>
+                <div class="col-12">
+              <%= label_tag 'description' %>
+              <%= text_field_tag 'description', @product.description, class: "form-control"%>
+		</div>
+                </div>
+<% end %>
+              <center><%= submit_tag "Valider l'accessoire", class:"m-4 btn btn-outline-primary" %></center>
+            <% end %>
+        </div>
+      </div>
+</body>
+

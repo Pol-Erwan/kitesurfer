@@ -13,7 +13,7 @@ class Admin::KiteController < Admin::BasesController
   end
 
   def create
-      @product = Product.new(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
+      @product = Product.new(name: params[:name], brand: params[:brand], category: "kite", domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
       @technic = Technic.new( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
 
@@ -24,7 +24,7 @@ class Admin::KiteController < Admin::BasesController
 
       if @product.save && @technic.save && @option.save
         flash[:success] = "Le kite a bien été ajouté !"
-        redirect_to admin_kite_index_path
+        redirect_to edit_admin_product_path(@product)
       else
         render :new
       end
@@ -42,7 +42,7 @@ class Admin::KiteController < Admin::BasesController
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
 
-    if @product.update(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
+    if @product.update(name: params[:name], brand: params[:brand], category: "kite", domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
       if @technic.update( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
 

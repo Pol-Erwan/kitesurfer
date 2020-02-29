@@ -13,7 +13,7 @@ class Admin::SurfboardController < Admin::BasesController
   end
 
   def create
-      @product = Product.new(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
+      @product = Product.new(name: params[:name], brand: params[:brand], category: "surfboard", domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
       @technic = Technic.new(wave: params[:wave],freestyle: params[:freestyle], courbes: params[:courbes],wind: params[:wind],sideshore: params[:sideshore],onshore: params[:onshore], strap: params[:strap],strapless: params[:strapless], transitions: params[:transitions])
 
@@ -24,7 +24,7 @@ class Admin::SurfboardController < Admin::BasesController
 
       if @product.save && @technic.save && @option.save
         flash[:success] = "Le surf a bien été ajouté !"
-        redirect_to admin_surfboard_index_path
+        redirect_to edit_admin_product_path(@product)
       else
         render :new
       end
@@ -42,7 +42,7 @@ class Admin::SurfboardController < Admin::BasesController
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
 
-    if @product.update(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
+    if @product.update(name: params[:name], brand: params[:brand], category: "surfboard", domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
       if @technic.update(wave: params[:wave],freestyle: params[:freestyle], courbes: params[:courbes],wind: params[:wind],sideshore: params[:sideshore],onshore: params[:onshore], strap: params[:strap],strapless: params[:strapless], transitions: params[:transitions])
 
