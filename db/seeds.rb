@@ -146,7 +146,7 @@ puts my_pads.id
 
 my_surf = Product.create(name: surfboard_name[variable], brand: brand[variable], category: category[2], domain: surfdomain[variable], description: kite_description[0], favorite: "son pads", testsize: "6'4", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(500..1000), year: "2020")
 my_technic = Technic.create(wave: rand(0..5),freestyle: rand(0..5), courbes: rand(0..5),wind: rand(0..5),sideshore: rand(0..5),onshore: rand(0..5), strap: rand(0..5),strapless: rand(0..5), transitions: rand(0..5))
-my_option = Option.create(detail:"construction bambou", range:"6'2 / 6'4 / 7'2", fin: "3,5cm", width: rand(33..38),champs: "HRD", weigh: rand(3.2..4.8), length: rand(150..180), maitrebau: rand(40..50), thickness:rand(5.5..6.8), volum:rand(22..26), box:"futures fins")
+my_option = Option.create(detail:"construction bambou", range:"6'2 / 6'4 / 7'2", fin: "3,5cm", width: rand(33..38), weigh: rand(3.2..4.8), length: rand(150..180), maitrebau: rand(40..50), thickness:rand(5.5..6.8), volum:rand(22..26), box:"futures fins", carene: "concave 3mm")
 my_surf.technic = my_technic
 my_surf.option = my_option
 my_surf.save

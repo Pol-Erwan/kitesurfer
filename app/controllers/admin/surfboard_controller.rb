@@ -1,4 +1,4 @@
-class Admin::KiteController < Admin::BasesController
+class Admin::SurfboardController < Admin::BasesController
 
   def index
     @products = Product.all
@@ -15,16 +15,16 @@ class Admin::KiteController < Admin::BasesController
   def create
       @product = Product.new(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
-      @technic = Technic.new( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
+      @technic = Technic.new(wave: params[:wave],freestyle: params[:freestyle], courbes: params[:courbes],wind: params[:wind],sideshore: params[:sideshore],onshore: params[:onshore], strap: params[:strap],strapless: params[:strapless], transitions: params[:transitions])
 
-      @option = Option.new(detail: params[:detail], range: params[:range], bridle: params[:bridle], strut: params[:strut])
+      @option = Option.new(detail: params[:detail], range: params[:range], fin: params[:fin], width: params[:width], weigh: params[:weigh], length: params[:length], maitrebau: params[:maitrebau], thickness: params[:thickness], volum: params[:volum], box: params[:box], carene: params[:carene])
 
       @product.technic = @technic
       @product.option = @option
 
       if @product.save && @technic.save && @option.save
-        flash[:success] = "Le kite a bien été ajouté !"
-        redirect_to admin_kite_index_path
+        flash[:success] = "Le surf a bien été ajouté !"
+        redirect_to admin_surfboard_index_path
       else
         render :new
       end
@@ -44,10 +44,10 @@ class Admin::KiteController < Admin::BasesController
 
     if @product.update(name: params[:name], brand: params[:brand], category: params[:category], domain: params[:domain], description: params[:description], favorite: params[:favorite], testsize: params[:testsize], youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
-      if @technic.update( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
+      if @technic.update(wave: params[:wave],freestyle: params[:freestyle], courbes: params[:courbes],wind: params[:wind],sideshore: params[:sideshore],onshore: params[:onshore], strap: params[:strap],strapless: params[:strapless], transitions: params[:transitions])
 
-        if @option.update(detail: params[:detail], range: params[:range], bridle: params[:bridle], strut: params[:strut])
-          redirect_to admin_kite_index_path
+        if @option.update(detail: params[:detail], range: params[:range], fin: params[:fin], width: params[:width], weigh: params[:weigh], length: params[:length], maitrebau: params[:maitrebau], thickness: params[:thickness], volum: params[:volum], box: params[:box], carene: params[:carene])
+          redirect_to admin_surfboard_index_path
         else
           render :edit
         end
@@ -63,9 +63,9 @@ class Admin::KiteController < Admin::BasesController
     @technic.delete
     @option.delete
 
-      flash[:sucess] = "Le kite a bien été supprimé !"
+      flash[:sucess] = "Le surf a bien été supprimé !"
 
-      redirect_to admin_kite_index_path
+      redirect_to admin_surfboard_index_path
   end
 
 end

@@ -1,20 +1,20 @@
 <body style="background-image: url('/assets/background/admin.jpg')">
 
-  <% if @kite.errors.any? %>
+  <% if @product.errors.any? %>
   <div class="alert alert-danger" role="alert">
             <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
             <ul>
-              <% @kite.errors.full_messages.each do |message| %>
+              <% @product.errors.full_messages.each do |message| %>
                 <li class="li_errors"><%= message %></li>
               <% end %>
             </ul>
     </div>
       <% end %>
 <div class="m-2">
-    <%= link_to " ", admin_kite_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+    <%= link_to " ", admin_surfboard_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
 </div>
 <br>
-        <h2 class="title text-white"> Créer un kite</h2>      
+        <h2 class="title text-white"> Créer un Surf</h2>      
 <div class="container card card-body p-5" >
         <h3 class="title text-center"> Infos principales</h3>
   <div class="row">
@@ -23,89 +23,142 @@
               <div class="row">
                 <div class="col-3">
                   <%= label_tag 'modèle' %>
-                  <%= text_field_tag 'name', @kite.name, class: "form-control" %>
+                  <%= text_field_tag 'name', @product.name, class: "form-control" %>
                 </div>
                 <div class="col-3">
                   <%= label_tag 'Marque' %>
-                  <%= text_field_tag 'brand', @kite.brand, class: "form-control" %>
+                  <%= text_field_tag 'brand', @product.brand, class: "form-control" %>
                 </div>
                 <div class="col-3">
                   <%= label_tag 'Domaine' %>
-                  <%= text_field_tag 'domain', @kite.domain, class: "form-control" %>
+                  <%= text_field_tag 'domain', @product.domain, class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= label_tag 'Categorie' %>
+                  <%= text_field_tag 'category', @product.category, class: "form-control" %>
                 </div>
                 <div class="col-3">
                   <%= label_tag 'favoris' %>
-                  <%= text_field_tag 'favorite', @kite.favorite, class: "form-control" %>
+                  <%= text_field_tag 'favorite', @product.favorite, class: "form-control" %>
                 </div>
               </div>
+
         <h3 class="title text-center"> Compétences</h3>
               <div class="row">
                 <div class="col-2">
-              <%= label_tag 'wave' %>
-              <%= text_field_tag 'wave', @kite.wave, class: "form-control" %>
+              <%= label_tag 'Wave' %>
+              <%= text_field_tag 'wave', @technic.wave, class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'Big Air' %>
-              <%= text_field_tag 'bigair', @kite.bigair, class: "form-control" %>
+              <%= label_tag 'courbes' %>
+              <%= text_field_tag 'courbes', @technic.courbes, class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'freeride' %>
-              <%= text_field_tag 'freeride', @kite.freeride, class: "form-control"%>
+              <%= label_tag 'wind' %>
+              <%= text_field_tag 'wind', @technic.wind, class: "form-control"%>
 		</div>
                 <div class="col-2">
               <%= label_tag 'freestyle' %>
-              <%= text_field_tag 'freestyle', @kite.freestyle, class: "form-control"%>
+              <%= text_field_tag 'freestyle', @technic.freestyle, class: "form-control"%>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'maniability' %>
-              <%= text_field_tag 'maniability', @kite.maniability, class: "form-control"%>
+              <%= label_tag 'sideshore' %>
+              <%= text_field_tag 'sideshore', @technic.sideshore, class: "form-control"%>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'feeling' %>
-              <%= text_field_tag 'feeling', @kite.feeling, class: "form-control"%>
+              <%= label_tag 'onshore' %>
+              <%= text_field_tag 'onshore', @technic.onshore, class: "form-control"%>
 		</div>
+                <div class="col-2">
+              <%= label_tag 'strap' %>
+              <%= text_field_tag 'strap', @technic.strap, class: "form-control"%>
 		</div>
+                <div class="col-2">
+              <%= label_tag 'strapless' %>
+              <%= text_field_tag 'strapless', @technic.strapless, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Transition' %>
+              <%= text_field_tag 'transitions', @technic.transitions, class: "form-control"%>
+		</div>
+
+		</div>
+
         <h3 class="title text-center"> Caractérisques</h3>
               <div class="row">
                 <div class="col-2">
+              <%= label_tag 'detail' %>
+              <%= text_field_tag 'detail', @option.detail, class: "form-control"%>
+		</div>
+                <div class="col-2">
               <%= label_tag 'taille disponible' %>
-              <%= text_field_tag 'wind', @kite.wind, class: "form-control"%>
+              <%= text_field_tag 'range', @option.range, class: "form-control"%>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'bridage' %>
-              <%= text_field_tag 'bridle', @kite.bridle, class: "form-control"%>
+              <%= label_tag 'ailerons' %>
+              <%= text_field_tag 'fin', @option.fin, class: "form-control"%>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'strut' %>
-              <%= text_field_tag 'strut', @kite.strut, class: "form-control"%>
+              <%= label_tag 'Largeur' %>
+              <%= text_field_tag 'width', @option.width, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'length' %>
+              <%= text_field_tag 'length', @option.length, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Maître-Bau' %>
+              <%= text_field_tag 'maitrebau', @option.maitrebau, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Carène' %>
+              <%= text_field_tag 'carene', @option.carene, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Epaisseur' %>
+              <%= text_field_tag 'thickness', @option.thickness, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Volume' %>
+              <%= text_field_tag 'volum', @option.volum, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Boitier' %>
+              <%= text_field_tag 'box', @option.box, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'poids' %>
+              <%= text_field_tag 'weigh', @option.weigh, class: "form-control"%>
 		</div>
                 <div class="col-2">
               <%= label_tag 'taille testé' %>
-              <%= text_field_tag 'testsize', @kite.testsize, class: "form-control"%>
+              <%= text_field_tag 'testsize', @product.testsize, class: "form-control"%>
 		</div>
                 <div class="col-2">
               <%= label_tag 'prix' %>
-              <%= text_field_tag 'price', @kite.price, class: "form-control"%>
+              <%= text_field_tag 'price', @product.price, class: "form-control"%>
 		</div>
                 <div class="col-2">
               <%= label_tag 'millésime' %>
-              <%= text_field_tag 'year', @kite.year, class: "form-control"%>
+              <%= text_field_tag 'year', @product.year, class: "form-control"%>
 		</div>
                 <div class="col-6">
               <%= label_tag 'lien youtube' %>
-              <%= text_field_tag 'youtube', @kite.youtube, class: "form-control"%>
+              <%= text_field_tag 'youtube', @product.youtube, class: "form-control"%>
 		</div>
                 <div class="col-6">
               <%= label_tag 'lien site constructeur' %>
-              <%= text_field_tag 'link', @kite.link, class: "form-control"%>
+              <%= text_field_tag 'link', @product.link, class: "form-control"%>
 		</div>
                 <div class="col-12">
               <%= label_tag 'description' %>
-              <%= text_field_tag 'description', @kite.description, class: "form-control"%>
+              <%= text_field_tag 'description', @product.description, class: "form-control"%>
 		</div>
                 </div>
-              <center><%= submit_tag "Creer le kite", class:"m-4 btn btn-outline-primary" %></center>
+
+              <center><%= submit_tag "Creer le Surf", class:"m-4 btn btn-outline-primary" %></center>
             <% end %>
         </div>
       </div>
 </body>
+
