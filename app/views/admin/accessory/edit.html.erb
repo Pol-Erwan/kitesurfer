@@ -41,9 +41,10 @@
                 </div>
               </div>
 
-        <h3 class="title text-center"> Compétences</h3>
 
   <% if @product.domain === "bar" %>
+        <h3 class="title text-center"> Compétences</h3>
+
               <div class="row">
                 <div class="col-2">
               <%= label_tag 'Grip' %>
@@ -52,6 +53,8 @@
 	      </div>
   <% end %>
   <% if @product.domain === "pads" %>
+        <h3 class="title text-center"> Compétences</h3>
+
               <div class="row">
                 <div class="col-2">
               <%= label_tag 'Pads' %>
@@ -112,9 +115,59 @@
 		</div>
 
   <% end %>
-              <%= label_tag 'taille testé' %>
-              <%= text_field_tag 'testsize', @product.testsize, class: "form-control"%>
+  <% if @product.domain === "harness" %>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'taille disponible' %>
+              <%= text_field_tag 'range', @option.range, class: "form-control"%>
 		</div>
+                <div class="col-2">
+              <%= label_tag 'type de fermeture' %>
+              <%= text_field_tag 'trim', @option.trim, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Type de crochet' %>
+              <%= text_field_tag 'bar', @option.bar, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Maintien du dos / confort' %>
+              <%= text_field_tag 'flex', @option.flex, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Nombre de scratch' %>
+              <%= text_field_tag 'velcros', @option.velcros, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'ceinture ou culotte' %>
+              <%= text_field_tag 'zip', @option.zip, class: "form-control"%>
+		</div>
+  <% end %>
+  <% if @product.domain === "wetsuit" %>
+              <div class="row">
+                <div class="col-2">
+              <%= label_tag 'taille disponible' %>
+              <%= text_field_tag 'range', @option.range, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Epaisseur' %>
+              <%= text_field_tag 'thickness', @option.thickness, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Stretch' %>
+              <%= text_field_tag 'flex', @option.flex, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'scratch pieds' %>
+              <%= text_field_tag 'velcros', @option.velcros, class: "form-control"%>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'Back-zip / front-zip' %>
+              <%= text_field_tag 'zip', @option.zip, class: "form-control"%>
+		</div>
+  <% end %>
+
+
+              <div class="row">
                 <div class="col-2">
               <%= label_tag 'prix' %>
               <%= text_field_tag 'price', @product.price, class: "form-control"%>
@@ -208,7 +261,7 @@
               <%= text_field_tag 'range', @option.range, class: "form-control"%>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'type de trim' %>
+              <%= label_tag 'type de fermeture' %>
               <%= text_field_tag 'trim', @option.trim, class: "form-control"%>
 		</div>
                 <div class="col-2">
@@ -250,10 +303,7 @@
               <%= text_field_tag 'zip', @option.zip, class: "form-control"%>
 		</div>
   <% end %>
-                <div class="col-2">
-              <%= label_tag 'taille testé' %>
-              <%= text_field_tag 'testsize', @product.testsize, class: "form-control"%>
-		</div>
+
                 <div class="col-2">
               <%= label_tag 'prix' %>
               <%= text_field_tag 'price', @product.price, class: "form-control"%>
