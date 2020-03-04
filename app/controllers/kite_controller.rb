@@ -1,5 +1,7 @@
 class KiteController < ApplicationController
   def index
+    @articles = Article.all
+    @article = Article.find_by(domain: "testkite")
     @products = Product.all
     @technics = Technic.all
     @options = Option.all

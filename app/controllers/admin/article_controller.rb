@@ -24,13 +24,15 @@ class Admin::ArticleController < Admin::BasesController
 
   def edit
     @article = Article.find(params[:id])
+    @size = 1
+    @name = ["","background","jumbotron","intro","intro 2","id card","competences","bonus"]
 
   end
 
   def update
     @article= Article.find(params[:id])
 
-    if @article.update(title: params[:title], intro: params[:intro], title2: params[:title2], description: params[:description], youtube: params[:youtube], link: params[:link],title3: params[:title3],title4: params[:title4],title5: params[:title5],title6: params[:title6],title7: params[:title7],title8: params[:title8],title9: params[:title9],content: params[:content],content2: params[:content2],content3: params[:content3],content4: params[:content4],content5: params[:content5],content6: params[:content6],content7: params[:content7],content8: params[:content8],content9: params[:content9])
+    if @article.update(title: params[:title], intro: params[:intro], title2: params[:title2], description: params[:description], youtube: params[:youtube], link: params[:link],title3: params[:title3],title4: params[:title4],title5: params[:title5],title6: params[:title6],title7: params[:title7],title8: params[:title8],title9: params[:title9],content: params[:content],content2: params[:content2],content3: params[:content3],content4: params[:content4],content5: params[:content5],content6: params[:content6],content7: params[:content7],content8: params[:content8],content9: params[:content9],domain: params[:domain])
         redirect_to admin_article_index_path
 
       else

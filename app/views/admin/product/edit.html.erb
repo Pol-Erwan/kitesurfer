@@ -61,22 +61,19 @@
     <%= link_to "Aperçu", kite_path(@product.id), class:"pull-left btn btn-primary" %>
 </div>
 <%end%>
-</section>
-</section>
+
 <% if @product.category === "board" %>
 <div class="m-2">
     <%= link_to "Aperçu", board_path(@product.id), class:"pull-left btn btn-primary" %>
 </div>
 <%end%>
-</section>
-</section>
+
 <% if @product.category === "surfboard" %>
 <div class="m-2">
     <%= link_to "Aperçu", surfboard_path(@product.id), class:"pull-left btn btn-primary" %>
 </div>
 <%end%>
-</section>
-</section>
+
 <% if @product.category === "accessory" %>
 <div class="m-2">
     <%= link_to "Aperçu", accessory_path(@product.id), class:"pull-left btn btn-primary" %>

@@ -1,19 +1,57 @@
-Titre : <%= @article.title %>
+<h2>Titre :</H2> <%= @article.title %>
 <br>
-Intro : <%= @article.intro %>
+<h2>Intro :</h2> <%= @article.intro %>
 <br>
-content : <%= @article.content %>
+<h2>content :</h2> <%= @article.content %>
 <br>
-domain : <%= @article.domain %>
+<h2>domain :</h2> <%= @article.domain %>
 <br>
-title2 : <%= @article.title2%>
+<h2>title2 :</h2> <%= @article.title2%>
 <br>
-content2 : <%= @article.content2 %>
+<h2>content2 : </h2><%= @article.content2 %>
 <br>
-title 3 :<%= @article.title3 %>
+<h2>title 3 :</h2><%= @article.title3 %>
 <br>
-content3 : <%= @article.content3 %>
+<h2>content3 : </h2><%= @article.content3 %>
 <br>
-description : <%= @article.description %>
+<h2>description : </h2><%= @article.description %>
 <br>
-auteur : <%= @article.author %> 
+<h2>auteur :</h2> <%= @article.author %> 
+
+<h1>Photos</h1>
+<%if @article.image.attached?%>
+
+<div class="row">
+
+<% @article.image.each do |t, index| %>
+      <div class="card-deck m-3">
+        <div class="row mx-3">  
+          <div class="card m-3" style="max-width: 200px;">
+	  <h4 class="text-center">photo <%= @name[@size] %></h4>
+  	  <%= image_tag t, alt: 'kite image', style:"width:200px" %>
+	  <% @size = @size + 1 %>
+	  </div>
+	</div>
+      </div>
+<%end%>
+
+</div>
+
+
+<%else%>
+  <p>=== Il n'y a pas encore d'images lié à cet article ===</p>
+<%end%>
+
+<section id="image">
+<% if @article.image.size < 12 %>
+<h3>Ajouter l'image <%= @name[@size] %></h3>
+<%= form_tag admin_article_image_index_path(@article), multipart: true do %>
+ <%= file_field_tag :image, required: true %>
+ <%= submit_tag "mettre à jour", class:"btn-sm btn-success" %>
+<% end %>
+<% end %>
+</section>
+
+<h4>supprimer la dernière photo (<%= @name[@size - 1] %>) ? </h4>
+      <td><%= link_to "Supprimer", admin_article_image_path(@article.image), class:"btn-sm btn-danger", method: :delete %></td>
+

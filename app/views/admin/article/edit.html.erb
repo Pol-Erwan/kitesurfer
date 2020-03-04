@@ -1,46 +1,140 @@
 <body style="background-image: url('/assets/background/adminuser.jpg')">
 
-  <% if @user.errors.any? %>
+  <% if @article.errors.any? %>
   <div class="alert alert-danger" role="alert">
             <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
             <ul>
-              <% @user.errors.full_messages.each do |message| %>
+              <% @article.errors.full_messages.each do |message| %>
                 <li class="li_errors"><%= message %></li>
               <% end %>
             </ul>
     </div>
       <% end %>
 <div class="m-2">
-    <%= link_to " ", admin_users_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+    <%= link_to " ", admin_article_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
 </div>
 <br>
-        <h2 class="title text-white"> modifer l'utilisateur <%= @user.first_name %></h2>      
-<div class="container card card-body p-5 col-md-5" >
+        <h2 class="title text-white"> modifer l'article <%= @article.title %></h2>      
+<div class="container card card-body p-5 col-md-10" >
         <h3 class="title text-center"> Infos principales</h3>
   <div class="text-center">
-           <%= form_tag url_for(action: 'create'), method: 'post' do %>
+           <%= form_tag url_for(action: 'update'), method: 'put' do %>
                 <div class="text-center">
-                  <%= label_tag 'Prénom' %>
-                  <%= text_field_tag 'first_name', @user.first_name, class: "form-control" %>
+                  <%= label_tag 'Titre' %>
+                  <%= text_field_tag 'title', @article.title, class: "form-control" %>
                 </div>
 		<br><br>
                 <div class="text-center">
-                  <%= label_tag 'Nom' %>
-                  <%= text_field_tag 'last_name', @user.last_name, class: "form-control" %>
+                  <%= label_tag 'Intro' %>
+                  <%= text_field_tag 'intro', @article.intro, class: "form-control" %>
                 </div>
-              <br /> <br />
-              <%= label_tag 'Email' %>
-              <%= text_field_tag 'email', @user.email, class: "form-control" %>
-              <br /> <br />
-              <%= label_tag 'Mot de passe' %>
-              <%= password_field_tag 'password', @user.password, autocomplete: "new-password", class: "form-control" %>
-              <br /> <br />
-              <%= label_tag 'Confirmation_du_mot_de_passe' %>
-              <%= password_field_tag 'password_confirmation', @user.password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                <div class="text-center">
+                  <%= label_tag 'domain' %>
+                  <%= text_field_tag 'domain', @article.domain, class: "form-control" %>
+                </div>
+              <br><br>
+                <div class="text-center">
+                  <%= label_tag 'content' %>
+                  <%= text_field_tag 'content', @article.content, class: "form-control" %>
+                </div>
+              <br><br>		
+                <div class="text-center">
+                  <%= label_tag 'title2' %>
+                  <%= text_field_tag 'title2', @article.title2, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'content2' %>
+                  <%= text_field_tag 'content2', @article.content2, class: "form-control" %>
+                </div>
+              <br><br>
+                <div class="text-center">
+                  <%= label_tag 'title3' %>
+                  <%= text_field_tag 'title3', @article.title3, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'content3' %>
+                  <%= text_field_tag 'content3', @article.content3, class: "form-control" %>
+                </div>
+              <br><br>
+                <div class="text-center">
+                  <%= label_tag 'title4' %>
+                  <%= text_field_tag 'title4', @article.title4, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'content4' %>
+                  <%= text_field_tag 'content4', @article.content4, class: "form-control" %>
+                </div>
+              <br><br>
+                <div class="text-center">
+                  <%= label_tag 'title5' %>
+                   <%= text_field_tag 'title5', @article.title5, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'content5' %>
+                  <%= text_field_tag 'content5', @article.content5, class: "form-control" %>
+                </div>
+              <br><br>
+                <div class="text-center">
+                  <%= label_tag 'title6' %>
+                  <%= text_field_tag 'title6', @article.title6, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'content6' %>
+                  <%= text_field_tag 'content6', @article.content6, class: "form-control" %>
+                </div>
+              <br><br>
+                <div class="text-center">
+                  <%= label_tag 'title7' %>
+                  <%= text_field_tag 'title7', @article.title7, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'content7' %>
+                  <%= text_field_tag 'content7', @article.content7, class: "form-control" %>
+                </div>
 		<br><br>
-              <center><%= submit_tag "Creer l'utilisateur", class:"btn btn-outline-primary" %></center>
+              <center><%= submit_tag "Valider les modifications de l'article", class:"btn btn-outline-primary" %></center>
     
             <% end %>
+
+<h1>Photos</h1>
+<%if @article.image.attached?%>
+
+<div class="row">
+
+<% @article.image.each do |t, index| %>
+      <div class="card-deck m-3">
+        <div class="row mx-3">  
+          <div class="card m-3" style="max-width: 200px;">
+	  <h4 class="text-center">photo <%= @name[@size] %></h4>
+  	  <%= image_tag t, alt: 'kite image', style:"width:200px" %>
+	  <% @size = @size + 1 %>
+	  </div>
+	</div>
+      </div>
+<%end%>
+
+</div>
+
+
+<%else%>
+  <p>=== Il n'y a pas encore d'images lié à cet article ===</p>
+<%end%>
+
+<section id="image">
+<% if @article.image.size < 12 %>
+<h3>Ajouter l'image <%= @name[@size] %></h3>
+<%= form_tag admin_article_image_index_path(@article), multipart: true do %>
+ <%= file_field_tag :image, required: true %>
+ <%= submit_tag "mettre à jour", class:"btn-sm btn-success" %>
+<% end %>
+<% end %>
+</section>
+
+<h4>supprimer la dernière photo (<%= @name[@size - 1] %>) ? </h4>
+      <td><%= link_to "Supprimer", admin_article_image_path(@article.image), class:"btn-sm btn-danger", method: :delete %></td>
+
+
+
         </div>
       </div>
      </div>
