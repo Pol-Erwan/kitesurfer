@@ -46,18 +46,17 @@
 		<%end%>
             </li>
 	    <li class="nav-item">
-              <%= link_to kite_path(anchor: "idcard"), class:"nav-link active" do %>
-              <i class="text-center text-warning fas fa-id-card"></i>
-		<h6 class="text-center text-warning">Id Card</h6>
-		<%end%>
-            </li>
-	    <li class="nav-item">
-              <%= link_to kite_path(anchor: "resume"), class:"nav-link" do %>
+              <%= link_to kite_path(anchor: "resume"), class:"nav-link active" do %>
               <i class="text-center text-warning fas fa-comment-dots"></i>
 		<h6 class="text-center text-warning">En bref</h6>
 		<%end%>
             </li>
-
+	    <li class="nav-item">
+              <%= link_to kite_path(anchor: "idcard"), class:"nav-link" do %>
+              <i class="text-center text-warning fas fa-id-card"></i>
+		<h6 class="text-center text-warning">Id Card</h6>
+		<%end%>
+            </li>
 	    <li class="nav-item">
               <%= link_to kite_path(anchor: "competence"), class:"nav-link" do %>
               <i class="text-center text-warning fas fa-sliders-h"></i>
@@ -88,47 +87,7 @@
     </div>
 </nav>
 
-
-
-
-
-	<section id="idcard">
-          <h2 class="ml-5 fas fa-id-card"> Id Card</h2>
-	<div class="d-flex justify-content-center">
-          <div class="col-md-8">
-            <div class="name">
-	      <div class="card pb-4">
-	        <div class="row">
-		  <div class="col-md-5 col-md-offset-0 col-sm-10 col-sm-offset-1">
-                    <div class="text-center">
-                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @product.name %> <%= @product.year %></h2>
-		<%if @product.picture.size >= 5%>
- 		  <%= image_tag @product.picture.fifth, alt: 'kite picture', class:"img-raised rounded img-fluid mt-2", style:"width:200px" %>
-		<%else%>
-                      <img src="/assets/testkite/bandit ride.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:200px">
-		<%end%>
-                    </div>
-                  </div>
-                  <div class="mt-5 col-md-7 col-sm-12">
-                    <h3><i class="fas fa-heart fa-2x"></i>  Son point fort : <%= @product.favorite %></h3>
-                    <h6>Domain : <%= @product.domain %></h6>
-                    <h6>Taille testé : <%= @product.testsize %>m</h6>
-                    <h6>Tailles disponible : <%= @option.range %></h6>
-                    <h6>Prix en shop : <%= @product.price %>€ pour une <%= @product.testsize %>m nue</h6>
-		    <h6>nombre de lattes : <%= @option.strut %></h6>
-		    <h6>type de bridage : <%= @option.bridle %></h6>
-		    <a class="btn btn-success" href="<%= @product.link %>" target="blank_">more details</a>
-		  </div>
-                </div>
-  		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
-              </div>
-            </div>
-          </div>
-	</div>
-	</section>
-
 	<section id="resume">
-          <h2 class="ml-5 fas fa-comment-dots"> En bref</h2>
 	<div class="d-flex justify-content-center">
 	  <div class="card col-lg-8 m-3 p-3">
             <div class="row">
@@ -150,6 +109,40 @@
 	</div>
 	</section>
 
+	<section id="idcard">
+          <h2 class="ml-5 fas fa-id-card"> Id Card</h2>
+	<div class="d-flex justify-content-center">
+          <div class="col-md-8">
+            <div class="name">
+	      <div class="card pb-4">
+	        <div class="row">
+		  <div class="col-md-5 col-md-offset-0 col-sm-10 col-sm-offset-1">
+                    <div class="text-center">
+                      <h2></i> <%= @product.name %> <%= @product.year %></h2>
+		<%if @product.picture.size >= 5%>
+ 		  <%= image_tag @product.picture.fifth, alt: 'kite picture', class:"img-raised rounded img-fluid mt-2", style:"width:200px" %>
+		<%else%>
+                      <img src="/assets/testkite/bandit ride.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:200px">
+		<%end%>
+                    </div>
+                  </div>
+                  <div class="mt-5 col-md-7 col-sm-12">
+                    <h3><i class="fas fa-heart"></i>  Son point fort : <%= @product.favorite %></h3>
+                    <h6>Domain : <%= @product.domain %></h6>
+                    <h6>Taille testé : <%= @product.testsize %>m</h6>
+                    <h6>Tailles disponible : <%= @option.range %></h6>
+                    <h6>Prix en shop : <%= @product.price %>€ pour une <%= @product.testsize %>m nue</h6>
+		    <h6>nombre de lattes : <%= @option.strut %></h6>
+		    <h6>type de bridage : <%= @option.bridle %></h6>
+		    <a class="btn btn-success" href="<%= @product.link %>" target="blank_">more details</a>
+		  </div>
+                </div>
+  		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+              </div>
+            </div>
+          </div>
+	</div>
+	</section>
 
 	<section id="competence">
           <h2 class="ml-5 fas fa-sliders-h"> Compétences</h2>

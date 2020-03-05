@@ -16,7 +16,7 @@ class Admin::ArticleController < Admin::BasesController
 
       if @article.save
         flash[:success] = "L'article a bien été ajouté !"
-        redirect_to admin_article_index_path(@product)
+        redirect_to admin_article_index_path
       else
         render :new
       end

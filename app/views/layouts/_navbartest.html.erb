@@ -7,6 +7,26 @@
 		<i class="text-warning fas fa-home" style="font-size:30px" data-toggle="tooltip" data-placement="left" title="Accueil"></i>
 	    <%end%>
           </li>
+          <li class="dropdown nav-item mx-4">
+            <a href="#" class="nav-link" data-toggle="dropdown">
+		<i class="text-warning dropdown-toggle fas fa-cog" style="font-size:30px" data-toggle="tooltip" data-placement="right" title="Tests"></i>
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="<%= kite_index_path %>" class="dropdown-item">
+                <i class="material-icons">layers</i> Kites
+              </a>
+              <a href="<%= board_index_path %>" class="dropdown-item">
+		<i class="material-icons">layers</i> Twin-Tips
+	      </a>
+              <a href="<%= surfboard_index_path %>" class="dropdown-item">
+                <i class="material-icons">layers</i> Surfboards
+              </a>
+              <a href="<%= accessory_index_path %>" class="dropdown-item">
+                <i class="material-icons">layers</i> accessoires
+              </a>
+
+            </div>
+          </li>
 	  <li class="nav-item mx-4">
             <%= link_to article_index_path, class:"nav-link" do %>
 		<i class="text-warning far fa-newspaper" style="font-size:30px" data-toggle="tooltip" data-placement="top" title="News"></i>
@@ -26,26 +46,6 @@
             <%= link_to root_path, class:"nav-link" do %>
 		<i class="text-warning far fa-calendar-check" style="font-size:30px" data-toggle="tooltip" data-placement="top" title="Event"></i>
 	    <%end%>
-          </li>
-          <li class="dropdown nav-item mx-4">
-            <a href="#" class="nav-link" data-toggle="dropdown">
-		<i class="text-warning dropdown-toggle fas fa-cog" style="font-size:30px" data-toggle="tooltip" data-placement="right" title="Tests"></i>
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="<%= kite_index_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> Kites
-              </a>
-              <a href="<%= root_path %>" class="dropdown-item">
-		<i class="material-icons">layers</i> Twin-Tips
-	      </a>
-              <a href="<%= root_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> Surfboards
-              </a>
-              <a href="<%= root_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> Foils
-              </a>
-
-            </div>
           </li>
           <li class="dropdown nav-item mx-4">
             <a href="#" class="nav-link" data-toggle="dropdown">

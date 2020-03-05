@@ -6,6 +6,27 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
+          <li class="dropdown nav-item mx-4">
+            <a href="#" class="nav-link" data-toggle="dropdown">
+		<i class="text-center fas fa-tasks" style="font-size:20px"></i>
+	      <h6 class="text-center dropdown-toggle">Tests</h6>
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="<%= kite_index_path %>" class="dropdown-item">
+                <i class="material-icons">layers</i> Kites
+              </a>
+              <a href="<%= board_index_path %>" class="dropdown-item">
+                <i class="material-icons">layers</i> Twin-tip
+	      </a>
+              <a href="<%= surfboard_index_path %>" class="dropdown-item">
+                <i class="material-icons">layers</i> Surfboards
+              </a>
+                        <div class="dropdown-divider"></div>
+              <a href="<%= kite_index_path %>" class="dropdown-item">
+                <i class="material-icons">layers</i> Accessoires
+              </a>
+            </div>
+          </li>
 	  <li class="nav-item mx-4">
             <%= link_to article_index_path, class:"nav-link" do %>
 	      <i class="text-center far fa-newspaper" style="font-size:20px"></i>
@@ -29,30 +50,6 @@
 	      <i class="text-center far fa-calendar-check" style="font-size:20px"></i>
 	      <h6 class="text-center">Event</h6>
 	    <%end%>
-          </li>
-          <li class="dropdown nav-item mx-4">
-            <a href="#" class="nav-link" data-toggle="dropdown">
-		<i class="text-center fas fa-tasks" style="font-size:20px"></i>
-	      <h6 class="text-center dropdown-toggle">Tests</h6>
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="<%= kite_index_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> Kites
-              </a>
-              <a href="<%= board_index_path %>" class="dropdown-item">
-		<i class="fas fa-snowboarding" style="font-size:20px">   Twin-Tips</i>
-	      </a>
-              <a href="<%= surfboard_index_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> Surfboards
-              </a>
-              <a href="<%= kite_index_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> Foils
-              </a>
-                        <div class="dropdown-divider"></div>
-              <a href="<%= kite_index_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> harness / wetsuits
-              </a>
-            </div>
           </li>
           <li class="dropdown nav-item mx-4">
             <a href="#" class="nav-link" data-toggle="dropdown">

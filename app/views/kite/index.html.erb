@@ -83,9 +83,7 @@ $(document).ready(function() {
     <section id="intro">
     <br><br><br>
       <% @articles.each do |t, index| if t.domain === "testkite" %> 
-  	  <%= image_tag t.image.second, alt: 'kite image', class:"jumbotron", style:"background-image background-size: 100%" %>
-      <div class="jumbotron" style="background-image: url(<%= t.image.url %>); background-size: 100%;">
-
+      <div class="jumbotron" style="background-image: url(/assets/introtest2.jpg); background-size: 100%;">
         <div class="container for-about">
         <h1>Comment sont fait nos tests</h1>
         </div>
