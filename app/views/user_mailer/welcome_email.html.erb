@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @user.email %> et bienvenue chez nous !</h1>
+    <p>
+      Tu t'es inscrit sur kitesurfmag.fr en utilisant l'e-mail suivant : <%= @user.email %>.
+    </p>
+    <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= link_to "Mon compte", @login_page, class: "button-link btn btn-success" %>
+    </p>
+    <p> À très vite sur <%= link_to "Kitesurf Mag.fr", @url, class: "button-link" %> !
+  </body>
+</html>

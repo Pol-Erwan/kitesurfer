@@ -13,7 +13,7 @@ class Admin::UserController < Admin::BasesController
 			if @user.save
 
         flash[:success] = "L'utilisateur a bien été créé !"
-        redirect_to admin_users_path
+        redirect_to admin_user_index_path
       else
         render :new
       end
@@ -28,11 +28,11 @@ class Admin::UserController < Admin::BasesController
       if @user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
 				if params[:avatar] == nil
           flash[:success] = "L'utilisateur a bien été modifié !"
-          redirect_to admin_users_path
+          redirect_to admin_user_index_path
         else
           @user.avatar.attach(params[:avatar])
           flash[:success] = "L'utilisateur a bien été modifié !"
-          redirect_to admin_users_path
+          redirect_to admin_user_index_path
         end
       else
         render :edit
@@ -46,6 +46,6 @@ class Admin::UserController < Admin::BasesController
 
 	flash[:success] = "L'utilisateur a bien été supprimé !"
 
-      redirect_to admin_users_path
+      redirect_to admin_user_index_path
     end
 end
