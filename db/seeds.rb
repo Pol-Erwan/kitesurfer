@@ -64,14 +64,47 @@ harness_name = ["Eclipse","union","exo","hadlow pro","Kl pro","Eclipse","union",
 harness_brand = ["Manera","Manera","Manera","Pro-Limit","naish","ride Engine","Manera","Manera","Pro-Limit","naish"]
 kitedomain = ["freestyle","wave","foil","freestyle","wave","foil","freestyle","wave","foil","freestyle","wave","foil"]
 surfdomain = ["freestyle","wave","freestyle","wave","freestyle","wave","freestyle","wave","freestyle","wave"]
-
+content = ["Ce n'est plus un secret, North kiteboarding a la
+ferme intention de (re)venir sur le marché international.
+La marque annonce qu'elle sera prête avec
+une collection complète pour le milieu de saison.
+On sait également que les majors ont développé
+une partie matos mais également une collection
+d'accessoires. C'est le cas pour Duotone avec
+ION, F-ONE avec Manera par exemple. Mystic faisait
+cavalier seul et il faut énormément de temps et
+des ressources pour créer une marque mais également
+avoir la place sur un marché concurrentiel.
+Vous voyez où je veux en venir ? Quoi de plus logique
+que le rapprochement entre North et Mystic…
+c'est officiel, Mystic a été absorbée par North
+et cette annonce bouscule beaucoup de choses
+dans le milieu pour l'avenir. Les riders sont également
+directement concernés, ce qui nous donne
+un mouvement assez particulier que l'on a connu
+quand Best a voulu revenir sur le marché. Avec
+cette nouvelle union, il était logique que les riders
+emblématiques Mystic 'migrent' vers…North ! On
+voit donc rider Jesse Richman sous les couleurs
+de North (avec des prototypes), il quitte l'écurie
+Naish pour de nouvelles aventures. Bruna Kajiya a
+annoncé son départ de chez Airush, on s'est laissé
+dire également que Jalou Langeree mettait fin à
+sa collaboration avec Naish. Dernièrement, c'est
+Annabel Van Westerop qui postait sa collaboaration
+avec North. Un solide team North/Mystic est en
+préparation. On l'avait annoncé il y a quelques
+mois sur nos réseaux sociaux, Nick Jacobsen fait
+partie de North au poste de team manager et
+metteur au point. Les deux compères ont d'ailleurs
+couru pendant le KOTA avec des kites North."]
 variable = 0
 
 10.times do
 
 	my_user = User.create(first_name: user_first_name[variable], last_name: user_last_name[0],email: user_email[variable], password: user_password[variable], is_admin: user_is_admin[variable])
 
-my_article = Article.new(title:"freestyle session", title2:"pures conditions", link:"assets/article/article.jpg", domain: "news")
+my_article = Article.new(title:"Mercato", content: content[0], intro:"North est Mystic", link:"assets/article/article.jpg", domain: "news")
 my_article.user = my_user
 my_article.save
 print my_user.first_name .yellow
@@ -80,7 +113,7 @@ print my_article.title .yellow
 print " Id n°" .yellow
 puts my_user.id
 
-my_portfolio = Article.create(title: user_first_name[variable], title2:"portfolio",domain: "portfolio",title3: "Spot: plage sud", author: "Hugo", link:"assets/article/article.jpg" )
+my_portfolio = Article.create(title: user_first_name[variable], title2:"portfolio",domain: "portfolio",title3: "Spot: plage sud", link:"assets/article/article.jpg" )
 my_portfolio.user = my_user
 my_portfolio.save
 print my_portfolio.title2 .yellow
@@ -177,6 +210,8 @@ my_option.save
 print my_harness.name .white
 print " Id n°" .white
 puts my_harness.id
+
+my_compare = Compare.create(product: my_kite, user: my_user)
 
 variable = variable + 1
 

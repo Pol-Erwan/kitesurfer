@@ -1,11 +1,28 @@
-<h2>Titre :</H2> <%= @article.title %>
-<br>
-<h2>Intro :</h2> <%= @article.intro %>
-<br>
-<h2>content :</h2> <%= @article.content %>
-<br>
-<h2>domain :</h2> <%= @article.domain %>
-<br>
+<%= render"layouts/navbar" %>
+<body class="profile-page sidebar-collapse">
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/testaccessory/pads3.jpg');"></div>
+    <div class="main main-raised">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 ml-auto mr-auto">
+            <div class="name mt-1">
+              <h1 class="title text-center mt-5"><%= @article.title %></h1>
+		<h2><%= @article.intro %></h2>
+		<div class="px-3 m-1">
+		  <%= @article.content %>
+		</div>
+		<br>
+		<div class="text-center">
+		  <%if @article.image.attached?%>
+		    <% @article.image.each do |t, index| %>
+		      <%= image_tag t, alt: 'article image', style:"width:100%" %>
+		    <%end%>
+		  <%end%>
+		</div>
+	      </div>
+	      <h5 class="text-right">Le <%= @article.created_at %> par <%= @users.find(@article.user_id).first_name %></h5>
+
+<% if @article.domain != "news" %>
 <h2>title2 :</h2> <%= @article.title2%>
 <br>
 <h2>content2 : </h2><%= @article.content2 %>
@@ -16,42 +33,19 @@
 <br>
 <h2>description : </h2><%= @article.description %>
 <br>
-<h2>auteur :</h2> <%= @article.author %> 
+<% end %>
 
-<h1>Photos</h1>
-<%if @article.image.attached?%>
-
-<div class="row">
-
-<% @article.image.each do |t, index| %>
-      <div class="card-deck m-3">
-        <div class="row mx-3">  
-          <div class="card m-3" style="max-width: 200px;">
-	  <h4 class="text-center">photo <%= @name[@size] %></h4>
-  	  <%= image_tag t, alt: 'kite image', style:"width:200px" %>
-	  <% @size = @size + 1 %>
-	  </div>
-	</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-<%end%>
+    </div>
+  </div>
+</body>
 
-</div>
+</html>
 
 
-<%else%>
-  <p>=== Il n'y a pas encore d'images lié à cet article ===</p>
-<%end%>
 
-<section id="image">
-<% if @article.image.size < 12 %>
-<h3>Ajouter l'image <%= @name[@size] %></h3>
-<%= form_tag admin_article_image_index_path(@article), multipart: true do %>
- <%= file_field_tag :image, required: true %>
- <%= submit_tag "mettre à jour", class:"btn-sm btn-success" %>
-<% end %>
-<% end %>
-</section>
-
-<h4>supprimer la dernière photo (<%= @name[@size - 1] %>) ? </h4>
-      <td><%= link_to "Supprimer", admin_article_image_path(@article.image), class:"btn-sm btn-danger", method: :delete %></td>
 

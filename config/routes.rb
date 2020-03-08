@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     resources :avatar, only: [:create,:destroy]
   end
 
-  resources :kite, only:[:index,:show]
-  resources :board, only:[:index,:show]
-  resources :surfboard, only:[:index,:show]
-  resources :accessory, only:[:index,:show]
+  resources :kite, only:[:index,:show,:create, :destroy]
+  resources :board, only:[:index,:show, :create]
+  resources :surfboard, only:[:index,:show, :create]
+  resources :accessory, only:[:index,:show, :create]
 
   resources :article, only:[:index,:show]
   resources :portfolio, only:[:index,:show]

@@ -4,7 +4,6 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :intro
       t.string :resume
-      t.string :author
       t.string :title2
       t.string :title3
       t.string :title4
@@ -28,7 +27,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.string :link
 
       t.belongs_to :user, index: true #cette ligne rajoute la référence à la table users
-      t.timestamps
+      t.date :created_at
     end
   end
 end

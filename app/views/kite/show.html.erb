@@ -138,8 +138,14 @@
 		<div class="col-md-6">
 		    <h6><i class="fab fa-steam-symbol fa-2x"></i> nombre de lattes : <%= @option.strut %></h6>
 		    <h6><i class="fab fa-steam-symbol fa-2x"></i> type de bridage : <%= @option.bridle %></h6>
-		    <h6><a class="btn btn-sm btn-success" href="<%= @product.link %>" target="blank_">ajouter à mes favoris</a></h6>
-		    <a class="btn btn-sm btn-warning" href="<%= @product.link %>" target="blank_"><%= @product.brand %></a>
+		    <h6>Site : <a class="btn btn-outline-primary" href="<%= @product.link %>" target="blank_"><%= @product.brand %></a></h6>
+            <%= form_tag url_for(action: 'create'), method: 'post' do %>
+                  <%= text_field_tag 'id', @product.id, type:"hidden" %>
+                  <%= text_field_tag 'id', @technic.id, type:"hidden" %>
+                  <%= text_field_tag 'id', @option.id, type:"hidden" %>
+              <center><%= submit_tag "Ajouter au comparateur", class:"btn btn-success", target:"blank_" %></center>
+		<% end %>
+
 		  </div>
 			<div class="card p-1 col-md-11">
 			<h6>details : <%= @option.detail %></h6>

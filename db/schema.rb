@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_111305) do
+ActiveRecord::Schema.define(version: 2020_03_08_164004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_111305) do
     t.string "title"
     t.string "intro"
     t.string "resume"
-    t.string "author"
     t.string "title2"
     t.string "title3"
     t.string "title4"
@@ -63,9 +62,17 @@ ActiveRecord::Schema.define(version: 2020_02_24_111305) do
     t.string "youtube"
     t.string "link"
     t.bigint "user_id"
+    t.date "created_at"
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "compares", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_articles_on_user_id"
+    t.index ["product_id"], name: "index_compares_on_product_id"
+    t.index ["user_id"], name: "index_compares_on_user_id"
   end
 
   create_table "options", force: :cascade do |t|

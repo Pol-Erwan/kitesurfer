@@ -85,7 +85,7 @@
 	      <ul class="timeline">
 	        <% @articles.each do |t, index| %>
 		<li>
-		    <h5 class="card-title"><%= t.updated_at %></h5>
+		    <h5 class="card-title"><%= t.created_at %></h5>
 
 		  <div class="card">
 		    <img class="card-img-top" src="/assets/gka.jpg" alt="Card image cap">
@@ -110,9 +110,9 @@
     <div class="card">
     <img class="card-img-top" src="/assets/lot.jpg" alt="Card image cap">
       <div class="card-body">
-      <h5 class="card-title"><%= t.title2 %></h5>
+      <h5 class="card-title"><%= t.title %></h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="<%= article_path(t) %>" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
   </div>

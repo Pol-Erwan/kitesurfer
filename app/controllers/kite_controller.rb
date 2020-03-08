@@ -29,4 +29,21 @@ class KiteController < ApplicationController
     @grip = 0
   end
 
+  def create
+    @product = Product.find(params[:id])
+    @compare = Compare.create(product: @product, user: current_user)
+    if @compare.save
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def destroy
+    @compare = Compare.find(params[:id])
+    @compare.delete
+
+      flash[:sucess] = "Le kite a bien été supprimé !"
+
+      redirect_to user_path(current_user)
+  end
+
 end
