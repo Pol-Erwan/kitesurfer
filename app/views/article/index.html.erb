@@ -3,25 +3,17 @@
 <%else%>
 <%= render"layouts/navbar" %>
 <%end%>
-<body class="index-page sidebar-collapse">
-  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('assets/background/intro2.jpg');">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-24 ml-auto mr-auto">
-          <div class="brand d-flex justify-content-center">
-            <img src="/assets/logo_KSM.png" style="width:50%">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-<div class="main main-raised">
+<body class="profile-page sidebar-collapse">
+  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('/assets/background/intro2.jpg');">
+</div>
+  <div class="main main-raised">
+	<div class="col-md-12">
+	<%= render"layouts/flash" %>
+	</div>
 
     <!--         carousel  -->
     <div class="section" id="carousel">
-      <div class="container">
-        <div class="row">
           <div class="col-md-12 mr-auto ml-auto">
             <!-- Carousel Card -->
             <div class="card card-raised card-carousel">
@@ -75,7 +67,7 @@
 
 
 <div class="row m-2">
-
+            <!-- Time line -->
   <div class="col-sm-5">
     <div class="card">
       <div class="container mt-1 mb-5">
@@ -108,10 +100,10 @@
 
   <div class="col-sm-6">
     <div class="card">
-    <img class="card-img-top" src="/assets/lot.jpg" alt="Card image cap">
+    <img class="card-img-top" src="/assets/article/article1.jpg" alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title"><%= t.title %></h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text"><%= t.intro %></p>
       <a href="<%= article_path(t) %>" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -119,10 +111,10 @@
 
   <div class="col-sm-6">
     <div class="card">
-    <img class="card-img-top" src="/assets/lot.jpg" alt="Card image cap">
+    <img class="card-img-top" src="/assets/article/jesse.jpg" alt="Card image cap">
       <div class="card-body">
-      <h5 class="card-title"><%= t.title2 %></h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h5 class="card-title"><%= t.title %></h5>
+      <p class="card-text"><%= t.intro %></p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -132,7 +124,7 @@
     <div class="card">
     <img class="card-img-top" src="/assets/lot.jpg" alt="Card image cap">
       <div class="card-body">
-      <h5 class="card-title"><%= t.title2 %></h5>
+      <h5 class="card-title"><%= t.title %></h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>

@@ -23,7 +23,7 @@ class Admin::KiteController < Admin::BasesController
       @product.option = @option
 
       if @product.save && @technic.save && @option.save
-        flash[:success] = "Le kite a bien été ajouté !"
+        flash[:success] = " Le kite a été ajouté ! "
         redirect_to edit_admin_product_path(@product)
       else
         render :new
@@ -47,6 +47,7 @@ class Admin::KiteController < Admin::BasesController
       if @technic.update( wave: params[:wave], bigair: params[:bigair], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
 
         if @option.update(detail: params[:detail], range: params[:range], bridle: params[:bridle], strut: params[:strut])
+          flash[:success] = " Le kite a été modifié ! "
           redirect_to admin_kite_index_path
         else
           render :edit
@@ -63,7 +64,7 @@ class Admin::KiteController < Admin::BasesController
     @technic.delete
     @option.delete
 
-      flash[:sucess] = "Le kite a bien été supprimé !"
+      flash[:sucess] = " Le kite a été supprimé ! "
 
       redirect_to admin_kite_index_path
   end

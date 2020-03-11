@@ -11,6 +11,7 @@ Product.destroy_all
 Article.destroy_all
 Technic.destroy_all
 Option.destroy_all
+Compare.destroy_all
 
 user = []
 product = []
@@ -102,7 +103,8 @@ variable = 0
 
 10.times do
 
-	my_user = User.create(first_name: user_first_name[variable], last_name: user_last_name[0],email: user_email[variable], password: user_password[variable], is_admin: user_is_admin[variable])
+	my_user = User.create(first_name: user_first_name[variable], last_name: user_last_name[0],email: user_email[variable], password: user_password[variable], is_admin: user_is_admin[variable],is_pro: user_is_admin[variable])
+
 
 my_article = Article.new(title:"Mercato", content: content[0], intro:"North est Mystic", link:"assets/article/article.jpg", domain: "news")
 my_article.user = my_user
@@ -212,6 +214,9 @@ print " Id n°" .white
 puts my_harness.id
 
 my_compare = Compare.create(product: my_kite, user: my_user)
+my_compare = Compare.create(product: my_board, user: my_user)
+my_compare = Compare.create(product: my_surf, user: my_user)
+my_compare = Compare.create(product: my_harness, user: my_user)
 
 variable = variable + 1
 

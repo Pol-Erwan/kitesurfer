@@ -7,6 +7,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name
       t.boolean :is_admin
+      t.boolean :is_pro
+      t.string :function
+      t.string :description
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 

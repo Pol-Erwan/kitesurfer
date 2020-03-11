@@ -28,6 +28,14 @@
                   <%= label_tag 'Nom' %>
                   <%= text_field_tag 'last_name', @user.last_name, class: "form-control" %>
                 </div>
+                <div class="text-center">
+                  <%= label_tag 'fonction' %>
+                  <%= text_field_tag 'function', @user.function, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'Petit descriptif ' %>
+                  <%= text_field_tag 'description', @user.description, class: "form-control" %>
+                </div>
               <br /> <br />
               <%= label_tag 'Email' %>
               <%= text_field_tag 'email', @user.email, class: "form-control" %>

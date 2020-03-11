@@ -18,13 +18,13 @@
                 <h3 class="title"><%= @user.first_name %> <%= @user.last_name %></h3>
                 <h6>Kitesurfer</h6>
                 <h6><%= @user.email %></h6>
-		<h6><%= @compare.product_id %><%= @products.find(@compare.product_id).name %></h6>
-		<h6><%= @compare.user_id %></h6>
           	<%=link_to "Modifier mon Profil", edit_user_registration_path, class:"btn btn-sm btn-info" %>
               </div>
             </div>
           </div>
         </div>
+<section id="compare">
+	<%= render"layouts/flash" %>
         <div class="row">
           <div class="col-md-6 ml-auto mr-auto">
             <div class="profile-tabs">
@@ -51,83 +51,125 @@
         <div class="tab-content tab-space">
           <div class="tab-pane active text-center gallery" id="studio">
             <div class="row">
-              <div class="col-md-3 ml-auto">
-
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
-		<% @compares.each do |t, index| %>
-		<% if t.user_id === @user.id %>
-      <th scope="col"><%= @products.find(t.product_id).name %></th>
-		<% end %>
-		<% end %>
-
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+          <th scope="col"><%= @products.find(t.product_id).name %></th>
+	<% end %>
+	<% end %>
     </tr>
   </thead>
   <tbody>
+
     <tr>
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
-		<% @compares.each do |t, index| %>
-		<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td>		<% if @products.find(t.product_id).picture.attached? %>
-  		  <%= image_tag @products.find(t.product_id).picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:70px" %>
-		<% else %>
-			<img src="/assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="kite picture" style="width:100%"></td>
-		<% end %>
-		<% end %>
-		<% end %>
-
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+      <td> <%= link_to kite_path(t.product_id), class:"nav-link" do %>
+	   <% if @products.find(t.product_id).picture.attached? %>
+	     <%= image_tag @products.find(t.product_id).picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:250px" %>
+	   <% else %>
+	     <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:250px">
+	   <% end %>
+	  <%end%>
+      </td>
+	<% end %>
+	<% end %>
     </tr>
+
     <tr>
       <th scope="row">Taille testé</th>
 	<% @compares.each do |t, index| %>
 	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
       <td><%= @products.find(t.product_id).testsize %>m</td>
-<%end%>
-<%end%>
+	<%end%>
+	<%end%>
     </tr>
     <tr>
       <th scope="row">Wave</th>
 	<% @compares.each do |t, index| %>
 	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><%= @technics.find(@products.find(t.product_id).technic_id).wave %></td>
-<%end%>
-<%end%>
+      <td><% while @wave < @technics.find(@products.find(t.product_id).technic_id).wave %>
+	    <i class="fas fa-star"></i>
+	    <% @wave = @wave + 1 %>
+	  <%end%>
+	  <% @wave = 0 %>
+      </td>
+	<%end%>
+	<%end%>
     </tr>
     <tr>
       <th scope="row">Big Air</th>
 	<% @compares.each do |t, index| %>
 	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><%= @technics.find(@products.find(t.product_id).technic_id).bigair %></td>
-<%end%>
-<%end%>
+      <td><% while @bigair < @technics.find(@products.find(t.product_id).technic_id).bigair %>
+	    <i class="fas fa-star"></i>
+	    <% @bigair = @bigair + 1 %>
+	  <%end%>
+	  <% @bigair = 0 %>
+      </td>
+	<%end%>
+	<%end%>
     </tr>
+    <tr>
+      <th scope="row">Freeride</th>
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+      <td><% while @freeride < @technics.find(@products.find(t.product_id).technic_id).freeride %>
+	    <i class="fas fa-star"></i>
+	    <% @freeride = @freeride + 1 %>
+	  <%end%>
+	  <% @freeride = 0 %>
+      </td>
+	<%end%>
+	<%end%>
+    </tr>
+
     <tr>
       <th scope="row"></th>
 	<% @compares.each do |t, index| %>
 	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
       <td><%= link_to "Supprimer", kite_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
-<%end%>
-<%end%>
+	<%end%>
+	<%end%>
+    </tr>
+  </tbody>
+</table>
+            </div>
+          </div>
+
+          <div class="tab-pane text-center gallery" id="works">
+            <div class="row">
+              <div class="col-md-3 ml-auto">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id %>
+          <th scope="col"><%= @products.find(t.product_id).name %></th>
+	<% end %>
+	<% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Taille testé</th>
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category != "kite" %>
+      <td><%= @products.find(t.product_id).testsize %>m</td>
+	<%end%>
+	<%end%>
     </tr>
 
   </tbody>
 </table>
 
-              </div>
-              <div class="col-md-3 mr-auto">
-
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane text-center gallery" id="works">
-            <div class="row">
-              <div class="col-md-3 ml-auto">
-                <img src="/assets/examples/olu-eletu.jpg" class="rounded">
-                <img src="/assets/examples/clem-onojeghuo.jpg" class="rounded">
-                <img src="/assets/examples/cynthia-del-rio.jpg" class="rounded">
               </div>
               <div class="col-md-3 mr-auto">
                 <img src="/assets/examples/mariya-georgieva.jpg" class="rounded">
@@ -152,6 +194,7 @@
       </div>
     </div>
   </div>
+</section>
 </body>
 
 </html>

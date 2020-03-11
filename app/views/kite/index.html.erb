@@ -3,28 +3,28 @@
 <body class="index-page sidebar-collapse">
   <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('./assets/background/kite.jpg');">
     <div class="container">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
-          <div class="brand">
-            <h1>Les kites</h1>
-                <a class="carousel-control-prev" href="<%= accessory_index_path %>" role="button" data-slide="prev">
-                  <i class="fas fa-caret-square-left" style="font-size:50px"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="<%= board_index_path %>" role="button" data-slide="next">
-		  <i class="fas fa-caret-square-right" style="font-size:50px"></i>
-                  <span class="sr-only">Next</span>
-                </a>
+      <div class="col-md-8 ml-auto mr-auto">
+        <div class="brand">
+          <h1>Les kites</h1>
+            <a class="carousel-control-prev" href="<%= accessory_index_path %>" role="button" data-slide="prev">
+              <i class="fas fa-caret-square-left" style="font-size:50px"></i>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="<%= board_index_path %>" role="button" data-slide="next">
+	      <i class="fas fa-caret-square-right" style="font-size:50px"></i>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
         </div>
       </div>
     </div>
+<%= render"layouts/flash" %>
   </div>
 
-  <div class="main main-raised">
+  <div class="main">
 
-  <nav id='nav_bar'>
-    <ul class='nav_links d-flex justify-content-center'>
+  <nav id="nav_bar">
+    <ul class="card d-flex flex-row nav_links d-flex justify-content-center">
             <li class="active nav-item my-1 mx-5">
             <%= link_to kite_index_path(anchor: "intro"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
@@ -80,193 +80,111 @@ $(document).ready(function() {
 });
 </script>
 
+  <% @articles.each do |t, index| if t.domain === "testkite" %> 
+
     <section id="intro">
     <br><br><br>
-      <% @articles.each do |t, index| if t.domain === "testkite" %> 
-      <div class="jumbotron" style="background-image: url(/assets/introtest2.jpg); background-size: 100%;">
+      <div class="jumbotron" style="background-image: url(/assets/background/kitejumbotron.jpg); background-size: 100%;">
         <div class="container for-about">
-        <h1>Comment sont fait nos tests</h1>
+        <h1 class="text-white">Comment sont fait nos tests</h1>
         </div>
       </div>
 
       <div class="container tim-container m-3">
         <h1 class="m-5"><%= t.title %></h1>                          
-        <h2><small class="subtitle"><%= t.intro %></small></h2>
+        <h3><small class="subtitle"><%= t.intro %></small></h3>
           <div class="row">
             <div class="col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1">
               <div class="text-center">
-  	  <%= image_tag t.image.third, alt: 'kite image', class:"card img-rounded img-responsive img-dog", style:"width:100%" %>
-	<% end end %>
-
+		<% if t.image.attached? %>
+  	  	  <%= image_tag t.image.first, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+		<% else %>
+          	  <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
+		<% end %>
               </div>
             </div>
-            <div class="col-md-5 col-sm-12">
-              <p>NOTULES
-		<br>Pas de révolution en vue sur le marché des ailes de kite qui se
-		compose à 95% d’ailes 4 lignes SLE (Supported Leading Edge).
-		<br>Les ailes en C sont dédiées au wakestyle exclusivement. Nous ne les
-		testons pas car la demande est quasi nulle ou réservée à des riders
-		très expérimentés. Elles sont montées en 4 lignes, avec une 5e ligne
-		supplémentaire qui fait office de sécurité mais qui maintient également
-		le bord d’attaque en son centre et le profil de l’aile, on s'en sert aussi
-		pour redécoller. Ce sont des ailes qui offrent un excellent timing dans
-		la navigation déhookée. Tu auras un effet "pop" prononcé et précis au
-		moment où tu crantes pour obtenir le "coup de mou" (ou slack) dans
-		les lignes qui te permet de passer la barre. 
-		<br>Les C-shapes sont donc plus
-		techniques à utiliser, moins confortables et moins sécurisantes mais sont
-		ce qu’il y a de plus performant dans la discipline du wakestyle.
-		Les hybrides englobent toutes les ailes au bord d’attaque suspenté,
-		quelle que soit leur forme (Delta shape, Delta C-shape…)
+            <div class="col-md-5 col-sm-12 d-flex align-items-center">
+              <p><%= t.content %></p>
             </div>
-              <img src="assets/introtest.jpg" alt="Rounded Image" class="card img-rounded img-responsive img-dog" style="width:100%">
-		<br>Ce sont des ailes 4 lignes SLE qui représentent quasiment tout le marché du
-		kite. Le profil est maintenu grâce au bridage, l’aile se régule presque toute
-		seule pour accepter les rafales de vent. La navigation est plus confortable
-		et sécurisante, la plage d’utulisation accrue. Ces ailes sont bonnes à
-		tout faire, même du wakestyle, car certaines ont cette tendance au
-		programme ; d’autres seront plus performantes en sustentation ou alors
-		dans les vagues. On leur donne le programme freeride-freestyle.</p>
+	    <div class="d-flex justify-content-center">	
+              <div class="bg-light col-sm-10 text-center">
+                <p><%= t.content2 %></p>
+              </div>
+	    </div>
+	    <div class="d-flex justify-content-center">
+	      <div class="card-body">	
+	    <% if t.image.attached? %>
+  	      <%= image_tag t.image.second, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+	    <% else %>
+              <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
+	    <% end %>
+	      </div>
+	    </div>
           </div>
         </div>
-      <div class="container tim-container m-3">
-        <div class="d-flex flex-row">
-          <div class="card m-3 p-3">
-            <p>Savoir lire entre les lignes
-	      <br>Toutes sont équipées du "One Pump" qui permet de gonfler ton aile
-		depuis un unique point de gonflage.
-		Certaines barres permettent de se déhooker en mode "sucide leash",
-		tout en bénéficiant de la sécurité : si tu lâches la barre, ton aile reste
-		accrochée au leash sans basculer dans la sécurité, l’aile tracte toujours ;
-		en cas de problème hooké tu peux quand même déclencher le largueur
-		et la puissance de ton aile sera neutralisée; C’est la nouvelle tendance
-		pour donner plus de liberté à ceux qui veulent tenter des figures sans pour
-		autant larguer tout le temps leur kite en cas de "bonne gamelle".
-		Certaines ailes disposent de plusieurs réglages qui permettent de les
-		customiser en fonction de ce que tu veux faire. Tu rendras ton aile plus
-		vive ou plus calée en fenêtre, plus présente en barre ou plus légère. Nous
-		avons cette année testé le réglage dit "d’usine" ainsi que les differentes
-		options pour affiner le choix.
-		Poulies ou non sur le bridage ? Les poulies sont prévues d’origine pour
-		moduler l’angle d’incidence de l’aile dans les rafales de vent. Ton aile
-		est plus tolérante, plus progressive. Elles accentuent aussi la réactivité de
-		l’aile hybride qui est ralentie à la base par le bridage ; à la différence de
-		l’aile en C aux connexions et au pilotage directs. Tu trouveras dans les
-		tests un logo indiquant la présence ou non de poulies sur le bridage.
-		Les valves sur le bord d’attaque : toutes les marques ont adopté la Big
-		Valve de gonflage et dégonflage mais certaines proposent un système
-		exclusif. Veillez à avoir le bon embout pour gonflez votre kite.</p>
+        <div class="container tim-container m-3">
+          <div class="d-flex flex-row">
+            <div class="card m-3 p-3">
+              <h3><small class="subtitle"><%= t.title3 %></small></h3>
+            <div class="col-sm-12">
+              <p><%= t.content3 %></p>
+            </div>
           </div>
           <div class="p-3">
-            <img src="assets/testkite/bandit ride.jpg" alt="Rounded Image" class="card">
+	    <% if t.image.attached? %>
+  	      <%= image_tag t.image.third, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+	    <% else %>
+              <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
+	    <% end %>
           </div>
         </div>    
     </section>
 
     <section id="performance">
 
-        <div class="m-3 d-flex flex-row">
-
-          <div class="card m-3 p-3" style="width:60%">
-	    <h6>Wave : 4/5</h6>
-	    <div class="progress">
-	      <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>Big Air: 2/5</h6>
-	    <div class="progress">
-  	      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>Freeride: 3/5</h6>
-	    <div class="progress">
-  	      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>Freestyle: 5/5</h6>
-	    <div class="progress">
-  	      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>Maniability: 1/5</h6>
-	    <div class="progress">
-	      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>Feeling: 4/5</h6>
-	    <div class="progress">
-  	      <div class="progress-bar progress-bar-striped bg-rose" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
+        <div class="row m-2">
+          <div class="card col-sm-6 m-3 p-3" style="width:60%">
+		<%= render"layouts/kitecomp" %>
 	  </div>
-
-	  <div class="card m-3 p-3">
-	    <canvas id="birdsChart" width="300px" height="200px"></canvas>
-	    <script>
-		var birdsCanvas = document.getElementById("birdsChart");
-		var birdsData = {
-		  labels: ["Wave","Big Air","Freeride","Freestyle","Maniability","Feeling"],
-		  datasets: [{
-		    data: [ 4, 2, 3, 5, 1, 4],
-		    backgroundColor: [
-		      "rgba(255, 0, 0, 0.5)",
-		      "#cde9ce",
- 		      "rgba(200, 50, 255, 0.5)",
- 		      "rgba(0, 100, 255, 0.5)",
-		      "rgba(255, 0, 0, 0.5)",
-		      "rgba(100, 255, 0, 0.5)"
-		    ]
-		  }]
-		};
-
-		var polarAreaChart = new Chart(birdsCanvas, {
-		  type: 'polarArea',
-		  data: birdsData
-		});
-	    </script>
+	  <div class="col-sm-5 m-3 p-3">
+	    <% if t.image.attached? %>
+  	      <%= image_tag t.image.fourth, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+	    <% else %>
+              <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
+	    <% end %>
 	  </div>
-
 	</div>
 
-	<div class="d-flex flex-row">
+	<div class="card-body bg-light d-flex flex-row">
 	  <div class="card m-2">
   	    <div class="card-body">
-    	      <h5 class="card-title">Feeling en barre</h5>
-    	      <h6 class="card-subtitle mb-2 text-muted">Léger - Présent</h6>
-    	      <p class="card-text">La présence en barre correspond au feeling que tu as en pilotant l’aile,
-		c’est-à-dire si tu la ressens légère, sans trop de pression, juste présente
-		pour bien la situer dans les airs, ou au contraire, présente dans le sens
-		bien pêchue, voire assez physique et donc avec beaucoup de ressenti !</p>
+    	      <h5 class="card-title"><%= t.title4 %></h5>
+    	      <p class="card-text p-2"><%= t.content4 %></p>
 	    </div>
 	  </div>
 	  <div class="card m-2">
-  	  <div class="card-body">
-            <h5 class="card-title">Maniabilité</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Maniable - Vif</h6>
-            <p class="card-text">Une aile maniable se placera là où on le souhaite, mais elle restera ensuite
-		bien calée en fenêtre pour réaliser par exemple des figures de wakestyle
-		en déhooké. Une aile rapide sera très maniable. Enfin une aile vive (dans
-		le sens très rapide) pivotera très rapidement sur l’oreille, valeur sûre dans
-		les vagues par exemple.</p>
-  	  </div>
-	</div>
-	<div class="card m-2">
-  	  <div class="card-body">
-	    <h5 class="card-title">Drift</h5>
-	    <h6 class="card-subtitle mb-2 text-muted">How - Ligh</h6>
-	    <p class="card-text">Nous avons conservé "le drift" uniquement pour les ailes de vagues
-		destinées au surf et au strapless. Le drift, c’est la capacité de l’aile "à
-		déraper" pendant que l’on surfe. Une aile qui a du drift ne décroche pas
-		mais au contraire continue de suivre le rider sans tomber.</p>
-  	  </div>
-	</div>
-	<div class="card m-2">
-	  <div class="card-body">
-	    <h5 class="card-title">Big Air</h5>
-	    <h6 class="card-subtitle mb-2 text-muted"></h6>
-	    <p class="card-text">Nous avons introduit la notion de Big Air qui donne une info sur le hang
-		time et la sustentation de l'aile. Cette discipline revient en force, elle a
-		donc sa place aux côtés du freeride - new school ou waveriding.</p>
+  	    <div class="card-body">
+              <h5 class="card-title"><%= t.title5 %></h5>
+              <p class="card-text p-2"><%= t.content5 %></p>
+  	    </div>
 	  </div>
-	</div>
-      </div>
+	  <div class="card m-2">
+  	    <div class="card-body">
+              <h5 class="card-title"><%= t.title6 %></h5>
+              <p class="card-text p-2"><%= t.content6 %></p>
+  	    </div>
+	  </div>
+	  <div class="card m-2">
+  	    <div class="card-body">
+              <h5 class="card-title"><%= t.title7 %></h5>
+              <p class="card-text p-2"><%= t.content7 %></p>
+  	    </div>
+	  </div>
+        </div>
     <a href="#navtest" class="p-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
 
   </section>
+<% end end %>
 
 
   <section id="kite">
@@ -284,13 +202,22 @@ $(document).ready(function() {
       <div class="card-deck m-3">
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
-            <a href="<%= kite_path(t) %>">
-	    <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
-            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %> <%= t.testsize %> m</h4>
+            <h3 class="card-title"> <%= t.name %>  </h3>
+	      <%= link_to kite_path(t), class:"nav-link" do %>
+		<% if t.picture.attached? %>
+  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
+		<% else %>
+		  <img src="assets/image.jpg" class="rounded img-fluid" alt="..." style="width:100%">
+		<%end%>
+	      <%end%>
+            <h4 class="card-title">By <%= t.brand %></h4>
+	    <div class="d-flex justify-content-between">		
+	      <h4 class="text-left"> <%= t.testsize %> m</h4>
+	      <h4 class="text-right"> <%= t.price %>€</h4>
+	    </div>
           </div>
         </div>
       </div>
-      <% else %>
       <%end%>
       <%end%>
     </div>
@@ -298,16 +225,25 @@ $(document).ready(function() {
     <div class="row">
       <% @products.each do |t, index| %>
       <% if t.domain === "wave" && t.category === "kite" %>
-        <div class="card-deck m-3">
-          <div class="row mx-3">  
-            <div class="card m-3 p-2" style="max-width: 200px;">
-              <a href="<%= kite_path(t) %>">
-	      <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
-            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %> <%= t.testsize %> m</h4>
+      <div class="card-deck m-3">
+        <div class="row mx-3">  
+          <div class="card m-3 p-2" style="max-width: 200px;">
+            <h3 class="card-title"> <%= t.name %>  </h3>
+	      <%= link_to kite_path(t), class:"nav-link" do %>
+		<% if t.picture.attached? %>
+  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
+		<% else %>
+		  <img src="assets/image.jpg" class="rounded img-fluid" alt="..." style="width:100%">
+		<%end%>
+	      <%end%>
+            <h4 class="card-title">By <%= t.brand %></h4>
+	    <div class="d-flex justify-content-between">		
+	      <h4 class="text-left"> <%= t.testsize %> m</h4>
+	      <h4 class="text-right"> <%= t.price %>€</h4>
 	    </div>
-	  </div>
-	</div>
-      <%else%>
+          </div>
+        </div>
+      </div>
       <%end%>
       <%end%>
     </div>
@@ -318,17 +254,22 @@ $(document).ready(function() {
       <div class="card-deck m-3">
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
-            <a href="<%= kite_path(t) %>">
+            <h3 class="card-title"> <%= t.name %>  </h3>
+	      <%= link_to kite_path(t), class:"nav-link" do %>
 		<% if t.picture.attached? %>
-  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid" %>
+  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
 		<% else %>
-	    <img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..."></a>
-		<% end %>
-            <h3 class="card-title"> <%= t.brand %>  </h3><h4> <%= t.name %> <%= t.testsize %> m</h4>
+		  <img src="assets/image.jpg" class="rounded img-fluid" alt="..." style="width:100%">
+		<%end%>
+	      <%end%>
+            <h4 class="card-title">By <%= t.brand %></h4>
+	    <div class="d-flex justify-content-between">		
+	      <h4 class="text-left"> <%= t.testsize %> m</h4>
+	      <h4 class="text-right"> <%= t.price %>€</h4>
+	    </div>
           </div>
         </div>
       </div>
-      <%else%>
       <%end%>
       <%end%>
     </div>
@@ -346,59 +287,33 @@ $(document).ready(function() {
 
     <div class="team">
       <div class="row">
-        <div class="col-md-4">
-          <div class="team-player">
-            <div class="card card-plain">
-              <div class="col-md-6 ml-auto mr-auto">
-                <img src="/assets/Hugo.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-              </div>
-              <h4 class="card-title">Hugo
+  <% @users.each do |t, index| if t.is_pro == true %> 
+
+      <div class="col-md-3">
+        <div class="team-player">  
+          <div class="card card-plain">
+            <div class="col-md-6 ml-auto mr-auto">
+	      <% if t.avatar.attached? %>
+  	        <%= image_tag t.avatar, alt: 'avatar', class:"img-raised rounded-circle img-fluid" %>
+	      <% else %>
+	        <img src="assets/image.jpg" class="img-raised rounded-circle img-fluid" alt="..."></a>
+	      <% end %>
+            </div>
+              <h4 class="card-title text-center"><%= t.first_name %>
               <br>
-              <small class="card-description text-muted">Model</small>
+              <small class="card-description text-muted"><%= t.function %></small>
               </h4>
               <div class="card-body">
-                <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                <p class="card-description text-center"><%= t.description %></p>
               </div>
             </div>
           </div>
-        </div>
-          <div class="col-md-4">
-            <div class="team-player">
-              <div class="card card-plain">
-                <div class="col-md-6 ml-auto mr-auto">
-                  <img src="/assets/Greg.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                </div>
-                <h4 class="card-title">Greg
-                <br>
-                <small class="card-description text-muted">Designer</small>
-                </h4>
-                <div class="card-body">
-                  <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                  <a href="#">links</a> for people to be able to follow them outside the site.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-player">
-              <div class="card card-plain">
-                <div class="col-md-6 ml-auto mr-auto">
-                  <img src="/assets/Marvin.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                </div>
-                <h4 class="card-title">Marvin
-                <br>
-                <small class="card-description text-muted">Model</small>
-                </h4>
-                <div class="card-body">
-                  <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                  <a href="#">links</a> for people to be able to follow them outside the site.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+	</div>
+  <% end end %>
       </div>
+      </div>
+  
+
     <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
   </section>
 
@@ -455,13 +370,14 @@ $(document).ready(function() {
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @products.each do |t, index| %>
 <% if t.category === "kite" && t.domain === "freestyle" %>
-      <td>
+      <td><%= link_to kite_path(t), class:"nav-link" do %>
 		<% if t.picture.attached? %>
-  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:70px" %>
+  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
 		<% else %>
-<img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..." style="width:70px">
-</td>
-	<% end %>
+		<img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="..." style="width:100px">
+		<%end%>
+		<%end%>
+	</td>
 <%end%>
 <%end%>
     </tr>
@@ -617,7 +533,14 @@ $(document).ready(function() {
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @products.each do |t, index| %>
 <% if t.category === "kite" && t.domain === "wave" %>
-      <td><img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></td>
+      <td><%= link_to kite_path(t), class:"nav-link" do %>
+		<% if t.picture.attached? %>
+  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
+		<% else %>
+		<img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="..." style="width:100px">
+		<%end%>
+		<%end%>
+	</td>
 <%end%>
 <%end%>
     </tr>
@@ -771,7 +694,14 @@ $(document).ready(function() {
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @products.each do |t, index| %>
 <% if t.category === "kite" && t.domain === "foil" %>
-      <td><img src="assets/testkite/bandit.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></td>
+      <td><%= link_to kite_path(t), class:"nav-link" do %>
+		<% if t.picture.attached? %>
+  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
+		<% else %>
+		<img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="..." style="width:100px">
+		<%end%>
+		<%end%>
+	</td>
 <%end%>
 <%end%>
     </tr>

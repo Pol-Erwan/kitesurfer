@@ -5,18 +5,23 @@ class KiteController < ApplicationController
     @products = Product.all
     @technics = Technic.all
     @options = Option.all
+    @product = Product.first
+    @technic = Technic.first
+    @option = Option.first
     @wave = 0
     @bigair = 0
     @freeride = 0
     @freestyle = 0
     @maniability = 0
     @feeling = 0
+    @users = User.all
   end
 
   def show
     @products = Product.all
     @technics = Technic.all
     @options = Option.all
+    @compares = Compare.all
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
@@ -31,19 +36,24 @@ class KiteController < ApplicationController
 
   def create
     @product = Product.find(params[:id])
-    @compare = Compare.create(product: @product, user: current_user)
+    @compares = Compare.all
+    @compare = Compare.new(product_id: @product.id)
+    
+    @compare.user = current_user
+
     if @compare.save
-      redirect_to user_path(current_user)
-    end
-  end
+      flash[:success] = "ok"
+    redirect_to kite_path(@product, anchor: "idcard")
+
+  end 
 
   def destroy
     @compare = Compare.find(params[:id])
     @compare.delete
 
-      flash[:sucess] = "Le kite a bien été supprimé !"
+      flash[:success] = " Le kite a bien été supprimé !"
 
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user, anchor:"compare")
   end
 
 end

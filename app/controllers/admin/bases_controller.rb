@@ -3,7 +3,7 @@ class Admin::BasesController < ApplicationController
 
  def require_admin
    unless current_user.is_admin
-    flash[:danger] = "Accès refusé"
+    flash[:danger] = " Accès refusé"
      redirect_to root_path
    end
  end

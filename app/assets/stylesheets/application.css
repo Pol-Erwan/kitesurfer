@@ -13,3 +13,12 @@
  *= require material-kit
  *= require demo
  */
+
+ .position
+{
+  margin-top: 100;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 4;
+
+}

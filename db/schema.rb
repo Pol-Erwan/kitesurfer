@@ -154,6 +154,9 @@ ActiveRecord::Schema.define(version: 2020_03_08_164004) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "is_admin"
+    t.boolean "is_pro"
+    t.string "function"
+    t.string "description"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

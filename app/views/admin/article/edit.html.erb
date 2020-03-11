@@ -92,12 +92,31 @@
                   <%= text_field_tag 'content7', @article.content7, class: "form-control" %>
                 </div>
 		<br><br>
+                <div class="text-center">
+                  <%= label_tag 'title8' %>
+                  <%= text_field_tag 'title8', @article.title8, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'content8' %>
+                  <%= text_field_tag 'content8', @article.content8, class: "form-control" %>
+                </div>
+		<br><br>
+                <div class="text-center">
+                  <%= label_tag 'title9' %>
+                  <%= text_field_tag 'title9', @article.title9, class: "form-control" %>
+                </div>
+                <div class="text-center">
+                  <%= label_tag 'content9' %>
+                  <%= text_field_tag 'content9', @article.content9, class: "form-control" %>
+                </div>
+		<br><br>
               <center><%= submit_tag "Valider les modifications de l'article", class:"btn btn-outline-primary" %></center>
 	      <center><%= link_to "Aperçu", article_path(@article), class:"btn btn-outline-info" %></center>
     
             <% end %>
-
+<section id="image">
 <h1>Photos</h1>
+<%= render"layouts/flash" %>
 <%if @article.image.attached?%>
 
 <div class="row">
@@ -121,7 +140,6 @@
   <p>=== Il n'y a pas encore d'images lié à cet article ===</p>
 <%end%>
 
-<section id="image">
 <% if @article.image.size < 12 %>
 <h3>Ajouter l'image <%= @name[@size] %></h3>
 <%= form_tag admin_article_image_index_path(@article), multipart: true do %>

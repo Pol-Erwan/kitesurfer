@@ -1,0 +1,35 @@
+
+
+<h6>Wave : <%= @technic.wave %>/5</h6>
+<div class="progress">
+  <div class="progress-bar bg-primary" role="progressbar" style="width: <%= @technic.wave*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<h6>Big Air: <%= @technic.bigair %>/5</h6>
+<div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" style="width: <%= @technic.bigair*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<h6>Freeride: <%= @technic.freeride %>/5</h6>
+<div class="progress">
+  <div class="progress-bar bg-info" role="progressbar" style="width: <%= @technic.freeride*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<h6>Freestyle: <%= @technic.freestyle %>/5</h6>
+<div class="progress">
+  <div class="progress-bar bg-warning" role="progressbar" style="width: <%= @technic.freestyle*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Freestyle</div>
+</div>
+<h6>Réactivité: <%= @technic.maniability %>/5</h6>
+<div class="d-flex justify-content-between">
+<p>Maniable</p>
+<p>Réactivité</p>
+</div>
+<div class="progress" style="height: 20px;">
+  <div class="progress-bar bg-danger" role="progressbar" style="width: <%= @technic.maniability*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<h6>Feeling en barre : <%= @technic.feeling %>/5</h6>
+<div class="d-flex justify-content-between">
+<p>Légère</p>
+<p>Présente</p>
+</div>
+<div class="progress" style="height: 20px;">
+  <div class="progress-bar bg-rose" role="progressbar" style="width: <%= @technic.feeling*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
