@@ -1,0 +1,417 @@
+<%= render"layouts/navbartest" %>
+<body class="pt-5 profile-page sidebar-collapse">
+<%if @product.background.attached? %>
+<div class="page-header" id="header" data-parallax="true" style="background-image: url(<%= rails_blob_url(@product.background)%>);"></div>
+<% else %>
+<div class="page-header" id="header" data-parallax="true" style="background-image: url('/assets/Cape_Town.jpg');"></div>
+<% end %>
+  <div class="main main-raised p-2">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ml-auto mr-auto">
+            <div class="profile">
+              <div class="avatar">
+		<%if @product.profil.attached? %>
+  		  <%= image_tag @product.profil, alt: 'kite picture', class:"img-raised rounded img-fluid" %>
+		<% else %>
+                  <img src="/assets/image.jpg" alt="Circle Image" class="img-raised rounded img-fluid">
+		<% end %>
+		<%if @product.detail.attached? %>
+ 		  <%= image_tag @product.detail.first, alt: 'kite picture', class:"img-raised rounded img-fluid m-4", style:"width:150px" %>
+  		  <%= image_tag @product.detail.second, alt: 'kite picture', class:"img-raised rounded img-fluid m-4", style:"width:150px" %>
+ 		  <%= image_tag @product.detail.third, alt: 'kite picture', class:"img-raised rounded img-fluid m-4", style:"width:150px" %>
+		<% else %>
+                  <img src="/assets/image.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:150px">
+                  <img src="/assets/image.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:150px">
+                  <img src="/assets/image.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid m-4" style="width:150px">
+		<% end %>
+              </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <h1 class="title" id="navshow"> <%= @product.name %></h1>
+	<h3 class="ml-4"> by <%= @product.brand %></h3>
+
+  <nav>
+    <div class="row">
+      <div class="col-md-10 ml-auto mr-auto">
+        <div class="profile-tabs">
+          <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+	    <li class="nav-item">
+              <%= link_to foil_index_path(anchor: "kite"), class:"nav-link" do %>
+		<h6 class="text-center text-warning">Tous les Foils</h6>
+		<i class="text-center text-warning fas fa-chevron-left"></i>
+		<%end%>
+            </li>
+	    <li class="nav-item">
+              <%= link_to foil_path(anchor: "resume"), class:"nav-link active" do %>
+              <i class="text-center text-warning fas fa-comment-dots"></i>
+		<h6 class="text-center text-warning">En bref</h6>
+		<%end%>
+            </li>
+	    <li class="nav-item">
+              <%= link_to foil_path(anchor: "idcard"), class:"nav-link" do %>
+              <i class="text-center text-warning fas fa-id-card"></i>
+		<h6 class="text-center text-warning">Id Card</h6>
+		<%end%>
+            </li>
+	    <li class="nav-item">
+              <%= link_to foil_path(anchor: "competence"), class:"nav-link" do %>
+              <i class="text-center text-warning fas fa-sliders-h"></i>
+		<h6 class="text-center text-warning">Competences</h6>
+		<%end%>
+            </li>
+	    <li class="nav-item">
+              <%= link_to foil_path(anchor: "video"), class:"nav-link" do %>
+              <i class="text-center text-warning fas fa-video"></i>
+		<h6 class="text-center text-warning">Video</h6>
+		<%end%>
+            </li>
+	    <li class="nav-item">
+              <%= link_to kite_index_path(anchor: "bar"), class:"nav-link" do %>
+		<i class="text-center text-warning fas fa-chevron-right"></i>
+		<h6 class="text-center text-warning">Tous les Kites</h6>
+		<%end%>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+	<section id="resume">
+	<div class="d-flex justify-content-center">
+	  <div class="card col-lg-8 m-3 p-3">
+            <div class="row">
+              <div class="col-md-3">
+                <ul class="nav nav-pills nav-pills-icons flex-column" role="tablist">
+                  <div class="col-md-12 ml-auto mr-auto">
+                    <img src="/assets/Hugo.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                </ul>
+              </div>
+              <div class="col-md-8">
+                <div class="tab-content">
+		  <p><%= @product.description %></p>
+                </div>
+              </div>
+            </div>
+  		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+          </div>
+	</div>
+	</section>
+
+<% if @product.domain === "wingfoil" %>
+	<section id="idcard">
+          <h2 class="ml-5 fas fa-id-card"> Id Card</h2>
+	  <%= render"layouts/flash" %>
+	<div class="d-flex justify-content-center">
+          <div class="col-md-10">
+            <div class="name">
+	      <div class="card pb-4">
+	        <div class="row">
+		  <div class="col-md-5 col-md-offset-0 col-sm-10 col-sm-offset-1">
+                    <div class="text-center">
+                      <h2></i> <%= @product.name %> <%= @product.year %></h2>
+			<%if @product.idcard.attached? %>
+ 		  	  <%= image_tag @product.idcard, alt: 'kite picture', class:"img-raised rounded img-fluid mt-2", style:"width:70%" %>
+			<%else%>
+                          <img src="/assets/image.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:70%">
+			<%end%>
+                    </div>
+                  </div>
+                  <div class="mt-5 col-md-7 col-sm-12">
+                    <h3><i class="fas fa-heart"></i>  Son point fort : <%= @product.favorite %></h3>
+		  <div class="row">
+		    <div class="col-md-6">
+                      <h6>Taille testé : <%= @product.testsize %>m</h6>
+                      <h6>Tailles disponible : <%= @option.range %></h6>
+		      <h6>nombre de poignés : <%= @option.strut %></h6>
+                      <h6>Prix en shop : <%= @product.price %>€ pour une <%= @product.testsize %>m</h6>
+		    <div class="card text-dark bg-light col-md-11">
+		      <h6>details : <%= @option.detail %></h6>
+		    </div>
+		    </div>
+		    <div class="col-md-6">
+		      <% if @product.link.present? %>
+		      <h6>Plus d'infos : <a class="btn btn-sm btn-outline-info mt-4" href="<%= @product.link %>" target="blank_"><%= @product.link %></a></h6>
+		      <%end%>
+		      <% if current_user.present? && @compare != nil %>
+  			<% @compares.each do |t, index| %>
+    			  <% if t.product_id === @product.id && t.user_id === current_user.id %>
+      			    <% @compare.same = true %>
+			  <% else %>
+      			    <% @compare.same = false %>
+			  <%end%>
+  			<%end%>
+		      <% elsif @compare != nil %>
+			<%= link_to new_user_session_path, :method => 'new' do %>
+  			  <p class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Il faut se connecter">Ajouter au comparateur</p> 
+			<% end %>
+		      <% end %>
+		      <% if @compare === nil || @compare.same != true && current_user.present? %>
+			<%= form_tag url_for(action: 'create'), method: 'post' do %>
+                  	  <%= text_field_tag 'id', @product.id, type:"hidden" %>
+                  	  <%= text_field_tag 'id', @technic.id, type:"hidden" %>
+                  	  <%= text_field_tag 'id', @option.id, type:"hidden" %>
+              		  <%= submit_tag "Ajouter au comparateur", class:"btn btn-success", target:"blank_" %>
+			<% end %>
+		      <% end %>
+		    </div>
+		  </div>
+  		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+	</div>
+      </section>
+<% else @product.domain === "freeride" || @product.domain === "race" %>
+	<section id="idcard">
+          <h2 class="ml-5 fas fa-id-card"> Id Card</h2>
+	<div class="d-flex justify-content-center">
+          <div class="col-md-11">
+            <div class="name">
+	      <div class="card pb-4">
+	        <div class="row">
+		  <div class="col-md-3 col-md-offset-0 col-sm-10 col-sm-offset-1">
+                    <div class="text-center">
+                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @product.name %></h2>
+			<%if @product.idcard.attached? %>
+ 		  	  <%= image_tag @product.idcard, alt: 'kite picture', class:"img-raised rounded img-fluid mt-2", style:"width:70%" %>
+			<%else%>
+                          <img src="/assets/image.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:70%">
+			<%end%>
+                    </div>
+                  </div>
+                  <div class="mt-5 col-md-4 col-sm-12">
+                    <h3><i class="fas fa-heart"></i> On a aimé : <%= @product.favorite %></h3>
+                    <h6>Domain : <%= @product.domain %></h6>
+                    <h6>Taille testé : <%= @product.testsize %>m</h6>
+                    <h6>Tailles disponible : <%= @option.range %></h6>
+                    <h6>Prix en shop : <%= @product.price %>€ pour une board nue</h6>
+		      <% if @product.link.present? %>
+		      <h6>Plus d'infos : <a class="btn btn-sm btn-outline-info mt-4" href="<%= @product.link %>" target="blank_"><%= @product.link %></a></h6>
+		      <%end%>
+		      <% if current_user.present? && @compare != nil %>
+  			<% @compares.each do |t, index| %>
+    			  <% if t.product_id === @product.id && t.user_id === current_user.id %>
+      			    <% @compare.same = true %>
+			  <% else %>
+      			    <% @compare.same = false %>
+			  <%end%>
+  			<%end%>
+		      <% elsif @compare != nil %>
+			<%= link_to new_user_session_path, :method => 'new' do %>
+  			  <p class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Il faut se connecter">Ajouter au comparateur</p> 
+			<% end %>
+		      <% end %>
+		      <% if @compare === nil || @compare.same != true && current_user.present? %>
+			<%= form_tag url_for(action: 'create'), method: 'post' do %>
+                  	  <%= text_field_tag 'id', @product.id, type:"hidden" %>
+                  	  <%= text_field_tag 'id', @technic.id, type:"hidden" %>
+                  	  <%= text_field_tag 'id', @option.id, type:"hidden" %>
+              		  <%= submit_tag "Ajouter au comparateur", class:"btn btn-success", target:"blank_" %>
+			<% end %>
+		      <% end %>
+		  </div>
+                  <div class="mt-5 col-md-5 col-sm-12">
+                    <h3><i class="fas fa-cog"></i>  Caractéristique :</h3>
+		<div class="row">
+		<div class="col-md-6">
+                    <h4>board :</h4>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> Longueur : <%= @option.length %></h6>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> Epaisseur : <%= @option.thickness %></h6>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> Poids : <%= @option.weigh %></h6>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> Volume : <%= @option.volum %>L</h6>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> Boitier : <%= @option.box %></h6>
+		</div>
+		<div class="col-md-6">
+                    <h4>Foil :</h4>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> Volume : <%= @option.volum %></h6>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> Taille de la pelle avant : <%= @option.fin %>cm2</h6>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> Longueur : <%= @option.range %></h6>
+                    <h6><i class="fab fa-steam-symbol fa-2x"></i> taille du fuselage : <%= @option.range %></h6>
+		</div>
+		    <div class="card text-dark bg-light col-md-11">
+		      <h6>details : <%= @option.detail %></h6>
+		    </div>
+		</div>
+		  </div>
+                </div>
+  		<a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+              </div>
+            </div>
+          </div>
+	</div>
+	</section>
+<% end %>
+
+	<div class="d-flex flex-row">
+	  <div class="col-md-12">
+	    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  	      <ol class="carousel-indicators">
+    		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    		<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    		<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    		<li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+    		<li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+  	      </ol>
+  	      <div class="carousel-inner">
+		<%if @product.picture.attached?%>
+    		  <div class="carousel-item active">
+		    <%= image_tag @product.picture.first, alt: 'kite picture', class:"d-block w-100" %>
+		  </div>
+		  <% @product.picture.each do |t, index| %>
+    		    <div class="carousel-item">
+		      <%= image_tag t , alt: 'kite picture', class:"d-block w-100" %>
+		    </div>
+		  <% end %>
+		  <% else %>
+    		  <div class="carousel-item active">
+      		    <img class="d-block w-100" src="/assets/image.jpg" alt="First slide">
+    		  </div>
+    		  <div class="carousel-item">
+      		    <img class="d-block w-100" src="/assets/image.jpg" alt="Second slide">
+    		  </div>
+		<% end %>
+  	      </div>
+  	      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+   	        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    		<span class="sr-only">Previous</span>
+	      </a>
+	      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+	      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    	      <span class="sr-only">Next</span>
+	      </a>
+	    </div>
+	  </div>
+	</div>
+
+	<section id="competence">
+          <h2 class="ml-5 fas fa-sliders-h"> Compétences</h2>
+	    <div class="m-3 d-flex flex-row justify-content-around">
+	      <div class="card col-sm-5 m-3 p-3" style="width:100%">
+		<%= render"foilcomp" %>
+	      </div>
+	      <div class="col-sm-5 m-3">
+		<%if @product.competence.attached? %>
+ 		  <%= image_tag @product.competence, alt: 'kite picture', class:"img-raised rounded img-fluid mt-2", style:"width:100%" %>
+		<%else%>
+                  <img src="/assets/image.jpg" alt="Thumbnail Image" class="img-raised rounded img-fluid mt-2" style="width:100%">
+		<%end%>
+	      </div>
+	    </div>
+  	    <a href="#header" class="scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary mt-2 fa fa-caret-square-up"></i></a>
+
+	</section>
+
+        <section id="video">
+	<% if @product.youtube.present? %>
+          <h2 class="ml-5 fas fa-video"> Video</h2>
+	  <div class="d-flex justify-content-center">
+            <div class="card row m-3 p-3 col-lg-8">
+              <div class="d-flex justify-content-center">
+		<iframe width="560" height="315" src="<%= @product.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	      </div>
+	      <a href="#header" class="scrollup d-flex justify-content-end align-items-end mr-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+            </div>
+	  </div>
+	<%end%>
+        </section>
+
+
+	<section id="product">
+	          <h2 class="ml-5 fas fa-plus"> Produits associés</h2>
+<div class="row d-flex justify-content-around">
+  <div class="col-sm-3">
+      <div class="card-body">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+	<h5 class="text-dark">Autres foils <%= @product.domain %></h5>
+    <a href="<%= foil_index_path %>" class="btn btn-success">Autres tests</a>
+      <img class="d-block w-100" src="/assets/testkite/bandit.png" alt="First slide">
+    </div>
+      <% @products.each do |t, index| %>
+<% if t.category === "foil" && t.domain === @product.domain && t.profil.attached? && t.id != @product.id %>
+    <div class="carousel-item">
+	<h3 class="text-dark"><%= t.brand %> <%= t.name %></h3>
+    <a href="<%= foil_path(t) %>" class="btn btn-success">Voir le test</a>
+      <%= image_tag t.foil, class:"d-block w-100" %>
+    </div>
+<% end %>
+<% end %>
+  </div>
+</div>
+      </div>
+  </div>
+  <div class="col-sm-3">
+      <div class="card-body">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+	<h5 class="text-dark">Autres wingfoil <%= @product.domain %></h5>
+    <a href="<%= foil_index_path %>" class="btn btn-success">Autres tests</a>
+      <img class="d-block w-100" src="/assets/testboard/board2.png" alt="First slide">
+    </div>
+      <% @products.each do |t, index| %>
+<% if t.category === "foil" && t.domain === @product.domain && t.profil.attached? %>
+    <div class="carousel-item">
+	<h3 class="text-dark"><%= t.brand %> <%= t.name %></h3>
+    <a href="<%= foil_path(t) %>" class="btn btn-success">Voir le test</a>
+      <%= image_tag t.profil, class:"d-block w-100" %>
+    </div>
+<% end %>
+<% end %>
+
+  </div>
+</div>
+      </div>
+  </div>
+  <div class="col-sm-3">
+      <div class="card-body">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+	<h5 class="text-dark">Autres accessoires</h5>
+    <a href="<%= kite_index_path %>" class="btn btn-success">Autres tests</a>
+      <img class="d-block w-100" src="/assets/testaccessory/harness.png" alt="First slide">
+    </div>
+      <% @products.each do |t, index| %>
+<% if t.category === "accessory" && t.domain === @product.domain && t.profil.attached? %>
+    <div class="carousel-item">
+	<h3 class="text-dark"><%= t.brand %> <%= t.name %></h3>
+    <a href="<%= accessory_path(t) %>" class="btn btn-success">Voir le test</a>
+      <%= image_tag t.profil, class:"d-block w-100" %>
+    </div>
+<% end %>
+<% end %>
+
+  </div>
+</div>
+      </div>
+  </div>
+</div>
+</section>
+  		<a href="#header" class="scrollup d-flex justify-content-end align-items-end m-3"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
+	</section>
+
+	<div class="d-flex justify-content-end">
+              <a class="btn-primary btn-sm" href="<%= kite_index_path %>"><i class="fas fa-caret-square-left"></i>  Retour kites</a>
+	</div>
+    </div>
+  </div>
+</div>
+</body>
+
+
+
+
+
+

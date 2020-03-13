@@ -30,9 +30,9 @@
                   <%= text_field_tag 'brand', @product.brand, class: "form-control" %>
                 </div>
                 <div class="col-3">
-                  <%= label_tag 'Domaine' %>
-                  <%= text_field_tag 'domain', @product.domain, class: "form-control" %>
-                </div>
+              <%= label_tag 'Domaine' %>
+              <%= select_tag 'domain', raw("<option>Freestyle</option>"), class: "form-control" %>
+		</div>
                 <div class="col-3">
                   <%= label_tag 'favoris' %>
                   <%= text_field_tag 'favorite', @product.favorite, class: "form-control" %>
@@ -43,23 +43,23 @@
               <div class="row">
                 <div class="col-2">
               <%= label_tag 'Contrôle' %>
-              <%= text_field_tag 'control', @technic.control, class: "form-control" %>
+              <%= select_tag 'control', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
               <%= label_tag 'Progression' %>
-              <%= text_field_tag 'progression', @technic.progression, class: "form-control" %>
+              <%= select_tag 'progression', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
               <%= label_tag 'freeride' %>
-              <%= text_field_tag 'freeride', @technic.freeride, class: "form-control"%>
+              <%= select_tag 'freeride', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
               <%= label_tag 'freestyle' %>
-              <%= text_field_tag 'freestyle', @technic.freestyle, class: "form-control"%>
+              <%= select_tag 'freestyle', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
               <%= label_tag 'maniability' %>
-              <%= text_field_tag 'maniability', @technic.maniability, class: "form-control"%>
+              <%= select_tag 'maniability', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
 		</div>
 

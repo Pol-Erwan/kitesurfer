@@ -28,7 +28,7 @@ user_is_admin = ["true","true","true","true","false","false","false","false","fa
 
 kite_name = ["Bandit","Boost II","GTS","RPM","Torch","Chaos","Razor","Vegas","Reo","FS"]
 brand = ["F-One","Flysurfer","Core","Slingshot","Naish","Cabrinha","Airush","Duotone","Ozone","Eleveight"]
-category = ["kite","board","surfboard","accessory"]
+category = ["kite","board","surfboard","accessory","foil"]
 kite_description = ["Inutile de présenter la fameuse Bandit dont c'est la 12e édition
 et qui est toujours plus performante que jamais. C'est difficile de
 toujours rester au top quand on connait le succès mais la Bandit
@@ -125,7 +125,21 @@ puts my_article.id
 
 my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: kitedomain[variable], description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
 my_technic = Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5))
-my_option = Option.create(detail:"spi quad-tex super costaud", range:"5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 14", bridle: "no poulies", strut: rand(0..5))
+my_option = Option.create(detail:"spi quad-tex super costaud", range:"5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 14", bridle: "no poulies", strut: rand(0..5), line: rand(4..5))
+my_kite.technic = my_technic
+my_kite.option = my_option
+my_kite.save
+my_option.product = my_kite
+my_option.save
+my_technic.product = my_kite
+my_technic.save
+print my_kite.name .green
+print " Id n°" .green
+puts my_kite.id 
+
+my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: kitedomain[variable], description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2018")
+my_technic = Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5))
+my_option = Option.create(detail:"spi quad-tex super costaud", range:"5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 14", bridle: "no poulies", strut: rand(0..5), line: rand(4..5))
 my_kite.technic = my_technic
 my_kite.option = my_option
 my_kite.save
@@ -213,10 +227,38 @@ print my_harness.name .white
 print " Id n°" .white
 puts my_harness.id
 
-my_compare = Compare.create(product: my_kite, user: my_user)
-my_compare = Compare.create(product: my_board, user: my_user)
-my_compare = Compare.create(product: my_surf, user: my_user)
-my_compare = Compare.create(product: my_harness, user: my_user)
+my_foil = Product.create(name: "le foil", brand: brand[variable], category: category[4], domain: "Freeride", description: kite_description[0], favorite: "sa vitesse", testsize: "80", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
+my_technic = Technic.create(wave: rand(0..5), freeride: rand(0..5),freestyle: rand(0..5), feeling: rand(0..5))
+my_option = Option.create(detail:"la déco ! En plus il n'y a que ça de bien", range:"60 / 80 / 10", weigh: rand(3..5), thickness:rand(5.5..6.8), volum:rand(22..26),length: "120x45",fin: "800", box:"futures fins")
+my_foil.technic = my_technic
+my_foil.option = my_option
+my_foil.save
+my_option.product = my_foil
+my_option.save
+my_technic.product = my_foil
+my_technic.save
+print my_foil.name .blue
+print " Id n°" .blue
+puts my_foil.id 
+
+my_wing = Product.create(name: "wing", brand: brand[variable], category: category[4], domain: "wingfoil", description: kite_description[0], favorite: "son shape", testsize: "5", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(400..600), year: "2020")
+my_technic = Technic.create(wave: rand(0..5), freeride: rand(0..5),freestyle: rand(0..5), feeling: rand(0..5), maniability: rand(0..5))
+my_option = Option.create(detail:"les poignées trop confort", range:"3,5 / 5 / 6", weigh: rand(1..3),length: "120x45", velcros: "oui", strut: rand(1..2))
+my_wing.technic = my_technic
+my_wing.option = my_option
+my_wing.save
+my_option.product = my_wing
+my_option.save
+my_technic.product = my_wing
+my_technic.save
+print my_wing.name .green
+print " Id n°" .green
+puts my_wing.id
+ 
+my_compare = Compare.create(product: my_kite, user: my_user, same: false)
+my_compare = Compare.create(product: my_board, user: my_user, same: false)
+my_compare = Compare.create(product: my_surf, user: my_user, same: false)
+my_compare = Compare.create(product: my_harness, user: my_user, same: false)
 
 variable = variable + 1
 

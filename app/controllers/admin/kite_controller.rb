@@ -60,10 +60,13 @@ class Admin::KiteController < Admin::BasesController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
+    @compare = Compare.where(product_id: @product.id)
     @product.delete
     @technic.delete
     @option.delete
-
+    if @compare != nil
+      @compare.destroy_all
+    end
       flash[:sucess] = " Le kite a été supprimé ! "
 
       redirect_to admin_kite_index_path

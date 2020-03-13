@@ -42,12 +42,12 @@ class Admin::AccessoryController < Admin::BasesController
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
 
-    if @product.update(name: @product.name , brand: @product.brand , category: "accessory", domain: @product.domain , description: params[:description], favorite: @product.favorite, youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
+    if @product.update(name: @product.name , brand: params[:brand] , category: "accessory", domain: @product.domain , description: params[:description], favorite: @product.favorite, youtube: params[:youtube], link: params[:link], price: params[:price], year: params[:year])
 
       if @technic.update( grip: params[:grip], wave: params[:wave], freeride: params[:freeride], freestyle: params[:freestyle], maniability: params[:maniability], feeling: params[:feeling])
 
         if @option.update(detail: params[:detail], range: params[:range],trim: params[:trim], twist: params[:twist], line: params[:line], v: params[:v], bar: params[:bar], flex: params[:flex], velcros: params[:velcros], zip: params[:velcros], thickness: params[:thickness])
-          redirect_to edit_admin_product_path(@product)
+          redirect_to admin_accessory_index_path(@product)
         else
           render :edit
         end

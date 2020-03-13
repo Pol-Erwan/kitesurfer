@@ -1,0 +1,116 @@
+<body style="background-image: url('/assets/background/admin.jpg')">
+
+  <% if @product.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+            <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
+            <ul>
+              <% @product.errors.full_messages.each do |message| %>
+                <li class="li_errors"><%= message %></li>
+              <% end %>
+            </ul>
+    </div>
+      <% end %>
+
+<div class="m-2">
+    <%= link_to " ", admin_product_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+</div>
+        <h2 class="title text-white"> Modifier les photos <%= @product.name %> n°<%= @product.id %></h2>
+<div class="container card card-body p-5" >
+<%= render"layouts/flash" %>
+
+<section id="picture">
+
+<h1>Photos</h1>
+
+<%= form_tag admin_product_picture_index_path(@product), multipart: true do %>
+<h3>Ajouter la photo picture</h3>
+<%if @product.picture.attached?%>
+<% @product.picture.each do |t, index| %>
+  <%= image_tag t, alt: 'kite picture', style:"width:200px" %>
+<% end %>
+<% else %>
+ <%= file_field_tag :carousel, required: true %>
+ <%= file_field_tag :carousel2, required: true %>
+ <%= file_field_tag :carousel3, required: true %>
+ <%= file_field_tag :carousel4, required: true %>
+ <%= file_field_tag :carousel5, required: true %>
+<% end %>
+
+<h3>Ajouter la photo background</h3>
+<%if @product.background.attached?%>
+  <%= image_tag @product.background, alt: 'kite picture', style:"width:200px" %>
+<% else %>
+ <%= file_field_tag :background, required: true %>
+<% end %>
+
+<h3>Ajouter la photo id card</h3>
+<%if @product.idcard.attached?%>
+  <%= image_tag @product.idcard, alt: 'kite picture', style:"width:200px" %>
+<%end %>
+ <%= file_field_tag :idcard, required: true %>
+
+<h3>Ajouter la photo profil</h3>
+<%if @product.profil.attached?%>
+  <%= image_tag @product.profil, alt: 'kite picture', style:"width:200px" %>
+<% end %>
+ <%= file_field_tag :profil, required: true %>
+
+<h3>Ajouter la photo competence</h3>
+<%if @product.competence.attached?%>
+  <%= image_tag @product.competence, alt: 'kite picture', style:"width:200px" %>
+<% end %>
+ <%= file_field_tag :competence, required: true %>
+
+<h3>Ajouter la photo detail</h3>
+<%if @product.detail.attached?%>
+<% @product.detail.each do |t, index| %>
+  <%= image_tag t, alt: 'kite picture', style:"width:200px" %>
+<% end %>
+<% end %>
+ <%= file_field_tag :detail, required: true %>
+ <%= file_field_tag :detail2, required: true %>
+ <%= file_field_tag :detail3, required: true %>
+
+ <%= submit_tag "mettre à jour", class:"btn-sm btn-success" %>
+<% end %>
+
+<h4>supprimer la dernière photo ? </h4>
+      <td><%= link_to "Supprimer picture ", admin_product_picture_path(@product.picture), class:"btn-sm btn-danger", method: :delete %></td>
+      <td><%= link_to "Supprimer background ", admin_product_picture_path(@product.background), class:"btn-sm btn-danger", method: :delete %></td>
+      <td><%= link_to "Supprimer idcard ", admin_product_picture_path(@product.idcard), class:"btn-sm btn-danger", method: :delete %></td>
+
+</section>
+
+
+<% if @product.category === "kite" %>
+<div class="m-2">
+    <%= link_to "Aperçu", kite_path(@product.id), class:"pull-left btn btn-primary" %>
+</div>
+<%end%>
+
+<% if @product.category === "board" %>
+<div class="m-2">
+    <%= link_to "Aperçu", board_path(@product.id), class:"pull-left btn btn-primary" %>
+</div>
+<%end%>
+
+<% if @product.category === "surfboard" %>
+<div class="m-2">
+    <%= link_to "Aperçu", surfboard_path(@product.id), class:"pull-left btn btn-primary" %>
+</div>
+<%end%>
+
+<% if @product.category === "accessory" %>
+<div class="m-2">
+    <%= link_to "Aperçu", accessory_path(@product.id), class:"pull-left btn btn-primary" %>
+</div>
+<%end%>
+
+
+</div>
+<div class="m-2">
+    <%= link_to " ", admin_product_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+</div>
+
+    </div>
+</body>

@@ -20,3 +20,4 @@
 //= require bootstrap-datetimepicker
 //= require nouislider.min
 //= require material-kit
+//= require navtest

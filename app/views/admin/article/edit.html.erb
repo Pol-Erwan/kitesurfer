@@ -19,7 +19,7 @@
         <h3 class="title text-center"> Infos principales</h3>
   <div class="text-center">
            <%= form_tag url_for(action: 'update'), method: 'put' do %>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'Titre' %>
                   <%= text_field_tag 'title', @article.title, class: "form-control" %>
                 </div>
@@ -29,16 +29,16 @@
                   <%= text_field_tag 'intro', @article.intro, class: "form-control" %>
                 </div>
                 <div class="text-center">
-                  <%= label_tag 'domain' %>
-                  <%= text_field_tag 'domain', @article.domain, class: "form-control" %>
-                </div>
+              <%= label_tag 'Domaine' %>
+              <%= select_tag 'domain', raw("<option>news</option><option>testkite</option><option>testboard</option><option>testsurf</option><option>testaccessory</option><option>testfoil</option><option>portfolio</option>"), class: "form-control" %>
+		</div>
               <br><br>
                 <div class="text-center">
                   <%= label_tag 'content' %>
                   <%= text_field_tag 'content', @article.content, class: "form-control" %>
                 </div>
               <br><br>		
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title2' %>
                   <%= text_field_tag 'title2', @article.title2, class: "form-control" %>
                 </div>
@@ -47,7 +47,7 @@
                   <%= text_field_tag 'content2', @article.content2, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title3' %>
                   <%= text_field_tag 'title3', @article.title3, class: "form-control" %>
                 </div>
@@ -56,7 +56,7 @@
                   <%= text_field_tag 'content3', @article.content3, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title4' %>
                   <%= text_field_tag 'title4', @article.title4, class: "form-control" %>
                 </div>
@@ -65,7 +65,7 @@
                   <%= text_field_tag 'content4', @article.content4, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title5' %>
                    <%= text_field_tag 'title5', @article.title5, class: "form-control" %>
                 </div>
@@ -74,7 +74,7 @@
                   <%= text_field_tag 'content5', @article.content5, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title6' %>
                   <%= text_field_tag 'title6', @article.title6, class: "form-control" %>
                 </div>
@@ -83,7 +83,7 @@
                   <%= text_field_tag 'content6', @article.content6, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title7' %>
                   <%= text_field_tag 'title7', @article.title7, class: "form-control" %>
                 </div>
@@ -92,7 +92,7 @@
                   <%= text_field_tag 'content7', @article.content7, class: "form-control" %>
                 </div>
 		<br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title8' %>
                   <%= text_field_tag 'title8', @article.title8, class: "form-control" %>
                 </div>
@@ -101,7 +101,7 @@
                   <%= text_field_tag 'content8', @article.content8, class: "form-control" %>
                 </div>
 		<br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title9' %>
                   <%= text_field_tag 'title9', @article.title9, class: "form-control" %>
                 </div>
@@ -114,45 +114,51 @@
 	      <center><%= link_to "Aperçu", article_path(@article), class:"btn btn-outline-info" %></center>
     
             <% end %>
-<section id="image">
-<h1>Photos</h1>
+
+      <section id="image">
+        <h1>Images</h1>
 <%= render"layouts/flash" %>
-<%if @article.image.attached?%>
 
-<div class="row">
-
-<% @article.image.each do |t, index| %>
-      <div class="card-deck m-3">
-        <div class="row mx-3">  
-          <div class="card m-3" style="max-width: 200px;">
-	  <h4 class="text-center">photo <%= @name[@size] %></h4>
-  	  <%= image_tag t, alt: 'kite image', style:"width:200px" %>
-	  <% @size = @size + 1 %>
-	  </div>
-	</div>
-      </div>
-<%end%>
-
-</div>
+	<%= form_tag admin_article_image_index_path(@article), multipart: true do %>
+            <h3>Ajouter les images de l'article</h3>
+              <%if @article.image.attached?%>
+                <% @article.image.each do |t, index| %>
+                  <%= image_tag t, alt: 'article image', style:"width:200px" %>
+                <% end %>
+              <% end %>
+            <h6>intro</h6><%= file_field_tag :image %>
+            <h6>image</h6><%= file_field_tag :image2 %>
+            <h6>image ride</h6><%= file_field_tag :image3 %>
+            <h6>competences</h6><%= file_field_tag :image4 %>
+            <h6>image 2</h6><%= file_field_tag :image5 %>
+            <h6>image 3</h6><%= file_field_tag :image6 %>
+            <h6>image 4</h6><%= file_field_tag :image7 %>
 
 
-<%else%>
-  <p>=== Il n'y a pas encore d'images lié à cet article ===</p>
-<%end%>
+<h3>Ajouter la photo du background</h3>
 
-<% if @article.image.size < 12 %>
-<h3>Ajouter l'image <%= @name[@size] %></h3>
-<%= form_tag admin_article_image_index_path(@article), multipart: true do %>
- <%= file_field_tag :image, required: true %>
- <%= submit_tag "mettre à jour", class:"btn-sm btn-success" %>
+<%if @article.background.attached?%>
+  <%= image_tag @article.background, alt: 'article image', style:"width:200px" %>
+<% end %>
+ <%= file_field_tag :background %>
+
+<h3>Ajouter les photos des jumbotron</h3>
+<%if @article.jumbotron.attached?%>
+<% @article.jumbotron.each do |t, index| %>
+  <%= image_tag t, alt: 'article image', style:"width:200px" %>
 <% end %>
 <% end %>
-</section>
+            <h6>Jumbotron intro</h6><%= file_field_tag :jumbotron %>
+            <h6>Jumbotron tous les modèles</h6><%= file_field_tag :jumbotron2 %>
+            <h6>Jumbotron presentaztion</h6><%= file_field_tag :jumbotron3 %>
+            <h6>Jumbotron comparer</h6><%= file_field_tag :jumbotron4 %>
 
-<h4>supprimer la dernière photo (<%= @name[@size - 1] %>) ? </h4>
-      <td><%= link_to "Supprimer", admin_article_image_path(@article.image), class:"btn-sm btn-danger", method: :delete %></td>
+<br>
+ <center><%= submit_tag "mettre à jour", class:"m-3 btn-sm btn-success" %><center>
+<% end %>
 
-
+<h4>supprimer</h4>
+      <td><%= link_to "Supprimer toutes les images ", admin_article_image_path(@article.image), class:"btn-sm btn-danger", method: :delete %></td>
 
         </div>
       </div>

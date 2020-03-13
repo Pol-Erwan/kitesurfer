@@ -1,40 +1,58 @@
-    <% if flash[:danger].present? %>
-      <div class="d-flex justify-content-end" id="error_explanation">
-        <div class="card alert alert-danger alert-dismissible fade show" role="alert" style="width:20%">
-          <strong><i class="fas fa-skull"></i><%= flash[:danger] %></strong>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      </div>
-    <%elsif flash[:success].present?%>
-      <div class="d-flex justify-content-end" id="sucess_explanation">
-        <div class="card alert alert-success alert-dismissible fade show" role="alert" style="width:20%">
-          <strong><i class="fas fa-check"></i><%= flash[:success] %></strong>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      </div>
-      <%elsif flash[:info].present?%>
-        <div class="d-flex justify-content-end" id="info_explanation">
-          <div class="card alert alert-info alert-dismissible fade show" role="alert" style="width:20%">
-            <strong><i class="fas fa-info"></i><%= flash[:info] %></strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        </div>
-        <%elsif flash[:warning].present?%>
-          <div class="d-flex justify-content-end" id="warning_explanation">
-            <div class="card alert alert-warning alert-dismissible fade show" role="alert" style="width:20%">
-              <strong><i class="fas fa-exclamation-triangle"></i><%= flash[:warning] %></strong>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          </div>
-    <% end %>
+<% if flash[:danger].present? %>
+  <div class="d-flex justify-content-end" id="error_explanation">
+    <div class="card alert alert-danger alert-dismissible fade show" role="alert" style="width:20%">
+      <strong><i class="fas fa-skull"></i><%= flash[:danger] %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> 
+  </div>
+<%elsif flash[:success].present?%>
+  <div class="d-flex justify-content-end" id="sucess_explanation">
+    <div class="card alert alert-success alert-dismissible fade show" role="alert" style="width:20%">
+      <strong><i class="fas fa-check"></i><%= flash[:success] %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<%elsif flash[:info].present?%>
+  <div class="d-flex justify-content-end" id="info_explanation">
+    <div class="card alert alert-info alert-dismissible fade show" role="alert" style="width:20%">
+      <strong><i class="fas fa-info"></i><%= flash[:info] %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<%elsif flash[:warning].present?%>
+  <div class="d-flex justify-content-end" id="warning_explanation">
+    <div class="card alert alert-warning alert-dismissible fade show" role="alert" style="width:20%">
+      <strong><i class="fas fa-exclamation-triangle"></i><%= flash[:warning] %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% elsif notice.present? %>
+  <div class="d-flex justify-content-end" id="warning_explanation">
+    <div class="card alert alert-success alert-dismissible fade show" role="alert" style="width:20%">
+      <strong><i class="m-1 fas fa-check"></i><%= notice %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% elsif alert.present? %>
+  <div class="d-flex justify-content-end" id="warning_explanation">
+    <div class="card alert alert-warning alert-dismissible fade show" role="alert" style="width:20%">
+      <strong><i class="m-1 fas fa-exclamation-triangle"></i><%= alert %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% end %>
 
 
       <div class="d-flex justify-content-end" id="sucess_explanation">

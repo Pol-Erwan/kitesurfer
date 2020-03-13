@@ -49,7 +49,7 @@
     <tr>
       <th scope="row"><%= t.id %></th>
       <td><%= t.title %></td>
-      <td><%= t.intro %></td>
+      <td class="d-inline-block text-truncate" style="max-width: 150px;"><%= t.intro %></td>
       <td><%= t.domain %></td>
       <td><%= @users.find(t.user_id).first_name %></td>
       <td><%= t.created_at %></td>

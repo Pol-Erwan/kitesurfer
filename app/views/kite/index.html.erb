@@ -1,12 +1,18 @@
 <%= render"layouts/navbartest" %>
 
 <body class="index-page sidebar-collapse">
-  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('./assets/background/kite.jpg');">
+<%if @article.present? %>
+  <%if @article.background.attached? %>
+    <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url(<%= rails_blob_url(@article.background)%>);">
+  <% end %>
+  <% else %>
+  <div class="page-header" id="header" data-parallax="true" style="background-image: url('/assets/image.jpg');"></div>
+<% end %>
     <div class="container">
       <div class="col-md-8 ml-auto mr-auto">
         <div class="brand">
           <h1>Les kites</h1>
-            <a class="carousel-control-prev" href="<%= accessory_index_path %>" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="<%= foil_index_path %>" role="button" data-slide="prev">
               <i class="fas fa-caret-square-left" style="font-size:50px"></i>
               <span class="sr-only">Previous</span>
             </a>
@@ -18,7 +24,7 @@
         </div>
       </div>
     </div>
-<%= render"layouts/flash" %>
+  <%= render"layouts/flash" %>
   </div>
 
   <div class="main">
@@ -28,93 +34,79 @@
             <li class="active nav-item my-1 mx-5">
             <%= link_to kite_index_path(anchor: "intro"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Présentation</h4>
+              <i class="text-center text-warning fas fa-comment-dots fa-4x"></i>
 		</div>
 		<%end%>
             </li>
             <li class="active nav-item my-1 mx-5">
               <%= link_to kite_index_path(anchor: "performance"), class:"nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Performances</h4>
+                <i class="text-center text-warning fas fa-sliders-h fa-4x"></i>
 		</div>
 		<%end%>
             </li>
             <li class="nav-item my-1 mx-5">
             <%= link_to kite_index_path(anchor: "kite"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Tous les Kites</h4>
+		<i class="text-center text-warning fas fa-compress-arrows-alt fa-4x"></i>
 		</div>
 		<%end%>
             </li>
             <li class="nav-item my-1 mx-5">
             <%= link_to kite_index_path(anchor: "compare"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Comparer les modèles</h4>
+		<i class="text-center text-warning fas fa-compress-alt fa-4x"></i>
 		</div>
 		<%end%>
             </li>
             <li class="nav-item my-1 mx-5">
             <%= link_to kite_index_path(anchor: "presentation"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Equipe Test</h4>
+		<i class="text-center text-warning fas fa-users fa-4x"></i>
 		</div>
 		<%end%>
             </li>      
     </ul>
   </nav>
-<script>
-$(document).ready(function() {
-  
-  $(window).scroll(function () {
-      //if you hard code, then use console
-      //.log to determine when you want the 
-      //nav bar to stick.  
-      console.log($(window).scrollTop())
-    if ($(window).scrollTop() > 450) {
-      $('#nav_bar').addClass('navbar-fixed');
-    }
-    if ($(window).scrollTop() < 451) {
-      $('#nav_bar').removeClass('navbar-fixed');
-    }
-  });
-});
-</script>
 
-  <% @articles.each do |t, index| if t.domain === "testkite" %> 
+  <% if @article.present? %> 
 
     <section id="intro">
-    <br><br><br>
-      <div class="jumbotron" style="background-image: url(/assets/background/kitejumbotron.jpg); background-size: 100%;">
+  <%if @article.jumbotron.attached? %>
+      <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.first)%>); background-size: 100%;">
+  <% else %>
+  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <% end %>
         <div class="container for-about">
         <h1 class="text-white">Comment sont fait nos tests</h1>
         </div>
       </div>
 
       <div class="container tim-container m-3">
-        <h1 class="m-5"><%= t.title %></h1>                          
-        <h3><small class="subtitle"><%= t.intro %></small></h3>
-          <div class="row">
-            <div class="col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1">
+        <h1 class="m-5"><%= @article.title %></h1>                          
+        <h3><small class="subtitle"><%= @article.intro %></small></h3>
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
               <div class="text-center">
-		<% if t.image.attached? %>
-  	  	  <%= image_tag t.image.first, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+		<% if @article.image.attached? %>
+  	  	  <%= image_tag @article.image.first, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
 		<% else %>
           	  <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
 		<% end %>
               </div>
             </div>
-            <div class="col-md-5 col-sm-12 d-flex align-items-center">
-              <p><%= t.content %></p>
+            <div class="col-md-5 d-flex align-items-center">
+              <p><%= @article.content %></p>
             </div>
 	    <div class="d-flex justify-content-center">	
               <div class="bg-light col-sm-10 text-center">
-                <p><%= t.content2 %></p>
+                <p><%= @article.content2 %></p>
               </div>
 	    </div>
 	    <div class="d-flex justify-content-center">
 	      <div class="card-body">	
-	    <% if t.image.attached? %>
-  	      <%= image_tag t.image.second, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+	    <% if @article.image.attached? %>
+  	      <%= image_tag @article.image.second, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
 	    <% else %>
               <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
 	    <% end %>
@@ -125,14 +117,14 @@ $(document).ready(function() {
         <div class="container tim-container m-3">
           <div class="d-flex flex-row">
             <div class="card m-3 p-3">
-              <h3><small class="subtitle"><%= t.title3 %></small></h3>
+              <h3><small class="subtitle"><%= @article.title3 %></small></h3>
             <div class="col-sm-12">
-              <p><%= t.content3 %></p>
+              <p><%= @article.content3 %></p>
             </div>
           </div>
           <div class="p-3">
-	    <% if t.image.attached? %>
-  	      <%= image_tag t.image.third, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+	    <% if @article.image.attached? %>
+  	      <%= image_tag @article.image.third, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
 	    <% else %>
               <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
 	    <% end %>
@@ -144,11 +136,11 @@ $(document).ready(function() {
 
         <div class="row m-2">
           <div class="card col-sm-6 m-3 p-3" style="width:60%">
-		<%= render"layouts/kitecomp" %>
+		<%= render"kitecomp" %>
 	  </div>
 	  <div class="col-sm-5 m-3 p-3">
-	    <% if t.image.attached? %>
-  	      <%= image_tag t.image.fourth, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+	    <% if @article.image.attached? %>
+  	      <%= image_tag @article.image.fourth, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
 	    <% else %>
               <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
 	    <% end %>
@@ -158,38 +150,42 @@ $(document).ready(function() {
 	<div class="card-body bg-light d-flex flex-row">
 	  <div class="card m-2">
   	    <div class="card-body">
-    	      <h5 class="card-title"><%= t.title4 %></h5>
-    	      <p class="card-text p-2"><%= t.content4 %></p>
+    	      <h5 class="card-title"><%= @article.title4 %></h5>
+    	      <p class="card-text p-2"><%= @article.content4 %></p>
 	    </div>
 	  </div>
 	  <div class="card m-2">
   	    <div class="card-body">
-              <h5 class="card-title"><%= t.title5 %></h5>
-              <p class="card-text p-2"><%= t.content5 %></p>
+              <h5 class="card-title"><%= @article.title5 %></h5>
+              <p class="card-text p-2"><%= @article.content5 %></p>
   	    </div>
 	  </div>
 	  <div class="card m-2">
   	    <div class="card-body">
-              <h5 class="card-title"><%= t.title6 %></h5>
-              <p class="card-text p-2"><%= t.content6 %></p>
+              <h5 class="card-title"><%= @article.title6 %></h5>
+              <p class="card-text p-2"><%= @article.content6 %></p>
   	    </div>
 	  </div>
 	  <div class="card m-2">
   	    <div class="card-body">
-              <h5 class="card-title"><%= t.title7 %></h5>
-              <p class="card-text p-2"><%= t.content7 %></p>
+              <h5 class="card-title"><%= @article.title7 %></h5>
+              <p class="card-text p-2"><%= @article.content7 %></p>
   	    </div>
 	  </div>
         </div>
     <a href="#navtest" class="p-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
 
   </section>
-<% end end %>
+<% end %>
 
 
   <section id="kite">
   <br><br><br>
-    <div class="jumbotron" style="background-image: url(/assets/introtest3.jpg); background-size: 100%;">
+  <%if @article.jumbotron.attached? %>
+      <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.second)%>); background-size: 100%;">
+  <% else %>
+  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <% end %>
       <div class="container for-about">
       <h1>kite</h1>
       </div>
@@ -204,8 +200,8 @@ $(document).ready(function() {
           <div class="card m-3 p-2" style="max-width: 200px;">
             <h3 class="card-title"> <%= t.name %>  </h3>
 	      <%= link_to kite_path(t), class:"nav-link" do %>
-		<% if t.picture.attached? %>
-  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
+		<% if t.profil.attached? %>
+  		  <%= image_tag t.profil, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
 		<% else %>
 		  <img src="assets/image.jpg" class="rounded img-fluid" alt="..." style="width:100%">
 		<%end%>
@@ -230,8 +226,8 @@ $(document).ready(function() {
           <div class="card m-3 p-2" style="max-width: 200px;">
             <h3 class="card-title"> <%= t.name %>  </h3>
 	      <%= link_to kite_path(t), class:"nav-link" do %>
-		<% if t.picture.attached? %>
-  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
+		<% if t.profil.attached? %>
+  		  <%= image_tag t.profil, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
 		<% else %>
 		  <img src="assets/image.jpg" class="rounded img-fluid" alt="..." style="width:100%">
 		<%end%>
@@ -256,8 +252,8 @@ $(document).ready(function() {
           <div class="card m-3 p-2" style="max-width: 200px;">
             <h3 class="card-title"> <%= t.name %>  </h3>
 	      <%= link_to kite_path(t), class:"nav-link" do %>
-		<% if t.picture.attached? %>
-  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
+		<% if t.profil.attached? %>
+  		  <%= image_tag t.profil, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
 		<% else %>
 		  <img src="assets/image.jpg" class="rounded img-fluid" alt="..." style="width:100%">
 		<%end%>
@@ -277,49 +273,15 @@ $(document).ready(function() {
 
   </section>
 
-  <section id="presentation">
-  <br><br><br>
-    <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
-      <div class="container for-about">
-        <h1>Ils ont testé pour vous</h1>
-      </div>
-    </div>
-
-    <div class="team">
-      <div class="row">
-  <% @users.each do |t, index| if t.is_pro == true %> 
-
-      <div class="col-md-3">
-        <div class="team-player">  
-          <div class="card card-plain">
-            <div class="col-md-6 ml-auto mr-auto">
-	      <% if t.avatar.attached? %>
-  	        <%= image_tag t.avatar, alt: 'avatar', class:"img-raised rounded-circle img-fluid" %>
-	      <% else %>
-	        <img src="assets/image.jpg" class="img-raised rounded-circle img-fluid" alt="..."></a>
-	      <% end %>
-            </div>
-              <h4 class="card-title text-center"><%= t.first_name %>
-              <br>
-              <small class="card-description text-muted"><%= t.function %></small>
-              </h4>
-              <div class="card-body">
-                <p class="card-description text-center"><%= t.description %></p>
-              </div>
-            </div>
-          </div>
-	</div>
-  <% end end %>
-      </div>
-      </div>
-  
-
-    <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
-  </section>
+<% render"layouts/presentation" %>
 
   <section id="compare">
   <br><br><br>
+  <%if @article.jumbotron.attached? %>
+      <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.fourth)%>); background-size: 100%;">
+  <% else %>
   <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <% end %>
     <div class="container for-about">
     <h1>comparer kite</h1>
     </div>
@@ -371,8 +333,8 @@ $(document).ready(function() {
 <% @products.each do |t, index| %>
 <% if t.category === "kite" && t.domain === "freestyle" %>
       <td><%= link_to kite_path(t), class:"nav-link" do %>
-		<% if t.picture.attached? %>
-  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
+		<% if t.profil.attached? %>
+  		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
 		<% else %>
 		<img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="..." style="width:100px">
 		<%end%>
@@ -534,8 +496,8 @@ $(document).ready(function() {
 <% @products.each do |t, index| %>
 <% if t.category === "kite" && t.domain === "wave" %>
       <td><%= link_to kite_path(t), class:"nav-link" do %>
-		<% if t.picture.attached? %>
-  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
+		<% if t.profil.attached? %>
+  		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
 		<% else %>
 		<img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="..." style="width:100px">
 		<%end%>
@@ -695,8 +657,8 @@ $(document).ready(function() {
 <% @products.each do |t, index| %>
 <% if t.category === "kite" && t.domain === "foil" %>
       <td><%= link_to kite_path(t), class:"nav-link" do %>
-		<% if t.picture.attached? %>
-  		  <%= image_tag t.picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
+		<% if t.profil.attached? %>
+  		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
 		<% else %>
 		<img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="..." style="width:100px">
 		<%end%>

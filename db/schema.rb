@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_03_08_164004) do
   create_table "compares", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "user_id"
+    t.boolean "same"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_compares_on_product_id"

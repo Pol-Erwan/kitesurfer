@@ -2,60 +2,86 @@
 
   <% if @product.errors.any? %>
   <div class="alert alert-danger" role="alert">
-            <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
-            <ul>
-              <% @product.errors.full_messages.each do |message| %>
-                <li class="li_errors"><%= message %></li>
-              <% end %>
-            </ul>
-    </div>
+    <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li class="li_errors"><%= message %></li>
       <% end %>
+    </ul>
+  </div>
+  <% end %>
 
 <div class="m-2">
-    <%= link_to " ", admin_product_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
+  <%= link_to " ", admin_product_index_path, class:"pull-left btn btn-danger fas fa-arrow-left", style:"font-size:30px" %>
 </div>
-        <h2 class="title text-white"> Modifier les photos <%= @product.name %> n°<%= @product.id %></h2>
-<div class="container card card-body p-5" >
+  <h2 class="title text-white"> Modifier les photos <%= @product.name %> n°<%= @product.id %></h2>
+    <div class="container card card-body p-5" >
+      <%= render"layouts/flash" %>
+
+      <section id="picture">
+        <h1>Photos</h1>
+
+          <%= form_tag admin_product_picture_index_path(@product), multipart: true do %>
+            <h3>Ajouter les photos du caroussel</h3>
+              <%if @product.picture.attached?%>
+                <% @product.picture.each do |t, index| %>
+                  <%= image_tag t, alt: 'kite picture', style:"width:200px" %>
+                <% end %>
+              <% end %>
+            <h6>slide 1</h6><%= file_field_tag :carousel %>
+            <h6>slide 2</h6><%= file_field_tag :carousel2 %>
+            <h6>slide 3</h6><%= file_field_tag :carousel3 %>
+            <h6>slide 4</h6><%= file_field_tag :carousel4 %>
+            <h6>slide 5</h6><%= file_field_tag :carousel5 %>
+            <h6>slide 6</h6><%= file_field_tag :carousel6 %>
+            <h6>slide 7</h6><%= file_field_tag :carousel7 %>
 
 
-<section id="picture">
+<h3>Ajouter la photo du background</h3>
 
-<h1>Photos</h1>
-<%if @product.picture.attached?%>
+<%if @product.background.attached?%>
+  <%= image_tag @product.background, alt: 'kite picture', style:"width:200px" %>
+<% end %>
+ <%= file_field_tag :background %>
 
-<div class="row">
-<% @product.picture.each do |t, index| %>
-      <div class="card-deck m-3">
-        <div class="row mx-3">  
-          <div class="card m-3" style="max-width: 200px;">
-<h4 class="text-center">photo <%= @name[@size] %></h4>
+<h3>Ajouter la photo id card</h3>
+<%if @product.idcard.attached?%>
+  <%= image_tag @product.idcard, alt: 'kite picture', style:"width:200px" %>
+<%end %>
+ <%= file_field_tag :idcard %>
+
+<h3>Ajouter la photo profil</h3>
+<%if @product.profil.attached?%>
+  <%= image_tag @product.profil, alt: 'kite picture', style:"width:200px" %>
+<% end %>
+ <%= file_field_tag :profil %>
+
+<h3>Ajouter la photo competence</h3>
+<%if @product.competence.attached?%>
+  <%= image_tag @product.competence, alt: 'kite picture', style:"width:200px" %>
+<% end %>
+ <%= file_field_tag :competence %>
+
+<h3>Ajouter les photos details</h3>
+<%if @product.detail.attached?%>
+<% @product.detail.each do |t, index| %>
   <%= image_tag t, alt: 'kite picture', style:"width:200px" %>
-  <% @size = @size + 1 %>
-</div>
-</div>
-</div>
+<% end %>
+<% end %>
+            <h6>detail 1</h6><%= file_field_tag :detail %>
+            <h6>detail 2</h6><%= file_field_tag :detail2 %>
+            <h6>detail 3</h6><%= file_field_tag :detail3 %>
 
-<%end%>
-
-</div>
-
-
-<%else%>
-  <p>=== Il n'y a pas encore de photos lié à ce produit ===</p>
-<%end%>
-<section id="picture">
-<% if @product.picture.size < 12 %>
-<h3>Ajouter la photo <%= @name[@size] %></h3>
-<%= form_tag admin_product_picture_index_path(@product), multipart: true do %>
- <%= file_field_tag :picture, required: true %>
- <%= submit_tag "mettre à jour", class:"btn-sm btn-success" %>
+<br>
+ <center><%= submit_tag "mettre à jour", class:"btn-sm btn-success" %><center>
 <% end %>
 
-<h4>supprimer la dernière photo (<%= @name[@size - 1] %>) ? </h4>
-      <td><%= link_to "Supprimer", admin_product_picture_path(@product.picture), class:"btn-sm btn-danger", method: :delete %></td>
+<h4>supprimer la dernière photo ? </h4>
+      <td><%= link_to "Supprimer picture ", admin_product_picture_path(@product.picture), class:"btn-sm btn-danger", method: :delete %></td>
 
-<% end %>
 </section>
+
+
 <% if @product.category === "kite" %>
 <div class="m-2">
     <%= link_to "Aperçu", kite_path(@product.id), class:"pull-left btn btn-primary" %>
@@ -79,7 +105,6 @@
     <%= link_to "Aperçu", accessory_path(@product.id), class:"pull-left btn btn-primary" %>
 </div>
 <%end%>
-</section>
 
 
 </div>

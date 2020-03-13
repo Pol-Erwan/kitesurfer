@@ -143,6 +143,84 @@
 
   <thead>
     <tr>
+      <th scope="col"><h3><i class="far fa-hand-point-right fa-2x"></i> Foils</h3></th>
+      <th scope="col">modèle</th>
+      <th scope="col">Date de création</th>
+      <th scope="col">Dernière modification</th>
+      <th scope="col">voir en ligne</th>
+      <th scope="col">nombre de photos</th>
+      <th scope="col">Photos</th>
+    </tr>
+  </thead>
+
+<tbody>
+<%  @products.each_with_index do |t,index| %>
+<% if t.category === "foil" && t.domain === "freeride" %>
+    <tr>
+      <th scope="row">n° <%= t.id %></th>
+<%if t.picture.size > 5 %>
+      <td><i class="fas fa-check text-success"></i> <%= t.name %></td>
+      <td><%= t.created_at %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= link_to "voir", foil_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= t.picture.size %></td>
+      <td><%= link_to "modifier", edit_admin_foil_path(t), class:"btn-sm btn-primary" %></td>
+<%else%>
+      <td><i class="fas fa-exclamation-triangle text-warning"></i> <%= t.name %></td>
+      <td><%= t.created_at %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= link_to "voir", foil_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= t.picture.size %></td>
+      <td><%= link_to "Ajouter", edit_admin_foil_path(t), class:"btn-sm btn-warning" %></td>
+<% end %>
+    </tr>
+<% end %>
+
+<% end %>
+
+  </tbody>
+
+  <thead>
+    <tr>
+      <th scope="col"><h3><i class="far fa-hand-point-right fa-2x"></i> Wingfoils</h3></th>
+      <th scope="col">modèle</th>
+      <th scope="col">Date de création</th>
+      <th scope="col">Dernière modification</th>
+      <th scope="col">voir en ligne</th>
+      <th scope="col">nombre de photos</th>
+      <th scope="col">Photos</th>
+    </tr>
+  </thead>
+
+<tbody>
+<%  @products.each_with_index do |t,index| %>
+<% if t.category === "foil" && t.domain === "wingfoil" %>
+    <tr>
+      <th scope="row">n° <%= t.id %></th>
+<%if t.picture.size > 5 %>
+      <td><i class="fas fa-check text-success"></i> <%= t.name %></td>
+      <td><%= t.created_at %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= link_to "voir", foil_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= t.picture.size %></td>
+      <td><%= link_to "modifier", edit_admin_foil_path(t), class:"btn-sm btn-primary" %></td>
+<%else%>
+      <td><i class="fas fa-exclamation-triangle text-warning"></i> <%= t.name %></td>
+      <td><%= t.created_at %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= link_to "voir", foil_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= t.picture.size %></td>
+      <td><%= link_to "Ajouter", edit_admin_foil_path(t), class:"btn-sm btn-warning" %></td>
+<% end %>
+    </tr>
+<% end %>
+
+<% end %>
+
+  </tbody>
+
+  <thead>
+    <tr>
       <th scope="col"><h3><i class="far fa-hand-point-right fa-2x"></i> Barres</h3></th>
       <th scope="col">modèle</th>
       <th scope="col">Date de création</th>

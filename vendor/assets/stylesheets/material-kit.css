@@ -18198,12 +18198,5 @@ ul.timeline > li:before {
     flex: 1 1 auto;
 }
 
-/* flashs */
- .position
-{
-  margin-top: 100;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 4;
+/* back to top */
 
-}

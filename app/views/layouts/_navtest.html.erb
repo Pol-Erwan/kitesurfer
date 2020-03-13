@@ -1,0 +1,56 @@
+  <nav id="nav_bar">
+    <ul class="card d-flex flex-row nav_links d-flex justify-content-center">
+            <li class="active nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "intro"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Présentation</h4>
+		</div>
+		<%end%>
+            </li>
+            <li class="active nav-item my-1 mx-5">
+              <%= link_to kite_index_path(anchor: "performance"), class:"nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Performances</h4>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "kite"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Tous les Kites</h4>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "compare"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Comparer les modèles</h4>
+		</div>
+		<%end%>
+            </li>
+            <li class="nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "presentation"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<h4 class="text-center">Equipe Test</h4>
+		</div>
+		<%end%>
+            </li>      
+    </ul>
+  </nav>
+<script>
+$(document).ready(function() {
+  
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the 
+      //nav bar to stick.  
+      console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 450) {
+      $('#nav_bar').addClass('navbar-fixed');
+    }
+    if ($(window).scrollTop() < 451) {
+      $('#nav_bar').removeClass('navbar-fixed');
+    }
+  });
+});
+</script>

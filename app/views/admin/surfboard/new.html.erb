@@ -30,13 +30,9 @@
                   <%= text_field_tag 'brand', @product.brand, class: "form-control" %>
                 </div>
                 <div class="col-3">
-                  <%= label_tag 'Domaine' %>
-                  <%= text_field_tag 'domain', @product.domain, class: "form-control" %>
-                </div>
-                <div class="col-3">
-                  <%= label_tag 'Categorie' %>
-                  <%= text_field_tag 'category', @product.category, class: "form-control" %>
-                </div>
+              <%= label_tag 'Domaine' %>
+              <%= select_tag 'domain', raw("<option>Freestyle</option><option>Wave</option>"), class: "form-control" %>
+		</div>
                 <div class="col-3">
                   <%= label_tag 'favoris' %>
                   <%= text_field_tag 'favorite', @product.favorite, class: "form-control" %>
@@ -47,42 +43,41 @@
               <div class="row">
                 <div class="col-2">
               <%= label_tag 'Wave' %>
-              <%= text_field_tag 'wave', @technic.wave, class: "form-control" %>
+              <%= select_tag 'wave', raw("<option>1</option><option>2</option><option>3</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'courbes' %>
-              <%= text_field_tag 'courbes', @technic.courbes, class: "form-control" %>
+              <%= label_tag 'Courbes' %>
+              <%= select_tag 'courbes', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'wind' %>
-              <%= text_field_tag 'wind', @technic.wind, class: "form-control"%>
+              <%= label_tag 'Side-Shore' %>
+              <%= select_tag 'sideshore', raw("<option>1</option><option>2</option><option>3</option>"), class: "form-control" %>
+		</div>
+                <div class="col-2">
+              <%= label_tag 'On-Shore' %>
+              <%= select_tag 'sideshore', raw("<option>1</option><option>2</option><option>3</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
               <%= label_tag 'freestyle' %>
-              <%= text_field_tag 'freestyle', @technic.freestyle, class: "form-control"%>
+              <%= select_tag 'freestyle', raw("<option>1</option><option>2</option><option>3</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'sideshore' %>
-              <%= text_field_tag 'sideshore', @technic.sideshore, class: "form-control"%>
+              <%= label_tag 'Straps' %>
+              <%= select_tag 'strap', raw("<option>1</option><option>2</option><option>3</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'onshore' %>
-              <%= text_field_tag 'onshore', @technic.onshore, class: "form-control"%>
+              <%= label_tag 'Strapless' %>
+              <%= select_tag 'strapless', raw("<option>1</option><option>2</option><option>3</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'strap' %>
-              <%= text_field_tag 'strap', @technic.strap, class: "form-control"%>
-		</div>
-                <div class="col-2">
-              <%= label_tag 'strapless' %>
-              <%= text_field_tag 'strapless', @technic.strapless, class: "form-control"%>
+              <%= label_tag 'wind' %>
+              <%= select_tag 'wind', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
               <%= label_tag 'Transition' %>
-              <%= text_field_tag 'transitions', @technic.transitions, class: "form-control"%>
+              <%= select_tag 'transition', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
-
-		</div>
+	      </div>
 
         <h3 class="title text-center"> Caractérisques</h3>
               <div class="row">

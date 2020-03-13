@@ -36,9 +36,9 @@
                   <%= text_field_tag 'brand', @product.brand, class: "form-control" %>
                 </div>
                 <div class="col-3">
-                  <%= label_tag 'Domaine' %>
-                  <%= text_field_tag 'domain', @product.domain, class: "form-control" %>
-                </div>
+              <%= label_tag 'Domaine' %>
+              <%= select_tag 'domain', raw("<option>Freestyle</option><option>Wave</option><option>Foil</option>"), class: "form-control" %>
+		</div>
                 <div class="col-3">
                   <%= label_tag 'favoris' %>
                   <%= text_field_tag 'favorite', @product.favorite, class: "form-control" %>
@@ -50,27 +50,27 @@
               <div class="row">
                 <div class="col-2">
               <%= label_tag 'Wave / Drift' %>
-              <%= text_field_tag 'wave', @technic.wave, class: "form-control" %>
+              <%= select_tag 'wave', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
               <%= label_tag 'Big Air / Side-Shore' %>
-              <%= text_field_tag 'bigair', @technic.bigair, class: "form-control" %>
+              <%= select_tag 'bigair', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'freeride' %>
-              <%= text_field_tag 'freeride', @technic.freeride, class: "form-control"%>
+              <%= label_tag 'Freeride' %>
+              <%= select_tag 'freeride', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'freestyle / On-Shore' %>
-              <%= text_field_tag 'freestyle', @technic.freestyle, class: "form-control"%>
+              <%= label_tag 'Freestyle / On-shore' %>
+              <%= select_tag 'freestyle', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'maniability' %>
-              <%= text_field_tag 'maniability', @technic.maniability, class: "form-control"%>
+              <%= label_tag 'Réactivité' %>
+              <%= select_tag 'maniability', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'feeling' %>
-              <%= text_field_tag 'feeling', @technic.feeling, class: "form-control"%>
+              <%= label_tag 'Feeling en barre' %>
+              <%= select_tag 'feeling', raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>"), class: "form-control" %>
 		</div>
 		</div>
 
@@ -107,8 +107,8 @@
               <%= text_field_tag 'price', @product.price, class: "form-control"%>
 		</div>
                 <div class="col-2">
-              <%= label_tag 'millésime' %>
-              <%= text_field_tag 'year', @product.year, class: "form-control"%>
+              <%= label_tag 'Millésime' %>
+              <%= select_tag 'domain', raw("<option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option>"), class: "form-control" %>
 		</div>
                 <div class="col-6">
               <%= label_tag 'lien youtube' %>

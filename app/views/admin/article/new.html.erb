@@ -19,7 +19,7 @@
         <h3 class="title text-center"> Infos principales</h3>
   <div class="text-center">
            <%= form_tag url_for(action: 'create'), method: 'post' do %>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'Titre' %>
                   <%= text_field_tag 'title', @article.title, class: "form-control" %>
                 </div>
@@ -29,16 +29,16 @@
                   <%= text_field_tag 'intro', @article.intro, class: "form-control" %>
                 </div>
                 <div class="text-center">
-                  <%= label_tag 'domain' %>
-                  <%= text_field_tag 'domain', @article.domain, class: "form-control" %>
-                </div>
+              <%= label_tag 'Domaine' %>
+              <%= select_tag 'domain', raw("<option>news</option><option>testkite</option><option>testboard</option><option>testsurf</option><option>testaccessory</option><option>testfoil</option><option>portfolio</option>"), class: "form-control" %>
+		</div>
               <br><br>
                 <div class="text-center">
                   <%= label_tag 'content' %>
                   <%= text_field_tag 'content', @article.content, class: "form-control" %>
                 </div>
               <br><br>		
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title2' %>
                   <%= text_field_tag 'title2', @article.title2, class: "form-control" %>
                 </div>
@@ -47,7 +47,7 @@
                   <%= text_field_tag 'content2', @article.content2, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title3' %>
                   <%= text_field_tag 'title3', @article.title3, class: "form-control" %>
                 </div>
@@ -56,7 +56,7 @@
                   <%= text_field_tag 'content3', @article.content3, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title4' %>
                   <%= text_field_tag 'title4', @article.title4, class: "form-control" %>
                 </div>
@@ -65,7 +65,7 @@
                   <%= text_field_tag 'content4', @article.content4, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title5' %>
                    <%= text_field_tag 'title5', @article.title5, class: "form-control" %>
                 </div>
@@ -74,7 +74,7 @@
                   <%= text_field_tag 'content5', @article.content5, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title6' %>
                   <%= text_field_tag 'title6', @article.title6, class: "form-control" %>
                 </div>
@@ -83,11 +83,11 @@
                   <%= text_field_tag 'content6', @article.content6, class: "form-control" %>
                 </div>
               <br><br>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'title7' %>
                   <%= text_field_tag 'title7', @article.title7, class: "form-control" %>
                 </div>
-                <div class="text-center">
+                <div class="text-center col-md-4">
                   <%= label_tag 'content7' %>
                   <%= text_field_tag 'content7', @article.content7, class: "form-control" %>
                 </div>

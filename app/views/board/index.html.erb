@@ -1,157 +1,121 @@
 <%= render"layouts/navbartest" %>
+
 <body class="index-page sidebar-collapse">
-  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('./assets/background/intro2.jpg');">
+<%if @article.present? %>
+  <%if @article.background.attached? %>
+    <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url(<%= rails_blob_url(@article.background)%>);">
+  <% end %>
+  <% else %>
+  <div class="page-header" id="header" data-parallax="true" style="background-image: url('/assets/image.jpg');"></div>
+<% end %>
     <div class="container">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
-          <div class="brand">
-            <h1>Les boards</h1>
-                <a class="carousel-control-prev" href="<%= kite_index_path %>" role="button" data-slide="prev">
-                  <i class="fas fa-caret-square-left" style="font-size:50px"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="<%= surfboard_index_path %>" role="button" data-slide="next">
-		  <i class="fas fa-caret-square-right" style="font-size:50px"></i>
-                  <span class="sr-only">Next</span>
-                </a>
+      <div class="col-md-8 ml-auto mr-auto">
+        <div class="brand">
+          <h1>Les boards</h1>
+            <a class="carousel-control-prev" href="<%= kite_index_path %>" role="button" data-slide="prev">
+              <i class="fas fa-caret-square-left" style="font-size:50px"></i>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="<%= surfboard_index_path %>" role="button" data-slide="next">
+	      <i class="fas fa-caret-square-right" style="font-size:50px"></i>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
         </div>
       </div>
     </div>
+  <%= render"layouts/flash" %>
   </div>
-  <div class="main main-raised">
 
-  <nav id='nav_bar'>
-    <ul class='nav_links d-flex justify-content-center'>
+  <div class="main">
+
+  <nav id="nav_bar">
+    <ul class="card d-flex flex-row nav_links d-flex justify-content-center">
             <li class="active nav-item my-1 mx-5">
             <%= link_to board_index_path(anchor: "intro"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Intro</h4>
-			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+              <i class="text-center text-warning fas fa-comment-dots fa-4x"></i>
 		</div>
 		<%end%>
             </li>
             <li class="active nav-item my-1 mx-5">
               <%= link_to board_index_path(anchor: "performance"), class:"nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Performances</h4>
-			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+                <i class="text-center text-warning fas fa-sliders-h fa-4x"></i>
 		</div>
 		<%end%>
             </li>
-            <li class="nav-item my-1 mx-1">
+            <li class="nav-item my-1 mx-5">
             <%= link_to board_index_path(anchor: "board"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Tous les twin-tips</h4>
-			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		<i class="text-center text-warning fas fa-compress-arrows-alt fa-4x"></i>
 		</div>
 		<%end%>
             </li>
-            <li class="nav-item my-1 mx-1">
+            <li class="nav-item my-1 mx-5">
             <%= link_to board_index_path(anchor: "compare"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Comparer les modèles</h4>
-			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		<i class="text-center text-warning fas fa-compress-alt fa-4x"></i>
 		</div>
 		<%end%>
             </li>
-            <li class="nav-item my-1 mx-1">
+            <li class="nav-item my-1 mx-5">
             <%= link_to board_index_path(anchor: "presentation"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
-		<h4 class="text-center">Equipe Test</h4>
-			<i class="d-flex justify-content-center fas fa-arrow-alt-circle-down fa-2x"></i>
+		<i class="text-center text-warning fas fa-users fa-4x"></i>
 		</div>
 		<%end%>
             </li>      
     </ul>
   </nav>
-<script>
-$(document).ready(function() {
-  
-  $(window).scroll(function () {
-      //if you hard code, then use console
-      //.log to determine when you want the 
-      //nav bar to stick.  
-      console.log($(window).scrollTop())
-    if ($(window).scrollTop() > 450) {
-      $('#nav_bar').addClass('navbar-fixed');
-    }
-    if ($(window).scrollTop() < 451) {
-      $('#nav_bar').removeClass('navbar-fixed');
-    }
-  });
-});
-</script>
+
+  <% if @article.present? %> 
 
     <section id="intro">
     <br><br><br>
-      <div class="jumbotron" style="background-image: url(/assets/testboard/picture10.jpg); background-size: 100%;">
+  <%if @article.jumbotron.attached? %>
+      <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.first)%>); background-size: 100%;">
+  <% else %>
+  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <% end %>
         <div class="container for-about">
         <h1>Comment sont fait nos tests</h1>
         </div>
       </div>
 
       <div class="container tim-container mt-3">
-        <h1 class="m-5">Twin-Tip</h1>                              
-        <h2><small class="subtitle">La board du kitesurfer</small></h2>
+        <h1 class="m-5"><%= @article.title %></h1>                              
+        <h2><small class="subtitle"><%= @article.intro %></small></h2>
           <div class="row">
             <div class="col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1">
               <div class="text-center">
-                <img src="assets/background/intro2.jpg" alt="Rounded Image" class="card img-rounded img-responsive img-dog" style="width:100%">
+		<% if @article.image.attached? %>
+  	  	  <%= image_tag @article.image.first, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+		<% else %>
+          	  <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
+		<% end %>
               </div>
             </div>
             <div class="mt-5 col-md-5 col-sm-12">
-              <p>
-	C’est à 99 % la planche avec laquelle on a tous débuté le
-kitesurf. Ce sera même peut-être la seule et unique board
-que vous utiliserez tout au long de votre «carrière» de rider.
-Ce n’est donc pas un invetsissement à prendre à la légère
-et chaque détail compte pour que l’ensemble réponde à
-vos attentes.
-Les marques ont développé une planche d’un côté et un
-équipement de l’autre afin d’avoir le plus de confort et
-de performances réunies nadaptés à vos besoins. Sachez
-qu’aujourdh’ui, le twin tip peut s’acheter nu donc sans son
-équipement pads straps pour vous laisser le choix car souvent
-les majors proposent 2 gammes d’accessoires : entrée de
-gamme (moins cher) et premium (quasi le double du prix).
-Vous pouvez également conserver votre TT et l’équiper avec
-un ensemble pads-straps d’une autre marque. Dans ce cas
-là, vérifiez bien en amont que les platines s’adaptent bien
-à votre planche, l’entraxe doit être identique. Bien sur, il est
-conseillé d’acheter planche et accessoires de la même
-marque car tout sera pensé et optimisé pour votre confort.
+              <p><%= @article.content %></p>
             </div>
-       <h2><small class="subtitle"># Twin-Tip</small></h2>
+       	    <h2><small class="subtitle">"# Twin-Tip"</small></h2>
           </div>
         </div>
 <div class="d-flex flex-row justify-content-around">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Contrôle: slashy - rail</h5>
-        <p class="card-text">Toutes les boards ont désormais une bon contrôle mais on différencie
-deux comportements.
-D’un côté, un TT qui va avoir tendance à déraper. Il va falloir un
-bon niveau technique pour l’exploiter. On parle d’une tendance
-slashy qui sera appréciée pour certaines manoeuvres. Il ne s’agit
-pas du tout d’un défaut, c’est une question de style. En revanche,
-on classera un TT “rail” quand on sera calé comme sur un rail dans
-toutes les conditions, avec beaucoup d’accroche. Il aura alors
-souvent moins de maniabilité.</p>
+        <h5 class="card-title"><%= @article.title2 %></h5>
+        <p class="card-text"><%= @article.content2 %></p>
        </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Maniabilité: maniable - joueur</h5>
-        <p class="card-text">Cette fois, on a voulu faire ressortir le côté “skate” d’une board.
-Tous les TT sont maniables puisque l’on peut sans souci passer en
-frontside facilement. Mais certains seront plus joueurs que d’autres,
-souvent grâce au scoop tendu ou non. Encore une fois, ce sont des
-sensations et non pas des points positifs ou négatifs, à toi de voir
-comment tu aimes ton twin tip !</p>
+        <h5 class="card-title"><%= @article.title3 %></h5>
+        <p class="card-text"><%= @article.content3 %></p>
       </div>
     </div>
   </div>
@@ -166,106 +130,41 @@ comment tu aimes ton twin tip !</p>
   <div class="col-sm-8">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Freeride / Freestyle</h5>
-        <p class="card-text">C’est clairement le TT qui convient le mieux à quasiment tout le
-monde. Il est polyvalent, tu peux aller vite et te dépasser en freeride
-tout en ayant un bon contrôle et du pop pour enchaîner les sauts
-aile haute. C’est souvent le fer de lance de chaque marque. Tu vas
-privilégier le confort dans la clapot, la facilité au cap et surtout la
-polyvalence.</p>
+        <h5 class="card-title"><%= @article.title4 %></h5>
+        <p class="card-text"><%= @article.content4 %></p>
        </div>
     </div>
     <div class="card">
-        <img src="assets/testboard/picture10.jpg" alt="Rounded Image" class="card img-rounded img-responsive" style="width:100%">
+	    <% if @article.image.attached? %>
+  	      <%= image_tag @article.image.third, alt: 'kite image', class:"img-rounded img-responsive", style:"width:100%" %>
+	    <% else %>
+              <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+	    <% end %>
     </div>
 
   </div>
     <div class="card m-3 p-3">
-         <h5 class="card-title">New School Wakestyle</h5>
-        <p class="card-text">On rentre dans la catégorie qui représente pour beaucoup le graal.
-Il faut savoir que ces TT son accessibles même s’ils restent plutôt
-“rigides” en navigation et demandent d’avoir un bon bagage
-technique et une condition physique pour en tirer le meilleur parti.
-Ils sont optimisés pour le blocage, pour délivrer du pop et tutoyer
-les tricks aile basse et autres passages de bâton. Ces TT sont
-également pour la plupart étudiés pour recevoir des chausses, voire
-pour aller enchaîner des sessions de câble en cas de pétole. Ne
-vous étonnez pas de trouver dans notre sélection beaucoup de nos
-coups de coeur car ces boards sont de plus en plus accessibles et
-polyvalentes.</p>
+         <h5 class="card-title"><%= @article.title5 %></h5>
+        <p class="card-text"><%= @article.content5 %></p>
       </div>
-
-	</div>
+</div>
 
 
 
 
  <div class="d-flex flex-row">
 
-          <div class="card m-3 p-3" style="width:60%">
-	    <h6>Maniabilité: 1/5</h6>
-	    <div class="progress">
-	      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>New-School : 4/5</h6>
-	    <div class="progress">
-	      <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>Freeride / Freestyle: 2/5</h6>
-	    <div class="progress">
-  	      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>Progression: 3/5</h6>
-	    <div class="progress">
-  	      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
-	    <h6>Contrôle: 5/5</h6>
-	    <div class="progress">
-  	      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-	    </div>
+          <div class="card col-sm-6 m-3 p-3" style="width:60%">
+		<%= render"boardcomp" %>
 	  </div>
 
 
-	  <div class="card m-3 p-3">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="/assets/testboard/picture2.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/assets/testboard/picture3.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/assets/testboard/picture4.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/assets/testboard/picture5.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/assets/testboard/picture6.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/assets/testboard/picture7.jpg" alt="Second slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+	  <div class="m-3 p-3">
+	    <% if @article.image.attached? %>
+  	      <%= image_tag @article.image.fourth, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
+	    <% else %>
+              <img src="assets/image.jpg" alt="kite image" class="card img-rounded img-responsive" style="width:100%">
+	    <% end %>
 
 	  </div>
 
@@ -274,8 +173,14 @@ polyvalentes.</p>
     <a href="#navtest" class="p-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
   </section>
 
+<% end %>
+
 <section id="board">
-<div class="jumbotron" style="background-image: url(/assets/introtestkite.jpg); background-size: 100%;">
+  <%if @article.jumbotron.attached? %>
+      <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.second)%>); background-size: 100%;">
+  <% else %>
+  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <% end %>
    <div class="container for-about">
    <h1>Twin-tip</h1>
    </div>
@@ -288,9 +193,19 @@ polyvalentes.</p>
       <div class="card-deck m-3">
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
-            <a href="<%= board_path(t) %>">
-	    <img src="assets/testboard/board2.png" class="img-raised rounded img-fluid" alt="..."></a>
-            <h3 class="card-title"><%= t.name %></h3><h4><i class="far fa-arrow-alt-circle-right"></i> <%= t.domain %> </h4> <h4>By <%= t.brand %></h4>
+            <h3 class="card-title"> <%= t.name %>  </h3>
+	      <%= link_to board_path(t), class:"nav-link" do %>
+		<% if t.profil.attached? %>
+  		  <%= image_tag t.profil, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
+		<% else %>
+		  <img src="assets/image.jpg" class="rounded img-fluid" alt="..." style="width:100%">
+		<%end%>
+	      <%end%>
+            <h4 class="card-title">By <%= t.brand %></h4>
+	    <div class="d-flex justify-content-between">		
+	      <h4 class="text-left"> <%= t.testsize %> m</h4>
+	      <h4 class="text-right"> <%= t.price %>€</h4>
+	    </div>
           </div>
         </div>
       </div>
@@ -300,9 +215,15 @@ polyvalentes.</p>
 
 </section>
 
+<%= render"layouts/presentation" %>
+
   <section id="compare">
   <br><br><br>
+  <%if @article.jumbotron.attached? %>
+      <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.fourth)%>); background-size: 100%;">
+  <% else %>
   <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <% end %>
     <div class="container for-about">
     <h1>comparer Twin-Tips</h1>
     </div>
@@ -325,7 +246,14 @@ polyvalentes.</p>
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @products.each do |t, index| %>
       <% if t.category === "board" %>
-      <td><img src="assets/testboard/board2.png" class="img-raised rounded img-fluid" alt="..." style="width:70px"></td>
+      <td><%= link_to board_path(t), class:"nav-link" do %>
+		<% if t.profil.attached? %>
+  		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
+		<% else %>
+		<img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="..." style="width:100px">
+		<%end%>
+		<%end%>
+	</td>
 <%end%>
 <% end %>
     </tr>
@@ -489,70 +417,6 @@ polyvalentes.</p>
 </table>
     <a href="#navtest" class="scrollup d-flex justify-content-end align-items-end"><i class="m-3 btn-sm btn-primary fa fa-caret-square-up"></i></a>
   </section>
-
-<section id="presentation">
-<div class="jumbotron" style="background-image: url(/assets/introtestkite.jpg); background-size: 100%;">
-   <div class="container for-about">
-   <h1>Ils ont testé pour vous</h1>
-   </div>
-</div>
-
-        <div class="team">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="team-player">
-                <div class="card card-plain">
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <img src="/assets/Hugo.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                  </div>
-                  <h4 class="card-title text-center">Hugo
-                    <br>
-                    <small class="card-description text-muted">Model</small>
-                  </h4>
-                  <div class="card-body">
-                    <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                      <a href="#">links</a> for people to be able to follow them outside the site.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="team-player">
-                <div class="card card-plain">
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <img src="/assets/Greg.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                  </div>
-                  <h4 class="card-title text-center">Greg
-                    <br>
-                    <small class="card-description text-muted">Designer</small>
-                  </h4>
-                  <div class="card-body">
-                    <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                      <a href="#">links</a> for people to be able to follow them outside the site.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="team-player">
-                <div class="card card-plain">
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <img src="/assets/Marvin.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                  </div>
-                  <h4 class="card-title text-center">Marvin
-                    <br>
-                    <small class="card-description text-muted">Model</small>
-                  </h4>
-                  <div class="card-body">
-                    <p class="card-description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
-                      <a href="#">links</a> for people to be able to follow them outside the site.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-   </section>
 
 <br>
 <br>

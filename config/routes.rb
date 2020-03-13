@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   end
 
   resources :kite, only:[:index,:show,:create, :destroy]
-  resources :board, only:[:index,:show, :create]
-  resources :surfboard, only:[:index,:show, :create]
-  resources :accessory, only:[:index,:show, :create]
+  resources :board, only:[:index,:show, :create, :destroy]
+  resources :surfboard, only:[:index,:show, :create, :destroy]
+  resources :accessory, only:[:index,:show, :create, :destroy]
+  resources :foil, only:[:index,:show, :create, :destroy]
 
   resources :article, only:[:index,:show]
   resources :portfolio, only:[:index,:show]
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     resources :board
     resources :surfboard
     resources :accessory
+    resources :foil
     resources :product do
       resources :picture, only: [:create,:destroy]
     end

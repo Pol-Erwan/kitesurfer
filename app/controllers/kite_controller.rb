@@ -1,20 +1,18 @@
 class KiteController < ApplicationController
   def index
-    @articles = Article.all
     @article = Article.find_by(domain: "testkite")
+    @users = User.all
     @products = Product.all
     @technics = Technic.all
     @options = Option.all
-    @product = Product.first
-    @technic = Technic.first
-    @option = Option.first
+    @product = Product.find_by(category: "kite")
+    @technic = Technic.find_by(product_id: @product.id)
     @wave = 0
     @bigair = 0
     @freeride = 0
     @freestyle = 0
     @maniability = 0
     @feeling = 0
-    @users = User.all
   end
 
   def show
@@ -25,6 +23,7 @@ class KiteController < ApplicationController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
+    @compare = Compare.find_by(product_id: @product.id) 
     @wave = 0
     @bigair = 0
     @freeride = 0
@@ -37,14 +36,14 @@ class KiteController < ApplicationController
   def create
     @product = Product.find(params[:id])
     @compares = Compare.all
-    @compare = Compare.new(product_id: @product.id)
+    @compare = Compare.new(product_id: @product.id, same: true)
     
     @compare.user = current_user
 
     if @compare.save
       flash[:success] = "ok"
     redirect_to kite_path(@product, anchor: "idcard")
-
+    end
   end 
 
   def destroy

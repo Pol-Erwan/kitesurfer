@@ -16,7 +16,7 @@
               </div>
               <div class="name mt-1">
                 <h3 class="title"><%= @user.first_name %> <%= @user.last_name %></h3>
-                <h6>Kitesurfer</h6>
+                <h6><%= @user.function %></h6>
                 <h6><%= @user.email %></h6>
           	<%=link_to "Modifier mon Profil", edit_user_registration_path, class:"btn btn-sm btn-info" %>
               </div>
@@ -58,7 +58,11 @@
       <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
 	<% @compares.each do |t, index| %>
 	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+	<% if @products.find(t.product_id).name.present? %>
           <th scope="col"><%= @products.find(t.product_id).name %></th>
+	<% else @products.find(t.product_id).name === nil %>
+          <th scope="col">Vide ou</th>
+	<% end %>
 	<% end %>
 	<% end %>
     </tr>
@@ -128,6 +132,45 @@
 	<%end%>
 	<%end%>
     </tr>
+    <tr>
+      <th scope="row">Freestyle</th>
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+      <td><% while @freestyle < @technics.find(@products.find(t.product_id).technic_id).freestyle %>
+	    <i class="fas fa-star"></i>
+	    <% @freestyle = @freestyle + 1 %>
+	  <%end%>
+	  <% @freestyle = 0 %>
+      </td>
+	<%end%>
+	<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Maniabilité</th>
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+      <td><% while @maniability < @technics.find(@products.find(t.product_id).technic_id).maniability %>
+	    <i class="fas fa-star"></i>
+	    <% @maniability = @maniability + 1 %>
+	  <%end%>
+	  <% @maniability = 0 %>
+      </td>
+	<%end%>
+	<%end%>
+    </tr>
+    <tr>
+      <th scope="row">Feeling</th>
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+      <td><% while @feeling < @technics.find(@products.find(t.product_id).technic_id).feeling %>
+	    <i class="fas fa-star"></i>
+	    <% @feeling = @feeling + 1 %>
+	  <%end%>
+	  <% @feeling = 0 %>
+      </td>
+	<%end%>
+	<%end%>
+    </tr>
 
     <tr>
       <th scope="row"></th>
@@ -144,12 +187,11 @@
 
           <div class="tab-pane text-center gallery" id="works">
             <div class="row">
-              <div class="col-md-3 ml-auto">
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
+      <th scope="col">board <i class="fas fa-chevron-circle-right"></i></th>
 	<% @compares.each do |t, index| %>
 	<% if t.user_id === @user.id %>
           <th scope="col"><%= @products.find(t.product_id).name %></th>
@@ -159,10 +201,34 @@
   </thead>
   <tbody>
     <tr>
+      <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "board" %>
+      <td> <%= link_to board_path(t.product_id), class:"nav-link" do %>
+	   <% if @products.find(t.product_id).picture.attached? %>
+	     <%= image_tag @products.find(t.product_id).picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:250px" %>
+	   <% else %>
+	     <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:250px">
+	   <% end %>
+	  <%end%>
+      </td>
+	<% end %>
+	<% end %>
+    </tr>
+
+    <tr>
       <th scope="row">Taille testé</th>
 	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category != "kite" %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "board" %>
       <td><%= @products.find(t.product_id).testsize %>m</td>
+	<%end%>
+	<%end%>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+	<% @compares.each do |t, index| %>
+	<% if t.user_id === @user.id && @products.find(t.product_id).category === "board" %>
+      <td><%= link_to "Supprimer", board_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
 	<%end%>
 	<%end%>
     </tr>
@@ -170,10 +236,6 @@
   </tbody>
 </table>
 
-              </div>
-              <div class="col-md-3 mr-auto">
-                <img src="/assets/examples/mariya-georgieva.jpg" class="rounded">
-                <img src="/assets/examples/clem-onojegaw.jpg" class="rounded">
               </div>
             </div>
           </div>

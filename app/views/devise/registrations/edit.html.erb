@@ -1,28 +1,51 @@
+<body style="background-image: url('/assets/background/adminuser.jpg')">
 
-  <div class="page-header header-filter" style="background-image: url('/assets/background/profil.jpg'); background-size: cover; background-position: top center;">
-    <div class="pt-5 container">
-      <div class="row">
-        <div class="col-lg-5 col-md-6 ml-auto mr-auto">
-          <div class="card card-login">
-            <div class="card-header card-header-primary text-center">
-              <h4 class="card-title">Editer <%= resource_name.to_s.humanize %></h4>
-            </div>
-            <div class="card-body p-3">
-<%if @user.avatar.attached?%>
-		<h3>Changer de photo de profil ?</h3>
-  <%= image_tag @user.avatar, alt: 'avatar', class:"img-raised rounded-circle img-fluid", style:"width:20%" %>
-<%else%>
-		<h3>Ajouter une photo de profil ?</h3>
-<%end%>
-		<%= form_tag user_avatar_index_path(@user), multipart: true do %>
-		  <%= file_field_tag :avatar, required: true %>
-		  <%= submit_tag "mettre à jour" %>
-		<% end %>
-	      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="m-2 card alert alert-danger alert-dismissible fade show" role="alert" style="width:40%">
+      <p>Nous n'avons pas réussi à modifier l'utilisateur pour la (ou les) raison(s) suivante(s) :</p>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li class="li_errors"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2 class="title text-white"> modifer le profil <%= @user.first_name %></h2>      
+    <div class="container card card-body p-5 col-md-8" >
+      <h3 class="title text-center"> Infos principales</h3>
+        <div class="text-center">
+          <div class="card-body p-3">
+            <%if @user.avatar.attached?%>
+	      <h3>Changer de photo de profil ?</h3>
+		<%= image_tag @user.avatar, alt: 'avatar', class:"img-raised rounded-circle img-fluid", style:"width:20%" %>
+	    <%else%>
+	      <h3>Ajouter une photo de profil ?</h3>
+	    <%end%>
+	    <%= form_tag user_avatar_index_path(@user), multipart: true do %>
+	    <%= file_field_tag :avatar, required: true %>
+	    <%= submit_tag "mettre à jour" %>
+	    <% end %>
+
+	    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   	      <%= render "devise/shared/error_messages", resource: resource %>
-	      <div class="form-group">
-   	        <%= f.label :email %>
-    	        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+		<div class="row">
+                  <div class="text-center col-md-4">
+                    <%= f.label :Prénom %>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+                  </div>
+		  <br><br>
+                  <div class="text-center col-md-4">
+                    <%= f.label :Nom %>
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+                  </div>
+	        <div class="form-group col-md-4">
+   	          <%= f.label :email %>
+    	          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+                </div>
+	      </div>
+              <div class="text-center">
+                <%= label_tag 'Petit descriptif ' %>
+                <%= text_field_tag 'description', @user.description, class: "form-control" %>
               </div>
 	      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 	      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %>

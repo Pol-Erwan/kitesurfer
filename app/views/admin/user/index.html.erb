@@ -48,14 +48,18 @@
       <th scope="row"><%= t.id %></th>
 <% if t.is_admin === true %>
       <td><i class="text-success fas fa-user-shield"></i> <%= t.first_name %></td>
+      <td><%= t.email %></td>
+      <td><%= t.created_at %></td>
+      <td><%= link_to "voir", user_path(t.id), class:"btn-sm btn-success" %></td>
+      <td><%= link_to "Modifier", edit_admin_user_path(t), class:"btn-sm btn-primary" %></td>
 <% else %>
       <td><i class="text-primary fas fa-user"></i> <%= t.first_name %></td>
-<% end %>
       <td><%= t.email %></td>
       <td><%= t.created_at %></td>
       <td><%= link_to "voir", user_path(t.id), class:"btn-sm btn-success" %></td>
       <td><%= link_to "Modifier", edit_admin_user_path(t), class:"btn-sm btn-primary" %></td>
       <td><%= link_to "Supprimer", admin_user_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
+<% end %>
     </tr>
 <%end%>
   </tbody>
