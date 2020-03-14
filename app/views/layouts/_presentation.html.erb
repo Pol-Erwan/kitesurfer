@@ -1,18 +1,18 @@
   <section id="presentation">
   <br><br><br>
   <%if @article.jumbotron.attached? %>
-      <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.third)%>); background-size: 100%;">
+    <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.third)%>); background-size: 100%;">
   <% else %>
-  <div class="jumbotron" style="background-image: url(/assets/image.jpg); background-size: 100%;">
+    <div class="jumbotron" style="background-image: url(/assets/image.jpg); background-size: 100%;">
   <% end %>
-      <div class="container for-about">
-        <h1>Ils ont testé pour vous</h1>
-      </div>
+    <div class="container for-about">
+      <h1>Ils ont testé pour vous</h1>
     </div>
+  </div>
 
-    <div class="team">
-      <div class="row">
-  <% @users.each do |t, index| if t.is_pro == true %> 
+  <div class="team">
+    <div class="row">
+      <% @users.each do |t, index| if t.is_pro == true %> 
 
       <div class="col-md-3">
         <div class="team-player">  
@@ -34,7 +34,7 @@
             </div>
           </div>
 	</div>
-  <% end end %>
+      <% end end %>
       </div>
       </div>
   

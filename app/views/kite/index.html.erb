@@ -12,7 +12,7 @@
       <div class="col-md-8 ml-auto mr-auto">
         <div class="brand">
           <h1>Les kites</h1>
-            <a class="carousel-control-prev" href="<%= foil_index_path %>" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="<%= accessory_index_path %>" role="button" data-slide="prev">
               <i class="fas fa-caret-square-left" style="font-size:50px"></i>
               <span class="sr-only">Previous</span>
             </a>
@@ -53,19 +53,20 @@
 		<%end%>
             </li>
             <li class="nav-item my-1 mx-5">
+            <%= link_to kite_index_path(anchor: "presentation"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<i class="text-center text-warning fas fa-users fa-4x"></i>
+		</div>
+		<%end%>
+            </li> 
+            <li class="nav-item my-1 mx-5">
             <%= link_to kite_index_path(anchor: "compare"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
 		<i class="text-center text-warning fas fa-compress-alt fa-4x"></i>
 		</div>
 		<%end%>
             </li>
-            <li class="nav-item my-1 mx-5">
-            <%= link_to kite_index_path(anchor: "presentation"), class:" nav-link" do %>
-		<div class="d-flex flex-column">
-		<i class="text-center text-warning fas fa-users fa-4x"></i>
-		</div>
-		<%end%>
-            </li>      
+     
     </ul>
   </nav>
 
@@ -273,7 +274,9 @@
 
   </section>
 
+<section id="presentation">
 <% render"layouts/presentation" %>
+</section>
 
   <section id="compare">
   <br><br><br>
@@ -805,6 +808,46 @@
       </div>
     <a href="#navtest" class="scrollup d-flex justify-content-end align-items-end"><i class="m-3 btn-sm btn-primary fa fa-caret-square-up"></i></a>
   </section>
+
+        <div class="card-body">
+          <h3 class="card-title">liste kites années précédentes</h3>
+
+	    <table class="table table-striped">
+	      <thead>
+    		<tr>
+      		  <th scope="col">Kites</th>
+      		  <th scope="col">Millésime</th>
+      		  <th scope="col">Modèle</th>
+      		  <th scope="col">marque</th>
+      		  <th scope="col">descriptif</th>
+      		  <th scope="col">prix</th>
+    		</tr>
+  	      </thead>
+ 	      <tbody>
+		<% @products.each do |t, index| %>
+		  <% if t.domain === "freestyle" && t.category === "kite" && t.year != 2020 %>
+    		    <tr>
+     		      <th scope="row">
+      			<%= link_to kite_path(t), class:"nav-link" do %>
+			  <% if t.profil.attached? %>
+  		  	    <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:70px" %>
+			  <% else %>
+		  	    <img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="bar picture" style="width:70px">
+			  <%end%>
+	      	        <%end%>
+		      </th>
+      		      <td><h4><%= t.year %></h4></td>
+      		      <td><h4 class="text-nowrap text-uppercase"><%= t.name %></h4></td>
+      		      <td><h4><%= t.brand %></h4></td>
+      		      <td><h4 class="d-inline-block text-truncate" style="max-width: 150px;"><%= t.description %></h4></td>
+      		      <td><h4><%= t.price %>€</h4></td>
+    		    </tr>
+	          <% end %>
+		<% end %>
+	      </tbody>
+	    </table>
+          </div>
+
 
 <br>
 <br>

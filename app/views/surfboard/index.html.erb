@@ -54,19 +54,20 @@
 		<%end%>
             </li>
             <li class="nav-item my-1 mx-5">
+            <%= link_to surfboard_index_path(anchor: "presentation"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<i class="text-center text-warning fas fa-users fa-4x"></i>
+		</div>
+		<%end%>
+            </li>  
+            <li class="nav-item my-1 mx-5">
             <%= link_to surfboard_index_path(anchor: "compare"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
 		<i class="text-center text-warning fas fa-compress-alt fa-4x"></i>
 		</div>
 		<%end%>
             </li>
-            <li class="nav-item my-1 mx-5">
-            <%= link_to surfboard_index_path(anchor: "presentation"), class:" nav-link" do %>
-		<div class="d-flex flex-column">
-		<i class="text-center text-warning fas fa-users fa-4x"></i>
-		</div>
-		<%end%>
-            </li>      
+    
     </ul>
   </nav>
 
@@ -113,7 +114,7 @@
   </div>
   <div class="col-sm-3 m-2">
 		<% if @article.image.attached? %>
-  	  	  <%= image_tag @article.image.second, alt: 'kite image', class:"mb-5 card img-rounded img-responsive", style:"width:100%" %>
+  	  	  <%= image_tag @article.image.second, alt: 'kite image', class:"mb-5 img-rounded img-responsive", style:"width:100%" %>
   	  	  <%= image_tag @article.image.third, alt: 'kite image', class:"card img-rounded img-responsive", style:"width:100%" %>
 		<% else %>
           	  <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
@@ -273,7 +274,9 @@
 
 </section>
 
-<%= render"layouts/presentation" %>
+<section id="presentation">
+<% render"layouts/presentation" %>
+</section>
 
 <section id="compare">
   <%if @article.jumbotron.attached? %>

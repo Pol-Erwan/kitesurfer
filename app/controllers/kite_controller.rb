@@ -41,7 +41,7 @@ class KiteController < ApplicationController
     @compare.user = current_user
 
     if @compare.save
-      flash[:success] = "ok"
+      flash[:success] = "Ajouter dans ton comparateur"
     redirect_to kite_path(@product, anchor: "idcard")
     end
   end 

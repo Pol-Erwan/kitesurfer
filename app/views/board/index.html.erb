@@ -53,19 +53,19 @@
 		<%end%>
             </li>
             <li class="nav-item my-1 mx-5">
-            <%= link_to board_index_path(anchor: "compare"), class:" nav-link" do %>
-		<div class="d-flex flex-column">
-		<i class="text-center text-warning fas fa-compress-alt fa-4x"></i>
-		</div>
-		<%end%>
-            </li>
-            <li class="nav-item my-1 mx-5">
             <%= link_to board_index_path(anchor: "presentation"), class:" nav-link" do %>
 		<div class="d-flex flex-column">
 		<i class="text-center text-warning fas fa-users fa-4x"></i>
 		</div>
 		<%end%>
-            </li>      
+            </li> 
+            <li class="nav-item my-1 mx-5">
+            <%= link_to board_index_path(anchor: "compare"), class:" nav-link" do %>
+		<div class="d-flex flex-column">
+		<i class="text-center text-warning fas fa-compress-alt fa-4x"></i>
+		</div>
+		<%end%>
+            </li>     
     </ul>
   </nav>
 
@@ -129,7 +129,7 @@
 
   <div class="col-sm-8">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body bg-light">
         <h5 class="card-title"><%= @article.title4 %></h5>
         <p class="card-text"><%= @article.content4 %></p>
        </div>
@@ -215,7 +215,10 @@
 
 </section>
 
-<%= render"layouts/presentation" %>
+<section id="presentation">
+<% render"layouts/presentation" %>
+</section>
+
 
   <section id="compare">
   <br><br><br>
@@ -229,13 +232,12 @@
     </div>
   </div>
 
-
 <table class="table table-striped text-center p-2">
   <thead>
     <tr>
       <th scope="col">Twin-tip <i class="fas fa-chevron-circle-right"></i></th>
 <% @products.each do |t, index| %>
-      <% if t.category === "board" %>
+      <% if t.category === "board" && t.year === 2020 %>
       <th scope="col"><%= t.name %></th>
 <%end%>
 <% end %>
@@ -245,7 +247,7 @@
     <tr>
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @products.each do |t, index| %>
-      <% if t.category === "board" %>
+      <% if t.category === "board" && t.year === 2020 %>
       <td><%= link_to board_path(t), class:"nav-link" do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
@@ -260,7 +262,7 @@
     <tr>
       <th scope="row">Marque</th>
 <% @products.each do |t, index| %>
-      <% if t.category === "board" %>
+      <% if t.category === "board" && t.year === 2020  %>
       <td><%= t.brand %></td>
 <% end %>
 <%end%>
@@ -268,7 +270,7 @@
     <tr>
       <th scope="row">taille testé</th>
 <% @products.each do |t, index| %>
-      <% if t.category === "board" %>
+      <% if t.category === "board" && t.year === 2020 %>
       <td><%= t.testsize %></td>
 <% end %>
 <%end%>
@@ -276,7 +278,7 @@
     <tr>
       <th scope="row">Control</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><% while @control < t.control %>
 	    <i class="fas fa-star"></i>
 	    <% @control = @control + 1 %>
@@ -289,7 +291,7 @@
     <tr>
       <th scope="row">Progression</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><% while @progression < t.progression %>
 	    <i class="fas fa-star"></i>
 	    <% @progression = @progression + 1 %>
@@ -302,7 +304,7 @@
     <tr>
       <th scope="row">Freeride / Freestyle</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><% while @freeride < t.freeride %>
 	    <i class="fas fa-star"></i>
 	    <% @freeride = @freeride + 1 %>
@@ -315,7 +317,7 @@
     <tr>
       <th scope="row">New-School</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><% while @freestyle < t.freestyle %>
 	    <i class="fas fa-star"></i>
 	    <% @freestyle = @freestyle + 1 %>
@@ -328,7 +330,7 @@
     <tr>
       <th scope="row">Maniabilité</th>
 <% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><% while @maniability < t.maniability %>
 	    <i class="fas fa-star"></i>
 	    <% @maniability = @maniability + 1 %>
@@ -342,7 +344,7 @@
     <tr>
       <th scope="row">Tailles disponibles</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><%= t.range %></td>
 <%end%>
 <% end %>
@@ -350,7 +352,7 @@
     <tr>
       <th scope="row">Ailerons</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><%= t.fin %></td>
 <%end%>
 <% end %>
@@ -358,7 +360,7 @@
     <tr>
       <th scope="row">Stance</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><%= t.stance %></td>
 <%end%>
 <% end %>
@@ -366,7 +368,7 @@
     <tr>
       <th scope="row">Largeur</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><%= t.width %></td>
 <%end%>
 <% end %>
@@ -374,7 +376,7 @@
     <tr>
       <th scope="row">Poids</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><%= t.weigh %></td>
 <%end%>
 <% end %>
@@ -382,7 +384,7 @@
     <tr>
       <th scope="row">Carène</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><%= t.carene %></td>
 <%end%>
 <% end %>
@@ -390,7 +392,7 @@
     <tr>
       <th scope="row">Flex</th>
 <% @options.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><%= t.flex %></td>
 <%end%>
 <% end %>
@@ -398,7 +400,7 @@
     <tr>
       <th scope="row">Prix</th>
 <% @products.each do |t, index| %>
-      <% if t.category === "board" %>
+      <% if t.category === "board" && t.year === 2020 %>
       <td><%= t.price %> €</td>
 <%end%>
 <% end %>
@@ -406,7 +408,7 @@
     <tr>
       <th scope="row"></th>
 <% @products.each do |t, index| %>
-      <% if t.category === "board" %>
+      <% if t.category === "board" && t.year === 2020 %>
       <td><a href="<%= board_path(t) %>" class="scrollup btn btn-success">Détails</a>
 </td>
 <%end%>
@@ -418,6 +420,44 @@
     <a href="#navtest" class="scrollup d-flex justify-content-end align-items-end"><i class="m-3 btn-sm btn-primary fa fa-caret-square-up"></i></a>
   </section>
 
+        <div class="card-body">
+          <h3 class="card-title">liste Twin-Tips années précédentes</h3>
+
+	    <table class="table table-striped">
+	      <thead>
+    		<tr>
+      		  <th scope="col">Twin-tip</th>
+      		  <th scope="col">Millésime</th>
+      		  <th scope="col">Modèle</th>
+      		  <th scope="col">marque</th>
+      		  <th scope="col">descriptif</th>
+      		  <th scope="col">prix</th>
+    		</tr>
+  	      </thead>
+ 	      <tbody>
+		<% @products.each do |t, index| %>
+		  <% if t.domain === "freestyle" && t.category === "board" && t.year === 2020 %>
+    		    <tr>
+     		      <th scope="row">
+      			<%= link_to board_path(t), class:"nav-link" do %>
+			  <% if t.profil.attached? %>
+  		  	    <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:70px" %>
+			  <% else %>
+		  	    <img src="assets/image.jpg" class="img-raised rounded img-fluid" alt="bar picture" style="width:70px">
+			  <%end%>
+	      	        <%end%>
+		      </th>
+      		      <td><h4><%= t.year %></h4></td>
+      		      <td><h4 class="text-nowrap text-uppercase"><%= t.name %></h4></td>
+      		      <td><h4><%= t.brand %></h4></td>
+      		      <td><h4 class="d-inline-block text-truncate" style="max-width: 150px;"><%= t.description %></h4></td>
+      		      <td><h4><%= t.price %>€</h4></td>
+    		    </tr>
+	          <% end %>
+		<% end %>
+	      </tbody>
+	    </table>
+          </div>
 <br>
 <br>
 <br>
