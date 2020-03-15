@@ -6,6 +6,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 ml-auto mr-auto">
+	    <%= render"layouts/flash" %>
             <div class="profile">
               <div class="avatar d-flex justify-content-center">
 		<%if @user.avatar.attached?%>
@@ -15,19 +16,18 @@
 		<%end%>
               </div>
               <div class="name mt-1">
-                <h3 class="title"><%= @user.first_name %> <%= @user.last_name %></h3>
+                <h3 class="title col-md-4"><%= @user.first_name %> <%= @user.last_name %></h3>
                 <h6><%= @user.function %></h6>
                 <h6><%= @user.email %></h6>
+                <h6><%= @user.description %></h6>
           	<%=link_to "Modifier mon Profil", edit_user_registration_path, class:"btn btn-sm btn-info" %>
               </div>
             </div>
           </div>
-        </div>
+</div>
 <section id="compare">
-	<%= render"layouts/flash" %>
-        <div class="row">
-          <div class="col-md-6 ml-auto mr-auto">
-            <div class="profile-tabs">
+        <div class="row mt-3 d-flex justify-content-center">
+          <div class="col-md-10" >
               <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
@@ -44,69 +44,74 @@
                     <i class="material-icons">favorite</i> Surfboard
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                    <i class="material-icons">favorite</i> Foil
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                    <i class="material-icons">favorite</i> Accessoires
+                  </a>
+                </li>
               </ul>
-            </div>
           </div>
         </div>
         <div class="tab-content tab-space">
           <div class="tab-pane active text-center gallery" id="studio">
             <div class="row">
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-	<% if @products.find(t.product_id).name.present? %>
-          <th scope="col"><%= @products.find(t.product_id).name %></th>
-	<% else @products.find(t.product_id).name === nil %>
-          <th scope="col">Vide ou</th>
-	<% end %>
-	<% end %>
-	<% end %>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td> <%= link_to kite_path(t.product_id), class:"nav-link" do %>
-	   <% if @products.find(t.product_id).picture.attached? %>
-	     <%= image_tag @products.find(t.product_id).picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:250px" %>
-	   <% else %>
-	     <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:250px">
-	   <% end %>
-	  <%end%>
-      </td>
-	<% end %>
-	<% end %>
-    </tr>
-
-    <tr>
-      <th scope="row">Taille testé</th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><%= @products.find(t.product_id).testsize %>m</td>
-	<%end%>
-	<%end%>
-    </tr>
-    <tr>
-      <th scope="row">Wave</th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><% while @wave < @technics.find(@products.find(t.product_id).technic_id).wave %>
-	    <i class="fas fa-star"></i>
-	    <% @wave = @wave + 1 %>
-	  <%end%>
-	  <% @wave = 0 %>
-      </td>
-	<%end%>
-	<%end%>
-    </tr>
-    <tr>
+	      <table class="table table-striped">
+  		<thead>
+    		  <tr>
+      		    <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
+		    <% @compares.each do |t, index| %>
+		      <% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+			<% if @products.find(t.product_id).name.present? %>
+          		  <th scope="col"><%= @products.find(t.product_id).name %></th>
+			<% else @products.find(t.product_id).name === nil %>
+          		  <th scope="col">Vide ou</th>
+			<% end %>
+		      <% end %>
+		    <% end %>
+    		  </tr>
+  		</thead>
+  	      <tbody>
+	        <tr>
+      		  <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
+		  <% @compares.each do |t, index| %>
+		    <% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+      		      <td><%= link_to kite_path(t.product_id), class:"nav-link" do %>
+	   	        <% if @products.find(t.product_id).picture.attached? %>
+	     		  <%= image_tag @products.find(t.product_id).profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:250px" %>
+	   		<% else %>
+	     		  <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:250px">
+	   		<% end %>
+	  	      <%end%></td>
+		    <% end %>
+		  <% end %>
+    		</tr>
+	        <tr>
+      		  <th scope="row">Taille testé</th>
+		  <% @compares.each do |t, index| %>
+		    <% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+      		      <td><%= @products.find(t.product_id).testsize %>m</td>
+		    <%end%>
+		  <%end%>
+    		</tr>
+    		<tr>
+      		  <th scope="row">Wave</th>
+		    <% @compares.each do |t, index| %>
+		      <% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+		        <td><% while @wave < @technics.find(@products.find(t.product_id).technic_id).wave %>
+	    		  <i class="fas fa-star"></i>
+	    		  <% @wave = @wave + 1 %>
+	  		<%end%>
+	  		<% @wave = 0 %>
+      			</td>
+		      <%end%>
+		    <%end%>
+    		  </tr>
+    		  <tr>
       <th scope="row">Big Air</th>
 	<% @compares.each do |t, index| %>
 	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>

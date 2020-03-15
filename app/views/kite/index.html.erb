@@ -819,13 +819,13 @@
       		  <th scope="col">Millésime</th>
       		  <th scope="col">Modèle</th>
       		  <th scope="col">marque</th>
-      		  <th scope="col">descriptif</th>
+      		  <th scope="col">domaine</th>
       		  <th scope="col">prix</th>
     		</tr>
   	      </thead>
  	      <tbody>
 		<% @products.each do |t, index| %>
-		  <% if t.domain === "freestyle" && t.category === "kite" && t.year != 2020 %>
+		  <% if t.category === "kite" && t.year != 2020 %>
     		    <tr>
      		      <th scope="row">
       			<%= link_to kite_path(t), class:"nav-link" do %>
@@ -839,7 +839,7 @@
       		      <td><h4><%= t.year %></h4></td>
       		      <td><h4 class="text-nowrap text-uppercase"><%= t.name %></h4></td>
       		      <td><h4><%= t.brand %></h4></td>
-      		      <td><h4 class="d-inline-block text-truncate" style="max-width: 150px;"><%= t.description %></h4></td>
+      		      <td><h4><%= t.domain %></h4></td>
       		      <td><h4><%= t.price %>€</h4></td>
     		    </tr>
 	          <% end %>
