@@ -195,7 +195,7 @@
     <h2 class="ml-2 fas fa-chevron-circle-right"> Kite Mono latte</h2>
     <div class="row">
       <% @products.each do |t, index| %>
-      <% if t.domain === "foil" && t.category === "kite" %>
+      <% if t.domain === "foil" %>
       <div class="card-deck m-3">
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
@@ -323,7 +323,7 @@
     <tr>
       <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
 <% @products.each do |t, index| %>
-<% if t.category === "kite" && t.domain === "freestyle" %>
+<% if t.domain === "freestyle" %>
 
       <th scope="col"><%= t.name %></th>
 <%end%>
@@ -334,7 +334,7 @@
     <tr>
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @products.each do |t, index| %>
-<% if t.category === "kite" && t.domain === "freestyle" %>
+<% if t.domain === "freestyle" %>
       <td><%= link_to kite_path(t), class:"nav-link" do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
@@ -349,7 +349,7 @@
     <tr>
       <th scope="row">Marque</th>
 <% @products.each do |t, index| %>
-<% if t.category === "kite" && t.domain === "freestyle" %>
+<% if t.domain === "freestyle" %>
       <td><%= t.brand %></td>
 <%end%>
 <%end%>
@@ -357,7 +357,7 @@
     <tr>
       <th scope="row">taille testé</th>
 <% @products.each do |t, index| %>
-<% if t.category === "kite" && t.domain === "freestyle" %>
+<% if t.domain === "freestyle" %>
       <td><%= t.testsize %>m</td>
 <%end%>
 <%end%>
@@ -365,7 +365,7 @@
     <tr>
       <th scope="row">Wave</th>
 <% @technics.each do |t, index| %>
-<% if t.wave != nil && @products.find(t.product_id).category === "kite"  && @products.find(t.product_id).domain === "freestyle" %>
+<% if t.wave != nil  && @products.find(t.product_id).domain === "freestyle" %>
       <td><% while @wave < t.wave %>
 	    <i class="fas fa-star"></i>
 	    <% @wave = @wave + 1 %>
@@ -378,7 +378,7 @@
     <tr>
       <th scope="row">Big Air</th>
 <% @technics.each do |t, index| %>
-<% if t.bigair != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" %>
+<% if t.bigair != nil && @products.find(t.product_id).domain === "freestyle" %>
       <td><% while @bigair < t.bigair %>
 	    <i class="fas fa-star"></i>
 	    <% @bigair = @bigair + 1 %>
@@ -391,7 +391,7 @@
     <tr>
       <th scope="row">Freeride</th>
 <% @technics.each do |t, index| %>
-<% if t.freeride != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" %>
+<% if t.freeride != nil && @products.find(t.product_id).domain === "freestyle" %>
       <td><% while @freeride < t.freeride %>
 	    <i class="fas fa-star"></i>
 	    <% @freeride = @freeride + 1 %>
@@ -404,7 +404,7 @@
     <tr>
       <th scope="row">Freestyle</th>
 <% @technics.each do |t, index| %>
-<% if t.freestyle != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" %>
+<% if t.freestyle != nil && @products.find(t.product_id).domain === "freestyle" %>
       <td><% while @freestyle < t.freestyle %>
 	    <i class="fas fa-star"></i>
 	    <% @freestyle = @freestyle + 1 %>
@@ -417,7 +417,7 @@
     <tr>
       <th scope="row">Maniability</th>
 <% @technics.each do |t, index| %>
-<% if t.maniability != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" %>
+<% if t.maniability != nil && @products.find(t.product_id).domain === "freestyle" %>
       <td><% while @maniability < t.maniability %>
 	    <i class="fas fa-star"></i>
 	    <% @maniability = @maniability + 1 %>
@@ -430,7 +430,7 @@
     <tr>
       <th scope="row">Feeling</th>
 <% @technics.each do |t, index| %>
-<% if t.feeling != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" %>
+<% if t.feeling != nil && @products.find(t.product_id).domain === "freestyle" %>
       <td><% while @feeling < t.feeling %>
 	    <i class="fas fa-star"></i>
 	    <% @feeling = @feeling + 1 %>
@@ -443,7 +443,7 @@
     <tr>
       <th scope="row">Tailles disponibles</th>
 <% @options.each do |t, index| %>
-<% if t.range != nil && @products.find(t.product_id).category === "kite" && @products.find(t.product_id).domain === "freestyle" %>
+<% if t.range != nil && @products.find(t.product_id).domain === "freestyle" %>
       <td><%= t.range %></td>
 <%end%>
 <%end%>
@@ -467,7 +467,7 @@
     <tr>
       <th scope="row"></th>
 <% @products.each do |t, index| %>
-<% if t.category === "kite" && t.domain === "freestyle" %>
+<% if t.domain === "freestyle" %>
       <td><a href="<%= kite_path(t) %>" class="scrollup btn btn-success">Détails</a>
 </td>
 <%end%>
@@ -486,7 +486,7 @@
     <tr>
       <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
 <% @products.each do |t, index| %>
-<% if t.category === "kite" && t.domain === "wave" %>
+<% if t.domain === "wave" %>
 
       <th scope="col"><%= t.name %></th>
 <%end%>

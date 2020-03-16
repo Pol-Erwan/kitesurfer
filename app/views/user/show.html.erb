@@ -24,33 +24,83 @@
               </div>
             </div>
           </div>
-</div>
+        </div>
+                <h3 class="col-md-4">Mes favoris</h3>
+        <div class="row d-flex justify-content-center">
+	  <% @compare.each do |t, index| %>
+	    <div style="width: 10rem;">
+	      <% if @products.find(t.product_id).category === "kite" %>
+	        <%= link_to kite_path(t.product_id), class:"nav-link" do %>
+	   	  <% if @products.find(t.product_id).picture.attached? %>
+	            <%= image_tag @products.find(t.product_id).profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100%" %>
+	   	  <% else %>
+	     	    <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:100%">
+	   	  <% end %>
+	   	<% end %>
+	      <% elsif @products.find(t.product_id).category === "board" %>
+	        <%= link_to board_path(t.product_id), class:"nav-link" do %>
+	   	  <% if @products.find(t.product_id).picture.attached? %>
+	            <%= image_tag @products.find(t.product_id).profil, alt: 'board picture', class:"img-raised rounded img-fluid", style:"width:100%" %>
+	   	  <% else %>
+	     	    <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:100%">
+	   	  <% end %>
+	   	<% end %>
+	      <% elsif @products.find(t.product_id).category === "surfboard" %>
+	        <%= link_to surfboard_path(t.product_id), class:"nav-link" do %>
+	   	  <% if @products.find(t.product_id).picture.attached? %>
+	            <%= image_tag @products.find(t.product_id).profil, alt: 'surfboard picture', class:"img-raised rounded img-fluid", style:"width:100%" %>
+	   	  <% else %>
+	     	    <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:100%">
+	   	  <% end %>
+	   	<% end %>
+	      <% elsif @products.find(t.product_id).category === "foil" %>
+	        <%= link_to foil_path(t.product_id), class:"nav-link" do %>
+	   	  <% if @products.find(t.product_id).picture.attached? %>
+	            <%= image_tag @products.find(t.product_id).profil, alt: 'foil picture', class:"img-raised rounded img-fluid", style:"width:100%" %>
+	   	  <% else %>
+	     	    <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:100%">
+	   	  <% end %>
+	   	<% end %>
+	      <% elsif @products.find(t.product_id).category === "accessory" %>
+	        <%= link_to accessory_path(t.product_id), class:"nav-link" do %>
+	   	  <% if @products.find(t.product_id).picture.attached? %>
+	            <%= image_tag @products.find(t.product_id).profil, alt: 'accessory picture', class:"img-raised rounded img-fluid", style:"width:100%" %>
+	   	  <% else %>
+	     	    <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:100%">
+	   	  <% end %>
+	   	<% end %>
+	      <%end%>
+    	      <h3 class="card-text text-center"><%= @products.find(t.product_id).name %></h3>
+	    </div>
+	  <% end %>
+	</div>
+
 <section id="compare">
         <div class="row mt-3 d-flex justify-content-center">
           <div class="col-md-10" >
               <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                  <a class="nav-link active" href="#kite" role="tab" data-toggle="tab">
                     <i class="material-icons">camera</i> Kite
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                  <a class="nav-link" href="#board" role="tab" data-toggle="tab">
                     <i class="material-icons">palette</i> Twin-tip
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                  <a class="nav-link" href="#surfboard" role="tab" data-toggle="tab">
                     <i class="material-icons">favorite</i> Surfboard
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                  <a class="nav-link" href="#foil" role="tab" data-toggle="tab">
                     <i class="material-icons">favorite</i> Foil
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                  <a class="nav-link" href="#accessory" role="tab" data-toggle="tab">
                     <i class="material-icons">favorite</i> Accessoires
                   </a>
                 </li>
@@ -58,14 +108,14 @@
           </div>
         </div>
         <div class="tab-content tab-space">
-          <div class="tab-pane active text-center gallery" id="studio">
+          <div class="tab-pane active text-center gallery" id="kite">
             <div class="row">
 	      <table class="table table-striped">
   		<thead>
     		  <tr>
       		    <th scope="col">kite <i class="fas fa-chevron-circle-right"></i></th>
-		    <% @compares.each do |t, index| %>
-		      <% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+		    <% @compare.each do |t, index| %>
+		      <% if @products.find(t.product_id).category === "kite" %>
 			<% if @products.find(t.product_id).name.present? %>
           		  <th scope="col"><%= @products.find(t.product_id).name %></th>
 			<% else @products.find(t.product_id).name === nil %>
@@ -78,8 +128,8 @@
   	      <tbody>
 	        <tr>
       		  <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
-		  <% @compares.each do |t, index| %>
-		    <% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "kite" %>
       		      <td><%= link_to kite_path(t.product_id), class:"nav-link" do %>
 	   	        <% if @products.find(t.product_id).picture.attached? %>
 	     		  <%= image_tag @products.find(t.product_id).profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:250px" %>
@@ -92,164 +142,384 @@
     		</tr>
 	        <tr>
       		  <th scope="row">Taille testé</th>
-		  <% @compares.each do |t, index| %>
-		    <% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "kite" %>
       		      <td><%= @products.find(t.product_id).testsize %>m</td>
 		    <%end%>
 		  <%end%>
     		</tr>
     		<tr>
       		  <th scope="row">Wave</th>
-		    <% @compares.each do |t, index| %>
-		      <% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
+		    <% @compare.each do |t, index| %>
+		      <% if @products.find(t.product_id).category === "kite" %>
 		        <td><% while @wave < @technics.find(@products.find(t.product_id).technic_id).wave %>
 	    		  <i class="fas fa-star"></i>
 	    		  <% @wave = @wave + 1 %>
 	  		<%end%>
-	  		<% @wave = 0 %>
-      			</td>
+	  		<% @wave = 0 %></td>
 		      <%end%>
 		    <%end%>
     		  </tr>
     		  <tr>
-      <th scope="row">Big Air</th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><% while @bigair < @technics.find(@products.find(t.product_id).technic_id).bigair %>
-	    <i class="fas fa-star"></i>
-	    <% @bigair = @bigair + 1 %>
-	  <%end%>
-	  <% @bigair = 0 %>
-      </td>
-	<%end%>
-	<%end%>
-    </tr>
-    <tr>
-      <th scope="row">Freeride</th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><% while @freeride < @technics.find(@products.find(t.product_id).technic_id).freeride %>
-	    <i class="fas fa-star"></i>
-	    <% @freeride = @freeride + 1 %>
-	  <%end%>
-	  <% @freeride = 0 %>
-      </td>
-	<%end%>
-	<%end%>
-    </tr>
-    <tr>
-      <th scope="row">Freestyle</th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><% while @freestyle < @technics.find(@products.find(t.product_id).technic_id).freestyle %>
-	    <i class="fas fa-star"></i>
-	    <% @freestyle = @freestyle + 1 %>
-	  <%end%>
-	  <% @freestyle = 0 %>
-      </td>
-	<%end%>
-	<%end%>
-    </tr>
-    <tr>
-      <th scope="row">Maniabilité</th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><% while @maniability < @technics.find(@products.find(t.product_id).technic_id).maniability %>
-	    <i class="fas fa-star"></i>
-	    <% @maniability = @maniability + 1 %>
-	  <%end%>
-	  <% @maniability = 0 %>
-      </td>
-	<%end%>
-	<%end%>
-    </tr>
-    <tr>
-      <th scope="row">Feeling</th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><% while @feeling < @technics.find(@products.find(t.product_id).technic_id).feeling %>
-	    <i class="fas fa-star"></i>
-	    <% @feeling = @feeling + 1 %>
-	  <%end%>
-	  <% @feeling = 0 %>
-      </td>
-	<%end%>
-	<%end%>
-    </tr>
-
-    <tr>
-      <th scope="row"></th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "kite" %>
-      <td><%= link_to "Supprimer", kite_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
-	<%end%>
-	<%end%>
-    </tr>
-  </tbody>
-</table>
-            </div>
-          </div>
-
-          <div class="tab-pane text-center gallery" id="works">
-            <div class="row">
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">board <i class="fas fa-chevron-circle-right"></i></th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id %>
-          <th scope="col"><%= @products.find(t.product_id).name %></th>
-	<% end %>
-	<% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "board" %>
-      <td> <%= link_to board_path(t.product_id), class:"nav-link" do %>
-	   <% if @products.find(t.product_id).picture.attached? %>
-	     <%= image_tag @products.find(t.product_id).picture.first, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:250px" %>
-	   <% else %>
-	     <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:250px">
-	   <% end %>
-	  <%end%>
-      </td>
-	<% end %>
-	<% end %>
-    </tr>
-
-    <tr>
-      <th scope="row">Taille testé</th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "board" %>
-      <td><%= @products.find(t.product_id).testsize %>m</td>
-	<%end%>
-	<%end%>
-    </tr>
-    <tr>
-      <th scope="row"></th>
-	<% @compares.each do |t, index| %>
-	<% if t.user_id === @user.id && @products.find(t.product_id).category === "board" %>
-      <td><%= link_to "Supprimer", board_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
-	<%end%>
-	<%end%>
-    </tr>
-
-  </tbody>
-</table>
-
+      		    <th scope="row">Big Air</th>
+		      <% @compare.each do |t, index| %>
+			<% if @products.find(t.product_id).category === "kite" %>
+      		          <td><% while @bigair < @technics.find(@products.find(t.product_id).technic_id).bigair %>
+	    		  <i class="fas fa-star"></i>
+	    		  <% @bigair = @bigair + 1 %>
+	  		  <%end%>
+	  		  <% @bigair = 0 %></td>
+			<%end%>
+		      <%end%>
+    		    </tr>
+    		    <tr>
+		      <th scope="row">Freeride</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "kite" %>
+      			    <td><% while @freeride < @technics.find(@products.find(t.product_id).technic_id).freeride %>
+	    		    <i class="fas fa-star"></i>
+	    	 	    <% @freeride = @freeride + 1 %>
+	  		    <%end%>
+	  		    <% @freeride = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">Freestyle</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "kite" %>
+      			    <td><% while @freestyle < @technics.find(@products.find(t.product_id).technic_id).freestyle %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @freestyle = @freestyle + 1 %>
+	  		    <%end%>
+	  		    <% @freestyle = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">Maniabilité</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "kite" %>
+      			    <td><% while @maniability < @technics.find(@products.find(t.product_id).technic_id).maniability %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @maniability = @maniability + 1 %>
+	  		    <%end%>
+	  		    <% @maniability = 0 %>
+      		            </td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">Feeling</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "kite" %>
+      			    <td><% while @feeling < @technics.find(@products.find(t.product_id).technic_id).feeling %>
+	    		    <i class="fas fa-star"></i>
+	    		    <% @feeling = @feeling + 1 %>
+	  		    <%end%>
+	  		  <% @feeling = 0 %></td>
+			<%end%>
+		      <%end%>
+    		    </tr>
+	        <tr>
+      		  <th scope="row">Prix</th>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "kite" %>
+      		      <td><%= @products.find(t.product_id).price %>€</td>
+		    <%end%>
+		  <%end%>
+    		</tr>
+		    <tr>
+      		      <th scope="row"></th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "kite" %>
+      			    <td><%= link_to "Supprimer", kite_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+  		    </tbody>
+		  </table>
+            	</div>
               </div>
-            </div>
-          </div>
-          <div class="tab-pane text-center gallery" id="favorite">
+
+              <div class="tab-pane text-center gallery" id="board">
+                <div class="row">
+	      <table class="table table-striped">
+  		<thead>
+    		  <tr>
+      		    <th scope="col">Twin-Tip <i class="fas fa-chevron-circle-right"></i></th>
+		    <% @compare.each do |t, index| %>
+		      <% if @products.find(t.product_id).category === "board" %>
+			<% if @products.find(t.product_id).name.present? %>
+          		  <th scope="col"><%= @products.find(t.product_id).name %></th>
+			<% else @products.find(t.product_id).name === nil %>
+          		  <th scope="col">Vide ou</th>
+			<% end %>
+		      <% end %>
+		    <% end %>
+    		  </tr>
+  		</thead>
+  	      <tbody>
+	        <tr>
+      		  <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "board" %>
+      		      <td><%= link_to board_path(t.product_id), class:"nav-link" do %>
+	   	        <% if @products.find(t.product_id).picture.attached? %>
+	     		  <%= image_tag @products.find(t.product_id).profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:250px" %>
+	   		<% else %>
+	     		  <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:250px">
+	   		<% end %>
+	  	      <%end%></td>
+		    <% end %>
+		  <% end %>
+    		</tr>
+	        <tr>
+      		  <th scope="row">Taille testé</th>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "board" %>
+      		      <td><%= @products.find(t.product_id).testsize %>m</td>
+		    <%end%>
+		  <%end%>
+    		</tr>
+    		<tr>
+      		  <th scope="row">Contrôle</th>
+		    <% @compare.each do |t, index| %>
+		      <% if @products.find(t.product_id).category === "board" %>
+		        <td><% while @control < @technics.find(@products.find(t.product_id).technic_id).control %>
+	    		  <i class="fas fa-star"></i>
+	    		  <% @control = @control + 1 %>
+	  		<%end%>
+	  		<% @control = 0 %></td>
+		      <%end%>
+		    <%end%>
+    		  </tr>
+    		  <tr>
+      		    <th scope="row">Progression</th>
+		      <% @compare.each do |t, index| %>
+			<% if @products.find(t.product_id).category === "board" %>
+      		          <td><% while @progression < @technics.find(@products.find(t.product_id).technic_id).progression %>
+	    		  <i class="fas fa-star"></i>
+	    		  <% @progression = @progression + 1 %>
+	  		  <%end%>
+	  		  <% @progression = 0 %></td>
+			<%end%>
+		      <%end%>
+    		    </tr>
+    		    <tr>
+		      <th scope="row">Freeride / Freestyle</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "board" %>
+      			    <td><% while @freeride < @technics.find(@products.find(t.product_id).technic_id).freeride %>
+	    		    <i class="fas fa-star"></i>
+	    	 	    <% @freeride = @freeride + 1 %>
+	  		    <%end%>
+	  		    <% @freeride = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">New-School</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "board" %>
+      			    <td><% while @freestyle < @technics.find(@products.find(t.product_id).technic_id).freestyle %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @freestyle = @freestyle + 1 %>
+	  		    <%end%>
+	  		    <% @freestyle = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">Maniabilité</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "board" %>
+      			    <td><% while @maniability < @technics.find(@products.find(t.product_id).technic_id).maniability %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @maniability = @maniability + 1 %>
+	  		    <%end%>
+	  		    <% @maniability = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+	        <tr>
+      		  <th scope="row">Prix</th>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "board" %>
+      		      <td><%= @products.find(t.product_id).price %>€</td>
+		    <%end%>
+		  <%end%>
+    		</tr>
+  		      <tr>
+      		        <th scope="row"></th>
+			  <% @compare.each do |t, index| %>
+			    <% if @products.find(t.product_id).category === "board" %>
+      			      <td><%= link_to "Supprimer", kite_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
+			    <%end%>
+			  <%end%>
+    		        </tr>
+  		      </tbody>
+		    </table>
+            	  </div>
+                </div>
+
+          <div class="tab-pane text-center gallery" id="surfboard">
             <div class="row">
-              <div class="col-md-3 ml-auto">
-                <img src="/assets/examples/mariya-georgieva.jpg" class="rounded">
-                <img src="/assets/examples/studio-3.jpg" class="rounded">
-              </div>
+	      <table class="table table-striped">
+  		<thead>
+    		  <tr>
+      		    <th scope="col">Twin-Tip <i class="fas fa-chevron-circle-right"></i></th>
+		    <% @compare.each do |t, index| %>
+		      <% if @products.find(t.product_id).category === "surfboard" %>
+			<% if @products.find(t.product_id).name.present? %>
+          		  <th scope="col"><%= @products.find(t.product_id).name %></th>
+			<% else @products.find(t.product_id).name === nil %>
+          		  <th scope="col">Vide ou</th>
+			<% end %>
+		      <% end %>
+		    <% end %>
+    		  </tr>
+  		</thead>
+  	      <tbody>
+	        <tr>
+      		  <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "surfboard" %>
+      		      <td><%= link_to surfboard_path(t.product_id), class:"nav-link" do %>
+	   	        <% if @products.find(t.product_id).picture.attached? %>
+	     		  <%= image_tag @products.find(t.product_id).profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:250px" %>
+	   		<% else %>
+	     		  <img src="/assets/image.jpg" class="img-raised rounded img-fluid" alt="kite picture" style="width:250px">
+	   		<% end %>
+	  	      <%end%></td>
+		    <% end %>
+		  <% end %>
+    		</tr>
+	        <tr>
+      		  <th scope="row">Taille testé</th>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "surfboard" %>
+      		      <td><%= @products.find(t.product_id).testsize %>m</td>
+		    <%end%>
+		  <%end%>
+    		</tr>
+    		<tr>
+      		  <th scope="row">Courbes</th>
+		    <% @compare.each do |t, index| %>
+		      <% if @products.find(t.product_id).category === "surfboard" %>
+		        <td><% while @courbes < @technics.find(@products.find(t.product_id).technic_id).courbes %>
+	    		  <i class="fas fa-star"></i>
+	    		  <% @courbes = @courbes + 1 %>
+	  		<%end%>
+	  		<% @courbes = 0 %></td>
+		      <%end%>
+		    <%end%>
+    		  </tr>
+    		  <tr>
+      		    <th scope="row">Wind</th>
+		      <% @compare.each do |t, index| %>
+			<% if @products.find(t.product_id).category === "surfboard" %>
+      		          <td><% while @wind < @technics.find(@products.find(t.product_id).technic_id).wind %>
+	    		  <i class="fas fa-star"></i>
+	    		  <% @wind = @wind + 1 %>
+	  		  <%end%>
+	  		  <% @wind = 0 %></td>
+			<%end%>
+		      <%end%>
+    		    </tr>
+    		    <tr>
+		      <th scope="row">Side-Shore</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "surfboard" %>
+      			    <td><% while @sideshore < @technics.find(@products.find(t.product_id).technic_id).sideshore %>
+	    		    <i class="fas fa-star"></i>
+	    	 	    <% @sideshore = @sideshore + 1 %>
+	  		    <%end%>
+	  		    <% @sideshore = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">On-Shore</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "surfboard" %>
+      			    <td><% while @onshore < @technics.find(@products.find(t.product_id).technic_id).onshore %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @onshore = @onshore + 1 %>
+	  		    <%end%>
+	  		    <% @onshore = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">Wave</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "surfboard" %>
+      			    <td><% while @wave < @technics.find(@products.find(t.product_id).technic_id).wave %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @wave = @wave + 1 %>
+	  		    <%end%>
+	  		    <% @wave = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">Freestyle</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "surfboard" %>
+      			    <td><% while @freestyle < @technics.find(@products.find(t.product_id).technic_id).freestyle %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @freestyle = @freestyle + 1 %>
+	  		    <%end%>
+	  		    <% @freestyle = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">Strap</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "surfboard" %>
+      			    <td><% while @strap < @technics.find(@products.find(t.product_id).technic_id).strap %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @strap = @strap + 1 %>
+	  		    <%end%>
+	  		    <% @strap = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+    		      <tr>
+      			<th scope="row">Strapless</th>
+			<% @compare.each do |t, index| %>
+			  <% if @products.find(t.product_id).category === "surfboard" %>
+      			    <td><% while @strapless < @technics.find(@products.find(t.product_id).technic_id).strapless %>
+	    		      <i class="fas fa-star"></i>
+	    		      <% @strapless = @strapless + 1 %>
+	  		    <%end%>
+	  		    <% @strapless = 0 %></td>
+			  <%end%>
+			<%end%>
+    		      </tr>
+
+	        <tr>
+      		  <th scope="row">Prix</th>
+		  <% @compare.each do |t, index| %>
+		    <% if @products.find(t.product_id).category === "surfboard" %>
+      		      <td><%= @products.find(t.product_id).price %>€</td>
+		    <%end%>
+		  <%end%>
+    		</tr>
+  		      <tr>
+      		        <th scope="row"></th>
+			  <% @compare.each do |t, index| %>
+			    <% if @products.find(t.product_id).category === "surfboard" %>
+      			      <td><%= link_to "Supprimer", kite_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
+			    <%end%>
+			  <%end%>
+    		        </tr>
+  		      </tbody>
+		    </table>
+            	  </div>
+                </div>
               <div class="col-md-3 mr-auto">
                 <img src="/assets/examples/clem-onojeghuo.jpg" class="rounded">
                 <img src="/assets/examples/olu-eletu.jpg" class="rounded">

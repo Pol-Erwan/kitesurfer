@@ -19,20 +19,23 @@
         <h3 class="title text-center"> Infos principales</h3>
   <div class="text-center">
            <%= form_tag url_for(action: 'create'), method: 'post' do %>
+		<div class="d-flex justify-content-around">
                 <div class="text-center col-md-4">
                   <%= label_tag 'Titre' %>
                   <%= text_field_tag 'title', @article.title, class: "form-control" %>
                 </div>
 		<br><br>
+                <div class="text-center col-md-4">
+              <%= label_tag 'Domaine' %>
+              <%= select_tag 'domain', raw("<option>news</option><option>testkite</option><option>testboard</option><option>testsurf</option><option>testaccessory</option><option>testfoil</option><option>portfolio</option><option>event</option><option>test</option>"), class: "form-control" %>
+		</div>
+		</div>
+              <br><br>
                 <div class="text-center">
                   <%= label_tag 'Intro' %>
                   <%= text_field_tag 'intro', @article.intro, class: "form-control" %>
                 </div>
-                <div class="text-center">
-              <%= label_tag 'Domaine' %>
-              <%= select_tag 'domain', raw("<option>news</option><option>testkite</option><option>testboard</option><option>testsurf</option><option>testaccessory</option><option>testfoil</option><option>portfolio</option>"), class: "form-control" %>
-		</div>
-              <br><br>
+		<br><br>
                 <div class="text-center">
                   <%= label_tag 'content' %>
                   <%= text_field_tag 'content', @article.content, class: "form-control" %>

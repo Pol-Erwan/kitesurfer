@@ -1,7 +1,12 @@
 class ArticleController < ApplicationController
 
   def index
-    @articles = Article.last(5)
+    @articles = Article.where(domain: "news")
+    @events = Article.where(domain: "event")
+    @portfolios = Article.where(domain: "portfolio")
+    @tests = Article.find_by(domain: "test")
+    @news = @articles.last(5).reverse
+    @products = Product.last(6)
 
   end
 

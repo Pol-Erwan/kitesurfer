@@ -55,7 +55,9 @@
       <td><%= t.created_at %></td>
       <td><%= link_to "voir", article_path(t.id), class:"btn-sm btn-success" %></td>
       <td><%= link_to "Modifier", edit_admin_article_path(t), class:"btn-sm btn-primary" %></td>
+      <% if t.domain === "portfolio" || t.domain === "news" || t.domain === "event" %>
       <td><%= link_to "Supprimer", admin_article_path(t.id), class:"btn-sm btn-danger", method: :delete %></td>
+      <% end %>
     </tr>
 <%end%>
   </tbody>

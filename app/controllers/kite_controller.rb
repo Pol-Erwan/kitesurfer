@@ -2,9 +2,9 @@ class KiteController < ApplicationController
   def index
     @article = Article.find_by(domain: "testkite")
     @users = User.all
-    @products = Product.all
-    @technics = Technic.all
-    @options = Option.all
+    @products = Product.where(category: "kite")
+    @technics = Technic.where(product_id: @products.ids)
+    @options = Option.where(product_id: @products.ids)
     @product = Product.find_by(category: "kite")
     @technic = Technic.find_by(product_id: @product.id)
     @wave = 0
@@ -23,7 +23,8 @@ class KiteController < ApplicationController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
-    @compare = Compare.find_by(product_id: @product.id) 
+    @compare = Compare.find_by(product_id: @product.id)
+    @kite =  Product.where(category: "kite")
     @wave = 0
     @bigair = 0
     @freeride = 0

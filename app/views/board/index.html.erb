@@ -190,9 +190,9 @@
 
 <% @products.each do |t, index| %>
       <% if t.category === "board" %>
-      <div class="card-deck m-3">
-        <div class="row mx-3">  
-          <div class="card m-3 p-2" style="max-width: 200px;">
+      <div class="card-deck ml-2">
+        <div class="row mx-2">  
+          <div class="card p-2" style="max-width: 130px;">
             <h3 class="card-title"> <%= t.name %>  </h3>
 	      <%= link_to board_path(t), class:"nav-link" do %>
 		<% if t.profil.attached? %>
@@ -203,7 +203,7 @@
 	      <%end%>
             <h4 class="card-title">By <%= t.brand %></h4>
 	    <div class="d-flex justify-content-between">		
-	      <h4 class="text-left"> <%= t.testsize %> m</h4>
+	      <h4 class="text-left"> <%= t.testsize %></h4>
 	      <h4 class="text-right"> <%= t.price %>€</h4>
 	    </div>
           </div>
@@ -279,21 +279,39 @@
       <th scope="row">Control</th>
 <% @technics.each do |t, index| %>
       <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
-      <td><% while @control < t.control %>
-	    <i class="fas fa-star"></i>
-	    <% @control = @control + 1 %>
-	  <%end%>
-	  <% @control = 0 %>
+      <td>
+        <div class="d-flex justify-content-between">
+          <p>Slashy</p>
+          <p>Rail</p>
+        </div>
+        <div class="progress" style="height: 20px;">
+          <div class="progress-bar bg-dark" role="progressbar" style="width: <%= t.control*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
       </td>
 <% end %>
 <%end%>
     </tr>
     <tr>
-      <th scope="row">Progression</th>
+      <th scope="row" class="text-danger">Maniabilité</th>
 <% @technics.each do |t, index| %>
       <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
-      <td><% while @progression < t.progression %>
-	    <i class="fas fa-star"></i>
+      <td>    <div class="d-flex justify-content-between">
+      <p>Maniable</p>
+      <p>Joueur</p>
+    </div>
+  <div class="progress" style="height: 20px;">
+    <div class="progress-bar bg-danger" role="progressbar" style="width: <%= t.maniability*20 %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+      </td>
+<%end%>
+<% end %>
+    </tr>
+    <tr>
+      <th scope="row" class="text-success">Progression</th>
+<% @technics.each do |t, index| %>
+      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
+      <td class="text-left"><% while @progression < t.progression %>
+	    <i class="text-success fas fa-square"></i>
 	    <% @progression = @progression + 1 %>
 	  <%end%>
 	  <% @progression = 0 %>
@@ -302,24 +320,28 @@
 <% end %>
     </tr>
     <tr>
-      <th scope="row">Freeride / Freestyle</th>
+      <th scope="row" class="text-info">Freeride / Freestyle</th>
 <% @technics.each do |t, index| %>
       <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><% while @freeride < t.freeride %>
-	    <i class="fas fa-star"></i>
+	    <i class="text-info fas fa-square"></i>
 	    <% @freeride = @freeride + 1 %>
 	  <%end%>
+	  <% while @freeride < 5 %>
+	    <i class="text-light fas fa-square"></i>
+	    <% @freeride = @freeride + 1 %>
+	  <% end %>
 	  <% @freeride = 0 %>
       </td>
 <%end%>
 <% end %>
     </tr>
     <tr>
-      <th scope="row">New-School</th>
+      <th scope="row" class="text-warning">New-School</th>
 <% @technics.each do |t, index| %>
       <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
       <td><% while @freestyle < t.freestyle %>
-	    <i class="fas fa-star"></i>
+	    <i class="text-warning fas fa-square"></i>
 	    <% @freestyle = @freestyle + 1 %>
 	  <%end%>
 	  <% @freestyle = 0 %>
@@ -327,20 +349,6 @@
 <%end%>
 <% end %>
     </tr>
-    <tr>
-      <th scope="row">Maniabilité</th>
-<% @technics.each do |t, index| %>
-      <% if @products.find(t.product_id).category === "board" && @products.find(t.product_id).year === 2020 %>
-      <td><% while @maniability < t.maniability %>
-	    <i class="fas fa-star"></i>
-	    <% @maniability = @maniability + 1 %>
-	  <%end%>
-	  <% @maniability = 0 %>
-      </td>
-<%end%>
-<% end %>
-    </tr>
-
     <tr>
       <th scope="row">Tailles disponibles</th>
 <% @options.each do |t, index| %>

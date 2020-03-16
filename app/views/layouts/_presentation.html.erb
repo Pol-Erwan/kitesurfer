@@ -1,3 +1,4 @@
+  <% if @article.present? %> 
   <section id="presentation">
   <br><br><br>
   <%if @article.jumbotron.attached? %>
@@ -41,4 +42,5 @@
 
     <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
   </section>
+<% end %>
 

@@ -1,9 +1,9 @@
 class Admin::KiteController < Admin::BasesController
 
   def index
-    @products = Product.all
-    @technic = Technic.all
-    @option = Option.all
+    @products = Product.where(category: "kite")
+    @compares = Compare.where(product_id: @products.ids)
+
   end
 
   def new
