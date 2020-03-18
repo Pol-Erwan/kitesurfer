@@ -3,17 +3,12 @@ class BoardController < ApplicationController
   def index
     @article = Article.find_by(domain: "testboard")
     @users = User.all
-    @products = Product.all
-    @technics = Technic.all
-    @options = Option.all
-    @product = Product.find_by(category:"board")
-    @technic = Technic.find_by(product_id: @product.id)
-    @option = Option.find_by(product_id: @product.id)
-    @control = 0
-    @progression = 0
-    @freeride = 0
-    @freestyle = 0
-    @maniability = 0  
+    @products = Product.where(category:"board")
+    @product = Product.where(category:"board", year:"2020")
+    @technics = Technic.where(product_id: @product.ids)
+    @options = Option.where(product_id: @product.ids)
+    @technic = Technic.find_by(product_id: @product.ids)
+    @variable = 0
   end
 
   def show
@@ -25,11 +20,7 @@ class BoardController < ApplicationController
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
     @compare = Compare.find_by(product_id: @product.id) 
-    @control = 0
-    @progression = 0
-    @freeride = 0
-    @freestyle = 0
-    @maniability = 0  
+    @variable = 0 
     @pad = 0
     @strap = 0
   end

@@ -3,16 +3,11 @@ class KiteController < ApplicationController
     @article = Article.find_by(domain: "testkite")
     @users = User.all
     @products = Product.where(category: "kite")
+    @product = Product.where(category:"kite", year:"2020")
     @technics = Technic.where(product_id: @products.ids)
     @options = Option.where(product_id: @products.ids)
-    @product = Product.find_by(category: "kite")
-    @technic = Technic.find_by(product_id: @product.id)
-    @wave = 0
-    @bigair = 0
-    @freeride = 0
-    @freestyle = 0
-    @maniability = 0
-    @feeling = 0
+    @technic = Technic.find_by(product_id: @product.ids)
+    @variable = 0
   end
 
   def show
@@ -24,12 +19,7 @@ class KiteController < ApplicationController
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
     @compare = Compare.find_by(product_id: @product.id)
-    @kite =  Product.where(category: "kite")
-    @wave = 0
-    @bigair = 0
-    @freeride = 0
-    @freestyle = 0
-    @maniability = 0
+    @variable = 0
     @feeling = 0
     @grip = 0
   end

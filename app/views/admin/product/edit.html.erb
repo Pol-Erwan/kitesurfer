@@ -43,6 +43,9 @@
   <%= image_tag @product.background, alt: 'kite picture', style:"width:200px" %>
 <% end %>
  <%= file_field_tag :background %>
+<h4>supprimer la dernière photo ? </h4>
+      <td><%= link_to "Supprimer picture ", admin_product_picture_path(@product.background), class:"btn-sm btn-danger", method: :delete %></td>
+
 
 <h3>Ajouter la photo id card</h3>
 <%if @product.idcard.attached?%>

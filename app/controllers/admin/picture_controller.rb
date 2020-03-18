@@ -2,6 +2,7 @@ class Admin::PictureController < Admin::BasesController
 
   def create
     @product = Product.find(params[:product_id])
+
     if params[:carousel] != nil
       @product.picture.attach(params[:carousel],params[:carousel2],params[:carousel3],params[:carousel4],params[:carousel5],params[:carousel6],params[:carousel7])
     end
@@ -27,6 +28,7 @@ class Admin::PictureController < Admin::BasesController
 
   def destroy
     @product = Product.find(params[:id])
+    
     @product.picture.purge
     @product.background.purge
     @product.idcard.purge

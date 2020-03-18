@@ -1,14 +1,16 @@
   <nav class="navbar fixed-top navbar-expand-lg" id="sectionsNav">
     <div class="container">
+      <div class="navbar-logo d-flex justify-content-start">
+                <button type="button" class="ml-auto navbar-toggler" data-toggle="collapse" data-target="#example-navbar-transparent">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+        <a href="<%= root_path %>"><img data-0="width:155px;" data-300=" width:120px;" src="/assets/logo_KSM_mini.png" alt=""></a>
+      </div>
       <div class="collapse navbar-collapse d-flex justify-content-around">
         <ul class="navbar-nav">
-	  <li class="nav-item mx-4">
-            <%= link_to root_path, class:"nav-link" do %>
-		<div class="d-flex flex-column">
-		<strong class="text-center text-warning">Acceuil</strong>
-		</div>
-	    <%end%>
-          </li>
           <li class="dropdown nav-item mx-4">
             <a href="#" class="nav-link" data-toggle="dropdown">
 		<div class="d-flex flex-column">
