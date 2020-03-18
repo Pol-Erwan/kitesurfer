@@ -1,4 +1,5 @@
 class KiteController < ApplicationController
+
   def index
     @article = Article.find_by(domain: "testkite")
     @users = User.all
@@ -7,6 +8,7 @@ class KiteController < ApplicationController
     @technics = Technic.where(product_id: @products.ids)
     @options = Option.where(product_id: @products.ids)
     @technic = Technic.find_by(product_id: @product.ids)
+    @kite = Product.find_by(category: "kite")
     @variable = 0
   end
 

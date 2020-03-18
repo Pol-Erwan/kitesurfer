@@ -1,47 +1,68 @@
 <%= render"layouts/navbar" %>
+
 <body class="profile-page sidebar-collapse">
-  <div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/testaccessory/pads3.jpg');"></div>
-    <div class="main main-raised">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-10 ml-auto mr-auto">
-            <div class="name mt-1">
-              <h1 class="title text-center mt-5"><%= @article.title %></h1>
-		<h2><%= @article.intro %></h2>
-		<div class="px-3 m-1">
-		  <%= @article.content %>
-		</div>
-		<br>
-		<div class="text-center">
-		  <%if @article.image.attached?%>
-		    <% @article.image.each do |t, index| %>
-		      <%= image_tag t, alt: 'article image', style:"width:100%" %>
-		    <%end%>
-		  <%end%>
-		</div>
-	      </div>
-	      <h5 class="text-right">Le <%= @article.created_at %> par <%= @users.find(@article.user_id).first_name %></h5>
-
-<% if @article.domain != "news" %>
-<h2>title2 :</h2> <%= @article.title2%>
-<br>
-<h2>content2 : </h2><%= @article.content2 %>
-<br>
-<h2>title 3 :</h2><%= @article.title3 %>
-<br>
-<h2>content3 : </h2><%= @article.content3 %>
-<br>
-<h2>description : </h2><%= @article.description %>
-<br>
+<%if @article.present? %>
+  <%if @article.background.attached? %>
+    <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url(<%= rails_blob_url(@article.background)%>);">
+  <% end %>
+  <% else %>
+  <div class="page-header" id="header" data-parallax="true" style="background-image: url('/assets/image.jpg');"></div>
 <% end %>
+    </div>
+  </div>
 
-              </div>
-            </div>
-          </div>
+  <div class="main main-raised d-flex justify-content-center">
+
+      <div class="col-md-8">
+	<div class="card-body">
+            <h1 class="text-center mt-5"><%= @article.title %></h1>
+	    <h2><%= @article.intro %></h2>
+	    <div class="px-3 m-1">
+	      <%= @article.content %>
+	    </div>
+	    <br>
+	    <div class="text-center">
+	      <%if @article.image.attached?%>
+	        <%= image_tag @article.image.first, alt: 'article image', style:"width:100%" %>
+	      <% else %>
+                <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+	      <%end%>
+	    </div>
+	  </div>
+	  <h5 class="text-right">Le <%= @article.created_at.strftime('%m/%d/%Y') %> par <%= @users.find(@article.user_id).first_name %></h5>
+
+	  <% if @article.domain != "news" %>
+	    <h2>title2 :</h2> <%= @article.title2%>
+	    <br>
+	    <h2>content2 : </h2><%= @article.content2 %>
+	    <br>
+	    <%if @article.image.attached?%>
+	      <%= image_tag @article.image.second, alt: 'article image', style:"width:100%" %>
+	    <% else %>
+              <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+	    <%end%>
+	    <h2>title 3 :</h2><%= @article.title3 %>
+	    <br>
+	    <h2>content3 : </h2><%= @article.content3 %>
+	    <br>
+	    <%if @article.image.attached?%>
+	      <%= image_tag @article.image.third, alt: 'article image', style:"width:100%" %>
+	    <% else %>
+              <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+	    <%end%>
+	    <h2>description : </h2><%= @article.description %>
+	    <br>
+	  <% end %>
+
         </div>
       </div>
     </div>
   </div>
+</div>
+
+</div>
+</div>
+</div>
 </body>
 
 </html>

@@ -63,8 +63,8 @@ wetsuit_name = ["meteor","magma","E-Bomb","cypher","hammer","meteor","magma","E-
 wetsuit_brand = ["Manera","Manera","Rip Curl","Quiksilver","O'neill","Manera","Manera","Rip Curl","Quiksilver","O'neill"]
 harness_name = ["Eclipse","union","exo","hadlow pro","Kl pro","Eclipse","union","exo","hadlow pro","Kl pro"]
 harness_brand = ["Manera","Manera","Manera","Pro-Limit","naish","ride Engine","Manera","Manera","Pro-Limit","naish"]
-kitedomain = ["freestyle","wave","foil","freestyle","wave","foil","freestyle","wave","foil","freestyle","wave","foil"]
-surfdomain = ["freestyle","wave","freestyle","wave","freestyle","wave","freestyle","wave","freestyle","wave"]
+kitedomain = ["Freestyle","Wave","Foil","Freestyle","Wave","Foil","Freestyle","Wave","Foil","Freestyle","Wave","Foil"]
+surfdomain = ["Freestyle","Wave","Freestyle","Wave","Freestyle","Wave","Freestyle","Wave","Freestyle","Wave"]
 content = ["Ce n'est plus un secret, North kiteboarding a la
 ferme intention de (re)venir sur le marché international.
 La marque annonce qu'elle sera prête avec

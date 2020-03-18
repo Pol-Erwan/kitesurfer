@@ -11,51 +11,36 @@
       </div>
       <div class="collapse navbar-collapse d-flex justify-content-around">
         <ul class="navbar-nav">
-          <li class="dropdown nav-item mx-4">
-            <a href="#" class="nav-link" data-toggle="dropdown">
+	  <li class="nav-item mx-4">
+            <%= link_to kite_index_path, class:"nav-link" do %>
 		<div class="d-flex flex-column">
 		<strong class="text-center text-warning">Kites</strong>
 		</div>
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="<%= kite_index_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> Kites
-              </a>
-              <a href="<%= board_index_path %>" class="dropdown-item">
-		<i class="material-icons">layers</i> Twin-Tips
-	      </a>
-              <a href="<%= surfboard_index_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> Surfboards
-              </a>
-              <a href="<%= accessory_index_path %>" class="dropdown-item">
-                <i class="material-icons">layers</i> accessoires
-              </a>
-
-            </div>
+	    <%end%>
           </li>
 	  <li class="nav-item mx-4">
-            <%= link_to article_index_path, class:"nav-link" do %>
+            <%= link_to board_index_path, class:"nav-link" do %>
 		<div class="d-flex flex-column">
 		<strong class="text-center text-warning">Twin-tips</strong>
 		</div>
 	    <%end%>
           </li>
 	  <li class="nav-item mx-4">
-            <%= link_to root_path, class:"nav-link" do %>
+            <%= link_to surfboard_index_path, class:"nav-link" do %>
 		<div class="d-flex flex-column">
 		<strong class="text-center text-warning">Surfs</strong>
 		</div>
 	    <%end%>
           </li>
 	  <li class="nav-item mx-4">
-            <%= link_to portfolio_index_path, class:"nav-link" do %>
+            <%= link_to accessory_index_path, class:"nav-link" do %>
 		<div class="d-flex flex-column">
 		<strong class="text-center text-warning">Accessoires</strong>
 		</div>
 	    <%end%>
           </li>
 	  <li class="nav-item mx-4">
-            <%= link_to root_path, class:"nav-link" do %>
+            <%= link_to foil_index_path, class:"nav-link" do %>
 		<div class="d-flex flex-column">
 		<strong class="text-center text-warning">Foils</strong>
 		</div>

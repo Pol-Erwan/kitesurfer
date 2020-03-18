@@ -42,12 +42,16 @@ class Admin::UserController < Admin::BasesController
     @user = User.find(params[:id])
     @article = Article.where(user_id: @user.id)
     @compare = Compare.where(user_id: @user.id)
-    if @article != nil || @compare != nil
-     @article.destroy_all
-     @compare.destroy_all
-     @user.delete
+    if @user = current_user
+      flash[:warning] = "Tu ne peux pas supprimé le profil en cours"
+    else
+      if @article != nil || @compare != nil
+        @article.destroy_all
+        @compare.destroy_all
+        @user.delete
+        flash[:success] = " L'utilisateur a bien été supprimé !"
+      end
     end
-    flash[:success] = " L'utilisateur a bien été supprimé !"
     redirect_to admin_user_index_path
     end
 end

@@ -68,11 +68,11 @@
 		</div>
         <h3 class="title text-center"> Caractérisques</h3>
               <div class="row">
-                <div class="col-2">
+                <div class="col-4">
               <%= label_tag 'detail' %>
               <%= text_field_tag 'detail', @option.detail, class: "form-control"%>
 		</div>
-                <div class="col-2">
+                <div class="col-4">
               <%= label_tag 'taille disponible' %>
               <%= text_field_tag 'range', @option.range, class: "form-control"%>
 		</div>
@@ -94,7 +94,7 @@
 		</div>
                 <div class="col-2">
               <%= label_tag 'Millésime' %>
-              <%= select_tag 'domain', raw("<option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option>"), class: "form-control" %>
+              <%= select_tag 'year', raw("<option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option>"), class: "form-control" %>
 		</div>
                 <div class="col-6">
               <%= label_tag 'lien youtube' %>

@@ -5,7 +5,7 @@ class ArticleController < ApplicationController
     @events = Article.where(domain: "event")
     @portfolios = Article.where(domain: "portfolio")
     @tests = Article.find_by(domain: "test")
-    @news = @articles.last(5).reverse
+    @news = @articles.last(4).reverse
     @products = Product.last(6)
 
   end

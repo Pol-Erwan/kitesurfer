@@ -59,11 +59,14 @@ class Admin::SurfboardController < Admin::BasesController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
+    @compare = Compare.where(product_id: @product.id)
     @product.delete
     @technic.delete
     @option.delete
-
-      flash[:sucess] = "Le surf a bien été supprimé !"
+    if @compare != nil
+      @compare.destroy_all
+    end
+      flash[:sucess] = "Le surf a été supprimé !"
 
       redirect_to admin_surfboard_index_path
   end

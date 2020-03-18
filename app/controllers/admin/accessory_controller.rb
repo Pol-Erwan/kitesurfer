@@ -59,11 +59,14 @@ class Admin::AccessoryController < Admin::BasesController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
+    @compare = Compare.where(product_id: @product.id)
     @product.delete
     @technic.delete
     @option.delete
-
-      flash[:sucess] = "L'accessoire a bien été supprimé !"
+    if @compare != nil
+      @compare.destroy_all
+    end
+      flash[:sucess] = "L'accessoire a été supprimé !"
 
       redirect_to admin_accessory_index_path
   end

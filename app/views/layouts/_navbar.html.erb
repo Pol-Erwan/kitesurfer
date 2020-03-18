@@ -11,6 +11,14 @@
         <a href="<%= root_path %>"><img data-0="width:155px;" data-300=" width:120px;" src="/assets/logo_KSM_mini.png" alt=""></a>
       </div>
       <div class="collapse navbar-collapse">
+                <form class="form-inline ml-auto">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Rechercher">
+                  </div>
+                  <button type="submit" class="btn btn-white btn-raised btn-fab btn-round">
+                    <i class="material-icons">search</i>
+                  </button>
+                </form>
         <ul class="navbar-nav ml-auto">
           <li class="dropdown nav-item mx-4">
             <a href="#" class="nav-link" data-toggle="dropdown">
@@ -27,8 +35,11 @@
               <a href="<%= surfboard_index_path %>" class="dropdown-item">
                 <i class="material-icons">layers</i> Surfboards
               </a>
+              <a href="<%= foil_index_path %>" class="dropdown-item">
+                <i class="material-icons">layers</i> Foils
+              </a>
                         <div class="dropdown-divider"></div>
-              <a href="<%= kite_index_path %>" class="dropdown-item">
+              <a href="<%= accessory_index_path %>" class="dropdown-item">
                 <i class="material-icons">layers</i> Accessoires
               </a>
             </div>
@@ -40,21 +51,9 @@
 	    <%end%>
           </li>
 	  <li class="nav-item mx-4">
-            <%= link_to article_index_path, class:"nav-link" do %>
-	      <i class="text-center far fa-compass" style="font-size:20px"></i>
-	      <h6 class="text-center">Trip</h6>
-	    <%end%>
-          </li>
-	  <li class="nav-item mx-4">
             <%= link_to portfolio_index_path, class:"nav-link" do %>
 	      <i class="text-center fas fa-photo-video" style="font-size:20px"></i>
 	      <h6 class="text-center">Portfolio</h6>
-	    <%end%>
-          </li>
-	  <li class="nav-item mx-4">
-            <%= link_to article_index_path, class:"nav-link" do %>
-	      <i class="text-center far fa-calendar-check" style="font-size:20px"></i>
-	      <h6 class="text-center">Event</h6>
 	    <%end%>
           </li>
           <li class="dropdown nav-item mx-4">
@@ -71,7 +70,7 @@
               </a>
           <% if user_signed_in? %>
 		<div class="dropdown-divider"></div>
-                  <%= link_to "Mon Profil", user_path(current_user), class:"dropdown-item"%>
+                  <%= link_to "Mon Profil (comparateur)", user_path(current_user), class:"dropdown-item"%>
                 <div class="dropdown-divider"></div>
                   <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item"%>
             </div>

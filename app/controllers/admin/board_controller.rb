@@ -59,12 +59,14 @@ class Admin::BoardController < Admin::BasesController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
+    @compare = Compare.where(product_id: @product.id)
     @product.delete
     @technic.delete
     @option.delete
-
-      flash[:sucess] = "Le twin-tip a bien été supprimé !"
-
+    if @compare != nil
+      @compare.destroy_all 
+    end	
+    flash[:sucess] = "Le twin-tip a été supprimé !"
       redirect_to admin_kite_index_path
   end
 

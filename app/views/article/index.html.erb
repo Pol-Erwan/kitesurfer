@@ -30,7 +30,7 @@
   	  	      <%= image_tag @articles.last.image.first, alt: 'second slide', class:"card img-rounded img-responsive d-block w-100", style:"width:100%" %>
 		    <% else %>
           	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
-		    <% end %> 
+		    <% end %>
   		  </div>
   	          <div class="col-sm-6">
     		    <div class="bg-transparent">
@@ -127,22 +127,23 @@
 
         <% @articles.each do |t, index| %>
           <div class="card">
+      		    <%= link_to article_path(t) do %>
 		    <% if t.image.attached? %>
   	  	      <%= image_tag t.image.first, alt: 'second slide', class:"card img-rounded img-responsive d-block w-100", style:"width:100%" %>
 		    <% else %>
           	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
 		    <% end %>
+		    <% end %>
              <div class="card-body">
             <h5 class="card-title"><%= t.title %></h5>
             <p class="card-text"><%= t.intro %></p>
-            <a href="<%= article_path(t) %>" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       <% end %>
     </div>
             <!-- Time line -->
   <div class="col-sm-7">
-      <div class="container mt-1 mb-5">
+      <div class="container mt-1 my-5">
 	<div class="row">
 	  <div class="col-md-12">
 	    <h2>Dernières actualités</h2>
@@ -150,15 +151,16 @@
 	        <% @news.each do |t, index| %>
 		<li>
 		    <h5 class="card-title"><%= t.created_at.strftime('%m - %d - %Y') %></h5>
-		  <div class="card">
-	<% if t.image.attached? %>
-  	  <%= image_tag t.image.first, alt: 'kite image', class:"img-rounded img-responsive", style:"width:100%" %>
-	<% else %>
-          <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
-	<% end %>
+      		    <%= link_to article_path(t) do %>
+		    <h3 class="card-title text-center"><%= t.title %></h3>
+		    <% if t.image.attached? %>
+  	  	      <%= image_tag t.image.first, alt: 'kite image', class:"img-rounded img-responsive", style:"width:100%" %>
+		    <% else %>
+          	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+		    <% end %>
+		    <% end %>
  		    <div class="card-body">
-		    <h5 class="card-title"><%= t.title %></h5>
-		  </div>
+		    <h5 class="card-title text-center"><%= t.intro %></h5>
 		</div>
 	      </li>
 	     <%end%>
@@ -173,10 +175,12 @@
     <div class="space"></div>
 
       <div class="card my-2 py-1">
+        <%= link_to kite_index_path do %>
 	<% if @tests.image.attached? %>
   	  <%= image_tag @tests.image.first, alt: 'kite image', class:"img-rounded img-responsive", style:"width:100%" %>
 	<% else %>
           <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+	<% end %>
 	<% end %>        
 	<div class="card-body">
           <h5 class="card-title text-left"><%= @tests.title %></h5>
@@ -185,11 +189,13 @@
       </div>
 
       <div class="bg-light my-2 py-1">
+        <%= link_to board_index_path do %>
 	<% if @tests.image.attached? %>
   	  <%= image_tag @tests.image.second, alt: 'kite image', class:"img-rounded img-responsive", style:"width:100%" %>
 	<% else %>
           <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
-	<% end %>        
+	<% end %> 
+	<% end %>       
 	<div class="card-body">
           <h5 class="card-title text-left"><%= @tests.title2 %></h5>
           <p class="card-text d-inline-block text-truncate" style="max-width: 100px;"><%= @tests.content2 %></p>
@@ -197,14 +203,44 @@
       </div>
 
       <div class="card my-2 py-1">
+        <%= link_to surfboard_index_path do %>
 	<% if @tests.image.attached? %>
   	  <%= image_tag @tests.image.third, alt: 'kite image', class:"img-rounded img-responsive", style:"width:100%" %>
 	<% else %>
           <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
-	<% end %>        
+	<% end %>    
+	<% end %>    
 	<div class="card-body">
           <h5 class="card-title text-left"><%= @tests.title3 %></h5>
           <p class="card-text d-inline-block text-truncate" style="max-width: 100px;"><%= @tests.content3 %></p>
+        </div>
+      </div>
+
+      <div class="bg-light my-2 py-1">
+        <%= link_to foil_index_path do %>
+	<% if @tests.image.attached? %>
+  	  <%= image_tag @tests.image.fourth, alt: 'kite image', class:"img-rounded img-responsive", style:"width:100%" %>
+	<% else %>
+          <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+	<% end %>
+	<% end %>         
+	<div class="card-body">
+          <h5 class="card-title text-left"><%= @tests.title4 %></h5>
+          <p class="card-text d-inline-block text-truncate" style="max-width: 100px;"><%= @tests.content4 %></p>
+        </div>
+      </div>
+
+      <div class="card my-2 py-1">
+        <%= link_to accessory_index_path do %>
+	<% if @tests.image.attached? %>
+  	  <%= image_tag @tests.image.fifth, alt: 'kite image', class:"img-rounded img-responsive", style:"width:100%" %>
+	<% else %>
+          <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+	<% end %>    
+	<% end %>    
+	<div class="card-body">
+          <h5 class="card-title text-left"><%= @tests.title5 %></h5>
+          <p class="card-text d-inline-block text-truncate" style="max-width: 100px;"><%= @tests.content5 %></p>
         </div>
       </div>
 
@@ -212,17 +248,14 @@
 
 </div>
 
-
-
         <div id="extras">
-            <div class="space"></div>
             <div class="row">
-                <div class="col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1">
+                <div class="col-md-6">
                     <div class="text-center">
-                        <img src="assets/image.jpg" alt="Rounded Image" class="img-rounded img-responsive img-dog">
+                        <img src="assets/backgroundkitesurfmag.jpg" alt="Rounded Image" class="img-rounded img-responsive" style="with:100%">
                     </div>
                 </div>
-                <div class="col-md-5 col-sm-12">
+                <div class="card col-md-5 col-sm-12">
                                 <h1 class="text-center">About Kitesurf Mag
                                 
                                 <small class="subtitle">Get to know us</small></h1>
