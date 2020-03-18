@@ -115,6 +115,15 @@ print my_article.title .yellow
 print " Id n°" .yellow
 puts my_user.id
 
+my_article = Article.new(title:"Lord Of TRam", content: content[0], intro:"Red Bull King Of The Air à la française", link:"https://www.facebook.com/lords.of.tram/", domain: "event")
+my_article.user = my_user
+my_article.save
+print my_user.first_name .yellow
+print " "
+print my_article.title .yellow
+print " Id n°" .yellow
+puts my_user.id
+
 my_portfolio = Article.create(title: user_first_name[variable], title2:"portfolio",domain: "portfolio",title3: "Spot: plage sud", link:"assets/article/article.jpg" )
 my_portfolio.user = my_user
 my_portfolio.save
