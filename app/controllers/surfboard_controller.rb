@@ -3,20 +3,12 @@ class SurfboardController < ApplicationController
   def index
     @article = Article.find_by(domain: "testsurf")
     @users = User.all
-    @products = Product.all
-    @technics = Technic.all
-    @options = Option.all
-    @product = Product.find_by(category:"surfboard")
-    @technic = Technic.find_by(product_id: @product.id)
-    @option = Option.find_by(product_id: @product.id)
-    @strap = 0
-    @courbes = 0
-    @wind = 0
-    @sideshore = 0
-    @onshore = 0
-    @wave = 0
-    @freestyle = 0
-    @strapless = 0
+    @products = Product.where(category:"surfboard")
+    @product = Product.where(category:"surfboard", year:"2020")
+    @technics = Technic.where(product_id: @product.ids)
+    @options = Option.where(product_id: @product.ids)
+    @technic = Technic.find_by(product_id: @product.ids)
+    @variable = 0
   end
 
   def show
@@ -27,15 +19,8 @@ class SurfboardController < ApplicationController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
-    @compare = Compare.find_by(product_id: @product.id)
-    @strap = 0
-    @courbes = 0
-    @wind = 0
-    @sideshore = 0
-    @onshore = 0
-    @wave = 0
-    @freestyle = 0
-    @strapless = 0
+    @compare = Compare.where(product_id: @product.id)
+    @variable = 0
   end
 
   def create
@@ -47,7 +32,7 @@ class SurfboardController < ApplicationController
 
     if @compare.save
       flash[:success] = "Ajouter dans ton comparateur"
-    redirect_to board_path(@product, anchor: "idcard")
+    redirect_to surfboard_path(@product, anchor: "idcard")
     end
   end 
 

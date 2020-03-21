@@ -1,0 +1,22 @@
+  <div class="col-sm-3">
+    <div class="card-body">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+	    <h5 class="text-dark">Autres kites <%= @product.domain %></h5>
+            <a href="<%= kite_index_path %>" class="btn btn-success">Autres tests</a>
+            <img class="d-block w-100" src="/assets/testkite/bandit.png" alt="First slide">
+    	  </div>
+          <% @products.each do |t, index| %>
+	    <% if t.category === "kite" && t.domain === @product.domain && t.profil.attached? && t.id != @product.id %>
+    	      <div class="carousel-item">
+	        <h3 class="text-dark"><%= t.brand %> <%= t.name %></h3>
+                <a href="<%= kite_path(t) %>" class="btn btn-success">Voir le test</a>
+                <%= image_tag t.profil, class:"d-block w-100" %>
+    	      </div>
+	    <% end %>
+	  <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

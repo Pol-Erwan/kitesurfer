@@ -23,7 +23,7 @@
                 <div class="carousel-caption d-none d-md-block">
                 </div>
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item mt-5">
 	        <div class="row">
   		  <div class="col-sm-6">
 		    <% if @articles.last.image.attached? %>
@@ -42,7 +42,7 @@
   	          </div>
 	        </div>
 	      </div>
-              <div class="carousel-item">
+              <div class="carousel-item mt-5">
 	        <div class="row">
   	          <div class="col-sm-6">
     		    <div class="bg-transparent">
@@ -61,7 +61,7 @@
   		  </div>
 	        </div>
 	      </div>
-              <div class="carousel-item">
+              <div class="carousel-item mt-5">
 	        <div class="row">
   		  <div class="col-sm-6">
 		    <% if @portfolios.last.image.attached? %>
@@ -80,7 +80,8 @@
   	          </div>
 	        </div>
 	      </div>
-              <div class="carousel-item">
+		    <% if @tests.present? %>
+              <div class="carousel-item mt-5">
 	        <div class="row">
   	          <div class="col-sm-6">
     		    <div class="bg-transparent">
@@ -99,6 +100,7 @@
   		  </div>
 	        </div>
 	      </div>
+	<% end %>
             </div>
           </div>
         </div>
@@ -174,6 +176,7 @@
   <div class="col-sm-2">
     <div class="space"></div>
 
+    <% if @tests.present? %>
       <div class="card my-2 py-1">
         <%= link_to kite_index_path do %>
 	<% if @tests.image.attached? %>
@@ -243,10 +246,12 @@
           <p class="card-text d-inline-block text-truncate" style="max-width: 100px;"><%= @tests.content5 %></p>
         </div>
       </div>
-
+<% end %>
   </div>
 
 </div>
+
+<% render"layouts/presentation" %>
 
         <div id="extras">
             <div class="row">

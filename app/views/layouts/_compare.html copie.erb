@@ -1,0 +1,20 @@
+		      <% if current_user.present? && @compare != nil %>
+  			<% @compare.each do |t, index| %>
+    			  <% if t.product_id === @product.id && t.user_id === current_user.id %>
+			  <% else %>
+			  <%end%>
+  			<%end%>
+		      <% elsif @compare != nil %>
+			<%= link_to new_user_session_path, :method => 'new' do %>
+  			  <p class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Il faut se connecter">Ajouter au comparateur</p> 
+			<% end %>
+		      <% end %>
+		      <% if @compare === nil || @compare.same != true && current_user.present? %>
+			<%= form_tag url_for(action: 'create'), method: 'post' do %>
+                  	  <%= text_field_tag 'id', @product.id, type:"hidden" %>
+                  	  <%= text_field_tag 'id', @technic.id, type:"hidden" %>
+                  	  <%= text_field_tag 'id', @option.id, type:"hidden" %>
+              		  <%= submit_tag "Ajouter au comparateur", class:"btn btn-success", target:"blank_" %>
+			<% end %>
+		      <% end %>
+

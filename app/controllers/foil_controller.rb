@@ -3,16 +3,11 @@ class FoilController < ApplicationController
     @article = Article.find_by(domain: "testfoil")
     @users = User.all
     @products = Product.all
-    @technics = Technic.all
-    @options = Option.all
-    @product = Product.find_by(category:"foil")
-    @technic = Technic.find_by(product_id: @product.id)
-    @option = Option.find_by(product_id: @product.id)
-    @wave = 0
-    @freeride = 0
-    @freestyle = 0
-    @maniability = 0
-    @feeling = 0
+    @product = Product.where(category:"foil", year: "2020")
+    @technics = Technic.where(product_id: @product.ids)
+    @options = Option.where(product_id: @product.ids)
+    @technic = Technic.find_by(product_id: @product.ids)
+    @variable = 0
   end
 
   def show
@@ -23,12 +18,7 @@ class FoilController < ApplicationController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
-    @compare = Compare.find_by(product_id: @product.id) 
-    @wave = 0
-    @freeride = 0
-    @freestyle = 0
-    @maniability = 0
-    @feeling = 0
+    @compare = Compare.where(product_id: @product.id) 
   end
 
   def create
@@ -39,7 +29,7 @@ class FoilController < ApplicationController
     @compare.user = current_user
 
     if @compare.save
-      flash[:success] = "ok"
+      flash[:success] = "Ajouter dans ton comparateur"
     redirect_to kite_path(@product, anchor: "idcard")
     end
   end 

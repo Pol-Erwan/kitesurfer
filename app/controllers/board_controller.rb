@@ -19,10 +19,8 @@ class BoardController < ApplicationController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
-    @compare = Compare.find_by(product_id: @product.id) 
+    @compare = Compare.where(product_id: @product.id) 
     @variable = 0 
-    @pad = 0
-    @strap = 0
   end
 
   def create

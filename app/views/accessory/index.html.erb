@@ -24,7 +24,6 @@
         </div>
       </div>
     </div>
-  <%= render"layouts/flash" %>
   </div>
 
   <div class="main">
@@ -112,11 +111,11 @@
     		</tr>
   	      </thead>
  	      <tbody>
-		<% @products.each do |t, index| %>
-		  <% if t.domain === "bar" && t.category === "accessory" %>
+		<% @product.each do |t, index| %>
+		  <% if t.domain === "bar" %>
     		    <tr>
      		      <th scope="row">
-      			<%= link_to accessory_path(t), class:"nav-link" do %>
+      			<%= link_to accessory_path(t) do %>
 			  <% if t.profil.attached? %>
   		  	    <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:70px" %>
 			  <% else %>
@@ -191,7 +190,6 @@
           <%end%>
         <%end%>
       </div>
-      <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
   </section>
 
 <%= render"layouts/presentation" %>
@@ -263,7 +261,6 @@
       </div>
     </div>
   </div>
-      <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
 
   </section>
 
@@ -346,7 +343,6 @@
   </tbody>
 </table>
  </div>
-      <a href="#navtest" class="m-3 scrollup d-flex justify-content-end align-items-end"><i class="btn-sm btn-primary fa fa-caret-square-up"></i></a>
 </section>
   <%end %>
         <div class="card-body">

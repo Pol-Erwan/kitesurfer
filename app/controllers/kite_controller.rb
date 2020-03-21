@@ -8,7 +8,6 @@ class KiteController < ApplicationController
     @technics = Technic.where(product_id: @products.ids)
     @options = Option.where(product_id: @products.ids)
     @technic = Technic.find_by(product_id: @product.ids)
-    @kite = Product.find_by(category: "kite")
     @variable = 0
   end
 
@@ -20,7 +19,7 @@ class KiteController < ApplicationController
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
-    @compare = Compare.find_by(product_id: @product.id)
+    @compare = Compare.where(product_id: @product.id)
     @variable = 0
     @feeling = 0
     @grip = 0
@@ -35,7 +34,7 @@ class KiteController < ApplicationController
 
     if @compare.save
       flash[:success] = "Ajouter dans ton comparateur"
-    redirect_to kite_path(@product, anchor: "idcard")
+    redirect_to kite_path(@product.id, anchor: "idcard")
     end
   end 
 

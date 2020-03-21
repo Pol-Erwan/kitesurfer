@@ -132,7 +132,7 @@ print " Id n°" .yellow
 puts my_article.id
 
 
-my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: kitedomain[variable], description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
+my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: kitedomain[variable], description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2018")
 my_technic = Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5))
 my_option = Option.create(detail:"spi quad-tex super costaud", range:"5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 14", bridle: "no poulies", strut: rand(0..5), line: rand(4..5))
 my_kite.technic = my_technic
@@ -146,7 +146,7 @@ print my_kite.name .green
 print " Id n°" .green
 puts my_kite.id 
 
-my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: kitedomain[variable], description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2018")
+my_kite = Product.create(name: kite_name[variable], brand: brand[variable], category: category[0], domain: kitedomain[variable], description: kite_description[0], favorite: "#freeride", testsize: "10", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(1200..1600), year: "2020")
 my_technic = Technic.create(wave: rand(0..5),bigair: rand(0..5),freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), feeling: rand(0..5))
 my_option = Option.create(detail:"spi quad-tex super costaud", range:"5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 14", bridle: "no poulies", strut: rand(0..5), line: rand(4..5))
 my_kite.technic = my_technic
@@ -174,7 +174,7 @@ print " Id n°" .green
 puts my_bar.id
 
 my_board = Product.create(name: board_name[variable], brand: brand[variable], category: category[1], domain: "freestyle", description: kite_description[0], favorite: "pop", testsize: "135x42", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(400..800), year: "2020")
-my_technic = Technic.create(freeride: rand(0..5),freestyle: rand(0..5), maniability: rand(0..5), control: rand(0..5), progression: rand(0..5))
+my_technic = Technic.create(freeride: rand(0..4),freestyle: rand(0..4), maniability: rand(0..4), control: rand(0..4), progression: rand(0..4))
 my_option = Option.create(detail:"noyau bois", range:"134x41 / 136x42 / 138x43", fin: "3,5cm",width: rand(38..45), stance: "62cm / 65cm / 68cm",champs: "HRD", weigh: rand(3..5), carene: "channel", flex:"medium", velcros: rand(1..4))
 my_board.technic = my_technic
 my_board.option = my_option
@@ -203,7 +203,7 @@ print " ID n°" .red
 puts my_pads.id
 
 my_surf = Product.create(name: surfboard_name[variable], brand: brand[variable], category: category[2], domain: surfdomain[variable], description: kite_description[0], favorite: "son pads", testsize: "6'4", youtube: youtube[0], link: "https://fr.f-one.world/produit/bandit-2020/", price: rand(500..1000), year: "2020")
-my_technic = Technic.create(wave: rand(0..5),freestyle: rand(0..5), courbes: rand(0..5),wind: rand(0..5),sideshore: rand(0..5),onshore: rand(0..5), strap: rand(0..5),strapless: rand(0..5), transitions: rand(0..5))
+my_technic = Technic.create(wave: rand(0..3),freestyle: rand(0..3), courbes: rand(0..5),wind: rand(0..5),sideshore: rand(0..3),onshore: rand(0..3), strap: rand(0..3),strapless: rand(0..3), transitions: rand(0..5))
 my_option = Option.create(detail:"construction bambou", range:"6'2 / 6'4 / 7'2", fin: "3,5cm", width: rand(33..38), weigh: rand(3.2..4.8), length: rand(150..180), maitrebau: rand(40..50), thickness:rand(5.5..6.8), volum:rand(22..26), box:"futures fins", carene: "concave 3mm")
 my_surf.technic = my_technic
 my_surf.option = my_option

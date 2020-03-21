@@ -6,22 +6,22 @@ class AccessoryController < ApplicationController
     @products = Product.all
     @technics = Technic.all
     @options = Option.all
-    @product = Product.find_by(category: "accessory")
-    @technic = Technic.find_by(product_id: @product.id)
-    @pads = 0
-    @strap = 0
-    @flex = 0
+    @product = Product.where(category: "accessory", year: "2020")
+    @technics = Technic.where(product_id: @product.ids)
+    @options = Option.where(product_id: @product.ids)
+    @technic = Technic.find_by(product_id: @product.ids)
   end
 
   def show
     @products = Product.all
+    @technics = Technic.all
+    @options = Option.all
+    @compares = Compare.all
     @product = Product.find(params[:id])
     @technic = Technic.find_by(product_id: @product.id)
     @option = Option.find_by(product_id: @product.id)
-    @pad = 0
-    @strap = 0
-    @flex = 0
-    @grip = 0
+    @compare = Compare.where(product_id: @product.id)
+    @variable = 0
   end
 
   def create

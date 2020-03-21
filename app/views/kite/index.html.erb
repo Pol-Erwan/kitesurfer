@@ -75,7 +75,7 @@
   <%if @article.jumbotron.attached? %>
       <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.first)%>); background-size: 100%;">
   <% else %>
-  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <div class="jumbotron" style="background-image: url(/assets/image.jpg); background-size: 100%;">
   <% end %>
         <div class="container for-about">
         <h1 class="text-white">Comment sont fait nos tests</h1>
@@ -175,7 +175,6 @@
         </div>
 
   </section>
-<% end %>
 
 
   <section id="kite">
@@ -183,12 +182,13 @@
   <%if @article.jumbotron.attached? %>
       <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.second)%>); background-size: 100%;">
   <% else %>
-  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <div class="jumbotron" style="background-image: url(/assets/image.jpg); background-size: 100%;">
   <% end %>
       <div class="container for-about">
       <h1>kite</h1>
       </div>
     </div>
+<% end %>
 
     <h2 class="ml-2 fas fa-chevron-circle-right"> Kite Mono latte</h2>
     <div class="row">
@@ -198,7 +198,7 @@
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
             <h3 class="card-title"> <%= t.name %>  </h3>
-	      <%= link_to kite_path(t), class:"nav-link" do %>
+	      <%= link_to kite_path(t) do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
 		<% else %>
@@ -218,13 +218,13 @@
     </div>
     <h2 class="ml-2 fas fa-chevron-circle-right"> kite wave</h2>
     <div class="row">
-      <% @products.each do |t, index| %>
+      <% @product.each do |t, index| %>
       <% if t.domain === "Wave" %>
       <div class="card-deck m-3">
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
             <h3 class="card-title"> <%= t.name %>  </h3>
-	      <%= link_to kite_path(t), class:"nav-link" do %>
+	      <%= link_to kite_path(t) do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
 		<% else %>
@@ -250,7 +250,7 @@
         <div class="row mx-3">  
           <div class="card m-3 p-2" style="max-width: 200px;">
             <h3 class="card-title"> <%= t.name %>  </h3>
-	      <%= link_to kite_path(t), class:"nav-link" do %>
+	      <%= link_to kite_path(t) do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
 		<% else %>
@@ -277,15 +277,17 @@
 
   <section id="compare">
   <br><br><br>
+  <% if @article.present? %> 
   <%if @article.jumbotron.attached? %>
       <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.fourth)%>); background-size: 100%;">
   <% else %>
-  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <div class="jumbotron" style="background-image: url(/assets/image.jpg); background-size: 100%;">
   <% end %>
     <div class="container for-about">
     <h1>comparer kite</h1>
     </div>
   </div>
+<% end %>
 
   <div class="col-lg-6 col-md-12">
     <div class="m-5 row">
@@ -332,7 +334,7 @@
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @product.each do |t, index| %>
 <% if t.domain === "Freestyle" %>
-      <td><%= link_to kite_path(t), class:"nav-link" do %>
+      <td><%= link_to kite_path(t) do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
 		<% else %>
@@ -517,7 +519,7 @@
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @product.each do |t, index| %>
 <% if t.domain === "Wave" %>
-      <td><%= link_to kite_path(t), class:"nav-link" do %>
+      <td><%= link_to kite_path(t) do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
 		<% else %>
@@ -700,7 +702,7 @@
       <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 <% @product.each do |t, index| %>
 <% if t.domain === "Foil" %>
-      <td><%= link_to kite_path(t), class:"nav-link" do %>
+      <td><%= link_to kite_path(t) do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
 		<% else %>
@@ -890,7 +892,7 @@
 		  <% if t.category === "kite" && t.year != 2020 %>
     		    <tr>
      		      <th scope="row">
-      			<%= link_to kite_path(t), class:"nav-link" do %>
+      			<%= link_to kite_path(t) do %>
 			  <% if t.profil.attached? %>
   		  	    <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:70px" %>
 			  <% else %>
@@ -899,19 +901,19 @@
 	      	        <%end%>
 		      </th>
       		      <td>
-      			<%= link_to kite_path(t), class:"nav-link" do %>
+      			<%= link_to kite_path(t) do %>
 			<h4><%= t.year %></h4><% end %></td>
       		      <td>
-      			<%= link_to kite_path(t), class:"nav-link" do %>
+      			<%= link_to kite_path(t) do %>
 			<h4 class="text-nowrap text-uppercase"><%= t.name %></h4><% end %></td>
       		      <td>
-      			<%= link_to kite_path(t), class:"nav-link" do %>
+      			<%= link_to kite_path(t) do %>
 			<h4><%= t.brand %></h4><% end %></td>
       		      <td>
-      			<%= link_to kite_path(t), class:"nav-link" do %>
+      			<%= link_to kite_path(t) do %>
 			<h4><%= t.domain %></h4><% end %></td>
       		      <td>
-      			<%= link_to kite_path(t), class:"nav-link" do %>
+      			<%= link_to kite_path(t) do %>
 			<h4><%= t.price %>€</h4><% end %></td>
     		    </tr>
 	          <% end %>

@@ -31,10 +31,10 @@
     <tr>
       <th scope="col"><h4><a href="<%= admin_kite_index_path %>" class="btn-dark far fa-hand-point-right fa-2x">Kite</h4></a></th>
       <th scope="col">modèle</th>
+      <th scope="col">millésime</th>
       <th scope="col">Date de création</th>
       <th scope="col">Dernière modification</th>
       <th scope="col">voir en ligne</th>
-      <th scope="col">nombre de photos</th>
       <th scope="col">Photos</th>
     </tr>
   </thead>
@@ -45,17 +45,17 @@
       <th scope="row">n° <%= t.id %></th>
 <%if t.picture.size > 5 %>
       <td><i class="fas fa-check text-success"></i> <%= t.name %></td>
+      <td><%= t.year %></td>
       <td><%= t.created_at %></td>
       <td><%= t.updated_at %></td>
       <td><%= link_to "voir", kite_path(t.id), class:"btn-sm btn-success" %></td>
-      <td><%= t.picture.size %></td>
       <td><%= link_to "modifier", edit_admin_product_path(t), class:"btn-sm btn-primary" %></td>
 <%else%>
       <td><i class="fas fa-exclamation-triangle text-warning"></i> <%= t.name %></td>
+      <td><%= t.year %></td>
       <td><%= t.created_at %></td>
       <td><%= t.updated_at %></td>
       <td><%= link_to "voir", kite_path(t.id), class:"btn-sm btn-success" %></td>
-      <td><%= t.picture.size %></td>
       <td><%= link_to "Ajouter", edit_admin_product_path(t), class:"btn-sm btn-warning" %></td>
 <% end %>
     </tr>

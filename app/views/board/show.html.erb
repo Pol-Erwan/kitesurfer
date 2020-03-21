@@ -109,7 +109,6 @@
 
 	<section id="idcard">
           <h2 class="ml-5 fas fa-id-card"> Id Card</h2>
-	  <%= render"layouts/flash" %>
 	<div class="d-flex justify-content-center">
           <div class="col-md-11">
             <div class="name">
@@ -117,7 +116,7 @@
 	        <div class="row">
 		  <div class="col-md-3 col-md-offset-0 col-sm-10 col-sm-offset-1">
                     <div class="text-center">
-                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @product.name %></h2>
+                      <h2 class=""><i class="fas fa-id-badge"></i> <%= @product.name %> <%=@product.year %></h2>
 			<%if @product.idcard.attached? %>
  		  	  <%= image_tag @product.idcard, alt: 'kite picture', class:"img-raised rounded img-fluid mt-2", style:"width:70%" %>
 			<%else%>

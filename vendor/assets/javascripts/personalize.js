@@ -5,10 +5,10 @@ $(document).ready(function() {
       //.log to determine when you want the 
       //nav bar to stick.  
       console.log($(window).scrollTop())
-    if ($(window).scrollTop() > 450) {
+    if ($(window).scrollTop() > 515) {
       $('#nav_bar').addClass('navbar-fixed');
     }
-    if ($(window).scrollTop() < 451) {
+    if ($(window).scrollTop() < 516) {
       $('#nav_bar').removeClass('navbar-fixed');
     }
   });

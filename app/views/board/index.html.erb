@@ -24,7 +24,6 @@
         </div>
       </div>
     </div>
-  <%= render"layouts/flash" %>
   </div>
 
   <div class="main">
@@ -76,7 +75,7 @@
   <%if @article.jumbotron.attached? %>
       <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.first)%>); background-size: 100%;">
   <% else %>
-  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <div class="jumbotron" style="background-image: url(/assets/image.jpg); background-size: 100%;">
   <% end %>
         <div class="container for-about">
         <h1>Comment sont fait nos tests</h1>
@@ -172,19 +171,19 @@
 
   </section>
 
-<% end %>
+
 
 <section id="board">
   <%if @article.jumbotron.attached? %>
       <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.second)%>); background-size: 100%;">
   <% else %>
-  <div class="jumbotron" style="background-image: url(/assets/introtest4.jpg); background-size: 100%;">
+  <div class="jumbotron" style="background-image: url(/assets/image.jpg); background-size: 100%;">
   <% end %>
    <div class="container for-about">
    <h1>Twin-tip</h1>
    </div>
 </div>
-
+<% end %>
 <div class="row">
 
 <% @product.each do |t, index| %>
@@ -194,7 +193,7 @@
         <div class="row mx-2">  
           <div class="card p-2" style="max-width: 130px;">
             <h3 class="card-title"> <%= t.name %>  </h3>
-	      <%= link_to board_path(t), class:"nav-link" do %>
+	      <%= link_to board_path(t) do %>
 		<% if t.profil.attached? %>
   		  <%= image_tag t.profil, alt: 'kite picture', class:"rounded img-fluid", style:"width:100%" %>
 		<% else %>
@@ -221,6 +220,7 @@
 
   <section id="compare">
   <br><br><br>
+  <% if @article.present? %> 
   <%if @article.jumbotron.attached? %>
     <div class="jumbotron" style="background-image: url(<%= rails_blob_url(@article.jumbotron.fourth)%>); background-size: 100%;">
   <% else %>
@@ -230,7 +230,7 @@
     <h1>comparer Twin-Tips</h1>
     </div>
   </div>
-
+<% end %>
   <table class="table table-striped text-center p-2">
     <thead>
       <tr>
@@ -244,7 +244,7 @@
       <tr>
         <th scope="row">Compétences<br><i class="fas fa-chevron-circle-down"></i></th>
 	<% @product.each do |t, index| %>
-        <td><%= link_to board_path(t), class:"nav-link" do %>
+        <td><%= link_to board_path(t) do %>
 	  <% if t.profil.attached? %>
   	    <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:100px" %>
 	  <% else %>
@@ -301,7 +301,7 @@
 	    <i class="text-success fas fa-square"></i>
 	    <% @variable = @variable + 1 %>
 	  <%end%>
-	  <% while @variable < 5 %>
+	  <% while @variable < 4 %>
 	    <i class="text-light fas fa-square"></i>
 	    <% @variable = @variable + 1 %>
 	  <% end %>
@@ -316,7 +316,7 @@
 	    <i class="text-info fas fa-square"></i>
 	    <% @variable = @variable + 1 %>
 	  <%end%>
-	  <% while @variable < 5 %>
+	  <% while @variable < 4 %>
 	    <i class="text-light fas fa-square"></i>
 	    <% @variable = @variable + 1 %>
 	  <% end %>
@@ -331,7 +331,7 @@
 	    <i class="text-warning fas fa-square"></i>
 	    <% @variable = @variable + 1 %>
 	  <%end%>
-	  <% while @variable < 5 %>
+	  <% while @variable < 4 %>
 	    <i class="text-light fas fa-square"></i>
 	    <% @variable = @variable + 1 %>
 	  <% end %>
@@ -416,10 +416,10 @@
   	      </thead>
  	      <tbody>
 		<% @products.each do |t, index| %>
-		  <% if t.domain === "freestyle" && t.category === "board" %>
+		  <% if t.year != 2020 %>
     		    <tr>
      		      <th scope="row">
-      			<%= link_to board_path(t), class:"nav-link" do %>
+      			<%= link_to board_path(t) do %>
 			  <% if t.profil.attached? %>
   		  	    <%= image_tag t.profil, alt: 'kite picture', class:"img-raised rounded img-fluid", style:"width:70px" %>
 			  <% else %>
@@ -428,19 +428,19 @@
 	      	        <%end%>
 		      </th>
       		      <td>
-      			<%= link_to board_path(t), class:"nav-link" do %>
+      			<%= link_to board_path(t) do %>
 			<h4><%= t.year %></h4><% end %></td>
       		      <td>
-      			<%= link_to board_path(t), class:"nav-link" do %>
+      			<%= link_to board_path(t) do %>
 			<h4 class="text-nowrap text-uppercase"><%= t.name %></h4><% end %></td>
       		      <td>
-      			<%= link_to board_path(t), class:"nav-link" do %>
+      			<%= link_to board_path(t) do %>
 			<h4><%= t.brand %></h4><% end %></td>
       		      <td>
-      			<%= link_to board_path(t), class:"nav-link" do %>
+      			<%= link_to board_path(t) do %>
 			<h4><%= t.domain %></h4><% end %></td>
       		      <td>
-      			<%= link_to board_path(t), class:"nav-link" do %>
+      			<%= link_to board_path(t) do %>
 			<h4><%= t.price %>€</h4><% end %></td>
     		    </tr>
 	          <% end %>
