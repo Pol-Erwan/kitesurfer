@@ -1,17 +1,43 @@
-<%= render"layouts/navbar" %>
-
-<body class="profile-page sidebar-collapse">
+<%= render "layouts/navbar" %>
+<body class="pt-5 profile-page sidebar-collapse">
 <%if @article.present? %>
   <%if @article.background.attached? %>
-    <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url(<%= rails_blob_url(@article.background)%>);">
-  <% end %>
+    <div class="page-header" id="header" data-parallax="true" style="background-image: url(<%= rails_blob_url(@particle.background)%>);"></div>
   <% else %>
-  <div class="page-header" id="header" data-parallax="true" style="background-image: url('/assets/image.jpg');"></div>
+  <div class="page-header" id="header" data-parallax="true" style="background-image: url('/assets/Cape_Town.jpg');"></div>
+  <% end %>
 <% end %>
-    </div>
   </div>
+</div>
 
-  <div class="main main-raised d-flex justify-content-center">
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+
+
+<div class="row d-flex justify-content-around">
+
+  <div class="col-sm-3 d-flex align-items-center">
+<div class="space">
+</div>
+      <div class="container">
+	<div class="row">
+	  <div class="col-md-12">
+	      <ul class="timeline">
+	        <% @news.each do |t, index| %>
+		<li>
+		    <h5><%= t.created_at.strftime('%d - %m - %Y') %></h5>
+      		    <%= link_to article_path(t), class:"card p-1" do %>
+		    <h3 class="card-title"><%= t.title %></h3>
+		    <h5 class="card-title text-center"><%= t.intro %></h5>
+		    <% end %>
+	      </li>
+	     <%end%>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+  </div>
 
       <div class="col-md-8">
 	<div class="card-body">
@@ -25,7 +51,7 @@
 	      <%if @article.image.attached?%>
 	        <%= image_tag @article.image.first, alt: 'article image', style:"width:100%" %>
 	      <% else %>
-                <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+                <img src="/assets/image.jpg" alt="article image" class="img-rounded img-responsive" style="width:100%">
 	      <%end%>
 	    </div>
 	  </div>
@@ -59,14 +85,5 @@
     </div>
   </div>
 </div>
-
-</div>
-</div>
-</div>
 </body>
-
-</html>
-
-
-
 

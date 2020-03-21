@@ -43,25 +43,25 @@
  <%= file_field_tag :background, required: true %>
 <% end %>
 
-<h3>Ajouter la photo id card</h3>
+<h3>Ajouter la photo id card (portrait)</h3>
 <%if @product.idcard.attached?%>
   <%= image_tag @product.idcard, alt: 'kite picture', style:"width:200px" %>
 <%end %>
  <%= file_field_tag :idcard, required: true %>
 
-<h3>Ajouter la photo profil</h3>
+<h3>Ajouter la photo profil (carré)</h3>
 <%if @product.profil.attached?%>
   <%= image_tag @product.profil, alt: 'kite picture', style:"width:200px" %>
 <% end %>
  <%= file_field_tag :profil, required: true %>
 
-<h3>Ajouter la photo competence</h3>
+<h3>Ajouter la photo competence (carrée)</h3>
 <%if @product.competence.attached?%>
   <%= image_tag @product.competence, alt: 'kite picture', style:"width:200px" %>
 <% end %>
  <%= file_field_tag :competence, required: true %>
 
-<h3>Ajouter la photo detail</h3>
+<h3>Ajouter les photos details (carrés)</h3>
 <%if @product.detail.attached?%>
 <% @product.detail.each do |t, index| %>
   <%= image_tag t, alt: 'kite picture', style:"width:200px" %>

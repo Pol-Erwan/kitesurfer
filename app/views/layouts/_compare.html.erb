@@ -12,7 +12,7 @@
   <% if current_user.present? %>
       <%= form_tag url_for(action: 'create'), method: 'post' do %>
       <%= text_field_tag 'id', @product.id, type:"hidden" %>
-      <%= submit_tag "Ajouter au comparateur", class:"btn btn-success", target:"blank_" %>  <%= @product.id %> / <%= current_user.id %> <%= @same %>
+      <%= submit_tag "Ajouter au comparateur", class:"btn btn-success", target:"blank_" %> 
       <% end %>
   <% else %>
     <%= link_to new_user_session_path, :method => 'new' do %>
