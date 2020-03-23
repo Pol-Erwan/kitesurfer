@@ -1,8 +1,8 @@
 
   <div class="page-header header-filter" style="background-image: url('/assets/background/profil.jpg'); background-size: cover; background-position: top center;">
     <div class="pt-5 container">
-      <div class="row">
-        <div class="col-lg-5 col-md-6 ml-auto mr-auto">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-5 col-md-6">
           <div class="card card-login">
 
               <div class="card-header card-header-primary text-center">
@@ -12,18 +12,18 @@
                 <%= devise_error_messages! %>
 		<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   		<%= render "devise/shared/error_messages", resource: resource %>
-  		<div class="field">
-    		<%= f.label :email %><br />
-    		<%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %><br>
-  	      </div>
-	      <div class="actions mx-5"><br>
-	        <%= f.submit "Send me reset password instructions", class: "btn btn-primary btn-block"  %>
-	      </div>
-	      <% end %>
+  		<div class="field col-8">
+    		  <%= f.label :email %><br />
+    		  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %><br>
+  	        </div>
+	        <div class="actions mx-5"><br>
+	          <%= f.submit "Envoyez-moi les instructions par mail", class: "btn btn-primary btn-block"  %>
+	        </div>
+	        <% end %>
 	      <div class="text-center"><br><br>
                   <%= render "devise/shared/links" %>
 	      </div>
-
+	    </div>
           </div>
         </div>
       </div>

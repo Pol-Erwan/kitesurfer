@@ -11,4 +11,16 @@ class Product < ApplicationRecord
 
   has_many :compares
   has_many :users, through: :compares
+
+  def self.search(search)
+    if search
+      product_type = Product.find_by(name: search)
+        if product_type
+	  self.where(id: product_type)
+	else
+	end
+    else
+    end
+  end
+
 end

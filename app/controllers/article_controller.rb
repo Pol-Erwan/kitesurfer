@@ -8,7 +8,8 @@ class ArticleController < ApplicationController
     @article = Article.where(domain: "news").last(7)
     @news = @articles.last(4).reverse
     @products = Product.last(6)
-
+    @all = Product.all && Article.all
+    @search = @all.search(params[:search])
   end
 
   def show
@@ -18,5 +19,11 @@ class ArticleController < ApplicationController
     @size = 1
     @name = ["","background","jumbotron","intro","intro 2","id card","competences","bonus"]
   end
+
+  private
+
+    def search_params
+      params.require(:search).permit(:name, :article_id, :search)
+    end
 
 end

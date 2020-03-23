@@ -33,7 +33,7 @@
 		    <% end %>
   		  </div>
   	          <div class="col-sm-6">
-    		    <div class="bg-transparent">
+    		    <div class="bg-transparent  d-flex aligns-items-end">
       		      <div class="card-body">
         	        <h2 class="card-title"><%= @articles.last.title %></h2>
         	        <h5 class="card-text d-inline-block text-truncate" style="max-width: 300px;"><%= @articles.last.intro %></h5>
@@ -54,9 +54,9 @@
   	          </div>
   		  <div class="col-sm-6">
 		    <% if @events.last.image.attached? %>
-  	  	      <%= image_tag @events.last.image.first, alt: 'second slide', class:"card img-rounded img-responsive d-block w-100", style:"width:100%" %>
+  	  	      <%= image_tag @events.last.image.first, alt: 'second slide', class:"card img-rounded img-responsive d-block w-100", style:"width:80%" %>
 		    <% else %>
-          	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+          	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:80%">
 		    <% end %> 
   		  </div>
 	        </div>
@@ -65,9 +65,9 @@
 	        <div class="row">
   		  <div class="col-sm-6">
 		    <% if @portfolios.last.image.attached? %>
-  	  	      <%= image_tag @portfolios.last.image.first, alt: 'second slide', class:"card img-rounded img-responsive d-block w-100", style:"width:100%" %>
+  	  	      <%= image_tag @portfolios.last.image.first, alt: 'second slide', class:"card img-rounded img-responsive d-block w-100", style:"width:80%" %>
 		    <% else %>
-          	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+          	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:80%">
 		    <% end %>
   		  </div>
   	          <div class="col-sm-6">
@@ -93,9 +93,9 @@
   	          </div>
   		  <div class="col-sm-6">
 		    <% if @tests.background.attached? %>
-  	  	      <%= image_tag @tests.background, alt: 'second slide', class:"card img-rounded img-responsive d-block w-100", style:"width:100%" %>
+  	  	      <%= image_tag @tests.background, alt: 'second slide', class:"card img-rounded img-responsive d-block w-100", style:"width:80%" %>
 		    <% else %>
-          	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:100%">
+          	      <img src="assets/image.jpg" alt="kite image" class="img-rounded img-responsive" style="width:80%">
 		    <% end %>
   		  </div>
 	        </div>
@@ -250,6 +250,20 @@
   </div>
 
 </div>
+
+<%= form_tag article_index_path, :method => 'get' do %>
+    <%= label_tag(:search, "what article would like to make:") %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Search", :name => nil) %>
+<% end %>
+
+<% if @search != nil %>
+<% @search.each do |t| %>
+<h4><%= t %></h4>
+<% end %>
+<% else %>
+<p>no found</p>
+<% end %>
 
         <div id="extras">
             <div class="row">

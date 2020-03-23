@@ -2,9 +2,9 @@
 <body class="pt-5 profile-page sidebar-collapse">
 <%if @article.present? %>
   <%if @article.background.attached? %>
-    <div class="page-header" id="header" data-parallax="true" style="background-image: url(<%= rails_blob_url(@particle.background)%>);"></div>
+    <div class="page-header" id="header" data-parallax="true" style="background-image: url(<%= rails_blob_url(@article.background)%>);"></div>
   <% else %>
-  <div class="page-header" id="header" data-parallax="true" style="background-image: url('/assets/Cape_Town.jpg');"></div>
+  <div class="page-header" id="header" data-parallax="true" style="background-image: url('/assets/image.jpg');"></div>
   <% end %>
 <% end %>
   </div>

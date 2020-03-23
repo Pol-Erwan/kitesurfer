@@ -6,19 +6,7 @@
           <div class="card card-login">
             <div class="card-header card-header-primary text-center">
               <h4 class="card-title">S'inscrire</h4>
-              <div class="social-line">
-                <a href="#pablo" class="btn btn-just-icon btn-link">
-                  <i class="fab fa-facebook-square"></i>
-                </a>
-                <a href="#pablo" class="btn btn-just-icon btn-link">
-                  <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="#pablo" class="btn btn-just-icon btn-link">
-                  <i class="fab fa-google-plus"></i>
-                </a>
-              </div>
             </div>
-            <p class="description text-center">Or Be Classical</p>
             <div class="card-body p-3">
               <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
               <%= devise_error_messages! %>
@@ -39,7 +27,7 @@
               </div>
             </div>
             <div class="actions text-center mx-5">
-              <%= f.submit "Je m'inscris", class: "btn btn-primary btn-block" %>
+              <%= f.submit "Je m'inscris", class: "btn btn-success btn-block" %>
             </div>
             <% end %>
                   <%= render "devise/shared/links" %>
