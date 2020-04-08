@@ -26,6 +26,13 @@
         </div>
                 <h3 class="col-md-4">Mes favoris</h3>
         <div class="row d-flex justify-content-center">
+	  <% if @compare.size < 1 %>
+	    <p> Tu n'as pas encore de produits favoris </p>
+	    <% @compare.each do |t, index| %>
+	    <%= t.user_id %>
+	    <%= @compare %>
+	    <% end %>
+	  <% else %>
 	  <% @compare.each do |t, index| %>
 	    <div style="width: 10rem;">
 	      <% if @products.find(t.product_id).category === "kite" %>
@@ -71,6 +78,7 @@
 	      <%end%>
     	      <h3 class="card-text text-center"><%= @products.find(t.product_id).name %></h3>
 	    </div>
+	  <% end %>
 	  <% end %>
 	</div>
 

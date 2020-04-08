@@ -29,5 +29,90 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-fr:
-  hello: "Bonjour monde"
+en:
+  hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        email: ""
+        password: ""
+        first_name: ""
+        last_name: ""
+        current_password: ""
+
+      contact:
+          email: ""
+          name: ""
+          content: ""
+
+      request:
+          email: ""
+          nom: ""
+          prenom: ""
+          birthday: ""
+          locationBirthday: ""
+          socialReason: ""
+          siret: ""
+          adresse: ""
+          ville: ""
+          zipCode: ""
+          tel: ""
+          mobile: ""
+          numberAssurancePolice: ""
+          dateAssurancePolice: ""
+          numberCertificationAmiante: ""
+          dateCertificationAmiante: ""
+          deadlineCertificationAmiante: ""
+          numberCertificationPlomb: ""
+          dateCertificationPlomb: ""
+          deadlineCertificationPlomb: ""
+          numberAutorisationPcr: ""
+          dateAutorisationPcr: ""
+          deadlineAutorisationPcr: ""
+          numberVisaIrsn: ""
+          dateVisaIrsn: ""
+          deadlineVisaIrsn: ""
+          numberAutorisationAsn: ""
+          dateAutorisationAsn: ""
+          deadlineAutorisationAsn: ""
+          numberCertificationElec: ""
+          dateCertificationElec: ""
+          deadlineCertificationElec: ""
+          numberCertificationGaz: ""
+          dateCertificationGaz: ""
+          deadlineCertificationGaz: ""
+          numberCertificationTermite: ""
+          dateCertificationTermite: ""
+          deadlineCertificationTermite: ""
+          numberCertificationDPE: ""
+          dateCertificationDPE: ""
+          deadlineCertificationDPE: ""
+          numberEmploy: ""
+          numberSecretaireAdminstratif: ""
+          numberDiagnostiqueur: ""
+          numberVehicle: ""
+          materiel: ""
+          markPlombMachine: ""
+          markAnalyseurGaz: ""
+          markElecSuitcase: ""
+
+
+
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "L'email doit être renseigné."
+              taken: "Cette email est déjà utilisé."
+              invalid: "L'email n'est pas valide."
+            password:
+              blank: "Le mot de passe doit être renseigné.."
+              confirmation: "Le mot de passe ne correspond pas."
+              too_short: "Le mot de passe est trop court (le minimum est de %{count} caractères."
+            password_confirmation:
+              blank: "La confirmation de mot de passe doit être renseigné."
+              confirmation: "Le mot de passe ne correspond pas."
+            current_password:
+              blank: "Veuillez spécifier votre mot de passe actuel."
+              invalid: "Votre mot de passe actuel est invalide."

@@ -2,9 +2,13 @@ Rails.application.routes.draw do
 
   root 'article#index'
   devise_for :users
-
+  get 'profile' => 'users#profile'
+  get 'setting' => 'users#edit'
   resources :user, only: [:show] do
     resources :avatar, only: [:create,:destroy]
+    member do
+      get :confirm_email
+    end
   end
 
   resources :kite, only:[:index,:show,:create, :destroy]

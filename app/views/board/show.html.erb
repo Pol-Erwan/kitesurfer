@@ -216,37 +216,40 @@
                   <div class="mt-5 col-md-4 col-sm-12">
                     <h3><i class="fas fa-heart"></i>  On a aimé : <%= t.favorite %></h3>	
                     <h6>Prix en shop : <%= t.price %>€</h6>
-		    <h6>Pads : soft <% while @pad < @technics.find(t.technic_id).pad %>
+		    <h6>Pads : soft <% while @variable < @technics.find(t.technic_id).pad %>
 	    		<i class="fas fa-circle"></i>
-	    		<% @pad = @pad + 1 %>
+	    		<% @variable = @variable + 1 %>
 	  		<%end%>
-			<% while @pad < 6 %>
+			<% while @variable < 5 %>
 	    		<i class="far fa-circle"></i>
-			<% @pad = @pad + 1 %>
+			<% @variable = @variable + 1 %>
 			<% end %>
-	  		<% @pad = 0 %>
+	  		<% @variable = 0 %>
 		    hard</h6>
-		    <h6>Strap : souple<% while @strap < @technics.find(t.technic_id).strap %>
+		    <h6>Strap : souple<% while @variable < @technics.find(t.technic_id).strap %>
 	    		<i class="fas fa-circle"></i>
-	    		<% @strap = @strap + 1 %>
+	    		<% @variable = @variable + 1 %>
 	  		<%end%>
-			<% while @strap < 6 %>
+			<% while @variable < 5 %>
 	    		<i class="far fa-circle"></i>
-			<% @strap = @strap + 1 %>
+			<% @variable = @variable + 1 %>
 			<% end %>
-	  		<% @strap = 0 %>
+	  		<% @variable = 0 %>
 		    rigide</h6>
 
 			<div class="card p-1">
 			<h6>details : <%= @options.find(t.option_id).detail %></h6>
 			</div>
 
+		      <% if t.link.present? %>
+		      <h6>Plus d'infos : <a class="btn btn-sm btn-outline-info" href="<%= t.link %>" target="blank_"><%= t.link %></a></h6>
+		      <%end%>
 		  </div>
                   <div class="mt-5 col-md-4 col-sm-12">
                     <h3><i class="fas fa-sliders-h"></i>  Caractéristique :</h3>
                     <h6><i class="fas fa-wrench fa-2x"></i> nombre de Scratch : <%= @options.find(t.option_id).velcros %></h6>
                     <h6><i class="fas fa-wrench fa-2x"></i> poids : <%= @options.find(t.option_id).weigh %>kg</h6>
-		    <a class="btn btn-success" href="<%= t.link %>" target="blank_">more details</a>
+
 		  </div>
                  
                 </div>
